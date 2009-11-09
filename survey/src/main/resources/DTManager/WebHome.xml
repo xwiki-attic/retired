@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>DTManager</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>DTManager.WebHome</parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1243218998000</creationDate>
+<date>1243927588000</date>
+<contentUpdateDate>1243927588000</contentUpdateDate>
+<version>203.1</version>
+<title>DTManager</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<hidden>false</hidden>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>DTManager.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<guid>aa4989ea-e0fd-4f0f-af34-9c03d50634a0</guid>
+<property>
+<tags>
+<value>DT</value>
+</tags>
+</property>
+</object>
+<content>1.1 Document Type Manager 
+&lt;div&gt;
+  &lt;div id="doctypeleftbox" style="float:left; width: 30%;"&gt;
+    &lt;div style="padding-right:40px;"&gt;           
+        &lt;h3&gt;Document Types&lt;/h3&gt;
+         #foreach ($classname in $xwiki.classList)
+           * [$classname]
+         #end
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id="doctyperightbox" style="float:left; width: 70%;"&gt; 
+  #if (!$dtdocs)
+
+    #if("$!{showdescription}" == "")
+     #set($showdescription = $xwiki.getWebPreference("showdescription"))
+    #end
+    #if("$!{showproperties}" == "")
+     #set($showproperties = $xwiki.getWebPreference("showproperties"))
+    #end
+    #if("$!{showgrid}" == "")
+     #set($showgrid = $xwiki.getWebPreference("showgrid"))
+    #end
+    #if("$!{showtemplates}" == "")
+     #set($showtemplates = $xwiki.getWebPreference("showtemplates"))
+    #end
+    #set($dtdocs = $util.arrayList)
+    #if($showdescription != false &amp;&amp; $showdescription != "no" &amp;&amp; $showdescription != "0" &amp;&amp; $showdescription != "false")
+     #set ($discard = $dtdocs.add(["Description", "description","Description",-1,  $xwiki.getURL("DTManager.description", "view", "xpage=plain&amp;space=$doc.space")]))
+    #end
+    #if($showproperties != false &amp;&amp; $showproperties != "no" &amp;&amp; $showproperties != "0" &amp;&amp; $showproperties != "false")
+     #set ($discard = $dtdocs.add(["Properties", "properties","Properties",-1,$xwiki.getURL("DTManager.properties", "view", "xpage=plain&amp;space=$doc.space")]))
+    #end
+    #if($showgrid != false &amp;&amp; $showgrid != "no" &amp;&amp; $showgrid != "0" &amp;&amp; $showgrid != "false")
+     #set ($discard = $dtdocs.add(["Grid", "grid","Grid",-1,$xwiki.getURL("DTManager.grid", "view", "xpage=plain&amp;space=$doc.space")]))
+    #end
+    #if($showtemplates != false &amp;&amp; $showtemplates != "no" &amp;&amp; $showtemplates != "0" &amp;&amp; $showtemplates != "false")
+     #set ($discard = $dtdocs.add(["Template", "template","Template", -1,$xwiki.getURL("DTManager.template", "view", "xpage=plain&amp;space=$doc.space")]))
+    #end
+ #end 
+##
+## Display tabs
+##
+#if($dtdocs.size() &gt; 0)
+  &lt;div id="dtmContents"&gt;
+    &lt;div class="floatcontainer" id="dtmTabs"&gt;
+      &lt;ul class="xwikitabbar" id="dtmTabsUl"&gt;
+        #foreach($dtdoc in $dtdocs)
+          #set ($dtAnchor = $listtool.get($dtdoc, 0))
+          #set ($dtTabName = $listtool.get($dtdoc, 1))
+          #set ($dtTabText = $listtool.get($dtdoc, 2))
+          #set ($dtNbOfItems = $listtool.get($dtdoc, 3))
+          &lt;li id="${dtAnchor}tab"&gt;
+            #set ($args = "viewer=${dtTabName}")
+            &lt;a id="${dtAnchor}link" href="$doc.getURL('view', $args)"&gt;
+              $dtTabText  
+            &lt;/a&gt;
+          &lt;/li&gt;
+        #end
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    ##
+    ## Display panes (AJAX placeholders)
+    ##
+    &lt;div id="dtmPanes"&gt;
+      #foreach($dtdoc in $dtdocs)
+        #set ($dtAnchor = $listtool.get($dtdoc, 0))
+        &lt;div id="${dtAnchor}pane" class="hidden empty"&gt;&lt;/div&gt;
+      #end
+    &lt;/div&gt;
+&lt;/div&gt;  
+#end
+&lt;/div&gt;  
+&lt;/div&gt;
+##
+## JavaScript code generation
+##
+&lt;script type="text/javascript"&gt;
+  var dthashviewer = self.document.location.hash.substring(1);
+  #foreach($dtdoc in $dtdocs)
+   #set ($dtAnchor = $listtool.get($dtdoc, 0))
+   #set ($dtUrl = $listtool.get($dtdoc, 4))    
+   ##
+   ## Set the dtm tab content to load
+   ##
+   #if ($velocityCount == 1)
+    var dtextraInit = function(){ XWiki.displayPageContent("${dtAnchor}", "${dtUrl}", false) };
+   #end
+   if (dthashviewer == "${dtAnchor}") {
+        var dtextraInit = function(){ XWiki.displayPageContent("${dtAnchor}", "${dtUrl}", true) };
+      }
+        ##
+        ## Replace tab link
+        ##
+   if ($("${dtAnchor}link") != null) {
+          $("${dtAnchor}link").href="#${dtAnchor}";
+          Event.observe($("${dtAnchor}link"), "click", function(){ XWiki.displayPageContent("${dtAnchor}", "${dtUrl}", false); }, false);}
+        ##
+        ## Replace top menu link (if any)
+        ##
+        if ($("tmShow${dtAnchor}") != null) {
+          $("tmShow${dtAnchor}").href="#${dtAnchor}";
+          Event.observe($("tmShow${dtAnchor}"), "click", function(){ XWiki.displayPageContent("${dtAnchor}", "${dtUrl}", true); }, false);}         
+      #end
+ document.observe("dom:loaded", dtextraInit, false);
+&lt;/script&gt;
+  
+     </content>
+</xwikidoc>
