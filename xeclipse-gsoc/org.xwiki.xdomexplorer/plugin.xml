@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.xwiki.xdomexplorer.editors.XWikiEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            default="false"
+            extensions="xwiki"
+            icon="icons/xwiki.png"
+            id="org.xwiki.eclipse.gsoc.editor1"
+            name="XWiki Editor">
+      </editor>
+   </extension>
+
+</plugin>

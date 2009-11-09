@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.xwiki.eclipse.editors.PageEditor"
+            contributorClass="org.xwiki.eclipse.editors.XWikiEditorActionContributor"
+            default="false"
+            extensions="xwiki"
+            icon="icons/xwiki.png"
+            id="org.xwiki.eclipse.editors.PageEditor"
+            name="XWiki page editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="xwikieditor.views.PartitionExplorer"
+            id="xwikieditor.views.PartitionExplorer"
+            name="PartitionExplorer"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>
