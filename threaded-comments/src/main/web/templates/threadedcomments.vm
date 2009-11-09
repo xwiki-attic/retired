@@ -1,0 +1,79 @@
+#if(!$showcomments)
+#set($showcomments = $xwiki.getWebPreference("showcomments"))
+#end
+#set($showcomments = $!request.displayComments)
+#if($showcomments!="no")
+#if($xwiki.getWebPreferenceAsInt("commentsorder",1)==1)
+#set($comments = $doc.getObjects("XWiki.XWikiComments"))
+#else
+#set($comments = $doc.getObjects("XWiki.XWikiComments"))
+#end
+#if($comments.size()>0)
+<div id="xwikicomments" class="xwikidata">
+<div class="xwikidatatitle2">
+<div class="xwikidatatitle1">&nbsp;</div>
+<div class="xwikidatatitle">
+<a href="javascript:void" onclick="showhide('xwikicommentscontent'); return false">$msg.get("Comments")</a>:&nbsp;$!comments.size() $msg.get("comments") 
+...
+</div>
+<div align="right">
+<a href="${doc.name}?xpage=comments">$msg.get("addcomment")</a>
+</div>
+</div>
+<div id="xwikicommentscontent" class="xwikidatacontent" #if($showcomments!="open") style="display:none" #end >
+#if($request.sortBy == "date")
+
+<div id="commentssort">
+<a href="${doc.name}?sortBy=thread&displayComments=open">$msg.get("sortByThread")</a>
+</div>
+#foreach($comment in $comments)
+ 
+<div id="xwikicomment_${comment.number}" class="xwikicomment" >
+##:SL:
+#set ($author = $comment.get('author'))
+<div class="xwikicommentcontent">
+#if ($author == "XWiki.XWikiGuest")
+<img src="$xwiki.getSkinFile("images/lang/${comment.get('language')}.png")"/> $msg.get("Anonymous")</a>
+#else
+#set ($base64Author = $xwiki.base64Encode($author))
+<img src="$xwiki.getSkinFile("images/lang/${comment.get('language')}.png")"/> <a href="../../view/User/UserView?user=$base64Author">$author</a>
+#end
+#set($date = $comment.get("date"))
+#if($date != "")
+$date
+#end
+<br />
+#set ($commentView = $doc.display("comment","view",$comment))
+#set ($userName = $doc.display('author','view',$comment))
+#set ($signature = $xwiki.getUserSignature($userName, $context))
+<div class="xwikicommentcontenttext">$doc.getRenderedContent($commentView)</div>
+#if($signature && $signature.length()>0)
+#set ($signature = "_________________<br/>$signature<br/>")
+#end
+<div class="xwikicommentcontenttext">$doc.getRenderedContent($signature)</div>
+</div>
+#if($context.hasAccessLevel("comment", $doc.fullName))
+<div align="right">
+<a href="${doc.name}?xpage=comments&parent=${comment.number}">$msg.get("Reply")</a>
+</div>
+#end
+
+
+</div>
+#end
+
+
+#else
+<div id="commentssort">
+<a href="${doc.name}?sortBy=date&displayComments=open">$msg.get("sortByDate")</a>
+</div>
+$xwiki.includeForm("Skel.CommentsView", false)
+#end
+</div>
+<div class="xwikidatafooter2">
+<div class="xwikidatafooter1">&nbsp;</div>
+<div class="xwikidatafooter">&nbsp;</div>
+</div>
+</div>
+#end
+#end

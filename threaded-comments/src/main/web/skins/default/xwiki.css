@@ -1,0 +1,50 @@
+
+div.xwikicomment {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 5px;
+  color: inherit;
+  background-color: #eeeeee;
+  border: 1px dotted #003366;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.xwikicomment div[align="right"] a {
+ background-color: inherit;
+ color: #21449C;
+ border-style: none;
+ padding: 3px;
+ text-decoration: none;
+ font-size: 80%; 
+}
+div.xwikicomment div[align="right"] a:before {
+ content: "[ ";
+}
+div.xwikicomment div[align="right"] a:after {
+ content: " ]";
+}
+div.xwikicomment div[align="right"] a:HOVER {
+ background-color: #21449C;
+ color: #FFFFFF;
+}
+div.xwikicomments {
+  background: #B8BCDB;
+  border: none;
+  padding: 5px;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+div.xwikicommentactions {
+  padding: 0px;
+}
+
+ul.xwikicomments {
+  list-style-type: none;
+  list-style-image: none;
+  margin-bottom: 20px;
+  margin-left: 1.25em;
+  padding-left: 0em;
+}

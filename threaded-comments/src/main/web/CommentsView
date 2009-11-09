@@ -1,0 +1,76 @@
+<xwikidoc>
+<web>Skel</web>
+<name>CommentsView</name>
+<language/>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent/>
+<rights/>
+<author>Arkub</author>
+<creationDate>1124802652000</creationDate>
+<date>1125845927000</date>
+<version>1.17</version>
+
+	<content>
+{pre}
+&lt;%
+
+def displayComment(treenode) {
+  def node = treenode.getNodeObject()
+  if (node != null) {
+%&gt;
+  &lt;div id="xwikicomment_&lt;%= node.number %&gt;" class="xwikicomment"&gt;
+
+  &lt;div class="xwikicommentcontent"&gt;
+  &lt;%
+   def lang = node.get("language")
+   def file = xwiki.getSkinFile("images/lang/"+lang+".png")
+  %&gt;
+  &lt;img src="&lt;%= file %&gt;"/&gt;
+  &lt;% if ("XWiki.XWikiGuest".equals(node.get("author"))) { %&gt;
+$msg.get("Anonymous")
+  &lt;% } else {
+       def author = node.get("author")
+       def base64Author = xwiki.base64Encode(author) %&gt;
+&lt;a href="../../view/User/UserView?user=&lt;%= base64Author %&gt;"&gt;&lt;%= author %&gt;&lt;/a&gt;
+  &lt;% } %&gt;
+  &lt;%= node.date %&gt;&lt;br/&gt;
+  &lt;div class="xwikicommentcontenttext"&gt;&lt;%= doc.getRenderedContent(node.comment) %&gt;&lt;/div&gt;
+  &lt;% def signature = xwiki.getUserSignature(node.get("author"), context)
+     if(signature.length() &gt; 0) { %&gt;
+_________________&lt;br/&gt;
+  &lt;div class="xwikicommentcontenttext"&gt;&lt;%= doc.getRenderedContent(signature) %&gt;&lt;/div&gt;&lt;br/&gt;
+  &lt;% } %&gt;
+  &lt;/div&gt;
+  &lt;div class="xwikicommentactions" align="right"&gt;
+  &lt;a href="${doc.name}?xpage=comments&parent=&lt;%= node.number %&gt;"&gt;$msg.get("Reply")&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;%
+  }
+%&gt;
+  &lt;ul class="xwikicomments"&gt;
+&lt;%
+  for(child in treenode.getChildren()) {
+%&gt;
+  &lt;li&gt;
+  &lt;% displayComment(child) %&gt;
+  &lt;/li&gt;
+&lt;%
+  }
+%&gt;
+  &lt;/ul&gt;
+&lt;%
+}
+
+%&gt;
+
+&lt;% displayComment( doc.getObjectsTree("XWiki.XWikiComments","replyto") ) %&gt;
+{/pre}
+</content>
+
+	<renderedcontent>
+
+</renderedcontent>
+</xwikidoc>
