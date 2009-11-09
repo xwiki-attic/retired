@@ -1,0 +1,292 @@
+\documentclass[11pt]{style}
+  \usepackage[pdftex,
+              colorlinks=true,
+              pdftitle={XWiki Report},
+              pdfauthor={XWiki},
+              pdfsubject={XWiki},
+              pdfkeywords={xwiki},
+              %pagebackref,
+              pdfpagemode=none,
+              bookmarksopen=false]{hyperref}
+  \pdfcompresslevel=9
+  \usepackage[pdftex]{graphicx}
+  \usepackage{pdfpages}
+  
+\usepackage{
+array,
+url,
+epsfig,
+rotating,
+parskip,
+longtable,
+}
+
+\usepackage[frenchb]{babel}
+\selectlanguage{french}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+\usepackage{xspace}
+\usepackage[cm]{aeguill} % police vectorielle
+
+\parindent0pt
+
+  
+\definecolor{lightblue}{RGB}{1,94,140}
+\definecolor{colKeys}{RGB}{0,0,255}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{0,0.5,0}
+\definecolor{colString}{rgb}{1,0,0}
+
+
+%%%%% from approches.tex (PMolli) %%%%%%
+
+\usepackage{color}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{multicol}
+
+\newcommand\xxout[1]{#1\!\!\!/}
+
+
+
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{theorem}
+\theoremheaderfont{\scshape}
+\theoremstyle{definition}
+\theorembodyfont{\upshape}
+\newtheorem{definition}{Définition}[chapter]
+
+\newenvironment{proof}[1][Preuve]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+%xypic 
+\usepackage[all,2cell,ps]{xy}
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}
+\usepackage{dsfont}
+
+\usepackage{subfigure}
+\usepackage{listings}
+\newcommand{\TODO}[1]{\noindent\ovalbox{\parbox{\linewidth}{\scriptsize\textsf{TODO: #1}}}\\}
+\newcommand{\NDLR}[1]{\noindent\ovalbox{\parbox{\linewidth}{\scriptsize\textsf{NDLR: #1}}}\\}
+
+\lstdefinelanguage{MyAlgo}% 
+{morekeywords={if,then,else,endif,return,proc,endproc,function,endfunc,%
+      while,endwhile,for,to,downto,foreach,in,do,endfor,setof, %
+      attributs,operations,type,subset-of,childof,Id,add,to,broadcast,let,loop,in,s.t,endloop,find,where,are the,update,mergeproc,dependency_check,Bayou_Write},
+   sensitive,%
+  }[keywords,comments,strings]%
+
+\lstset{language=MyAlgo,
+%        basicstyle=\scriptsize,
+        mathescape=true,
+        numberstyle=\tiny,
+        stepnumber=2,
+        numbersep=5pt,
+        texcl=true,
+        escapeinside={@(}{)@},
+        flexiblecolumns=true, 
+        extendedchars=true, 
+        captionpos=b,
+        %frame=tlrb
+        frame=tb}
+
+ 
+\def\lstlistingname{Algorithm}
+ 
+\lstset{language=MyAlgo,
+        mathescape=true,
+        numbers=left,
+        numberstyle=\tiny,
+        stepnumber=2,
+        numbersep=5pt,
+        texcl=true,
+        escapeinside={@(}{)@},
+        extendedchars=true,
+        flexiblecolumns=true, 
+        extendedchars=true, 
+        captionpos=b,
+%        frame=tlrb, 
+%%%        frame=tb, 
+ frame=none,
+}
+
+
+\lstnewenvironment{java}{\lstset{
+        language=Java,
+        basicstyle=\small,
+        frame=none}}{}
+
+
+\lstnewenvironment{conj}{\lstset{
+        language=MyAlgo,
+        numbers=none,
+        frame=none}}{}
+
+\lstnewenvironment{myverbatim}{\lstset{
+        basicstyle=\small\ttfamily,
+        frame=none}}{}
+
+
+ \definecolor{gris22}{gray}{0.88}
+\def\highlight#1{
+  \colorbox{gris22}{\textcolor{black}{#1}}
+}
+
+
+\newlength{\charw}\settowidth{\charw}{{\small\tt M}}
+
+\newcommand{\tophr}{\hspace{-\charw}%
+  \rule[-1ex]{.4pt}{.5\baselineskip}%
+  \boxrule
+  \rule[-1ex]{.4pt}{.5\baselineskip}%
+  \hspace{-\charw}\vspace{0pt}}
+\newcommand{\bottomhr}{\hspace{-\charw}%
+  \rule[.5ex]{.4pt}{.5\baselineskip}%
+  \boxrule
+  \rule[.5ex]{.4pt}{.5\baselineskip}%
+  \hspace{-\charw}\vspace{0pt}}
+
+
+
+\renewcommand{\baselinestretch}{1.1} % interligne
+
+\def\so6{\textsf{SO6}}
+
+
+\newcommand{\CISSeparator}[0]{\vspace{5mm}%
+\centerline{$\bigtriangleup$~~$\bigtriangleup$~~$\bigtriangleup$}%
+\vspace{2mm}}
+
+\def\momosep{%
+\vspace{0.5cm}
+\centerline{
+$\bigtriangleup$~~$\bigtriangleup$~~$\bigtriangleup$
+}
+\vspace{0.5cm}
+}
+
+%% from woot05 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\iid}{<_{id}}
+\newtheorem{lemma}{Lemme}
+%\newtheorem{theorem}{Théorème}
+\newtheorem{conjecture}{Conjecture}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\begin{document}
+\setlength{\textwidth}{12cm}
+ %\setlength{\footskip}{2cm}
+\setlength{\oddsidemargin}{3.5cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE PAGES 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\pagenumbering{roman}
+
+\hspace*{-3.5cm}
+
+\vspace{4cm}
+
+\begin{flushright}
+        \includegraphics[width=10cm]{images/xwiki-logo}
+\end{flushright}
+
+
+\vspace{0.3cm}
+
+\textcolor{style@lightblue}{\rightline{\Huge{\bfseries \sffamily XWiki Workspaces}}}
+\vspace{1cm}
+
+\textcolor{style@lightblue}{\rightline{\Huge{\bfseries \sffamily Documentation utilisateur}}} 
+%\textcolor{style@lightblue}{\rightline{\Huge{\bfseries \sffamily et de spécifications}}}
+
+\vspace{0.3cm}
+
+%\textcolor{style@green}{\rightline{\huge Livrable L5}}
+
+\vspace{2.0cm}
+
+
+\clearpage
+%%%%%%%%%%%%%%
+% NEXT PAGES %
+%%%%%%%%%%%%%%
+%\pagestyle{scrheadings}
+
+%\cohead{\small{XWiki Concerto}}
+\lohead{\small{XWiki Workspaces}}
+\rohead{\small{xwiki.com}}
+\cofoot{\small{Documentation utilisateur}}
+\rofoot{\small{\thepage}}
+%\lofoot{\small{Livrable L5}}
+
+%\lehead{\small\textcolor{black}{\rightmark}}
+\lehead{\small{XWiki Workspaces}}
+\rehead{\small{www.xwiki.com}}
+%\lefoot{\small{Livrable L5}}
+%\cefoot{\small{Document de spécifications L5}}
+\refoot{\small{\thepage}}
+
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\oddsidemargin}{1.5cm}
+\setlength{\evensidemargin}{1.5cm}
+\setlength{\textwidth}{13.2cm}
+\setlength{\textheight}{24cm}
+\renewcommand{\arraystretch}{1.0}
+
+\newpage
+
+
+
+
+\newpage
+\tableofcontents
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\input{main.tex}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\clearpage
+%\bibliographystyle{plain}
+%\bibliography{main}
+%\bibliographystyle{abbrv}
+%\bibliography{L5}
+
+
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

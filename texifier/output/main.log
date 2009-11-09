@@ -1,0 +1,159 @@
+This is pdfTeX, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2008.7.9)  9 JUL 2008 20:35
+entering extended mode
+**main.tex
+(./main.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/size10.clo
+File: size10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen105
+\epsfysize=\dimen106
+)
+No file main.aux.
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+(/usr/local/gwTeX/texmf.texlive/tex/context/base/supp-pdf.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count88
+\scratchdimen=\dimen107
+\scratchbox=\box26
+\nofMPsegments=\count89
+\nofMParguments=\count90
+\MPscratchCnt=\count91
+\MPscratchDim=\dimen108
+\MPnumerator=\count92
+\everyMPtoPDFconversion=\toks15
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 12.
+ (/usr/local/gwTeX/texmf.texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
+
+Overfull \hbox (6.02835pt too wide) in paragraph at lines 16--17
+[]\OT1/cmr/m/n/10 There are large doc-u-ments that cur-rently pro-duced in Word
+ or FrameMaker.
+ []
+
+
+Overfull \hbox (16.33401pt too wide) in paragraph at lines 18--19
+[]\OT1/cmr/m/n/10 Sample doc-u-ment: "Mi-crosoft Ex-change mes-sag-ing in-fras-
+truc-ture on VMWare
+ []
+
+! Undefined control sequence.
+l.24 \subsubsubsection
+                      {Scope of Work for this Engagement}
+? 
+! Interruption.
+<to be read again> 
+                   {
+l.24 \subsubsubsection{
+                       Scope of Work for this Engagement}
+? 
+[1
+
+{/usr/local/gwTeX/texmf.local/fonts/map/pdftex/updmap/pdftex.map}]
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.42  \item &
+             #49;0000 users
+? 
+! You can't use `macro parameter character #' in vertical mode.
+l.42  \item &#
+              49;0000 users
+? 
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.43  \item &
+             #49;000 entry points
+? 
+! You can't use `macro parameter character #' in vertical mode.
+l.43  \item &#
+              49;000 entry points
+? 
+[2] [3] (./main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 890 strings out of 94073
+ 11249 string characters out of 1163500
+ 2057600 words of memory out of 4508796
+ 4231 multiletter control sequences out of 10000+50000
+ 3948 words of font info for 15 fonts, out of 2000000 for 2000
+ 645 hyphenation exceptions out of 5000
+ 23i,4n,19p,343b,221s stack positions out of 5000i,500n,6000p,200000b,50000s
+</usr/local/gwTeX/texmf.texlive/fonts/type1/bluesky/cm/cmbx10.pfb></usr/local
+/gwTeX/texmf.texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/local/gwTeX/texmf.t
+exlive/fonts/type1/bluesky/cm/cmsy10.pfb>
+Output written on main.pdf (3 pages, 23938 bytes).
+PDF statistics:
+ 24 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
