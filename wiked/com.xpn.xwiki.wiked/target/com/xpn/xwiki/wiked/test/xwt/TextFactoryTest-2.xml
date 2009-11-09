@@ -1,0 +1,3 @@
+<text flags="SWT.BORDER|SWT.SINGLE" text="http://phasdipd06:8080">
+	<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+</text>

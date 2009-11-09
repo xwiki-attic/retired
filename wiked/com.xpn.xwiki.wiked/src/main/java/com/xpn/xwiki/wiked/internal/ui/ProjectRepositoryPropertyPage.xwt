@@ -1,0 +1,15 @@
+<composite>
+	<layout class="org.eclipse.swt.layout.GridLayout" numColumns="2" verticalSpacing="9"/>
+	<label text="Preview server:"/>
+	<combo id="servers" flags="SWT.BORDER|SWT.SINGLE">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<init>
+			servers.setItems(userObject.getAvailableRemoteServerNames());
+			servers.select(userObject.getPreviewServerIndex());
+		</init>
+		<selectionListener>
+			org.eclipse.swt.custom.CCombo combo = (org.eclipse.swt.custom.CCombo)event.getSource();
+			userObject.setPreviewServerName(combo.getText());
+		</selectionListener>
+	</combo>
+</composite>

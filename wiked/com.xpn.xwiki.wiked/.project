@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>com.xpn.xwiki.wiked</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>de.tobject.findbugs.findbugsBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>de.tobject.findbugs.findbugsNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>xwiki</name>
+			<type>2</type>
+			<location>C:/dev/java/xwiki/build/xwikibase</location>
+		</link>
+	</linkedResources>
+</projectDescription>

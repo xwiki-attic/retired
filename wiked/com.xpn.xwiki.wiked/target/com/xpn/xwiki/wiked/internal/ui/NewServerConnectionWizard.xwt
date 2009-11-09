@@ -1,0 +1,39 @@
+<composite>
+	<layout class="org.eclipse.swt.layout.GridLayout" numColumns="2" verticalSpacing="9"/>
+	<label text="Name:"/>
+	<text id="name" flags="SWT.BORDER|SWT.SINGLE" text="New Connection 1">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<modifyListener>
+			userObject.setName(name.getText());
+		</modifyListener>
+	</text>
+	<label text="Server Host:"/>
+	<text id="serverHost" flags="SWT.BORDER|SWT.SINGLE" text="localhost">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<modifyListener>
+			userObject.setHost(serverHost.getText());
+			userObject.setPageComplete(serverHost.getText().length() > 0);
+		</modifyListener>
+	</text>
+	<label text="Server Port:"/>
+	<text id="serverPort" flags="SWT.BORDER|SWT.SINGLE" text="8080">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<modifyListener>
+			userObject.setPort(serverPort.getText());
+		</modifyListener>
+	</text>
+	<label text="User Name:"/>
+	<text id="username" flags="SWT.BORDER|SWT.SINGLE" text="admin">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<modifyListener>
+			userObject.setUserName(username.getText());
+		</modifyListener>
+	</text>
+	<label text="Password:"/>
+	<text id="password" flags="SWT.BORDER|SWT.SINGLE|SWT.PASSWORD">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<modifyListener>
+			userObject.setPassword(password.getText());
+		</modifyListener>
+	</text>
+</composite>

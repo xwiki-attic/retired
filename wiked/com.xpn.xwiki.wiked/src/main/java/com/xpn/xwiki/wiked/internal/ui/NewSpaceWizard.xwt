@@ -1,0 +1,19 @@
+<composite>
+	<layout class="org.eclipse.swt.layout.GridLayout" numColumns="2" verticalSpacing="9"/>
+	<label text="Name:"/>
+	<text id="name" flags="SWT.BORDER|SWT.SINGLE" text="Space1">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<modifyListener>
+			String txt = name.getText();
+			if (txt.length() == 0) {
+				userObject.setErrorMessage("Provide the space name.");
+			} else if (txt.indexOf(" ") != -1) {
+				userObject.setErrorMessage("The space name must not contain spaces.");
+			} else {			
+				userObject.setName(txt);
+				userObject.setErrorMessage(null);
+			}
+		</modifyListener>
+	</text>
+</composite>
+

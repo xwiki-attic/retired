@@ -1,0 +1,19 @@
+<composite>
+	<layout class="org.eclipse.swt.layout.GridLayout"/>
+	<layoutData class="org.eclipse.swt.layout.GridData" grabExcessHorizontalSpace="true">FILL</layoutData>
+	<composite>
+		<layout class="org.eclipse.swt.layout.GridLayout" numColumns="2"/>
+		<button id="nature" flags="SWT.CHECK|SWT.LEFT" text="Wiki Project">
+			<layoutData class="org.eclipse.swt.layout.GridData" verticalAlignment="4" horizontalAlignment="4"/>
+			<init>
+				nature.setSelection(userObject.hasWikiNature())
+			</init>
+			<selectionListener>
+				userObject.setWikiNature(nature.getSelection());
+			</selectionListener>
+		</button>	
+	</composite>
+	<label flags="SWT.SEPARATOR|SWT.HORIZONTAL">
+		<layoutData class="org.eclipse.swt.layout.GridData" horizontalAlignment="4" grabExcessHorizontalSpace="true"/>
+	</label>
+</composite>

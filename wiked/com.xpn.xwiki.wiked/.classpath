@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="groovy-all-1.0-beta-10.jar"/>
+	<classpathentry kind="lib" path="commons-codec.jar"/>
+	<classpathentry exported="true" kind="var" path="ECLIPSE_HOME/plugins/org.junit_3.8.1/junit.jar"/>
+	<classpathentry exported="true" kind="lib" path="mockobjects-core-0.08.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/XWiki"/>
+	<classpathentry kind="lib" path="xwiki"/>
+	<classpathentry kind="output" path="target"/>
+</classpath>

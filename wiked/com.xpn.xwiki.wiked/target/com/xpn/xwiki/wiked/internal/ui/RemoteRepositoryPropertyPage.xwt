@@ -1,0 +1,59 @@
+<composite>
+	<layout class="org.eclipse.swt.layout.GridLayout" numColumns="2" verticalSpacing="9"/>
+	<label text="Name:"/>
+	<text id="name" flags="SWT.BORDER|SWT.SINGLE">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<init>
+			String nameValue = userObject.getName();
+			name.setText(nameValue != null ? nameValue : "");
+		</init>
+		<modifyListener>
+			String txt = name.getText();
+			if (txt.length() == 0) {
+				userObject.setErrorMessage("Provide the connection name.");
+			} else {
+				userObject.setName(txt);
+				userObject.setErrorMessage(null);
+			}
+		</modifyListener>
+	</text>
+	<label text="Server Url:"/>
+	<text id="serverURL" flags="SWT.BORDER|SWT.SINGLE">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<init>
+			String urlValue = userObject.getUrl();
+			serverURL.setText(urlValue != null ? urlValue : "");
+		</init>
+		<modifyListener>
+			String url = serverURL.getText();
+			if (url.startsWith("http://") == false) {
+				userObject.setErrorMessage("Only HTTP connections are supported.");
+			} else {
+				userObject.setUrl(url);
+				userObject.setErrorMessage(null);
+			}
+		</modifyListener>
+	</text>
+	<label text="User Name:"/>
+	<text id="username" flags="SWT.BORDER|SWT.SINGLE">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<init>
+			String userValue = userObject.getUserName();
+			username.setText(userValue != null ? userValue : "");
+		</init>
+		<modifyListener>
+			userObject.setUserName(username.getText());
+		</modifyListener>
+	</text>
+	<label text="Password:"/>
+	<text id="password" flags="SWT.BORDER|SWT.SINGLE|SWT.PASSWORD">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+		<init>
+			String pwdValue = userObject.getPassword();
+			password.setText(pwdValue != null ? pwdValue : "");
+		</init>
+		<modifyListener>
+			userObject.setPassword(password.getText());
+		</modifyListener>
+	</text>
+</composite>

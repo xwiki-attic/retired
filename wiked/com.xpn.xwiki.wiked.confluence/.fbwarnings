@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="0.8.7" timestamp="1118999773643">
+  <Project filename="&lt;&lt;unnamed project&gt;&gt;">
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\PropertyDescriptorFactory$1.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\PropertyDescriptorFactory$Visitor.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\PropertyDescriptorFactory.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemotePage$1.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemotePage.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemoteRepository.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemoteRepositoryClient.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemoteRepositoryFactory.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemoteSpace$1.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemoteSpace$2.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\repository\remote\RemoteSpace.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\test\ui\NewServerConnectionWizardTest.class</Jar>
+    <Jar>d:\workspace\com.xpn.xwiki.wiked.confluence\bin\com\xpn\xwiki\wiked\confluence\ui\NewXWikiServerConnectionWizard.class</Jar>
+    <AuxClasspathEntry>d:\workspace\com.xpn.xwiki.wiked\target</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.core.runtime_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.osgi_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.core.resources_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.swt_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.swt.win32.win32.x86_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.jface_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.core.commands_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui.workbench_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui.ide_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.jface.text_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.text_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui.workbench.texteditor_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui.editors_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.core.filebuffers_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui.views_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>d:\workspace\com.xpn.xwiki.wiked\groovy-all-1.0-beta-10.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>d:\workspace\com.xpn.xwiki.wiked\commons-codec.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.junit_3.8.1\junit.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>d:\workspace\com.xpn.xwiki.wiked\mockobjects-core-0.08.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.compare_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\java\eclipse-3.1RC1\plugins\org.eclipse.ui.forms_3.1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>d:\workspace\com.xpn.xwiki.wiked.confluence\xmlrpc.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>d:\workspace\com.xpn.xwiki.wiked.confluence\bin</AuxClasspathEntry>
+  </Project>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" abbrev="EI" category="MALICIOUS_CODE" uid="0" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage"/>
+    <Method classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage" name="getPropertyDescriptors" signature="()[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;">
+      <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage" start="181" end="181" startBytecode="0" endBytecode="4" sourcefile="RemotePage.java"/>
+    </Method>
+    <Field classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage" name="properties" signature="[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;" isStatic="false"/>
+    <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage" start="181" end="181" startBytecode="4" endBytecode="4" sourcefile="RemotePage.java"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" abbrev="SIC" category="PERFORMANCE" uid="5" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage$1"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" abbrev="EI" category="MALICIOUS_CODE" uid="1" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository"/>
+    <Method classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository" name="getPropertyDescriptors" signature="()[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;">
+      <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository" start="239" end="249" startBytecode="0" endBytecode="61" sourcefile="RemoteRepository.java"/>
+    </Method>
+    <Field classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository" name="properties" signature="[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;" isStatic="false"/>
+    <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository" start="240" end="240" startBytecode="11" endBytecode="11" sourcefile="RemoteRepository.java"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="6" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository"/>
+    <Field classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository" name="serverInfo" signature="Ljava/util/Map;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" uid="7" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepositoryClient" name="url" signature="Ljava/net/URL;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="CD_CIRCULAR_DEPENDENCY" priority="2" abbrev="CD" category="STYLE" uid="11" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace"/>
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemotePage"/>
+  </BugInstance>
+  <BugInstance type="CD_CIRCULAR_DEPENDENCY" priority="2" abbrev="CD" category="STYLE" uid="12" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace"/>
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepository"/>
+  </BugInstance>
+  <BugInstance type="DM_BOOLEAN_CTOR" priority="2" abbrev="Dm" category="PERFORMANCE" uid="2" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace"/>
+    <Method classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" name="createPage" signature="(Ljava/lang/String;)Lcom/xpn/xwiki/wiked/repository/IPage;">
+      <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" start="102" end="116" startBytecode="0" endBytecode="230" sourcefile="RemoteSpace.java"/>
+    </Method>
+    <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" start="108" end="108" startBytecode="117" endBytecode="117" sourcefile="RemoteSpace.java"/>
+  </BugInstance>
+  <BugInstance type="EI_EXPOSE_REP" priority="2" abbrev="EI" category="MALICIOUS_CODE" uid="3" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace"/>
+    <Method classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" name="getPropertyDescriptors" signature="()[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;">
+      <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" start="233" end="233" startBytecode="0" endBytecode="4" sourcefile="RemoteSpace.java"/>
+    </Method>
+    <Field classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" name="properties" signature="[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;" isStatic="false"/>
+    <SourceLine classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" start="233" end="233" startBytecode="4" endBytecode="4" sourcefile="RemoteSpace.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" uid="10" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace"/>
+    <Field classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace" name="errorMessage" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" abbrev="SIC" category="PERFORMANCE" uid="13" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace$1"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" abbrev="SIC" category="PERFORMANCE" uid="10" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteSpace$2"/>
+  </BugInstance>
+  <BugInstance type="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR" priority="3" abbrev="UwF" category="STYLE" uid="14" active="1118999773643-1118999773643,1119305548946-1119305548946">
+    <Class classname="com.xpn.xwiki.wiked.confluence.test.ui.NewServerConnectionWizardTest"/>
+    <Field classname="com.xpn.xwiki.wiked.confluence.test.ui.NewServerConnectionWizardTest" name="wizard" signature="Lcom/xpn/xwiki/wiked/confluence/ui/NewXWikiServerConnectionWizard;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UPM_UNCALLED_PRIVATE_METHOD" priority="3" abbrev="UPM" category="PERFORMANCE" uid="258" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Method classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="readData" signature="(Ljava/lang/String;)Ljava/util/Map;">
+      <SourceLine classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" start="221" end="221" startBytecode="0" endBytecode="9" sourcefile="RemotePage.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="259" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="data" signature="Ljava/util/Map;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="260" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="errorMessage" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="261" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="has inconsistent hierarchy" signature="I" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="262" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="id" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="263" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="properties" signature="[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="264" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage" name="space" signature="Lcz/eurotel/wiked/xwiki/repository/remote/RemoteSpace;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" abbrev="SIC" category="PERFORMANCE" uid="4" active="1118999773643-1118999773643,1119287516423-1119287516423">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemotePage$1"/>
+  </BugInstance>
+  <BugInstance type="UPM_UNCALLED_PRIVATE_METHOD" priority="3" abbrev="UPM" category="PERFORMANCE" uid="265" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Method classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="readServerInfo" signature="()V">
+      <SourceLine classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" start="303" end="303" startBytecode="0" endBytecode="9" sourcefile="RemoteRepository.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="UPM_UNCALLED_PRIVATE_METHOD" priority="3" abbrev="UPM" category="PERFORMANCE" uid="266" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Method classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="readSpaces" signature="()V">
+      <SourceLine classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" start="315" end="315" startBytecode="0" endBytecode="9" sourcefile="RemoteRepository.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="267" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="errorMessage" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="268" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="has inconsistent hierarchy" signature="I" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="269" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="name" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="270" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="password" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="271" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="properties" signature="[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="272" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="rpcClient" signature="Lcz/eurotel/wiked/xwiki/repository/remote/RemoteRepositoryClient;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="273" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="serverInfo" signature="Ljava/util/Map;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="274" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="spaces" signature="Ljava/util/Map;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="275" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="type" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="276" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepository" name="userName" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="277" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient" name="NONE" signature="[Ljava/lang/Object;" isStatic="true"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="278" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient" name="client" signature="Lorg/apache/xmlrpc/XmlRpcClient;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="279" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient" name="name" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="280" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient" name="password" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="281" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient" name="token" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="282" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryClient" name="url" signature="Ljava/net/URL;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="283" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryFactory"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteRepositoryFactory" name="has inconsistent hierarchy" signature="I" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UPM_UNCALLED_PRIVATE_METHOD" priority="3" abbrev="UPM" category="PERFORMANCE" uid="284" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Method classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="readData" signature="(Ljava/lang/String;)Ljava/util/Map;">
+      <SourceLine classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" start="268" end="268" startBytecode="0" endBytecode="9" sourcefile="RemoteSpace.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="UPM_UNCALLED_PRIVATE_METHOD" priority="3" abbrev="UPM" category="PERFORMANCE" uid="285" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Method classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="readPages" signature="()V">
+      <SourceLine classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" start="276" end="276" startBytecode="0" endBytecode="9" sourcefile="RemoteSpace.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="286" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="data" signature="Ljava/util/Map;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="287" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="errorMessage" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="288" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="has inconsistent hierarchy" signature="I" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="289" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="key" signature="Ljava/lang/String;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="290" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="pages" signature="Ljava/util/Map;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="291" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="properties" signature="[Lorg/eclipse/ui/views/properties/IPropertyDescriptor;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="292" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace"/>
+    <Field classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace" name="repository" signature="Lcz/eurotel/wiked/xwiki/repository/remote/RemoteRepository;" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" abbrev="SIC" category="PERFORMANCE" uid="8" active="1118999773643-1118999773643,1119287516423-1119287516423">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace$1"/>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC_ANON" priority="3" abbrev="SIC" category="PERFORMANCE" uid="9" active="1118999773643-1118999773643,1119287516423-1119287516423">
+    <Class classname="cz.eurotel.wiked.xwiki.repository.remote.RemoteSpace$2"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="378" active="1118999773643-1118999773643,1119289063358-1119289063358">
+    <Class classname="cz.eurotel.wiked.xwiki.test.ui.NewServerConnectionWizardTest"/>
+    <Field classname="cz.eurotel.wiked.xwiki.test.ui.NewServerConnectionWizardTest" name="has inconsistent hierarchy" signature="I" isStatic="false"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" uid="293" active="1118999773643-1118999773643,1119288877631-1119288877631">
+    <Class classname="cz.eurotel.wiked.xwiki.ui.NewXWikiServerConnectionWizard"/>
+    <Field classname="cz.eurotel.wiked.xwiki.ui.NewXWikiServerConnectionWizard" name="has inconsistent hierarchy" signature="I" isStatic="false"/>
+  </BugInstance>
+  <Errors></Errors>
+</BugCollection>

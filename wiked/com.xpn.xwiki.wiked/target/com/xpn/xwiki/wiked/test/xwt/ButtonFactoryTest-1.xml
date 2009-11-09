@@ -1,0 +1,3 @@
+<button flags="SWT.NONE" text="This is a button">
+	<layoutData class="org.eclipse.swt.layout.RowData" width="11" height="22"/>
+</button>

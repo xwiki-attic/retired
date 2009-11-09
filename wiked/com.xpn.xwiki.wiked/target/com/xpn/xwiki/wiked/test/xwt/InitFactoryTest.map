@@ -1,0 +1,9 @@
+composite=com.xpn.xwiki.wiked.internal.xwt.cf.CompositeFactory
+layout=com.xpn.xwiki.wiked.internal.xwt.cf.LayoutFactory
+label=com.xpn.xwiki.wiked.internal.xwt.cf.LabelFactory
+text=com.xpn.xwiki.wiked.internal.xwt.cf.TextFactory
+button=com.xpn.xwiki.wiked.internal.xwt.cf.ButtonFactory
+layoutData=com.xpn.xwiki.wiked.internal.xwt.cf.LayoutDataFactory
+modifyListener=com.xpn.xwiki.wiked.internal.xwt.cf.ModifyListenerFactory
+selectionListener=com.xpn.xwiki.wiked.internal.xwt.cf.SelectionListenerFactory
+init=com.xpn.xwiki.wiked.internal.xwt.cf.InitFactory

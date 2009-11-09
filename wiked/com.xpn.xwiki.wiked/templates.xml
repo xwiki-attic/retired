@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+      <template
+            name="color"
+            description="Changes the color of a block of text"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.color">color:${red}}{color}</template>
+      <template
+            name="panel"
+            description="Embraces a block of text within a fully customizable panel"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.panel">panel:title=${title}|borderStyle=${borderstyle}| borderColor=${color}} 
+			{panel}
+      </template>
+      <template
+            name="noformat"
+            description="Makes a preformatted block of text with no syntax highlighting. All the optional parameters of {panel} macro are valid for {noformat} too"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.nofromat">noformat} 
+				preformatted piece of text 
+			{noformat} 
+      </template>
+      <template
+            name="anchor"
+            description="Creates a bookmark anchor inside the page. You can then create links directly to that anchor. So the link [My Page#here] will link to wherever in My Page there is an {anchor:here} macro, and the link [#there] will link to wherever in the current page there is an {anchor:there} macro."
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.anchor">anchor:anchorname}          
+      </template>
+      <template
+            name="include"
+            description="Includes one page within another"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.include">include:Home}
+      </template>
+      <template
+            name="search"
+            description="Does an inline site search"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.search">search:query=my_query|maxLimit=6}
+      </template>
+      <template
+            name="rss"
+            description="Display the contents of an RSS feed within the page"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.rss">rss:url=http://host.com/rss.xml|max=5}
+      </template>
+      <template
+            name="children"
+            description="Displays the children and descendants of the current page"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.children">children:depth=4} 
+      </template>
+      <template
+            name="code"
+            description="Makes a preformatted block of code with syntax highlighting"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.code">code} 
+				public String getFoo(){
+				  return foo;
+				}
+			{code}	         
+      </template>
+      <template
+            name="blog-posts"
+            description="Displays the most recent blog posts in this space"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.blog-posts">blog-posts:5} 
+      </template>
+      <template
+            name="quote"
+            description="Quote a block of text"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.quote">quote}
+			here is quoteable
+			content to be quoted
+			{quote} 
+      </template>
+      <template
+            name="index"
+            description="Displays an index of all the pages in the current space"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.index">index}
+      </template>
+      <template
+            name="content-by-user"
+            description="Displays a simple table of all the content (pages, comments, blog posts, user profiles and space descriptions)\n created by a user"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.index">content-by-user:zohar} 
+      </template>
+      <template
+            name="jira-issues"
+            description="Imports and displays JIRA issue list as inline content"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.jira-issues">jiraissues:url=http://jira.rss.url|columns=type;key;summary} 
+      </template>
+      
+      <template
+            name="junit-report"
+            description="Displays the results of a series (or single) JUnit test"
+            context="com.xpn.xwiki.wiked.markup"
+            id="com.xpn.xwiki.wiked.markup.junit-report">junitreport:url=file:///test-reports/TestRep.xml} 
+      </template>
+</templates>

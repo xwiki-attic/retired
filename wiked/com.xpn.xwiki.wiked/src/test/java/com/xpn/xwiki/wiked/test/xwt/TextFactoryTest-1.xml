@@ -1,0 +1,3 @@
+<text flags="SWT.NONE" textLimit="10" text="This is a text">
+	<layoutData class="org.eclipse.swt.layout.RowData" width="11" height="22"/>
+</text>

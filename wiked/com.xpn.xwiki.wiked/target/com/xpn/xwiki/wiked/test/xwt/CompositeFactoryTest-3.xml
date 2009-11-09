@@ -1,0 +1,7 @@
+<composite>
+	<layout class="org.eclipse.swt.layout.GridLayout" numColumns="2" verticalSpacing="9"/>
+	<label text="Server Url:"/>
+	<text flags="SWT.BORDER|SWT.SINGLE" text="http://phasdipd06:8080">
+		<layoutData class="org.eclipse.swt.layout.GridData">FILL_HORIZONTAL</layoutData>
+	</text>
+</composite>

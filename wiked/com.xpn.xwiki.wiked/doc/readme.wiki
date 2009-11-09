@@ -1,0 +1,41 @@
+1 The Wiked readme
+This file contains basic information about the Wiked project and should help devlopers to start with it effectively.
+
+1.1 Implementation Architecture
+The editor is realized as Eclipse plug-in, it uses Eclipse APIs extensively and cannot be easily migrated to plain Java/Swing application. There are following significant attributes of the project.
+
+1.1.1 The editor core and extension 
+The editor itself is realized as open platform for editing and previewing wiki files organized in repositories. The repository can be either local one (Eclipse project-based) or remote. There is an extension point defined, where a custom repository interface implementation can be plugged. Currently, there is a ConfluenceAPI-compatible repository implementation prepared in form of an extension.
+
+Note: the xwiki server syntaxe is hard-coded for current version. Some preference page or, better, separate Confluence extension can be prepared to support Confluence.
+
+Developers may create their own implementation of IRepository interface and register it fairly easily. Following rules should be followed:
+- Repository is made of spaces. Users may create, edit and remove spaces.
+- Space is made of pages. Users may create, edit and remove pages.
+
+See com.xpn.xwiki.repository.IRepository for repository interface, com.xpn.xwiki.repository.ISpace for space interface and com.xpn.xwiki.repository.IPage for page interface. Repositories are created using com.xpn.xwiki.repository.IRepositoryFactory instances registered via Eclipse plugin architecture (plugin.xml file).
+
+Currently, the com.xpn.xwiki.repository is the only open API of the editor.
+
+1.1.1 Local repository integration
+The local, Eclipse project-based repository is supported by the editor core and is well integrated. All projects with com.xpn.xwiki.wiked.wiki nature are shown in the Repository Explorer (the nature can be set via standard project properties, tab Wiki).
+
+1.1.1 Eclipse 3.1 
+The editor was built using Eclipse 3.1RC1. However we are doing our best to keep it 3.0 compatible, the primary supported Eclipse version is 3.1. 
+
+The Repository Explorer shows all local and remote repositories. 
+
+The editor uses and supports following views:
+- Outline View for the wiki editor outline (works when a .wiki file is open)
+- Properties View for all Repository Navigator objects, fairly useful for remote objects 
+
+There is a Wiked perspective combining all important views and editor space into one consistent, wiki-editing environment.
+
+1.1.1 Testing
+The Eclipse plug-in test should be used to perform all unit tests here.
+
+1.1 User Notes
+Following chapters enumerate a set of user notes, that was considered as important.
+
+
+

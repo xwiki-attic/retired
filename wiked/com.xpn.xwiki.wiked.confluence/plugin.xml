@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin id="com.xpn.xwiki.wiked.confluence"
+   name="XWiki support for Wiked" 
+   version="0.1" provider-name="Eurotel Praha">
+
+	<runtime>
+		<library name="bin/"/>
+		<library name="xmlrpc.jar"/>
+	</runtime>
+	<requires>
+      <import plugin="com.xpn.xwiki.wiked"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.ui.forms"/>
+   	</requires>
+	
+	<extension point="com.xpn.xwiki.wiked.repository">
+		<repository type="xwiki" name="XWiki Repository" icon="icons/addServer.gif"
+			factory="com.xpn.xwiki.wiked.confluence.repository.remote.RemoteRepositoryFactory"
+			description="XWiki repository, just a XWiki repository.">
+			<connectionWizard id="com.xpn.xwiki.wiked.confluence.NewRepositoryWizard"/>
+		</repository>
+	</extension>
+
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="com.xpn.xwiki.wiked" name="Wiki"/>
+		<wizard id="com.xpn.xwiki.wiked.confluence.NewRepositoryWizard"
+			name="XWiki Repository" icon="icons/addServer.gif"
+            category="com.xpn.xwiki.wiked"
+            class="com.xpn.xwiki.wiked.confluence.ui.NewXWikiServerConnectionWizard"/>
+	</extension>
+
+</plugin>
+
+

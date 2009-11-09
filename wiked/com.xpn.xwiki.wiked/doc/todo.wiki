@@ -1,0 +1,32 @@
+1 The Wiked editor todo file
+There were following tasks and issues identified. There is no priority or even requirements for implementation -- they are just ideas we found as valid. Feel free to add yours.
+
+1.1 General 
+
+1.1.1 RCP
+The editor runs as plugin only, the Eclipse RCP should be created.
+
+1.1.1 Help
+The editor needs some help. There were a skeleton perpared, needs review and actual contents.
+
+1.1.1 Icons
+Current icons were stolen from TimTam plugin, it's unfair; we definitelly need another set of icons.
+
+1.1 Repository
+
+1.1.1 Synchronization
+Support for synchronization of local repositories with their remote counterparts via current XML/RPC and/or future P2P protocol. Should be done via Team interfaces (and available as Team support for resources).
+
+1.1.1 Space and Page wizards
+Implement full INewWizard for space and page. Space wizard should offer a list of repositories available (to choose from), Page wizard should offer a list of spaces available (to choose from). Both wizards should be accessible via File/New.
+
+1.1.1 Confluence
+Feature-rich Confluence support.
+
+1.1 Page Editing
+
+1.1.1 Syntax highlihtning
+The proper syntax highlighting, configurable.
+
+1.1.1 Intelli-sense
+Code completion for page links.

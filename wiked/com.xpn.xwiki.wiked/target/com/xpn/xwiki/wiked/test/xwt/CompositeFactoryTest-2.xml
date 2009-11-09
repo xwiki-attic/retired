@@ -1,0 +1,4 @@
+<composite flags="SWT.NONE|SWT.RESIZE">
+	<layout class="org.eclipse.swt.layout.RowLayout" 
+		type="SWT.HORIZONTAL" wrap="true" pack="true" justify="true"/>
+</composite>

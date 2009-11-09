@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="com.xpn.xwiki.wiked"
+   name="Wiked"
+   version="0.1.0"
+   provider-name=""
+   class="com.xpn.xwiki.wiked.internal.WikedPlugin">
+
+	<runtime>
+		<library export="true" name="target/">
+		     <export name="*"/>
+		</library>
+		<library export="true" name="groovy-all-1.0-beta-10.jar">
+		     <export name="*"/>
+		</library>
+		<library name="commons-codec.jar"/>
+	</runtime>
+	<requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.views"/>
+   	</requires>
+	
+	<extension-point id="repository" name="repository" schema="repository.exsd"/>
+
+	<extension point="org.eclipse.core.resources.natures" id="wiki" name="Wiki">
+		<runtime>
+			<run class="com.xpn.xwiki.wiked.internal.WikiNature"/>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.core.resources.builders">
+		<builder>
+			<run class="com.xpn.xwiki.wiked.internal.WikiBuilder"/>
+		</builder>
+	</extension>
+   
+    <extension point="org.eclipse.ui.perspectives">
+        <perspective id="com.xpn.xwiki.wiked.DefaultPerspective"
+            name="Wiked" icon="icons/repository.gif"
+            class="com.xpn.xwiki.wiked.internal.ui.DefaultPerspective"/>
+    </extension>
+   <extension point="org.eclipse.ui.views">
+      <category id="com.xpn.xwiki.wiked" name="Wiki"/>
+      <view id="com.xpn.xwiki.wiked.RepositoryView"
+            name="Wiki Explorer" icon="icons/list_pages.gif"
+            category="com.xpn.xwiki.wiked"
+            class="com.xpn.xwiki.wiked.internal.ui.RepositoryView"/>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor id="com.xpn.xwiki.wiked.WikedPageEditor" default="true"
+            class="com.xpn.xwiki.wiked.internal.ui.editor.PageEditor"
+      		name="Wiki Page Editor" extensions="wiki" icon="icons/page.gif"
+            contributorClass="com.xpn.xwiki.wiked.internal.ui.editor.WikedMultiPageEditorContributor"/>
+   </extension>
+   <extension point="org.eclipse.ui.preferencePages">
+      <page id="com.xpn.xwiki.wiked.WikedPreferencePage"
+      	  name="Wiked" class="com.xpn.xwiki.wiked.internal.ui.WikedPreferencePage"/>
+      <page id="com.xpn.xwiki.wiked.WikedEditorPreferencePage"
+      	  name="Editor" category="com.xpn.xwiki.wiked.WikedPreferencePage"
+      	  class="com.xpn.xwiki.wiked.internal.ui.WikedEditorPreferencePage"/>
+   </extension>
+    <extension point="org.eclipse.ui.propertyPages">
+      <page id="com.xpn.xwiki.wiked.internal.ui.WikedPropertyPage"
+      		name="Wiki" objectClass="org.eclipse.core.resources.IProject"
+            class="com.xpn.xwiki.wiked.internal.ui.WikedPropertyPage"/>
+      <page id="com.xpn.xwiki.wiked.internal.ui.RemoteRepositoryPropertyPage"
+      		name="Server" objectClass="com.xpn.xwiki.wiked.repository.IRemoteRepository"
+            class="com.xpn.xwiki.wiked.internal.ui.RemoteRepositoryPropertyPage"/>
+      <page id="com.xpn.xwiki.wiked.internal.ui.ProjectRepositoryPropertyPage"
+      		name="Server" objectClass="com.xpn.xwiki.wiked.internal.repository.ProjectRepository"
+            class="com.xpn.xwiki.wiked.internal.ui.ProjectRepositoryPropertyPage"/>
+    </extension>
+   <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution objectClass="org.eclipse.core.resources.IProject">
+         <action menubarPath="additions" label="Show Wiki" icon="icons/list_pages.gif" 
+               class="com.xpn.xwiki.wiked.internal.ui.action.ShowWikiAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension point="org.eclipse.ui.editors.documentProviders">
+      <provider id="com.xpn.xwiki.wiked.WikedDocumentProvider"
+            class="com.xpn.xwiki.wiked.internal.ui.editor.WikiDocumentProvider"
+            inputTypes="com.xpn.xwiki.wiked.repository.IPage"/>
+   </extension>
+   <extension point="org.eclipse.ui.editors.templates">
+      <contextType id="com.xpn.xwiki.wiked.markup" name="Wiki Markup"
+            class="com.xpn.xwiki.wiked.ui.editor.WikiContextType"/>
+      <include translations="templates.properties" file="templates.xml"/>
+   </extension>
+	
+   <extension point="org.eclipse.help.toc">
+      <toc file="toc.xml"/>
+      <toc file="testToc.xml" primary="true"/>
+   </extension>
+
+</plugin>
+
+
