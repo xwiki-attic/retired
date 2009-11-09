@@ -1,0 +1,7 @@
+<module>
+	<inherits name='com.google.gwt.user.User'/>
+	<inherits name='com.xpn.xwiki.gwt.api.Api' />
+	<inherits name = 'com.objetdirect.tatami.Tatami'/>
+    <inherits name = 'com.xpn.xwiki.gwt.api.Api'/>
+    <entry-point class='com.xpn.xwiki.cbdf.client.CBDF'/>
+</module>

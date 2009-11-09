@@ -1,0 +1,55 @@
+<html>
+	<head>
+	
+		<!--                                           -->
+		<!-- Any title is fine                         -->
+		<!--                                           -->
+		<title>XWiki Collaborative Business Drawing Framework</title>
+
+		<!--                                           -->
+		<!-- Use normal html, such as style            -->
+		<!--                                           -->
+		<style>
+			body,td,a,div,.p{font-family:arial,sans-serif}
+			div,td{color:#000000}
+			a:link,.w,.w a:link{color:#0000cc}
+			a:visited{color:#551a8b}
+			a:active{color:#ff0000}
+			
+			.color_Pop-up{
+		      background-image: url(blue_gradient.gif);
+              background-position:top left;
+              background-repeat:repeat-x;
+              border: solid 1px #C3D9FF;
+              margin:30px;
+              background-color:white;
+			}
+			
+			.drawboard{
+				border                 :    1px solid #000;
+				
+			}
+		</style>
+
+		<!--                                           -->
+		<!-- This script loads your compiled module.   -->
+		<!-- If you add any GWT meta tags, they must   -->
+		<!-- be added before this line.                -->
+		<!--                                           -->
+
+	</head>
+
+	<!--                                           -->
+	<!-- The body can have arbitrary html, or      -->
+	<!-- you can leave the body empty if you want  -->
+	<!-- to create a completely dynamic ui         -->
+	<!--                                           -->
+	<body class="tundra">
+        <script language='javascript' src='com.xpn.xwiki.cbdf.CBDF.nocache.js'></script>
+
+
+        <!-- OPTIONAL: include this if you want history support -->
+		<iframe src="javascript:''" id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>
+	    <div id="cbdt_app"></div>	
+	</body>
+</html>
