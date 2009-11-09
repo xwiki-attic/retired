@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tomcat Plug-in
+Bundle-SymbolicName: org.xwiki.appserver;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: COGNIUMSYSTEMS
+Bundle-Localization: plugin
+Eclipse-LazyStart: true
+Bundle-Activator: org.xwiki.appserver.TomcatPlugin
+Export-Package: org.xwiki.appserver
+Import-Package: javax.servlet,
+ javax.servlet.http,
+ javax.servlet.jsp,
+ javax.servlet.jsp.tagext
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.help.appserver

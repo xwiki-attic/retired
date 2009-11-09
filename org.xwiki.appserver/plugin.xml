@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension-point id="webapps" name="%webapps" schema="schema/webapp.exsd"/>
+   <extension
+         id="server"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run class="org.xwiki.appserver.TomcatApp"/>
+      </application>
+   </extension>
+   <extension
+         point="org.xwiki.appserver.webapps">
+      <webapp
+            name="admin"
+            path="/webapps/admin">
+      </webapp>
+   </extension>
+
+</plugin>
