@@ -1,0 +1,286 @@
+{pre}
+
+<script language="javascript" type="text/javascript" src="/xwiki/bin/download/Main/WebHome/prototype.js"></script>
+<script language="javascript" type="text/javascript" src="/xwiki/bin/download/Main/WebHome/scriptaculous.js"></script>
+<script language="javascript" type="text/javascript" src="/xwiki/bin/download/Main/WebHome/main.js"></script>
+<script language="javascript" type="text/javascript" src="/xwiki/bin/download/Main/WebHome/editBoxFunctions.js"></script>
+<script language="javascript" type="text/javascript" src="/xwiki/bin/download/Main/WebHome/getters.js"></script>
+{/pre}
+1 XWiki FormEditor
+<br><br>
+{pre}
+#macro (selectclassform)
+Please, select one of the available sheets:
+<form id="frmSelectClass">
+<select name="xWikiClassName">
+#foreach ($classname in $xwiki.classList)
+#if ($xwiki.hasAccessLevel("edit", $classname))
+#set($classdoc = $xwiki.getDocument($classname))
+#set($sheetname = "${classname}Sheet")
+#set($sheet = $xwiki.getDocument($sheetname))
+<option value='$classname'>$sheetname</option>
+#end
+#end
+</select>
+<input type='submit' value='Open sheet' onclick='location = this.form.xWikiClassName.value'>
+</form>
+<br><br><br><br>
+#end
+
+
+#macro (editclass)
+<script>
+var input = [
+#set($classname = $request.xWikiClassName)
+#set($classdoc = $xwiki.getDocument($classname))
+#set($sheetname = "${classname}Sheet")
+#set($sheet = $xwiki.getDocument($sheetname))
+#set($class = $classdoc.getxWikiClass())
+#foreach ($prop in $class.properties)
+#if ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.NumberClass")
+#set($propType = "Number")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.StringClass")
+#set($propType = "String")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.DateClass")
+#set($propType = "Date")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.PasswordClass")
+#set($propType = "Password")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.BooleanClass")
+#set($propType = "Boolean")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.StaticListClass")
+#set($propType = "StaticList")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.DBListClass")
+#set($propType = "DBList")
+#elseif ($prop.xWikiClass.name == "com.xpn.xwiki.objects.classes.TextAreaClass")
+#set($propType = "TextArea")
+#end
+{
+ name: "${prop.name}",
+ prettyName: "${prop.prettyName}",
+ fieldModel: {
+ #foreach ($setting in $prop.xWikiClass.propertyNames)
+   ## IMA NEKI BAG SA TEXT EDITOROM ZA SQL POLJE (prenosi se u novi red i ne prihvata ga kao jedinstveni string)
+   #if ($setting != 'sql')
+   $prop.xWikiClass.get("$setting").name: "$doc.displayEdit($prop.xWikiClass.get("$setting"), '$prop.name', $prop)",
+   #end
+ #end
+ },
+ type: "${propType}"
+},
+#end
+];
+var xWikiClassName = '$class.getName()'
+</script>
+
+
+
+<style>
+  @import url("/xwiki/bin/download/Main/WebHome/styles.css");
+</style>
+<script type="text/javascript">
+var currentform;
+function executeCommand(url, callback) {
+    // we use a javascript feature here called "inner functions"
+    // using these means the local variables retain their values after the outer function
+    // has returned. this is useful for thread safety, so
+    // reassigning the onreadystatechange function doesn't stomp over earlier requests.
+    function ajaxBindCallback() {
+        if (ajaxRequest.readyState == 4) {
+            if (ajaxRequest.status == 200) {
+                if (ajaxCallback) {
+                    ajaxCallback(ajaxRequest.responseText);
+                } else {
+                    alert('no callback defined');
+                }
+            } else {
+                alert("There was a problem retrieving the xml data:\n" + ajaxRequest.status + ":\t" + ajaxRequest.statusText + "\n" + ajaxRequest.responseText);
+            }
+        }
+    }
+
+    // addMessage(url);
+    // use a local variable to hold our request and callback until the inner function is called...
+    var ajaxRequest = null;
+    var ajaxCallback = callback;
+
+    // bind our callback then hit the server...
+    if (window.XMLHttpRequest) {
+        // moz et al
+        ajaxRequest = new XMLHttpRequest();
+        ajaxRequest.onreadystatechange = ajaxBindCallback;
+        ajaxRequest.open("GET", url, true);
+        ajaxRequest.send(null);
+    } else if (window.ActiveXObject) {
+        // ie
+        ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        if (ajaxRequest) {
+            ajaxRequest.onreadystatechange = ajaxBindCallback;
+            ajaxRequest.open("GET", url, true);
+            ajaxRequest.send();
+        }
+        else{
+            alert("your browser does not support xmlhttprequest" )
+        }
+
+    }
+    else{
+        alert("your browser does not support xmlhttprequest" )
+    }
+}
+function saveResult(html) {
+ if(html=="SUCCESS") {
+  var b = confirm("The form is saved as ${sheetname}.\n Do you want to load the form?");
+  if (b) {
+    var sheetname = '$sheetname';
+    var ind = sheetname.indexOf('.');
+    var space = sheetname.substring(0, ind);
+    var page = sheetname.substring(ind+1);
+    location = "../" + space + "/" + page;
+  }
+ }
+ else {
+  alert("Error saving.")
+  alert(html.innerHTML);
+ }
+}
+function save(form) {
+ generateVelocity();
+ var code = $('velocityCode').value;
+ var url = "SaveSheet?xpage=plain&classname=" + escape(form.classname.value) + "Sheet" + "&content=" + escape(code);
+// var url = "SaveSheet?xpage=plain&classname=Main.ArticleClassSheet" + "&content=" + escape(code);
+// var pars = "xpage=plain&classname=Main.ArticleClassSheet" + "&content=" + escape(code);
+// var url = "http://formeditorprototype.xwiki.com/xwiki/bin/view/Main/SaveSheet";
+// new Ajax.Updater('velocityCode', url, {method: 'get', parameters: pars, onComplete: saveResult});
+ //alert(url)
+ executeCommand(url, saveResult);
+ return false;
+}
+</script>
+<form method='post' action="">
+<input type="button" value="Edit form" onclick="viewMode()" >
+<input type="button" value="Preview form" onclick="generateFormPreview()" >
+<input type="button" value="View velocity code" onclick="generateVelocity()" >
+
+<input type="hidden" name="xpage" value="plain" />
+<input type="hidden" name="classname" value="$!classname" />
+<input type='hidden' name="content">
+<input type='button' value='Save form' onclick="save(this.form); return false;">
+
+</form>
+<table cellpadding=20 style='margin-left: -210px;'><tbody style='font-size: 12px;'>
+<tr>
+<td valign='top'>
+
+
+
+<div id='rightBoxes' class='rightBoxes' style="width: 230px;">
+	<fieldset style="width: 100%; ">
+		<legend>Add group</legend>
+		<table  style="font-size: 12px;"><tbody>
+		<tr>
+		<td>Table cols:</td><td><input id="colsCount" class='editingInput' size="10"></td>
+		<td rowspan="2"><button width=70 onclick="createTable(parseInt($('colsCount').value), parseInt($('rowsCount').value))">Add</button></td>
+		</tr>
+		<tr>
+		<td>Table rows: </td><td><input id="rowsCount" class='editingInput' size="10"></td>
+		</tr>
+		</tbody></table>
+	</fieldset>
+	
+	
+	<fieldset id="fields" style="width: 100%; ">
+		<div>
+			<span><a href="#" class="editingText" onclick='switchFieldsSource("classFields")'>Class fields</a></span>
+			<span><a href="#" class="editingText" onclick='switchFieldsSource("newFields")'>New fields</a></span>
+		</div>
+		<legend>Class fields</legend>
+		<table>
+		<tbody id='tbdFields'>
+		</tbody>
+		</table>
+	</fieldset>
+	<fieldset id="newFields" style="width: 100%; display: none;">
+		<div>
+			<span><a href="#" class="editingText" onclick='switchFieldsSource("classFields")'>Class fields</a></span>
+			<span><a href="#" class="editingText" onclick='switchFieldsSource("newFields")'>New fields</a></span>
+		</div>
+		<legend>New fields</legend>
+		<table>
+		<tbody id='tbdNewFields'>
+		
+		</tbody>
+		</table>
+	</fieldset>
+	
+	<div id="paramsEditor" class="paramsEditor" >
+		<fieldset class='editingFields' style="width: 100%; height: 275px; ">
+		<div style="font-size: 12px;" id='selectCellNote'>
+			Form parameters can be changed only if some cell is selected. 
+		</div>
+		<legend>Edit box</legend>
+		<table  id='editingFields' style="font-size: 12px; display: none;"><tbody>
+		<tr><td>Title text:</td><td><input id="editGroupTitleInput" class="editingInput" onchange='setGroupTitleText()'></td></tr>
+		<tr><td>Presentation text:</td><td><input id="editPresentationTextInput" class="editingInput" onchange='setGroupPresentationText()'></td></tr>
+		<tr><td>Row height:</td><td><input id="editRowHeightInput" class="editingInput" onchange="setRowHeight()"></td></tr>
+		<tr id='editCellText'><td>Cell text:</td><td><input id="editCellTextInput" class="editingInput" onchange="setCellText()"></td></tr>
+		<tr id='editCellText'><td>Cell text:</td><td><input id="editCellTextInput" class="editingInput" onchange="setCellText()"></td></tr>
+		<tr id='editAddRow'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='addRow()'>Add row below the cell</td></tr>
+		<tr id='editAddColumn'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='addColumn()'>Add column to the left of the cell</td></tr>
+		<tr id='editDeleteField'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='emptyCell()'>Delete field from cell</td></tr>
+		<tr id='editAddSeparator'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='addSeparator()'>Add separator below the row</td></tr>
+		<tr id='editRemoveSeparator'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='removeSeparator()'>Remove separator below the row</td></tr>
+		<tr id='editSpanCell'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='spanCell()'>Span to adjacent cell</td></tr>
+		<tr id='editSplitCell'><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='splitCell()'>Split cell</td></tr>
+		<tr><td colspan=2 onmouseover="mouseOverEditBoxField(event);" onmouseout="mouseOutEditBoxField(event);" class='editingText' onclick='deleteGroup()'>Delete group</td></tr>
+		</tbody></table>	
+		</fieldset>
+	</div>
+	<div id="fieldSettings" class="fieldSettings">
+		<fieldset id="editingFieldSettings" style="width: 100%;">
+                        <div><i>Read-only for this version</i></div>
+			<legend>Field settings</legend>
+			<table style="font-size: 12px;"><tbody id='tbdFieldSettings'></tbody></table>
+		</fieldset>
+	</div>
+</div>
+
+</td>
+<td valign="top" style="padding-left: 10px;">
+
+<div id='divForm' style="float:right; display: none; margin-right: -100px; background-color: white; width: 870px;"></div>
+<div id='previewForm' style="float:right; display: none; margin-right: -100px; background-color: white; width: 870px;"></div>
+<div id='velocityZone' style="float:right; display: none; margin-right:- 100px; background-color: white; ">
+	<textarea cols = 80 rows = 30 id='velocityCode'></textarea>
+</div>
+</td>
+</tr>
+</tbody></table>
+
+<!-- MUST BE HIDDEN -->
+<div id='formModel' style='display:none' >
+$xwiki.getDocument("${classname}Sheet").getContent()
+</div>
+
+#if ($xwiki.exists($sheetname))
+<script language="javascript" type="text/javascript" >
+var descriptor = {
+  version: '$xwiki.getDocument("$sheetname").version',
+  date: '$xwiki.getDocument("$sheetname").date'
+}
+
+var formModel = document.getElementById('formModel');
+init(input, '$classname', formModel, descriptor);
+#else
+init(input, '$classname');
+#end
+</script>
+#end
+## end za veliki makro
+
+#if ($request.xWikiClassName)
+#editclass()
+#else
+#selectclassform()
+#end
+
+{/pre}

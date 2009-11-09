@@ -1,0 +1,66 @@
+.rightBoxes {
+/*	float: left; */
+	width: 230px;
+	background-color: white;
+/*	margin-left: -185px; */
+}
+
+.fieldContainer {
+	font-size: 12px;
+}
+.params {
+	float: left;
+	display: none;
+	width: 200px;
+}
+.divRow {
+	width: 100%;
+	padding: 0;
+	margin: 1px;
+	border: 0;
+	height: 60px;
+	background-color: white;
+}
+.divCell {
+	border: solid 1px gray;
+	float: left;
+	width: 120px;
+	height: 60px;
+	margin: 1px;
+	background-color: white;
+}
+.divCellHover {
+	border: solid 1px gray;
+	background-color: azure;
+	float: left;
+	width: 120px;
+	height: 60px;
+	margin: 1px;
+}
+.cellPreview {
+	width : 80px;
+}
+.editingInput {
+	border: solid 1px gray;
+	height: 17px;
+	font-size: 10px;
+}
+.editingText {
+	color: black;
+	text-decoration: underline;
+}
+.editingText:hover{
+	color: black;
+	text-decoration: none;
+}
+.editingTextHover{
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+.editingFields {
+}
+.settingsFields {
+	width: 100%;
+	border: solid 1px gray;
+}

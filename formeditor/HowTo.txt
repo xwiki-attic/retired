@@ -1,0 +1,35 @@
+********************
+
+How to use the files found in the formEditor folder from the XWiki SVN?
+
+The FormEditor page must contain the code form the formEditor.vm.
+
+This is the first version and is not integrated in the XWiki engine. All the files from this directory (including png graphics) must be attached to the FormEditor page (formeditor.vm).
+
+builder.js, controls.js, dragdrop.js, effects.js, prototype.js, scriptaculous.js and slider.js are part of the Script.aculo.us JavaScript framework.
+
+
+********************
+
+How to make new field?
+
+Make approproate png graphics. Its name must be the same as the field type. E.g. if the field type is Boolean, the picture must be names "Boolean.png"
+
+In the init() function, find the next rows:
+
+	var arrNewFields = [{type: 'String'},
+						{type: 'Number'},
+						{type: 'Password'},
+						{type: 'Date'},
+						{type: 'Boolean'},
+						{type: 'StaticList'},
+						{type: 'DBList'},
+						{type: 'TextArea'}
+						]
+Add the new field type in this array.
+
+In the generateField() function, new form element must be created for the new field. Do that by adding appropriate 'case' block in the switch statement. 
+
+
+********************
+
