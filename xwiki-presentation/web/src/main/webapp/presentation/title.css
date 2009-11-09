@@ -1,0 +1,33 @@
+* { min-height: 1em }
+body {
+  background-color: #FFFFFF;
+  color: black;
+  font-family: sans-serif;
+  margin: 20px;
+}
+h1 {
+  font-size: 200%;
+  text-align: center;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #C0C0C0;
+  height: 1.5em;
+  line-height: 1em;
+  margin-top: 2em;
+  padding: 1em;
+}
+h1:after { content: "¶"; color: maroon; }
+
+#description {
+  font-size: 160%;
+  text-align: center;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #C0C0C0;
+  height: 15em;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  padding-top: 5em;
+}
+
+#description:after { content: "¶";  color: maroon; }

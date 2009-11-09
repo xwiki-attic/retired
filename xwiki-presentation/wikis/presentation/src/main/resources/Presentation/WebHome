@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Presentation</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1217235502000</creationDate>
+<date>1217235998000</date>
+<contentUpdateDate>1217235998000</contentUpdateDate>
+<version>3.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>Presentation.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#set($pPath="${request.contextPath}/presentation")
+{pre}
+&lt;style type="text/css"&gt;
+html {
+  margin: 0;
+}
+body {
+  -moz-user-modify: read-only;
+  background-image: url(${pPath}/art/blue_gray_rough.png);
+}
+
+*[contenteditable="true"] {
+  -moz-user-modify: read-write;
+}
+#slidenum { float: right }
+#colorpalette { visibility: hidden }
+body {
+  background-color: #C0C0C0;
+  font-family: sans-serif;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+div.toolbar {
+  line-height: 110%;
+  font-size: 80%;
+}
+div.buttons {
+  border: none;
+  border-width: 2px;
+  border-color: #E0E0E0;
+  border-top-style: groove;
+  background: rgb(192,192,192);
+  padding: 3px;
+  height: 25px;
+  margin-top: 8px;
+}
+select {
+   margin: 0;
+   padding: 0;
+}
+hr {
+  vertical-align: top;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0;
+}
+#editWindow {
+  display: block;
+  font-family: sans-serif;
+  border-left: 2px solid #A0A0A0;
+  border-top: 2px solid #A0A0A0;
+  border-right: 2px solid #C0C0C0;
+  border-bottom: 2px solid #C0C0C0;
+  background-color: white;
+  margin: 0
+}
+img.button {
+  background-color: #C0C0C0;
+  margin-right: 0px;
+  cursor: default;
+  border: 2px solid #C0C0C0;
+}
+#forecolor { background-color: black }
+#hilitecolor { background-color: white }
+img.button:hover {border: 2px outset white}
+img.button:active {border: 2px inset white}
+&lt;/style&gt;
+&lt;!--[if IE]&gt;
+&lt;style&gt;
+body { font-size: 85% }
+h1 { font-size: 185%; margin-top: 0.5em; }
+div.toolbar button {
+  vertical-align: top;
+  margin: 0;
+}
+&lt;/style&gt;
+&lt;![endif]--&gt;
+&lt;script src="${pPath}/editor.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="header"&gt;
+  &lt;h1&gt;Slidy editor prototype&lt;/h1&gt;
+
+  &lt;div class="toolbar"&gt;
+    &lt;span id="slidenum"&gt;Slide 3/9&lt;/span&gt;
+    &lt;select id="file" &gt;
+     &lt;option&gt;Presentation&lt;/option&gt;
+     &lt;option value="new"&gt;new &lt;/option&gt;
+     &lt;option value="load"&gt;existing&lt;/option&gt;
+     &lt;option value="save"&gt;save&lt;/option&gt;
+
+     &lt;option value="delete"&gt;save as ...&lt;/option&gt;
+     &lt;option value="delete"&gt;delete&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select id="insert" onchange="insertSlide(this[selectedIndex].value)"&gt;
+     &lt;option&gt;Insert slide&lt;/option&gt;
+     &lt;option value="title"&gt;title slide&lt;/option&gt;
+     &lt;option value="regular"&gt;regular slide&lt;/option&gt;
+
+     &lt;option value="separator"&gt;------------------&lt;/option&gt;
+     &lt;option value="delete"&gt;delete slide&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button onclick="prev()"&gt;Prev&lt;/button&gt;
+    &lt;button onclick="goto()"&gt;Goto...&lt;/button&gt;
+    &lt;button onclick="next()"&gt;Next&lt;/button&gt;
+
+    &lt;button onclick="help()"&gt;Help&lt;/button&gt;
+    &lt;button onclick="test()"&gt;Test&lt;/button&gt;
+    &lt;input name="viewsrc" id="viewsrc" type="checkbox" onclick="setViewMode(this.checked)" /&gt;
+    &lt;span onclick="toggleViewSrc('viewsrc')"&gt;View Source?&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="buttons"&gt;
+
+    &lt;img class="button" title="bold" src="${pPath}/art/bold.gif" id="bold" onclick="setMode('bold')" /&gt;
+    &lt;img class="button" title="italic" src="${pPath}/art/italic.gif" id="italic" onclick="setMode('italic')" /&gt;
+    &lt;img class="button" title="underline" src="${pPath}/art/underline.gif" id="underline" onclick="setMode('underline')" /&gt;
+    &lt;img class="divider" src="${pPath}/art/divider.gif" /&gt;
+    &lt;img class="button" title="left justify" src="${pPath}/art/justifyleft.gif" id="justifyleft" onclick="setJustify('justifyleft')" /&gt;
+    &lt;img class="button" title="center justify" src="${pPath}/art/justifycenter.gif" id="justifycenter" onclick="setJustify('justifycenter')" /&gt;
+    &lt;img class="button" title="right justify" src="${pPath}/art/justifyright.gif" id="justifyright" onclick="setJustify('justifyright')" /&gt;
+    &lt;img class="button" title="full justify" src="${pPath}/art/justifyfull.gif" id="justifyfull" onclick="setJustify('justifyfull')" /&gt;
+    &lt;img class="divider" src="${pPath}/art/divider.gif" /&gt;
+
+    &lt;img class="button" title="insert horizontal rule" src="${pPath}/art/hr.gif" onclick="applyCommand('inserthorizontalrule')" /&gt;
+    &lt;img class="divider" src="${pPath}/art/divider.gif" /&gt;
+    &lt;img class="button" title="ordered list" src="${pPath}/art/orderedlist.gif" onclick="applyCommand('insertorderedlist')" /&gt;
+    &lt;img class="button" title="unordered list" src="${pPath}/art/unorderedlist.gif" onclick="applyCommand('insertunorderedlist')" /&gt;
+    &lt;img class="divider" src="${pPath}/art/divider.gif" /&gt;
+    &lt;img class="button" title="outdent" src="${pPath}/art/outdent.gif" onclick="applyCommand('outdent')" /&gt;
+    &lt;img class="button" title="indent" src="${pPath}/art/indent.gif" onclick="applyCommand('indent')" /&gt;
+    &lt;img class="button" title="foreground color" src="${pPath}/art/forecolor.gif" id="forecolor" onclick="setColor('forecolor')" /&gt;
+    &lt;img class="button" title="background color" src="${pPath}/art/backcolor.gif" id="hilitecolor" onclick="setColor('hilitecolor')" /&gt;
+
+    &lt;img class="divider" src="${pPath}/art/divider.gif" /&gt;
+    &lt;img class="button" title="insert hypertext link" src="${pPath}/art/link.gif" onclick="addLink()" /&gt;
+    &lt;img class="button" title="insert image" src="${pPath}/art/image.gif" onclick="addImage()" /&gt;
+    &lt;img class="button" title="insert table" src="${pPath}/art/table.gif" onclick="addTable()" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--
+gecko-based browsers are very brittle in how they set the iframeheight
+so we take care to to set height attribute from javascript
+
+ src="art/template.html"
+--&gt;
+&lt;iframe id="editWindow" width="100%"&gt;
+this is alternate content and only shown if the src can't be loaded.
+&lt;/iframe&gt;
+&lt;iframe id="colorpalette" src="${pPath}/art/colours.html"
+style="position: absolute;" height="200" width="222"&gt;&lt;/iframe&gt;
+{/pre}</content>
+</xwikidoc>

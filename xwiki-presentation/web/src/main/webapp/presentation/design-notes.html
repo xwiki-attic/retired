@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+<title>Design Notes</title>
+<style type="text/css">
+  body { margin-left: 5%; margin-right: 5%;
+     font-family: Georgia, serif;
+     background-color: rgb(200,200,200);
+  }
+  #toolbar {
+    margin-bottom: 4px;
+  }
+  #slidenum { float: right; padding-top: 4px }
+  #buttons {
+    border: none;
+    border-width: 2px;
+    border-color: #E0E0E0;
+    border-top-style: groove;
+    padding-top: 2px;
+  }
+  #edit { width: 100%; height: 40em; font-size: inherit; padding: 2px; }
+  #status {width: 100%; height: 1em; color: green }
+  #buttons button { width: 27px; height: 25px; padding: 0 }
+  #list { border-style: solid; border-color: gray }
+  #datum { padding: 0; font-size: inherit; visibility: hidden; }
+</style>
+<script type="text/javascript" src="textedit.js"></script>
+</head>
+<body>
+
+<h2>Editor design</h2>
+
+<p>The editor uses the model-view-controller design pattern to
+separate the presentation from the markup. The view is provided
+by a textarea element that passes user interface events to the
+controller. The model is clean markup. The controller keeps track
+of which part of the view and which part of the model the text
+caret is in. Keystrokes are handled according to the context in
+which they appear. This approach takes over the behavior of the
+textarea element to provide an approximation to wysiwyg editing.</p>
+
+<p>One issue is keeping track of the caret position. On Gecko-based
+browsers, field.selectionStart, field.selectionEnd and
+field.setSelectionRange() are very useful and also work on Opera.
+For IE you have to use the TextRange object, but note that this isn't
+available on IE Mac. With work arounds you can reliably find the
+current caret position and insert characters at that position.</p>
+
+<p>Opera sets the key code to zero for Delete, Home and End, but this
+should be fixed when Opera 9 is finally released. The Home and End
+keys don't cause keypress events on IE but do on Opera. All browsers
+allow you to prevent the default behavior provided you cancel on
+keydown, keypress and keyup. This involves using a global to get
+keypress and keyup to also cancel with keyup responsible for clearing
+the global.</p>
+
+<h3>Slide Templates</h3>
+
+<p>I could get by to start with using two templates, one for title
+or cover slides and the other for regular bulleted list slides. Each
+template has fields that you can click on. When the field is undefined
+it shows an explanatory text, e.g. click to add title. This disappears
+when you click on it and restores if you move elsewhere without having
+typed, or if you delete what your wrote before.</p>
+
+<h4>Editing behavior</h4>
+
+<p><strong>Enter</strong>:In a list item, the first Enter starts
+the next paragraph. The second Enter starts the next bullet. To indent
+or outdent a list item as a whole, you click on the appropriate button
+or press tab or shift+tab. These keys are suppressed and not entered
+into the text. In a paragraph, Enter starts the next paragraph.
+Paragraphs can be turned into list items and back again using the
+list buttons. The controller takes care of providing the enclosing ul
+and ol elements.</p>
+
+<p><strong>Backspace</strong>: This behaves as normal with the enclosing
+markup being adjusted as needed. The exception is for elements that
+are part of the template, which can't be deleted.</p>
+
+<p><strong>Delete</strong>: This behaves as normal with the enclosing
+markup being adjusted as needed. The exception is for elements that
+are part of the template, which can't be deleted.</p>
+
+<p><strong>Cursor up/down/left/right</strong>: these work as normal
+with the controller tracking which object the caret is in.</p>
+
+<p>The controller should provide context sensitive hints. An open
+question is whether the tags should be shown in the view. Users
+wouldn't have to type them as they would be inserted automatically
+by the controller. The attributes would be hidden. Ideally, you would
+be able to switch the presence of tags in the view on or off.</p>
+
+<h4>Next steps</h4>
+
+<ol>
+<li>Define a dom tree for the slide as the model. This could be part
+of the document that is hidden from view, or it could be referenced
+only by a JavaScript object. The former approach lends itself to
+providing a wysiwyg view.</li>
+
+<li>Define handlers for classes of key strokes according to the
+context in which they appear.</li>
+
+<li>Define a mapping from the model to the view and bind the low-level
+key events to the controllers handlers.</li>
+
+<li>Add a toolbar of basic editing functions, e.g. lists, indent
+and outdent, weak and strong emphasis.</li>
+
+<li>Extend model to support template functions</li>
+</ol>
+
+<p>Some more details. If the caret is at the end of a paragraph
+and you press Enter, insert a new p element after this one, make
+it the active element, and insert \n\n into the text buffer. If the
+caret is in the middle of the paragraph, append a new p element,
+and split the text between the two. Insert \n\n into the text buffer
+and place the caret at the start of the new paragraph. If the caret
+is at the start of a paragraph, pass the event to the parent element
+together with a reference to the p element.</p>
+
+<p>A list item is handled in much the same way. Shift+Enter could start
+a new paragraph within the list item, wrapping the existing text within
+a preceding new paragraph as needed. The ul element would handle Enter
+by passing the event to its parent. This parent is given a reference
+to the ul element.</p>
+
+<p>Setting a paragraph to be a list item replaces the p by a ul or ol
+element with an li element that wraps the content of the former p
+element. If the preceding or following element is the same kind of
+list (ul or li) then the two are merged. Setting a list item to be a
+paragraph has the inverse effect.</p>
+
+<p>The indent action causes the contents of a list item to be wrapped
+in the appropriate ul or ol element. Three spaces are inserted before
+it in the text buffer. This action appends the new list as a child of
+the preceding list item. What if it was the first? The merging rule
+then applies. The outdent action has the inverse effect. If the action
+is applied to a paragraph, it is passed to the parent element.</p>
+
+<p>In some cases users might be surprised by the effects of an action.
+This indenting the first list item isn't permitted since it would leave
+an outer list item with no initial text which feels wrong. This can be
+explained in a hint section outside of the text area field. The same
+thing applies to indenting and outdenting paragraphs that are not within
+a list item.</p>
+
+<p>The above suggests that keydown and keypress event handlers need to
+classify events and pass them as actions to the controller. The controller
+returns a boolean indicating whether the event is to be cancelled or not.
+Alternatively it could insert a character and adjust the caret position
+to offset the effect of the default handling of that event.</p>
+
+<p>The actions can be associated with handlers associated with the
+element types. In other words, the controller does a lookup of element
+type and action to determine which handler to invoke. One way to implement
+that is via setting action handlers on the DOM nodes. Another is via
+using an array per action and named lookup e.g. obj["p"]["delete"].
+Note that clicks have to be intercepted and the caret moved to the
+nearest legal position.</p>
+
+<p>Slides can be represented as an array of div elements, with the
+controller being bound to a specific entry and the means to move
+between entries, keeping the view in sync. To save the presentation,
+the array has to be serialized to a string together with the corresponding
+prologue and epilogue. The prologue includes the document head and the
+presentation background div elements,</p>
+
+<p>To edit an existing presentation, the editor uses Ajax to load
+the document into a buffer and to transform that into the corresponding
+arrays. In principle, XMLHTTP will create an XML DOM tree, but what if
+the document isn't well formed? An alternative is to use a hidden iframe
+element and to walk the iframe's DOM instead of creating arrays. The
+controller can them provide code for inserting new slides, updating
+existing slides, and deleting old slides.</p>
+
+</body>
+</html>

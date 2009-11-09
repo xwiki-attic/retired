@@ -1,0 +1,56 @@
+* { min-height: 1em }
+html {
+  margin: 0;
+}
+body {
+  background-color: #FFFFFF;
+  font-family: sans-serif;
+  margin: 20px;
+}
+h1 {
+  font-size: 200%;
+  text-align: center;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #C0C0C0;
+  height: 1.5em;
+  margin-top: 0.5em;
+  padding: 1em;
+}
+#points {
+  text-align: left;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #C0C0C0;
+  height: 32em;
+  padding-left: 1.2em;
+}
+li {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  margin: 0.5em 1.5em 0.5em 1.5em;
+  padding: 0;
+}
+
+ol {
+  margin: 0.5em 1.5em 0.5em 1.5em;
+  padding: 0;
+}
+
+#points { font-size: 160% }
+
+li p { margin-top: 0.2em; margin-bottom: 0.2em; }
+
+ul { list-style-type: square; }
+ul ul { list-style-type: disc; font-size: 80%}
+ul ul ul { list-style-type: circle; font-size: 65%}
+ul ul ul ul { list-style-type: disc; font-size: 50%}
+
+/*
+h1:after { content: "¶"; color: maroon; }
+li:after { content: "¶"; color: maroon; }
+p:after { content: "¶"; color: maroon; }
+*/

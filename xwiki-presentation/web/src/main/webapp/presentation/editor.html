@@ -1,0 +1,152 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:q="http://www.example.org/adhoc"
+xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Slidy editor prototype</title>
+<style type="text/css">
+
+html {
+  margin: 0;
+}
+body {
+  -moz-user-modify: read-only;
+  background-image: url(art/blue_gray_rough.png);
+}
+
+*[contenteditable="true"] {
+  -moz-user-modify: read-write;
+}
+#slidenum { float: right }
+#colorpalette { visibility: hidden }
+body {
+  background-color: #C0C0C0;
+  font-family: sans-serif;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+div.toolbar {
+  line-height: 110%;
+  font-size: 80%;
+}
+div.buttons {
+  border: none;
+  border-width: 2px;
+  border-color: #E0E0E0;
+  border-top-style: groove;
+  background: rgb(192,192,192);
+  padding: 3px;
+  height: 25px;
+  margin-top: 8px;
+}
+select {
+   margin: 0;
+   padding: 0;
+}
+hr {
+  vertical-align: top;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0;
+}
+#editWindow {
+  display: block;
+  font-family: sans-serif;
+  border-left: 2px solid #A0A0A0;
+  border-top: 2px solid #A0A0A0;
+  border-right: 2px solid #C0C0C0;
+  border-bottom: 2px solid #C0C0C0;
+  background-color: white;
+  margin: 0
+}
+img.button {
+  background-color: #C0C0C0;
+  margin-right: 0px;
+  cursor: default;
+  border: 2px solid #C0C0C0;
+}
+#forecolor { background-color: black }
+#hilitecolor { background-color: white }
+img.button:hover {border: 2px outset white}
+img.button:active {border: 2px inset white}
+</style>
+<!--[if IE]>
+<style>
+body { font-size: 85% }
+h1 { font-size: 185%; margin-top: 0.5em; }
+div.toolbar button {
+  vertical-align: top;
+  margin: 0;
+}
+</style>
+<![endif]-->
+<script src="editor.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+  <h1>Slidy editor prototype</h1>
+  <div class="toolbar">
+    <span id="slidenum">Slide 3/9</span>
+    <select id="file" >
+     <option>Presentation</option>
+     <option value="new">new </option>
+     <option value="load">existing</option>
+     <option value="save">save</option>
+     <option value="delete">save as ...</option>
+     <option value="delete">delete</option>
+    </select>
+    <select id="insert" onchange="insertSlide(this[selectedIndex].value)">
+     <option>Insert slide</option>
+     <option value="title">title slide</option>
+     <option value="regular">regular slide</option>
+     <option value="separator">------------------</option>
+     <option value="delete">delete slide</option>
+    </select>
+    <button onclick="prev()">Prev</button>
+    <button onclick="goto()">Goto...</button>
+    <button onclick="next()">Next</button>
+    <button onclick="help()">Help</button>
+    <button onclick="test()">Test</button>
+    <span><a href="design-notes.html">Design Notes</a></span>
+    <input name="viewsrc" id="viewsrc" type="checkbox" onclick="setViewMode(this.checked)" />
+    <span onclick="toggleViewSrc('viewsrc')">View Source?</span>
+  </div>
+  <div class="buttons">
+    <img class="button" title="bold" src="art/bold.gif" id="bold" onclick="setMode('bold')" />
+    <img class="button" title="italic" src="art/italic.gif" id="italic" onclick="setMode('italic')" />
+    <img class="button" title="underline" src="art/underline.gif" id="underline" onclick="setMode('underline')" />
+    <img class="divider" src="art/divider.gif" />
+    <img class="button" title="left justify" src="art/justifyleft.gif" id="justifyleft" onclick="setJustify('justifyleft')" />
+    <img class="button" title="center justify" src="art/justifycenter.gif" id="justifycenter" onclick="setJustify('justifycenter')" />
+    <img class="button" title="right justify" src="art/justifyright.gif" id="justifyright" onclick="setJustify('justifyright')" />
+    <img class="button" title="full justify" src="art/justifyfull.gif" id="justifyfull" onclick="setJustify('justifyfull')" />
+    <img class="divider" src="art/divider.gif" />
+    <img class="button" title="insert horizontal rule" src="art/hr.gif" onclick="applyCommand('inserthorizontalrule')" />
+    <img class="divider" src="art/divider.gif" />
+    <img class="button" title="ordered list" src="art/orderedlist.gif" onclick="applyCommand('insertorderedlist')" />
+    <img class="button" title="unordered list" src="art/unorderedlist.gif" onclick="applyCommand('insertunorderedlist')" />
+    <img class="divider" src="art/divider.gif" />
+    <img class="button" title="outdent" src="art/outdent.gif" onclick="applyCommand('outdent')" />
+    <img class="button" title="indent" src="art/indent.gif" onclick="applyCommand('indent')" />
+    <img class="button" title="foreground color" src="art/forecolor.gif" id="forecolor" onclick="setColor('forecolor')" />
+    <img class="button" title="background color" src="art/backcolor.gif" id="hilitecolor" onclick="setColor('hilitecolor')" />
+    <img class="divider" src="art/divider.gif" />
+    <img class="button" title="insert hypertext link" src="art/link.gif" onclick="addLink()" />
+    <img class="button" title="insert image" src="art/image.gif" onclick="addImage()" />
+    <img class="button" title="insert table" src="art/table.gif" onclick="addTable()" />
+  </div>
+</div>
+<!--
+gecko-based browsers are very brittle in how they set the iframeheight
+so we take care to to set height attribute from javascript
+
+ src="art/template.html"
+-->
+<iframe id="editWindow" width="100%">
+this is alternate content and only shown if the src can't be loaded.
+</iframe>
+<iframe id="colorpalette" src="art/colours.html"
+style="position: absolute;" height="200" width="222"></iframe>
+</body>
+</html>
