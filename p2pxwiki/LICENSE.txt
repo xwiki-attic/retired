@@ -1,0 +1,27 @@
+/*
+ * ===================================================================
+ * P2PXWiki: Peer to Peer XWiki  
+ * Started as Google Summer of Code (SoC) 2005 
+ *
+ * Copyright (C) 2005 Bikash Agarwalla, All rights reserved.
+
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * 
+ * This distribution includes the following modules:
+ * 
+ * 
+ * 1/ p2psockets: p2psockets library from http://p2psockets.jxta.org/.  
+ *    
+ * 
+ * ===================================================================
+ */
+

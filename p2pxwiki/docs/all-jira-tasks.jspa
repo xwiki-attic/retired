@@ -1,0 +1,4490 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>XWiki.org JIRA - Issue Navigator</title>
+	
+
+    <link rel="stylesheet" type="text/css" media="print" href="all-jira-tasks_files/global_printable">
+    <style type="text/css" media="screen">@import "/jira/styles/global_printable.css";</style>
+<style type="text/css">
+    div.hr
+    {
+      height: 15px;
+      padding: 10px 0px;
+      background: #fff url(/jira/images/icons/hr.gif) no-repeat scroll center;
+    }
+    div.hr hr
+    {
+      display: none;
+    }
+  </style></head>
+
+
+
+
+
+
+
+
+
+
+<body leftmargin="0" topmargin="0" alink="#660000" bgcolor="#ffffff" link="#003366" marginheight="0" marginwidth="0" vlink="#003366">
+
+	<table bgcolor="#ffffff" border="0" cellpadding="2" cellspacing="0" width="100%">
+	<tbody><tr><td><h3 class="formtitle"> &nbsp; Issue Navigator</h3></td></tr>
+	<tr><td> &nbsp; <b><a href="#" onclick="javascript:history.go(-1); ">&lt;&lt; Back to previous view</a></b></td></tr>
+	<tr><td bgcolor="#003366"><img src="all-jira-tasks_files/spacer" height="1" width="1"></td></tr>
+	<tr><td>
+			
+<table bgcolor="#ffffff" border="0" cellpadding="10" cellspacing="0" width="100%"><tbody><tr><td>
+
+    
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-22] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-22">Registry for P2PXWiki name resolution</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             30/Jul/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             03/Aug/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td bgcolor="#ffffff" valign="top">
+		Implement a registry for p2pxwiki name resolution. 
+<br>
+<br>
+There is a central registry for name resolution. The central registry
+allows for the wiki names to be distinguishable. Also it helps in
+solving the problem of wiki-hijacking. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;* extension: central registry can be replicated between a set of servers
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* extension: central registry functionality can
+be handed by peers. There will be a need for ensuring the integrity of
+the registry data in this case.
+<br>
+<br>
+More on this in the design issues section <a href="http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues">http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues</a> <br>
+	</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tbody><tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc  p2pxwiki
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">01/Aug/05 09:07 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+I've added Erwan to this task because it will use Dynamic DNS
+resolution for the registry.. I think it's interesting to have your
+advice on this... One thing that will be needed is some Java DNS Server
+Protocol code </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">01/Aug/05 10:47 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		There are few choices -
+<br>
+<br>
+a) It is simpler to implement our own protocol solution for the
+<br>
+registry, however, it may not be very scalable and extensible.
+<br>
+Therefore, I will explore how we can leverage some existing solution.
+<br>
+<br>
+b) The p2pxwiki.com domain can be hosted on a machine which acts as
+<br>
+the "primary" authority for p2pxwiki virtual name registration. This
+<br>
+"primary" registry can later be replicated at any peer in a secure
+<br>
+manner (using certificates perhaps to ensure and verify the integrity
+<br>
+of the registry).  Actually, this replication architecture will be
+<br>
+very much like wiki replication. In wiki replication, peers need to
+<br>
+ensure that they are getting the correct copies of the wiki from
+<br>
+another peer whereas in the case of a registry, we need to ensure that
+<br>
+a domain name resolves to a correct ip address. The same principle
+<br>
+will avoid wiki hijacking as well as denial of service (because of
+<br>
+incorrect name resolution due to a malicious peers). I am sure similar
+<br>
+issues arise in traditional DNS, i will look into how it is solved and
+<br>
+if there is any implementation.
+<br>
+<br>
+c) Once we replicate the registry to peers, the role of the central
+<br>
+registry will primarily be to ensure that the wiki names are unique
+<br>
+(i.e., cnn.p2pxwiki.com is not assigned to more than 1 master peer).
+<br>
+The mapping of name to IP address can in principle be resolved through
+<br>
+p2p discovery (some form of flooding) and need not go to central
+<br>
+registry.
+<br>
+<br>
+I need to look at existing solutions on how they solve (b) in
+<br>
+particualr. I will explore today before proposing a spec for the
+<br>
+registry. I donot want to spend too much time looking at other
+<br>
+existing solutions, but at the same time, it is too easy to design our
+<br>
+own solution that may require significant effort later for scalability
+<br>
+and extensibility - so at the minimum i will need to come up with a
+<br>
+spec for the registry and identify what can be leveraged.
+<br>
+<br>
+For an initial prototype demonstration, we donot need anything beyond
+<br>
+configuring the existing DNS Server at xwiki.com to divert
+<br>
+p2p.xwiki.com to a machine running the registry (after i have
+<br>
+developed it). Also p2pxwiki.com domain name needs to be registered
+<br>
+and needs to resolve to the machine which will run the registry. We do
+<br>
+not necessarily need a separate hosting at this point, we can use one
+<br>
+of the existing xwiki machines if it is ok.
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=erwan">Erwan Arzur</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">01/Aug/05 03:01 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+I don't think writing a DNS implementation in java is an option
+(especially given the tight schedule for this project). I'd rather go
+to a solution involving a DNS server that can use a SQL backend, such
+as PowerDNS (<a href="http://www.powerdns.com/">http://www.powerdns.com/</a>) or mydns (<a href="http://mydns.bboy.net/">http://mydns.bboy.net/</a>)
+and update the database through a web service (need to take great care
+of security here) then we enjoy their debugged server code !
+<br>
+<br>We also need to think about implementing some redundancy into this
+service, because we loose some benefits of being P2P by relying on a
+central repository.
+<br>
+<br>
+Erwan
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=erwan">Erwan Arzur</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">01/Aug/05 03:22 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Hey Bikash,
+<br>
+<br>My comment went in before i read your own comment. IMHO, a) b) and
+c) describe the DNS system. So i don't see any reason to change it.
+<br>
+<br>More specifically, about (b). The replication scheme is obviously
+implemented in most DNS servers. A DNS master server is Authoritative
+for a zone and replicates it to any server which has been declared as a
+slave DNS server for it. The whois records list all the DNS servers for
+a particular domain (NS) records. You also have DNS caches that are
+implemented at each ISP level and cache the information they receive
+from the master DNS. Your architecture has to take this caching system
+in account (if we wouldn't cache the information, the DNS traffic even
+on xwiki.com will be higher that the HTTP, and the time to resolve any
+server's name before making a single request would be huge).
+<br>
+<br>
+a whois on xwiki.com answers you :
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;Name Server: LANAI.XPERTNET.BIZ
+<br>
+&nbsp;&nbsp;&nbsp;Name Server: MAUI.XPERTNET.BIZ
+<br>
+<br>
+Then if we look at the DNS configuration for xwiki.com :
+<br>
+<br>
+mac:~ erwan$ host -t NS xwiki.com   
+<br>
+xwiki.com name server maui.xpertnet.biz.
+<br>
+xwiki.com name server lanai.xpertnet.biz.
+<br>
+<br>
+and then, on lanai.xpertnet.biz (our DNS master) :
+<br>
+<br>
+zone "xwiki.com" {
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type master;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file "/etc/bind/xwiki.com.hosts";
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>
+<br>
+and finally, on maui (our DNS slave) :
+<br>
+<br>
+zone "xwiki.com" {
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type slave;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;masters {
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.0.8;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file "/var/cache/bind/xwiki.com.hosts";
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br>
+<br>
+(192.168.0.8 is lanai's internal IP address).
+<br>
+<br>
+I really think a DNS server with a MySQL backend updated by your application will do the job.
+<br>
+<br>
+Erwan
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">02/Aug/05 03:13 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Thanks Erwan, 
+<br>
+I have been out of email touch the whole day and got back to your email just now - 
+<br>
+<br>
+I am looking at mydns, it's a "free" dns server for unix, so i believe we can directly use it. 
+<br>
+<br>I am not sure how the mydns server will work in a p2p setting, i.e,
+can a peer be allowed to participate in name resolution or is it going
+to be restricted to ISPs ? </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=erwan">Erwan Arzur</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">02/Aug/05 08:42 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		I don't think making name resolution P2P in our own zone is a good idea.
+<br>
+<br>
+- any peer elected as DNS server will be able to hijack the DNS of p2p.xwiki.com (or p2pwiki.com) for his own purpose
+<br>
+<br>
+- i don't see any benefit over the standard master/slave architecture
+where a master server that we manage is replicated to slaves and caches
+all across the Internet.
+<br>
+<br>- there might be a TTL (Time To Live) problem when creating a new
+entry (server) in the zone, but it can be alleviated by reducing the
+said TTL. I mean that changes take a certain time to be replicated on
+the slaves. The TTL parameter allow to reduce this time, but increase
+the load on the servers.
+<br>
+<br>
+Proposal:
+<br>
+<br>
+- install mydns or pdns on a test server. If you need one i guess we can provide you with a test environment.
+<br>
+- implement a webapp/webservice that updates the server's backend 
+<br>
+- check that you can insert/remove/update records
+<br>
+- verify that name resolution works with your server using standard NS debugging tools (host, dig, zonecheck ...)
+<br>
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">02/Aug/05 08:44 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+It's a tough choice, wether to use the peers for the resolution or not.
+As Erwan has stated, the DNS system is redundant and fail-safe as
+itself, so the reason for using peers for the name resolution should
+not be a question of availability. However the load of all the p2p
+clients connected to the central registry to gather the information
+back to the central database could be crazy.
+<br>
+<br>
+However when we first discussed resolution, we had been talking about using redirections.. 
+<br>
+<br>ludovic.p2p.xwiki.com could send the IP of the closest node and
+then you would be either servered directly by the node (which relays)
+or redirected to ludovic.peer.p2p.xwiki.com (a peer serving the wiki)
+or ludovic.local.p2p.xwiki.com (yourself because you have a copy) or
+ludovic.orig.p2p.xwiki.com (the master wiki).
+<br>
+<br>This could be a way to involve the peers in the name resolution..
+Only the nodes would be connected to the central registry. Individual
+users would be connected to a set of nodes. The nodes would send back
+the info about the users to the central wiki.
+<br>
+<br>Something like that needs to be designed otherwise it's not going
+to work. In terms of load it's important to state that the P2P installs
+need to have some permanent connection to the network one way or
+another.
+<br>
+<br>
+PS: we don't need to build everything right away, but the architecture needs to be scalable.
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">02/Aug/05 10:24 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		I've made a proposal for the P2P Name resolution using a diagram with Inkscape (SVG) on the wiki: <a href="http://www.xwiki.org/xwiki/bin/download/Dev/Design+Issues/p2pxwiki-resolution.png">http://www.xwiki.org/xwiki/bin/download/Dev/Design+Issues/p2pxwiki-resolution.png</a>
+<br>
+<br>The idea is that the P2P XWiki's are connected permanently using
+nodes. The permanent connections allow to send information up the
+permanent connection to give the localisation of the P2P client to the
+central registry.
+<br>
+<br>DNS resolution would then either send back the IP of the closest
+node if the P2P client is behing a firewall or send back the IP of the
+machine itself. If a other P2P client has a replica of a wiki his IP or
+the closest node could also be valid IP's in the DNS registry.
+<br>
+<br>Now with this system the availability is dependent on the
+availability of the central registry and the DNS cluster. This system
+needs to be designed to be clustered and solid (2 datacenters). This
+single point of failure is the price to pay to be compatible with
+standard browsers and not only users having the P2P XWiki client.
+<br>
+<br>The P2P XWiki client could work only by querying the node which
+finds other wikis using the node system. That could be an enhancement
+for the users of the P2P XWiki (working without the central registry by
+discovering close users). </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">02/Aug/05 05:20 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Thanks Ludovic, Erwin -  good discussions. I have few questions - 
+<br>
+<br>
+&nbsp;a. Who will be the slaves ? how does the master decide who the slaves are? 
+<br>
+what will be the protocol for master-slave communication and how much
+of it is new implementation vs existing implementation in mydns. <br>
+<br>
+&nbsp;b. The "node" in the diagram are I assume slaves. Are they
+specially designated peers or ISP hosts or some hosts managed by
+"p2pxwiki.com" (the master) for load sharing? <br>
+<br>
+&nbsp;c. As I understand, in the diagram, there is another component
+that "makes a decision" as to which peer should be used to serve a
+particular wiki based on load sharing. It can be simple heuristic to
+start with (serve from local machine if available, otherwise pick one
+of the other peers, which have the read-only copy, at random. I am not
+sure how the implementation of "closest peer" will work? ). <br>
+&nbsp;
+<br>
+&nbsp;d. firewall traversal: Any of the "nodes" in the diagram can act
+as intermediary in case of firewall or does the central registry act as
+the intermediary for all firewall traversals? <br>
+&nbsp;
+<br>
+&nbsp;e. There is security concern related to how the dns will be
+updated... There is security problem related to redirection as well. I
+don't sufficiently understand how mydns work, so i think i will explore
+this later once i have a basic implementation, is this reasonable?
+Having a separate discussion on security may be a good idea. <br>
+&nbsp;
+<br>
+Action Plan for SoC 
+<br>
+<br>
+1/ I will start with the action plan that Erwin outlined with
+implementation for redirection and host resolution. Security and
+Firewall traversal are the issues are the ones that will be taken care
+of in the future. <br>
+<br>
+2/ inorder for ludovic.p2p.xwiki.com to be resolved correctly, there
+needs to be some changes to the xwiki.com dns server - so that it can
+invoke a web service call to mydns and return the correct ip address. I
+will need a test platform for this. <br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">03/Aug/05 12:07 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		a. Who will be the slaves ? how does the master decide who the slaves are?
+<br>
+what will be the protocol for master-slave communication and how much
+of it is new implementation vs existing implementation in mydns.
+<br>
+<br>Both the P2P Clients and the Nodes can be slaves or masters.. I
+think the master/slave replication has nothing to do with mydns.. The
+DNS will be only at the central registry. The P2P clients and Nodes
+will have to inform the central registry of the list of wikis that they
+are able to serve. They will also say (using the username/password that
+their are the master for specific wikis). The central registry will
+update the mydns database with the right IP address.
+<br>
+<br>&nbsp;b. The "node" in the diagram are I assume slaves. Are they
+specially designated peers or ISP hosts or some hosts managed by
+"p2pxwiki.com" (the master) for load sharing?
+<br>
+<br>From my point of view they would be user. Only the central registry
+would be our own servers (I'm not sure how to call them, ISP hosts or
+managed by p2pxwiki.com). If necessary it could be possible to manually
+setup some nodes in some places to improve the capacity and reliability
+on the network. It's clear that peers won't be able to efficiently
+handle a lot of connections. Nodes that we managed could handle more.
+<br>
+<br>&nbsp;c. As I understand, in the diagram, there is another
+component that "makes a decision" as to which peer should be used to
+serve a particular wiki based on load sharing. It can be simple
+heuristic to start with (serve from local machine if available,
+otherwise pick one of the other peers, which have the read-only copy,
+at random. I am not sure how the implementation of "closest peer" will
+work? ).
+<br>
+&nbsp;
+<br>There are two issues to solve. Issue 1 is passing firewalls using
+the closest 'node' (there is no load balancing here and this is what I
+was talking about). Here instead of sending the peer IP address to the
+central registry it's the node IP that goes in the central registry and
+DNS server.
+<br>
+<br>The second issue is when replication is in place, how to choose the
+right peer based on the IP address of the requester. Indeed random or
+round robin is the easy choice that will work right away probably
+without mydns changes. Closest peer could be handled using some
+geolocalisation (there are some public databases of location - at least
+countries - of IP addresses). If the IP are on the same network it
+could be an easy solution too. I know akamai has done some work in this
+area so it is possible to build huge database on the best choices. This
+won't be possible right away, but we can suppose that in a future
+release mydns would be modified to ask an external function for the
+best solution among the existing replicas: String getBestIP(String
+RequestorIP,String[] ReplicaIPs) <br>
+<br>
+&nbsp;d. firewall traversal: Any of the "nodes" in the diagram can act
+as intermediary in case of firewall or does the central registry act as
+the intermediary for all firewall traversals?
+<br>
+&nbsp;
+<br>The nodes... Nodes have to accept HTTP connections and would relay
+them to one of their P2P clients permanently connected to them using an
+upstream connection.. In a first release, the central registry could be
+the only node available, but the architecture should be build to have
+mutiple nodes and level of nodes.
+<br>
+<br>&nbsp;e. There is security concern related to how the dns will be
+updated... There is security problem related to redirection as well. I
+don't sufficiently understand how mydns work, so i think i will explore
+this later once i have a basic implementation, is this reasonable?
+Having a separate discussion on security may be a good idea.
+<br>
+&nbsp;
+<br>Let's suppose the nodes are trusted (so if a node sends back info
+to the central registry then it's fine.. This probably means
+communications needs to be signed). P2P clients are authenticated when
+connected to the nodes. They are the only master for their own wikis.
+That info is sent back from the nodes to the central registry. There is
+an issue with declaring having a complete replica of a wiki.. This
+could be handled using a hashcode.. Now once the request goes to the
+peer, the peer can serve whatever it wants.. I don't think the HTTP
+only version can validate what another peer is sending back.. only a
+P2P client could validate what another peer is sending back.. I'm not
+sure we want to solve this right away or even at all.. <br>
+<br>
+Action Plan for SoC
+<br>
+<br>
+1/ I will start with the action plan that Erwin outlined with
+implementation for redirection and host resolution. Security and
+Firewall traversal are the issues are the ones that will be taken care
+of in the future.
+<br>
+<br>
+Ok
+<br>
+<br>2/ inorder for ludovic.p2p.xwiki.com to be resolved correctly,
+there needs to be some changes to the xwiki.com dns server - so that it
+can invoke a web service call to mydns and return the correct ip
+address. I will need a test platform for this.
+<br>
+<br>Ok.. we'll look at what we can do.. I think I will take
+p2pxwiki.com so we can have everything separate for now... We will
+setup a mydns server with a database somewhere and open that database
+from updates from java over the internet.. once we have this you could
+have a central registry anywhere that updates the database. In
+production the central registry would probably be on the same machine.
+<br>
+<br>I think you can also set that up for testing on your local machine
+(that might be more efficient to verify you can update the DB fine). </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">03/Aug/05 04:27 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+Thanks Ludovic for the clarifications, I will start with setting up
+everything on my local machine. I think I have good idea to build an
+initial version with basic functionalities, and we can revisit these
+design decisions later once we have an initial prototype. </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=erwan">Erwan Arzur</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">03/Aug/05 10:26 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		yep you really need to investigate powerdns/mydns with MySQL backend so we know what kind of infrastructure will be needed. 
+<br>
+<br>
+I'm very interested in setting up a mydns server for you. Just tell me. 
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-19] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-19">Semantic of P2P XWiki</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             19/Jul/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             26/Jul/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td bgcolor="#ffffff" valign="top"> This task discusses
+the semantic of p2pxwiki in a master slave architecture for each wiki.
+Whether peers can work offline and whether the changes can be
+communicated to other peers in the absence of the master for the
+particular wiki. <br>
+<br>
+The issue will keep track of design decisions for this functionality. <br>
+	</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+<tbody><tr>
+	<td bgcolor="#f0f0f0" valign="top" width="20%">
+		<b>Issue Links:</b>
+	</td>
+	<td colspan="3" bgcolor="#ffffff" valign="top">
+		<table border="0" cellpadding="4" cellspacing="0" width="100%">
+		
+		<tbody><tr>
+			<td colspan="2" bgcolor="#f0f0f0">
+			<b>Dependency</b><br>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+		<table cellpadding="0" cellspacing="0">
+		<tbody><tr><td colspan="2" valign="top">
+			This issue <i>blocks</i>:
+		</td></tr>
+			
+			<tr><td width="1%"><img src="all-jira-tasks_files/link_out_bot" height="16" width="16">
+				
+				</td>
+			
+
+<td width="100%">
+
+<font size="1"><a href="http://jira.xwiki.org/jira/browse/XWC-13" title="Implement XWiki P2P Client">
+
+
+XWC-13
+</a> Implement XWiki P2P Client</font>
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+
+<img src="all-jira-tasks_files/priority_major" alt="" title="Major - Major loss of function." align="middle" border="0" height="16" width="16">
+
+
+
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+<img src="all-jira-tasks_files/status_reopened" alt="" title="Reopened" align="middle" border="0" height="16" width="16">
+
+
+</td>
+</tr>
+			
+		</tbody></table>
+	
+	
+
+			</td>
+
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+&nbsp;
+
+			</td>
+		</tr>
+		
+		</tbody></table>
+	</td>
+</tr>
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">26/Jul/05 10:36 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		The P2PXWiki provides following functionalities: 
+<br>
+<br>
+&nbsp;1/ I got my wiki
+<br>
+&nbsp;2/ People can find my wiki while I'm there
+<br>
+&nbsp;3/ I replicate my wiki to the central server
+<br>
+&nbsp;4/ people can fall back and read my wiki on the central server
+<br>
+&nbsp;5/ I send my wiki to others
+<br>
+&nbsp;6/ People can read my wiki on other P2PXWiki users
+<br>
+&nbsp;7/ people can edit my wiki on their own computer while i'm not there
+<br>
+&nbsp;8/ I can transfer MASTER rights to some specific nodes (which I
+know won't go offline) and I can get these MASTER right back easily <br>
+<br>
+<br>
+[use cases and arch to follow] 
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-18] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-18">technical specification of p2pxwiki</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             28/Jun/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             27/Jul/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td bgcolor="#ffffff" valign="top"> technical
+specification including which components to implement and which ones to
+make use of from existing tools (such as JXTA etc..) <br>
+	</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tbody><tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">19/Jul/05 12:08 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Design issues are presented in <a href="http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues">http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues</a>
+. Have a look and give me your comments. There were lots of unanswered
+questions to start with and the design addresses some of them to make
+it concrete.
+<br>
+<br>let me know if something is unclear, i will try to explain. Most of
+the design issues are a result of thinking about use case listed under
+key objective on <a href="http://www.xwiki.org/xwiki/bin/view/Dev/User+Stories">http://www.xwiki.org/xwiki/bin/view/Dev/User+Stories</a>. 
+<br>
+&nbsp;
+<br>
+Comments are welcome on any of the issues mentioned (or not) on <a href="http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues">http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues</a> .
+<br>
+<br>
+thanks  
+<br>
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">27/Jul/05 10:55 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		The p2pxwiki Design Decisions: 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* A master-slave architecture, where the
+creator of the wiki is the master. Others are slaves. Master is on a
+wiki by wiki basis as opposed to pages or all the wikis. So a sinlge
+wiki is the granularity for replication/consistency.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* The master need to be present for the edits on that particular wiki by other peers.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o
+extension: allow a peer to access a wiki when the master is offline by
+handing off master rights
+<br>&nbsp;&nbsp;&nbsp;&nbsp;* There is a central registry for name
+resolution. The central registry allows for the wiki names to be
+distinguishable. Also it helps in solving the problem of
+wiki-hijacking. More on this is in the discussion at the link above.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o
+extension: central registry can be replicated between a set of servers
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o
+extension: central registry functionality can be handed by peers. There
+will be a need for ensuring the integrity of the registry data in this
+case.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* The registry need to be present before a new wiki can be created.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;* Allow a user to access p2pxwiki without
+the p2pxwiki software by contacting a hosting service. This helps in
+having a wiki at a public place accessible by everyone with a browser.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;* Allow a user to create a new wiki by
+downloading the software p2pxwiki. This provides some motivation for
+users to dedicate space for replicating other people's wiki. For only
+accessing other people's wiki, user need not download the software.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;* Allow the user to get xwiki from other
+users for read only when the user is not connected to the master or the
+internet. The replicas at other peers are for a complete wiki and are
+full read-only replicas.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o extension: Allow a user to write to a xwiki while offline
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* Extension: Allow two offline users to share a wiki in read/write mode.
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">27/Jul/05 10:57 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		The design decisions (posted above), a technical component diagram, and a roadmap is presented in  <a href="http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues">http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues</a> <br>
+<br>
+Please comment ! 
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-16] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-16">write user stories for p2pxwiki</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             28/Jun/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             27/Jul/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+	<tr>
+
+		<td bgcolor="#f0f0f0" valign="top" width="20%">
+			<b>Environment</b>
+		</td>
+		<td colspan="3" bgcolor="#ffffff" valign="top">
+			use case for p2pxwiki
+		</td>
+	</tr>
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tbody><tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">04/Jul/05 06:31 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		User Story 1    :: Offline XWiki 
+<br>
+<br>
+John, a CNN news reporter, is on-board an airplane, and is scheduled to arrive 
+<br>
+in Atlanta at 3pm. He is returning after attending a conference on recent 
+<br>
+developments in media technology. CNN is scheduled to release a report on his 
+<br>
+experience at 4:10pm. He hears the announcement: "This is your captain speaking,
+<br>
+due to bad weather, the scheduled arrival time to Atlanta is now 4pm, please 
+<br>
+enjoy your coffee..." His heart skips a bit at the thought of missing the 
+<br>
+scheduled broadcast ! Suddenly he realizes that the AirBus is equipped 
+<br>
+with wireless connectivity, however because of bad weather, the connection will
+<br>
+be intermittent at best. 
+<br>
+<br>
+&nbsp;&nbsp;The Offline XWiki comes to his rescue. He takes out his laptop, and starts 
+<br>
+working on the report that is due immediately upon arrival. He continues editing
+<br>
+the report and the updated changes are sent to his colleague Sara for review 
+<br>
+through the intermittent wireless connection. John and Sara work on the story 
+<br>
+together, with John doing most of the edits and Sara taking care of linking 
+<br>
+to other related reports and fixing typos. As the plane approaches Atlanta, 
+<br>
+the connection to the Internet improves, and he submits his final changes. 
+<br>
+Sara in CNN office is immediately notified of final changes, combines her edits 
+<br>
+with John's changes, and sends it immediately to John for final 
+<br>
+review. John, while waiting to get off the plane, notices that Sara has 
+<br>
+updated the report, reviews it before getting off and tells Sara that it looks 
+<br>
+good (as his watches the clock ticking 4:05pm !)  
+<br>
+<br>
+&nbsp;&nbsp;Sara immediately hand off a copy of the news to the producer and the news is 
+<br>
+broadcast as scheduled at 4:10 ! XWiki saves the day one more time, and both 
+<br>
+John  and Sara are commended on the great story.  
+<br>
+<br>
+todo:: User Story 2:: P2PXwiki
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">05/Jul/05 06:29 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Very cool ! It will be interesting to translate this in lower level user stories.
+<br>
+<br>
+I would say other user stories should focus on:
+<br>
+<br>
+&nbsp;- multiple pages being shared
+<br>
+&nbsp;- multiple wikis being shared
+<br>
+&nbsp;- more delay between updates with possible concurrent updates
+<br>
+&nbsp;- security (I share a wiki with my friends)
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">10/Jul/05 11:12 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		User Story 2  :: Sharing of multiple pages
+<br>
+<br>
+Not long ago, in a place not far away ...
+<br>
+<br>
+There was a company, called "noname", in the business of bringing
+<br>
+uptodate news to the people. The organization structure of the company
+<br>
+was complex - with different people in charge of bringing different
+<br>
+stories. Heather was in charge of weather, S. Ports was in charge of
+<br>
+sports. For Business there was Minesh, and for Politics there was
+<br>
+Kudovics. Each person works on different stories and has to travel
+<br>
+frequently, many times to locations with weak or no
+<br>
+infrastructure. Moreover, everyone has to confer with the others and
+<br>
+relate to other reports to make a compelling story. For this, they
+<br>
+used to fly to the headquarter and have a conference meeting before
+<br>
+each news broadcast, costing "noname" lots of money in travel
+<br>
+expenses. Moreover, once the meeting is over and there was no easy way
+<br>
+to incorporate further changes made by other.
+<br>
+&nbsp;
+<br>
+Then came P2PXWiki - it saved name for "noname" and changed the way
+<br>
+communication happened. Heather, S. Ports, Minesh, and Kudovics formed
+<br>
+a peer-group and could communicate with each other as peers at
+<br>
+different physical locations even with weak connectivities. All of
+<br>
+them worked on different stories frequently exchanging comments. For
+<br>
+instance, Heather predicts rainy weather in Atlanta for the next two
+<br>
+days, and consequently, S. Ports announces bad day for the local
+<br>
+sports.  As soon as changes are made in one news story, it is
+<br>
+propagated to other members of the group. Everyone can comment on each
+<br>
+others story, and refer to it easily while reporting their section of
+<br>
+the news. Real-time communications within the peer-group ensured that
+<br>
+each story was most up-to-date, comprehensive, and is published as it
+<br>
+happened.
+<br>
+<br>
+P2PXwiki saved "noname" a lot of money in financial expenses, and beat
+<br>
+the rival "some-name" in popularity! Soon Heather, S. Ports, Minesh
+<br>
+and Kudovics became famous and their team called the "WikiNews"!
+<br>
+<br>
+PS: All characters in this story are fictional.. any resemblence to
+<br>
+anyone is purely intentional :) 
+<br>
+<br>
+PPS: I am just trying something for fun, other stories won't probably be
+<br>
+like this one... Please send  me a message if you think I am going overboard.
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">11/Jul/05 12:09 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		User Story 3 :: Multiple wikis being shared Example of content sharing
+<br>
+<br>John is on a road-trip with his family after a busy week at work.
+Being a very busy professional, he had limited time to plan his trip in
+detail. John knew that their road-trip to the Aquarium goes through
+many interesting places - although he didn't have all the details.
+However, he also knew that XWiki will help him out. <br>
+<br>
+While John drives, his wife Martha takes out the laptop and starts
+searching for information on interesting places nearby by connecting to
+other peer travelers. XWiki automatically detects other nearby
+travelers and connects them as peers while each of them possibly
+travels at 70 miles per hour on the interstate. Martha find out by
+looking at the wiki of a nearby peer that there is a mini-golf course
+nearby. Looking for something more exciting, she starts searching for
+information on "scenic places" through the peer-network. Through the
+P2PXwiki network, she finds information and route to the fabulous
+"smokey mountains" nearby. She even looks at interesting pictures taken
+by others on their prior trip to "smokey mountain". She shows them to
+John and they both decide to stop by the "smokeys" to enjoy the
+breathtaking views. <br>
+<br>
+Meanwhile, their 12 year old son who likes solving puzzles, is playing
+with his IPAQ. His IPAQ is equiped with XWiki. He starts connecting his
+XWiki with other peers, and searches for "ongoing puzzles". Sure
+enough, he finds other fellow travelers playing different games. The
+name "Lateral Puzzles" caught his attention and he joins the game. The
+game works as follows: the host posts a situation, and the other
+players try to find a logical explanation of the puzzle by asking
+questions. The host provides only "yes/no" answers to the questions,
+and other players use it as clues to solve the puzzle. Junior John also
+joins the game and starts following up questions by other peers and
+asks his questions to solve the puzzle. There is a murder mystery to
+solve - "A man is lying dead in a field. Next to him there is an
+unopened package. There is no other creature in the field. How did he
+die?". Some fellow passenger had asked - "did he die from hunger"?The
+host replied "no", another question followed "Did he die of
+sunstroke?", "no" came the answer in wiki comment from the host.. John
+Jr. joins the game and starts asking question of his own... <br>
+<br>
+As they approached the smokey mountains, John and Martha get ready to
+take exciting pictures and enjoy the view, and by the time they get off
+the car, their son has solved a murder mystery and tells his parents
+how happy he is. It turned out that - The man had jumped from a plane
+but his parachute had failed to open. It is the unopened package that
+is lying in the field. <br>
+<br>
+John and Martha are very happy at their experience, having used XWiki
+to locate smokey mountains, and helping their son do useful mental
+exercise through the game ! They share their experience with other
+travelers on their way back. <br>
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">11/Jul/05 02:12 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		User Story 4 :: More delay between updates and possibly conflicting updates
+<br>
+<br>
+<br>
+Xwiki is widely used in the classrooms for interaction between students
+and teacher. Mike, a student in "Introduction to CS" class frequently
+takes notes during the class and shares it on the wiki. Other fellow
+students also share their notes taken during the class on the class
+wiki. The Class Wiki allows sharing of notes among students and also
+helps the instructor in understanding any concerns of the class
+allowing better communication during subsequent lectures. Simultaneous
+updates by students often give rise to conflicts on the same page,
+however xwiki automatically resolves most of the conflicts since
+contents are mostly additions to a page. On some rare occasions, it
+takes input from the person doing the updates in resolving conflicts. <br>
+<br>
+Students often look at notes at home and away from the classroom.
+P2PXWiki allows students to access the classroom notes when offline -
+which is sometimes the case when they are at home because of parental
+control. When connected with other students, XWiki automatically takes
+care of sending the updated contents to other students and the
+instructor facilitating class discussions. <br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">11/Jul/05 02:13 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		User Story 5 :: Security (I share my wiki with a friend)
+<br>
+<br>
+John, our frequent traveler, has very different security requirements
+<br>
+from our WikiNews team ! While traveling on vacation, John likes to share
+<br>
+his content with other fellow travelers freely. He selects 
+<br>
+communication channel within p2pxwiki that allows anyone to login and
+<br>
+share contents with any other available peers. John can even select
+<br>
+anonymous connections whereby only limited information from his profile
+<br>
+will be shared with the peers without revealing his complete identity. 
+<br>
+<br>
+The WikiNews team, on the other hand, work in a group and with much
+<br>
+stricter security requirements. Competition from rival news companies
+<br>
+means that all communication within the group should be secure and
+<br>
+authenticated. The communication data should travel through secure
+<br>
+channels and only allowed from authorized members of the group. P2PXwiki
+<br>
+facilitates this by a simple user option to select completely secure
+<br>
+channels while establishing  communication within the peer group. All the
+<br>
+details concerning authentication, authorization, confidentiality, and 
+<br>
+data integrity is handled by the underlying communication layer.  
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">13/Jul/05 05:38 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Plase look at the updated user stories.  
+<br>
+<br>
+<a href="http://www.xwiki.org/xwiki/bin/view/Dev/User+Stories">http://www.xwiki.org/xwiki/bin/view/Dev/User+Stories</a>
+<br>
+<br>
+The stories have been made simpler so that it becomes easier to
+identify functionalities of p2pxwiki. Particularly, look at user
+stories 2,3, and 4.
+<br>
+<br>
+Comments are welcome.  
+<br>
+<br>
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">27/Jul/05 11:18 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		User Stories for Release 0.1 of P2PXwiki has been posted at 
+<br>
+<br>
+<a href="http://www.xwiki.org/xwiki/bin/view/Dev/User+Stories">http://www.xwiki.org/xwiki/bin/view/Dev/User+Stories</a> <br>
+<br>
+Please Comment!  
+<br>
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">27/Jul/05 03:50 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Some Lower Level Use Case Diagrams for Release 0.1 of p2pxwiki have been posted at the end of page <a href="http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues">http://www.xwiki.org/xwiki/bin/view/Dev/Design+Issues</a> . 
+<br>
+<br>Note that the diagrams are drawn using a trial version software -
+so they aren't very pretty. But basic idea is to show the technical
+components for the use case and then identify specific code that needs
+to be changed.
+<br>
+<br>
+Any comments welcome. 
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-15] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-15">Shall we use JXTA for developing P2PXWiki</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             11/Jul/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             18/Aug/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td bgcolor="#ffffff" valign="top">
+		[JXTA&gt;<a href="http://www.jxta.org/">http://www.jxta.org/</a>]
+is an open source project from Sun and is designed to make it easier
+for developing P2P applications. JXTA provides basic features such as
+peer discovery, peer groups, secure communications, portability on
+different hardware (such as handhelds, laptops) etc. It provides basic
+services on top of which many applications can be built. Key design
+goal of JXTA is being modular. <br>
+	</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+<tbody><tr>
+	<td bgcolor="#f0f0f0" valign="top" width="20%">
+		<b>Issue Links:</b>
+	</td>
+	<td colspan="3" bgcolor="#ffffff" valign="top">
+		<table border="0" cellpadding="4" cellspacing="0" width="100%">
+		
+		<tbody><tr>
+			<td colspan="2" bgcolor="#f0f0f0">
+			<b>Dependency</b><br>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+		<table cellpadding="0" cellspacing="0">
+		<tbody><tr><td colspan="2" valign="top">
+			This issue <i>blocks</i>:
+		</td></tr>
+			
+			<tr><td width="1%"><img src="all-jira-tasks_files/link_out_bot" height="16" width="16">
+				
+				</td>
+			
+
+<td width="100%">
+
+<font size="1"><a href="http://jira.xwiki.org/jira/browse/XWC-13" title="Implement XWiki P2P Client">
+
+
+XWC-13
+</a> Implement XWiki P2P Client</font>
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+
+<img src="all-jira-tasks_files/priority_major" alt="" title="Major - Major loss of function." align="middle" border="0" height="16" width="16">
+
+
+
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+<img src="all-jira-tasks_files/status_reopened" alt="" title="Reopened" align="middle" border="0" height="16" width="16">
+
+
+</td>
+</tr>
+			
+		</tbody></table>
+	
+	
+
+			</td>
+
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+&nbsp;
+
+			</td>
+		</tr>
+		
+		</tbody></table>
+	</td>
+</tr>
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc, p2p
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">11/Jul/05 03:37 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		After looking at the programmer's guide <a href="http://www.jxta.org/docs/JxtaProgGuide_v2.3.pdf,">http://www.jxta.org/docs/JxtaProgGuide_v2.3.pdf,</a> <br>
+here is a small summary of features in JXTA. 
+<br>
+<br>
+- key design goal: modular
+<br>
+<br>
+- The essential aspects of the architecture are: 
+<br>
+&nbsp;&nbsp;+ The use of XML documents (advertisements) to describe network resources.
+<br>
+&nbsp;&nbsp;+ Abstraction of pipes to peers, and peers to endpoints without reliance
+<br>
+upon a central naming/addressing authority such as DNS.
+<br>
+&nbsp;&nbsp;+ A uniform peer addressing scheme (peer IDs)
+<br>
+<br>
+<br>
+- JXTA allows peers to be combined together to form a group. It provides
+<br>
+basic services such as discovery service - to search for peer group
+<br>
+resources; membership service - to accept/reject new membership
+<br>
+applications to a group by group members collectively; access service -
+<br>
+validate requests made by one peer to another; pipe service - to create and
+<br>
+manage pipe connections among peers; resolver service - to send generic
+<br>
+query requests to other peers; and monitoring service - to allow monitoring
+<br>
+of other peers in the same group. 
+<br>
+<br>
+- All peer belong to a default group to start with. The groups
+<br>
+form parent/child relationship and form a hierarchy. Moreover, one peer
+<br>
+can be part of multiple groups. 
+<br>
+<br>
+- The services are broken down into peer services and peer group services. 
+<br>
+<br>
+- Pipes: JXTA peers use pipes to send messages to one another. Pipes
+<br>
+are asynchronous, unidirectional and unreliable. pipe endpoints are
+<br>
+dynamically bound to peer endpoints at runtime. pipes can have endpoints
+<br>
+that are connected to different peers at different times, or may not be
+<br>
+connected at all. JXTA also provides secure unicast pipes, a secure and
+<br>
+reliable variant of unicast pipes. There is a reliable library and 
+<br>
+socket interface that is provided as two way communication channel on top
+<br>
+of unidirectional pipes. 
+<br>
+<br>
+- Security: JXTA considers all aspects of security - confidentiality -
+<br>
+contents of messages are not disclosed; authentication: guarantees that
+<br>
+sender is who he/she claims to be; authorization: guarantees that sender
+<br>
+is authorized to send; data integrity: guarantees that message was not
+<br>
+modified accidentally or intentionally in transit; refutability: guarantees
+<br>
+that message is transmitted by properly identified sender and is not a
+<br>
+replay of an earlier message. 
+<br>
+<br>
+Verdict: It appears to be a good place to bootstrap the implementation for developing p2pxwiki prototype.
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=hasseeb">Abdul Haseeb</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">12/Jul/05 10:46 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+Hi Bikash, due to NAT handling of JXTA, in my point of view JXTA would
+be more extensible, but i dont know much. You must know better. Just
+few cents of mine.
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=soloturn">solo turn</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">13/Jul/05 08:44 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		is this something like jgroups which is used by jboss?
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">14/Jul/05 02:29 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		I just browsed through Jgroups main page [<a href="http://www.jgroups.org/javagroupsnew/docs/overview.html">http://www.jgroups.org/javagroupsnew/docs/overview.html</a>]
+and see that it's goal is different. it is a communication library for
+building applications that need reliable mutlicast. It is quite
+different from JXTA - JXTA has group membership but main goal is to
+make it easier to develop p2p applications by providing some common
+features - such as peer discovery, peer registration, NAT so that peers
+can be behind firewalls, haterogeneous devices support - a peer can be
+ipaq, linux, windows machine etc... JXTA may in principle use Jgroups
+for group communication among peers when reliable multicast is needed. <br>
+<br>
+I am going to bootstrap the p2pxwiki implementation using some of the
+capabilities of JXTA, since I expect it will be easier and faster to
+use JXTA capabilities for peer discovery, registration than writing
+something of our own. </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">18/Jul/05 06:16 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		A list of JXTA references have been created at   
+<br>
+<br>
+<a href="http://bikash.xwiki.com/xwiki/bin/view/Blog/Lots+of+JXTA+Resources">http://bikash.xwiki.com/xwiki/bin/view/Blog/Lots+of+JXTA+Resources</a> <br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">18/Jul/05 07:20 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		I think it's really a good idea to go for JXTA. Kevin of AnyEdit ( <a href="http://www.xwiki.org/xwiki/bin/view/Dev/Anyedit">http://www.xwiki.org/xwiki/bin/view/Dev/Anyedit</a> ) seems to go for JXTA also..
+<br>
+<br>
+It will make integration of the two projects much easier then.
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">18/Aug/05 05:49 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		I saw an "interesting" project called p2psockets (<a href="http://p2psockets.jxta.org/docs/tutorials/2.html#footnote5">http://p2psockets.jxta.org/docs/tutorials/2.html#footnote5</a>)
+built on top of JXTA. This project provides the standard socket APIs
+using p2p network (hiding the complexity of peer discovery and binding
+behind the scene). The interesting aspect is it has been used to
+develop Peer-to-Peer Web Servers, Servlets, JSPs, and XML-RPC Clients
+and Servers. <br>
+<br>
+The webpage above even gives Wiki as an example application that can be built using p2psockets. It gives JSPWiki (<a href="http://www.jspwiki.org/Wiki.jsp">http://www.jspwiki.org/Wiki.jsp</a>)
+as an example- I am not sure if JSPWiki uses p2psockets (my first
+impression is that JSPWiki is used as a generic example of a wiki, and
+not necessarily something that uses p2psockets). <br>
+<br>
+I wanted to document some of my experience with p2psockets so far: 
+<br>
+It is claimed that servlets work right out of the box without any
+modifications, by using the included modified webserver with p2psockets
+(the webserver is a modification of Jetty). I tried this by using the
+xwiki war but couldn't get it to work. <br>
+<br>
+Using p2psocket to build p2pxwiki is an interesting design option that
+can be explored. It may ease the implementation effort, however many
+issues such as replication, registry to allow uniqueness in wiki names,
+browser based access without changing any configuration on client side
+(p2psocket advocates using a proxy on the client that talks to a
+p2psocket based proxy server) still remain. However, it may be worth
+exploring. <br>
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">18/Aug/05 11:37 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+This is really interesting.. You should indeed reuse the Jetty port,
+the XML-RPC client and the Smart Cache module (which allows HTTP
+access).
+<br>
+<br>If you have a smart cache module (or a modification of it) on nodes
+(machines not behind firewalls), they can relay standard browser over
+the P2P network..
+<br>
+<br>Otherwise your P2P client would be a modified jetty to be jxta
+aware with a xwiki behind it. Replication would occur transparently
+through the modified xml-rpc client to go over the P2Psockets.. The
+smart cache node would be added on top of it to accept HTTP requests
+from standard browser.
+<br>
+<br>You still need to registry I think to tell the browser or anybody
+who has a copy of the wiki.. This can function using XML-RPC calls over
+the modified xml-rpc client to call the "registry" peer..
+<br>
+<br>So you need to implement XML-RPC method for the registry updates.
+The registry plugin would still update the DNS (unless you find a way
+using P2Psockets to handle the DNS issue).
+<br>
+<br>
+Ludovic
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">18/Aug/05 04:51 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+Using p2psockets at present is going to be significant debugging
+exercise with perhaps lots of surprises ! The reason is that the
+website <a href="http://p2psockets.jxta.org/">http://p2psockets.jxta.org/</a>
+says the project has completed its research goals on 6/15/05. I checked
+the mailing lists and don't see much communication - the developer
+mailing list has 30 emails in 14 months with some of them spams. <br>
+also the release file i downloaded doesn't have source code for xml-rpc
+port or any examples on how to use it. I looked at the jar, and instead
+of apache's org.apache.xmlrpc.WebServer class, the port has
+org.apache.xmlrpc.P2PWebServer; which means the code written with
+apache's xml-rpc won't work as it is without changes as claimed ! I may
+be wrong about this, but there is no examples/docs in the release to
+show correct usage. <br>
+<br>
+So, I think p2psockets is premature at this stage to be used by us,
+using it requires significant hack. I will instead just use another
+xml-rpc port on jxta (<a href="http://xmlrpc.jxta.org/">http://xmlrpc.jxta.org/</a>) to build the registry which i need to develop anyway. 
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">18/Aug/05 08:06 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+Yes.. I was worried about that but didn't have time to actually look at
+the code itself. I also so the Smart Cache is not actually usable. It's
+only a proxy that needs to be run locally.
+<br>
+<br>
+So you actually need the registry anyway for standard clients to actually know where the user is.
+<br>
+<br>Using xmlrpc.jxta.org seems interesting to call XWiki through jxta
+seems interesting. If you implement an xml-rpc method that stores the
+peer wiki IP in the central xwiki and calls the registry plugin to
+store the IP in the powerdns database this should work. </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-14] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-14">Functional Specification of P2PXwiki</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             04/Jul/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             27/Jul/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td bgcolor="#ffffff" valign="top">
+		Create A functional description of P2P XWiki <br>
+	</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+<tbody><tr>
+	<td bgcolor="#f0f0f0" valign="top" width="20%">
+		<b>Issue Links:</b>
+	</td>
+	<td colspan="3" bgcolor="#ffffff" valign="top">
+		<table border="0" cellpadding="4" cellspacing="0" width="100%">
+		
+		<tbody><tr>
+			<td colspan="2" bgcolor="#f0f0f0">
+			<b>Dependency</b><br>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+		<table cellpadding="0" cellspacing="0">
+		<tbody><tr><td colspan="2" valign="top">
+			This issue <i>blocks</i>:
+		</td></tr>
+			
+			<tr><td width="1%"><img src="all-jira-tasks_files/link_out_bot" height="16" width="16">
+				
+				</td>
+			
+
+<td width="100%">
+
+<font size="1"><a href="http://jira.xwiki.org/jira/browse/XWC-13" title="Implement XWiki P2P Client">
+
+
+XWC-13
+</a> Implement XWiki P2P Client</font>
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+
+<img src="all-jira-tasks_files/priority_major" alt="" title="Major - Major loss of function." align="middle" border="0" height="16" width="16">
+
+
+
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+<img src="all-jira-tasks_files/status_reopened" alt="" title="Reopened" align="middle" border="0" height="16" width="16">
+
+
+</td>
+</tr>
+			
+		</tbody></table>
+	
+	
+
+			</td>
+
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+&nbsp;
+
+			</td>
+		</tr>
+		
+		</tbody></table>
+	</td>
+</tr>
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">04/Jul/05 05:35 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		An initial draft of functional specifications of P2PXwiki has been created on <a href="http://www.xwiki.org/xwiki/bin/view/Dev/P2PXWiki">http://www.xwiki.org/xwiki/bin/view/Dev/P2PXWiki</a> 
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">27/Jul/05 10:54 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		&nbsp;The P2PXWiki provides following functionalities: (was posted in semantic of p2pxwiki task) 
+<br>
+<br>
+&nbsp;1/ I got my wiki
+<br>
+&nbsp;2/ People can find my wiki while I'm there
+<br>
+&nbsp;3/ I replicate my wiki to the central server
+<br>
+&nbsp;4/ people can fall back and read my wiki on the central server
+<br>
+&nbsp;5/ I send my wiki to others
+<br>
+&nbsp;6/ People can read my wiki on other P2PXWiki users
+<br>
+&nbsp;7/ people can edit my wiki on their own computer while i'm not there
+<br>
+&nbsp;8/ I can transfer MASTER rights to some specific nodes (which I
+know won't go offline) and I can get these MASTER right back easily </td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=kaaloo">Luis Arias</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">27/Jul/05 05:58 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Hi Bikash !  You might want to consider Jude - <a href="http://jude.esm.jp/">http://jude.esm.jp/</a> for the diagrams.  It does them real well but does not currently have XMI export.
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+    
+
+    <table align="center" bgcolor="#bbbbbb" border="0" cellpadding="1" cellspacing="0" width="100%"><tbody><tr><td>
+    <table bgcolor="#ffffff" border="0" cellpadding="4" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td colspan="2" bgcolor="#f0f0f0" valign="top" width="100%">
+            <h3 class="formtitle">[XWC-13] &nbsp; <a href="http://jira.xwiki.org/jira/browse/XWC-13">Implement XWiki P2P Client</a></h3>&nbsp;
+            <br>
+            <font size="1">
+            Created: <font color="#336699">
+             28/Jun/05 
+ </font> &nbsp;Updated: <font color="#336699">
+             19/Jul/05
+ </font>
+
+            
+                
+            
+            </font>
+        </td>
+    </tr>
+    <tr bgcolor="#ffffff">
+        <td width="20%"><b>Project:</b></td>
+        <td width="80%"><a href="http://jira.xwiki.org/jira/secure/BrowseProject.jspa?id=10031">XWiki Clients</a></td>
+    </tr>
+    
+        
+            <tr>
+                <td><b>Component/s:</b></td>
+                <td>
+                    
+                        
+
+    
+       <a href="http://jira.xwiki.org/jira/secure/IssueNavigator.jspa?reset=true&amp;mode=hide&amp;sorter/order=ASC&amp;sorter/field=priority&amp;pid=10031&amp;component=10051">XWiki P2P</a>
+    
+
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Affects Version/s:</b></td>
+                <td>
+                    
+                        
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+        
+            <tr>
+                <td><b>Fix Version/s:</b></td>
+                <td>
+                    
+                         
+
+
+    None
+
+
+                    
+                </td>
+            </tr>
+        
+
+    
+        
+    
+
+
+    
+    </tbody></table>
+    </td></tr></tbody></table>
+
+    <br>
+
+    
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td>
+<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+
+
+    <tbody><tr>
+        <td bgcolor="#f0f0f0" valign="top" width="20%">
+            <b>Type</b>
+        </td>
+        <td bgcolor="#ffffff" valign="top" width="30%">
+            Task
+        </td>
+
+        
+            <td bgcolor="#f0f0f0">
+                <b>Priority</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top">
+                Major
+            </td>
+        
+
+    </tr>
+    <tr>
+    
+        
+            <td bgcolor="#f0f0f0" valign="top" width="20%">
+                <b>Reporter</b>
+            </td>
+            <td bgcolor="#ffffff" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+
+        
+            <td bgcolor="#f0f0f0" width="20%">
+                <b>Assigned To</b>
+            </td>
+            <td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+                
+                    <a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+                
+                
+            </td>
+        
+	</tr>
+	<tr>
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Resolution</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+			
+				Unresolved
+			
+			
+		</td>
+
+		<td bgcolor="#f0f0f0" width="20%">
+			<b>Votes</b>
+		</td>
+		<td bgcolor="#ffffff" nowrap="nowrap" valign="top" width="30%">
+    		
+		</td>
+	</tr>
+
+    
+
+    
+
+</tbody></table>
+</td></tr></tbody></table>
+
+    
+
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Description</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td bgcolor="#ffffff" valign="top">
+		&nbsp;Project Title
+<br>
+&nbsp;&nbsp;P2P XWiki
+<br>
+<br>
+Synopsis
+<br>
+&nbsp;&nbsp;This project would be a very ambitious project of creating a P2P
+<br>
+XWiki which would allow users to run an XWiki locally and
+<br>
+automatically synchronize it with other XWiki users using P2P
+<br>
+technologies. It would be an extension of the "offline" wiki but
+<br>
+without any central wiki and being much more real-time.
+<br>
+&nbsp;
+<br>
+Benefits to the Community
+<br>
+&nbsp;The project will make XWiki faster and fault tolerant. Moreover,
+<br>
+Xwiki is one of the few projects with the WYSIWYG editor where there
+<br>
+is significant obstacles to make it distributed. The current Xwiki
+<br>
+client consults a centralized server. Enabling communication with
+<br>
+other clients, providing conflict management on a document by document
+<br>
+basis will make it truly distributed and efficient.
+<br>
+<br>
+Deliverables
+<br>
+&nbsp;&nbsp;1/ Java program allowing to synchronize a local wiki with a remote
+<br>
+(centrally located) wiki and handle conflicts. XWiki uses CVS for
+<br>
+visioning its files so conflict management should be possible and
+<br>
+provided through an interface. Users would access the local wiki
+<br>
+through their usual web interface.
+<br>
+&nbsp;&nbsp;2/ Implement a P2P protocol which would allow to have no central
+<br>
+server containing the wiki data. Documents would be synched from user
+<br>
+to user on a document by document basis. Conflicts management will be
+<br>
+needed. I will explore various design choices and pick the ``best''. A
+<br>
+central server can be kept (or not) to manage the participant lists. A
+<br>
+system for security is needed (a key ? PGP keys ? something else
+<br>
+?). Sync could be manual or automated (near-real-time).
+<br>
+&nbsp;&nbsp;3/ Optional: Eclipse RCP client embedding Gekko and managing the
+<br>
+remote/P2P aspects of XWiki, manage the sync conflicts and adding some
+<br>
+cool XWiki interface navigation features (spaces, documents, active
+<br>
+users, etc..). The XWiki content would be shown using the embedded
+<br>
+Gekko component.
+<br>
+<br>
+<br>
+Project Details
+<br>
+&nbsp;&nbsp;Listed with the same numbering as deliverables:
+<br>
+&nbsp;&nbsp;1/ I will be using the existing Xwiki client while providing support
+<br>
+to handle conflicts (communicating with a centralized
+<br>
+server). Conflict management is the biggest part of this work.
+<br>
+&nbsp;&nbsp;2/ This deliverable includes some unresolved issues and is very
+<br>
+interesting. I will discuss these issues (most of which are solved
+<br>
+problems, I will need to decide on the right tools) and design
+<br>
+prototype. Implementing protocols for peer discovery, protocols for
+<br>
+discovering versions of documents, and providing conflict management
+<br>
+is a first step. There is right management in the current wiki and
+<br>
+APIs that use the right management. I will also explore if the present
+<br>
+right management in Wiki can be extended to the p2p architecture as
+<br>
+the second step.
+<br>
+&nbsp;&nbsp;3/ If I can implement XWiki interface for the features I implement
+<br>
+in (2) within the time-frame, that will be awesome! It will depend on
+<br>
+how much of Eclipse RCP, and Gekko I have to learn and how much I can
+<br>
+reuse. I will like to try it as well.
+<br>
+<br>
+Project Schedule
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a) exploring, and understanding XWiki components relevant for
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;building P2P Xwiki :: 2 weeks
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b) Conflict management and 1st deliverable :: 3 weeks
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c) P2PXwiki prototype with peer discovery, conflict management
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2nd deliverable) :: 3 weeks
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;d) enhancements and possible XWiki interface (3rd deliverable) ::
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 weeks
+<br>
+<br>
+	</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+    
+
+	<p>
+
+	<table bgcolor="#bbbbbb" border="0" cellpadding="4" cellspacing="1" width="100%">
+
+        
+        
+
+    
+
+
+		
+        
+
+
+
+<tbody><tr>
+	<td bgcolor="#f0f0f0" valign="top" width="20%">
+		<b>Issue Links:</b>
+	</td>
+	<td colspan="3" bgcolor="#ffffff" valign="top">
+		<table border="0" cellpadding="4" cellspacing="0" width="100%">
+		
+		<tbody><tr>
+			<td colspan="2" bgcolor="#f0f0f0">
+			<b>Dependency</b><br>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+	&nbsp;
+
+			</td>
+
+			<td bgcolor="#ffffff" valign="top" width="50%">
+				
+
+	
+		<table cellpadding="0" cellspacing="0" width="100%">
+		<tbody><tr><td colspan="2" valign="top">
+			This issue <i>depends on</i>:
+		</td></tr>
+			
+			<tr><td width="1%">
+				
+				<img src="all-jira-tasks_files/link_in_top" height="16" width="16">
+				</td>
+			
+
+<td width="100%">
+
+<font size="1"><a href="http://jira.xwiki.org/jira/browse/XWC-14" title="Functional Specification of P2PXwiki">
+
+
+XWC-14
+</a> Functional Specification of P2PXwiki</font>
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+
+<img src="all-jira-tasks_files/priority_major" alt="" title="Major - Major loss of function." align="middle" border="0" height="16" width="16">
+
+
+
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+<img src="all-jira-tasks_files/status_inprogress" alt="" title="In Progress" align="middle" border="0" height="16" width="16">
+
+
+</td>
+</tr>
+			
+			<tr><td width="1%">
+				
+				
+				<img src="all-jira-tasks_files/link_in_mid" height="16" width="16"></td>
+			
+
+<td width="100%">
+
+<font size="1"><a href="http://jira.xwiki.org/jira/browse/XWC-15" title="Shall we use JXTA for developing P2PXWiki">
+
+
+XWC-15
+</a> Shall we use JXTA for developing P2PXW..</font>
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+
+<img src="all-jira-tasks_files/priority_major" alt="" title="Major - Major loss of function." align="middle" border="0" height="16" width="16">
+
+
+
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+<img src="all-jira-tasks_files/status_inprogress" alt="" title="In Progress" align="middle" border="0" height="16" width="16">
+
+
+</td>
+</tr>
+			
+			<tr><td width="1%">
+				<img src="all-jira-tasks_files/link_in_bot" height="16" width="16">
+				
+				</td>
+			
+
+<td width="100%">
+
+<font size="1"><a href="http://jira.xwiki.org/jira/browse/XWC-19" title="Semantic of P2P XWiki">
+
+
+XWC-19
+</a> Semantic of P2P XWiki</font>
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+
+<img src="all-jira-tasks_files/priority_major" alt="" title="Major - Major loss of function." align="middle" border="0" height="16" width="16">
+
+
+
+</td>
+<td nowrap="nowrap" width="1%">
+
+
+
+
+<img src="all-jira-tasks_files/status_inprogress" alt="" title="In Progress" align="middle" border="0" height="16" width="16">
+
+
+</td>
+</tr>
+			
+		</tbody></table>
+	
+
+
+			</td>
+		</tr>
+		
+		</tbody></table>
+	</td>
+</tr>
+
+
+
+
+
+        
+        
+
+
+
+    
+        <tr>
+            <td bgcolor="#f0f0f0" valign="top" width="20%"><b>keywords:</b></td>
+            <td colspan="3" bgcolor="#ffffff" width="80%">
+                  soc
+
+            </td>
+        </tr>
+    
+
+
+
+    </tbody></table>
+
+    
+
+
+
+<br>
+
+<table align="center" border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr>
+	<td align="center" bgcolor="#bbbbbb" nowrap="nowrap" width="1%">
+			&nbsp;<font color="#ffffff"><b>Comments</b></font>&nbsp;
+	</td>
+	<td>&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#bbbbbb" border="0" cellpadding="0" cellspacing="1" width="100%"><tbody><tr><td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+    
+	<tbody><tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">28/Jun/05 02:45 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		Project Title
+<br>
+&nbsp;&nbsp;P2P XWiki 
+<br>
+<br>
+Synopsis (from website) 
+<br>
+&nbsp;&nbsp;This project would be a very ambitious project of creating a P2P
+<br>
+XWiki which would allow users to run an XWiki locally and
+<br>
+automatically synchronize it with other XWiki users using P2P
+<br>
+technologies. It would be an extension of the "offline" wiki but
+<br>
+without any central wiki and being much more real-time.
+<br>
+&nbsp;
+<br>
+Benefits to the Community
+<br>
+&nbsp;The project will make XWiki faster and fault tolerant. Moreover,
+<br>
+Xwiki is one of the few projects with the WYSIWYG editor where there
+<br>
+is significant obstacles to make it distributed. The current Xwiki
+<br>
+client consults a centralized server. Enabling communication with
+<br>
+other clients, providing conflict management on a document by document
+<br>
+basis will make it truly distributed and efficient.
+<br>
+<br>
+Deliverables (After discussion with mentor Ludovic Dubost)  
+<br>
+&nbsp;&nbsp;1/ Java program allowing to synchronize a local wiki with a remote
+<br>
+(centrally located) wiki and handle conflicts.  XWiki uses CVS for
+<br>
+visioning its files so conflict management should be possible and
+<br>
+provided through an interface.  Users would access the local wiki
+<br>
+through their usual web interface.  
+<br>
+&nbsp;&nbsp;2/ Implement a P2P protocol which would allow to have no central
+<br>
+server containing the wiki data. Documents would be synched from user
+<br>
+to user on a document by document basis.  Conflicts management will be
+<br>
+needed. I will explore various design choices and pick the ``best''. A
+<br>
+central server can be kept (or not) to manage the participant lists. A
+<br>
+system for security is needed (a key ? PGP keys ?  something else
+<br>
+?). Sync could be manual or automated (near-real-time).
+<br>
+&nbsp;&nbsp;3/ Optional: Eclipse RCP client embedding Gekko and managing the
+<br>
+remote/P2P aspects of XWiki, manage the sync conflicts and adding some
+<br>
+cool XWiki interface navigation features (spaces, documents, active
+<br>
+users, etc..). The XWiki content would be shown using the embedded
+<br>
+Gekko component.
+<br>
+<br>
+<br>
+Project Details 
+<br>
+&nbsp;&nbsp;Listed with the same numbering as deliverables: 
+<br>
+&nbsp;&nbsp;1/ I will be using the existing Xwiki client while providing support
+<br>
+to handle conflicts (communicating with a centralized
+<br>
+server). Conflict management is the biggest part of this work.
+<br>
+&nbsp;&nbsp;2/ This deliverable includes some unresolved issues and is very
+<br>
+interesting.  I will discuss these issues (most of which are solved
+<br>
+problems, I will need to decide on the right tools) and design
+<br>
+prototype. Implementing protocols for peer discovery, protocols for
+<br>
+discovering versions of documents, and providing conflict management
+<br>
+is a first step. There is right management in the current wiki and
+<br>
+APIs that use the right management. I will also explore if the present
+<br>
+right management in Wiki can be extended to the p2p architecture as
+<br>
+the second step.
+<br>
+&nbsp;&nbsp;3/ If I can implement XWiki interface for the features I implement
+<br>
+in (2) within the time-frame, that will be awesome! It will depend on
+<br>
+how much of Eclipse RCP, and Gekko I have to learn and how much I can
+<br>
+reuse. I will like to try it as well.
+<br>
+<br>
+Project Schedule
+<br>
+&nbsp;&nbsp;I have have started exploring the websites
+<br>
+(<a href="http://xwiki.objectweb.org/,">http://xwiki.objectweb.org/,</a> <a href="http://www.xwiki.org/%29">http://www.xwiki.org/)</a> and looking at
+<br>
+the relevant code right away. I estimate the following schedule::
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a) exploring, and understanding XWiki components relevant for
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;building P2P Xwiki :: 2 weeks
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b) Conflict management and 1st deliverable  :: 3 weeks 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c) P2PXwiki prototype with peer discovery, conflict management 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2nd deliverable) :: 3 weeks
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;d) enhancements and possible XWiki interface (3rd deliverable) ::
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 weeks
+<br>
+<br>
+&nbsp;&nbsp;I have a head-start since I have already started exploring the
+<br>
+current XWiki. This will come in handy for a successful demonstration.
+<br>
+<br>
+<br>
+Bio
+<br>
+&nbsp;&nbsp;I am a Ph.D. student at College of Computing, Georgia Institute of
+<br>
+Technology, Atlanta. I did my undergraduate from Indian Institute of
+<br>
+Technology, Bombay and have a strong academic and research
+<br>
+background. My research interest is in distributed computing, in
+<br>
+particular Grid computing. I have worked on may coding and development
+<br>
+projects such as developing a specialized search engine for queries
+<br>
+related to database systems research publication, a distributed shared
+<br>
+memory system, and a secure grade management service. I have also
+<br>
+looked at research papers related to P2P systems.
+<br>
+<br>
+&nbsp;&nbsp;The P2PXWiki presents interesting challenges and is also within the
+<br>
+scope of my interest in distributed computing ! I have won prizes at
+<br>
+TopCoder online programming competitions, and am recipient of the 2nd
+<br>
+prize in IBM North America Grid Scholars challenge 2005. I am
+<br>
+proficient in C, C++, Java, Perl, client-server programming, and am
+<br>
+willing to learn the required skills necessary for this project.
+<br>
+&nbsp;
+<br>
+&nbsp;&nbsp;By participating in "Google Summer of Code", I intend to learn open
+<br>
+source software development and contribute substantially. I am excited
+<br>
+about the challenges in developing P2P XWiki (particularly for
+<br>
+conflict management, peer discovery encountered during the 2nd
+<br>
+deliverable), and will like to explore these issues even after the
+<br>
+Google Summer of Coding.
+<br>
+<br>
+Although I am new to open source development, I have recently been
+<br>
+exposed to open source "Globus Toolkit" as part of my research work,
+<br>
+and am planning to make contributions to it as well by proposing new
+<br>
+services as part of my thesis.
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;I believe my experience and interest makes me a strong candidate
+<br>
+for this project. Moreover, I have started exploring the code base for
+<br>
+XWiki, which gives me a early start. My mentor has provided guidance
+<br>
+and has suggested that the best way to learn the protocol interactions
+<br>
+are the XML-RPC API + ViewEditAction and XWikiService. 
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;I understand that I will need all my spare cycles to deliver
+<br>
+successfully on this project :), I like it and hope that I get the
+<br>
+chance to work on it as part of Google Summer of Code program.
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;More details about me (including my resume) can be found at the following 
+<br>
+website: <a href="http://www.cc.gatech.edu/%7Ebikash">http://www.cc.gatech.edu/~bikash</a>
+<br>
+<br>
+<br>
+Regards.
+<br>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=bikash">bikash agarwalla</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">28/Jun/05 03:14 PM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		the above comment was the complte SOC proposal. 
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+	<tr><td bgcolor="#f0f0f0">
+		
+			<a href="http://jira.xwiki.org/jira/secure/ViewProfile.jspa?name=ludovic">Ludovic Dubost</a>
+		
+		
+
+		<font size="-2">
+		[
+			<font color="#336699">16/Jul/05 12:55 AM</font>
+
+			
+		]
+
+			
+		</font>
+
+	</td></tr>
+	<tr><td bgcolor="#ffffff">
+		You should close this.. it will be closed when the project is done
+	</td></tr>
+	<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+    
+</tbody></table>
+</td></tr></tbody></table>
+
+
+
+
+    </p><div class="hr"><hr></div>    
+    <p></p>
+
+</td></tr></tbody></table>
+
+<table border="0" cellpadding="5" cellspacing="0" width="100%">
+<tbody><tr>
+    <td bgcolor="#dddddd"><font size="1">
+        Generated at Wed Sep 07 17:11:55 CEST 2005 by bikash agarwalla using JIRA 81.
+    </font></td>
+</tr>
+
+</tbody></table>
+	</td></tr>
+	</tbody></table>
+
+</body></html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk14.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-core.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jxl.jxta.jar"/>
+	<classpathentry kind="lib" path="lib/jxta.jar"/>
+	<classpathentry kind="lib" path="lib/jxtaext.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-apache-httpclient.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-apache-xmlrpc.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-core.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-examples.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-jetty.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-scache.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-tests.jar"/>
+	<classpathentry kind="lib" path="lib/saxpath.jar"/>
+	<classpathentry kind="src" path="/xwiki"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/main/web"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/xwiki"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

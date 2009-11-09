@@ -1,0 +1,92 @@
+1.1 Testing some P2PXWiki Registry API code
+
+# Check Whether the Wiki bikash.p2pxwiki.com is registered in the dns
+#set ($wikiapp = "bikash.p2pxwiki.com")
+#set ($res = $xwiki.p2pxwikiregistry.existsWikiapp($wikiapp))
+
+* *Result of Querying Wikiapp $wikiapp is $res* (expected true)
+
+#set ($ip = $xwiki.p2pxwikiregistry.queryRegistry($wikiapp))
+* *Found IP of $wikiapp to be $ip*
+
+# Check Whether Wiki ludovic.p2pxwiki.com is registered in the dns
+#set ($wikiapp = "ludovic.p2pxwiki.com")
+#set ($res = $xwiki.p2pxwikiregistry.existsWikiapp($wikiapp))
+* *Result of Querying Wikiapp $wikiapp is $res* (expected false)
+
+1.1 Testing Update Registry APIs (with wrong credentials)
+
+# Login to the registry as user guest and try to update it !
+#set ($username = "guest")
+#set ($password = "guest")
+#set ($token = $xwiki.p2pxwikiregistry.login($username,$password))
+
+* *Result of loggin in as user $username with password $password is the token $token*
+
+#set ($wikiapp = "bikash.p2pxwiki.com")
+#set ($newip = $ip)
+#set ($updateres=$xwiki.p2pxwikiregistry.updateRegistry($token, $wikiapp, $newip))
+
+* *Update to $wikiapp with $newip and user $username and password $password is $updateres*
+
+# Login to the registry as user bikash with wrong password and try to update it !
+#set ($username = "bikash")
+#set ($password = "wrong-password")
+#set ($token = "")
+#set ($token = $xwiki.p2pxwikiregistry.login($username,$password))
+
+* *Result of loggin in as user $username with password $password is token $token*
+
+#set ($wikiapp = "bikash.p2pxwiki.com")
+#set ($newip = $ip)
+#set ($updateres=$xwiki.p2pxwikiregistry.updateRegistry($token, $wikiapp, $newip))
+
+* *Update to $wikiapp with $newip and user $username and password $password is $updateres*
+
+1.1 Testing Update Registry APIs (with correct credentials)
+
+# Login to the registry as user bikash with correct password and try to update it.
+#set ($username = "bikash")
+#set ($password = "bikash")
+#set ($token = "")
+#set ($token = $xwiki.p2pxwikiregistry.login($username,$password))
+* *Result of loggin in as user $username with password $password is token $token*
+
+#set ($wikiapp = "bikash.p2pxwiki.com")
+#set ($newip = "69.180.20.68")
+#set ($updateres=$xwiki.p2pxwikiregistry.updateRegistry($token, $wikiapp, $newip))
+
+* *Update to $wikiapp with $newip and user $username and password $password is $updateres*
+
+1.1 Create a new wiki in the registry by using updateAPIs (with correct credentials)
+
+# Create a new wiki (by creating an entry in the dns: currently it points to an xwiki page)
+
+#set ($username = "ludovic")
+#set ($password = "ludovic")
+#set ($token = "")
+#set ($token = $xwiki.p2pxwikiregistry.login($username,$password))
+* *Result of loggin in as user $username with password $password is token $token*
+
+#set ($wikiapp = "ludovic.p2pxwiki.com")
+#set ($newip = "194.109.216.8")
+#set ($updateres=$xwiki.p2pxwikiregistry.updateRegistry($token, $wikiapp, $newip))
+
+* *Update to $wikiapp with $newip and user $username and password $password is $updateres*
+
+1.1 Testing update of Ludovic's wiki's ip to the central registry IP 
+
+# Create a new wiki (by creating an entry in the dns: currently it points to an xwiki page)
+
+#set ($username = "ludovic")
+#set ($password = "ludovic")
+#set ($token = "")
+#set ($token = $xwiki.p2pxwikiregistry.login($username,$password))
+* *Result of loggin in as user $username with password $password is token $token*
+
+#set ($wikiapp = "ludovic.p2pxwiki.com")
+#set ($newip = "69.180.20.68")
+#set ($updateres=$xwiki.p2pxwikiregistry.updateRegistry($token, $wikiapp, $newip))
+
+* *Update to $wikiapp with $newip and user $username and password $password is $updateres*
+

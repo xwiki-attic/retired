@@ -1,0 +1,22 @@
+1.1 Replication 
+
+#set ($username = "superadmin") 
+#set ($password = "superadmin")
+#set ($srcpeer = "http://www.p2pxwikiregistry.peer:8080")
+#set ($srctoken = "")   
+#set ($srctoken = $xwiki.p2pxwikireplication.login($username,$password,$srcpeer)) 
+* *Result of loggin in as user $username with password $password is token $srctoken* 
+
+#set ($username = "superadmin") 
+#set ($password = "superadmin")
+#set ($destpeer = "http://www.p2pxwikiregistry.peer:8080")
+#set ($desttoken = "")   
+#set ($desttoken = $xwiki.p2pxwikireplication.login($username,$password,$destpeer)) 
+* *Result of loggin in as user $username with password $password is token $desttoken* 
+
+
+#set ($srcwiki = "http://bikash.p2pxwiki.com")
+#set ($destwiki = "http://ludovic.p2pxwiki.com")
+#set ($resofrep = $xwiki.p2pxwikireplication.replicateAllPagesFromXML($srctoken, $srcpeer, $srcwiki, $desttoken, $destpeer, $destwiki))
+
+Try [ludovicwiki>http://ludovic.p2pxwiki.com:8080/xwiki/bin/view/Main/WebHome ]

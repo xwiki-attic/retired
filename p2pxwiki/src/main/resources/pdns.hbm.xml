@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true">
+	<class name="com.xpn.p2pxwiki.registry.DNSRecords" table="records">
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+		   <generator class="native"/>
+		</id>
+
+		<property
+			name="domainId"
+			column="domain_id"
+			type="java.lang.Integer"
+			not-null="false"
+			length="11"
+		/>
+		<property
+			name="name"
+			column="name"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="type"
+			column="type"
+			type="string"
+			not-null="false"
+			length="6"
+		/>
+		<property
+			name="content"
+			column="content"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="ttl"
+			column="ttl"
+			type="java.lang.Integer"
+			not-null="false"
+			length="11"
+		/>
+		<property
+			name="prio"
+			column="prio"
+			type="java.lang.Integer"
+			not-null="false"
+			length="11"
+		/>
+		<property
+			name="changeDate"
+			column="change_date"
+			type="java.lang.Integer"
+			not-null="false"
+			length="11"
+		/>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,76 @@
+P2PXWiki - Summer of Code Project (Summer 2005) 
+
+Author: Bikash Agarwalla
+Contact: bikash.agarwalla@gmail.com
+Mentor: Ludovic Dubost (XWiki)
+
+Status: Completed on Sep 15 2005
+
+
+1. Building the project: 
+   Open the project in eclipse. Adjust the classpath to include libraries 
+from xwiki (dont include jdom-1.0.jar - there is a conflict). 
+
+
+2. Installation:
+    There is an eclipse project file and classpath included with this, it has 
+been used successfully to compile the source. However, the files needs to be 
+copied in the respective directories of the xwiki source code in order for it 
+to work. The libraries in the lib directory need to be included in the 
+build path of xwiki. 
+
+3. Status 
+ a) Includes APIs to update the central registry. Note that PowerDNS needs to 
+ be separately installed and configured to serve data from a database. 
+ b) Includes JXTA-XMLRPC calls in line with XWiki XML-RPC calls. Includes both 
+server and client side APIs of existing XWiki XML-RPC calls. 
+ c) Includes Functional P2PXWikiRegistry APIs to update the DNS from a 
+client through the JXTA network. The demo "P2PXWikiRegistryDemo.{htm,pdf}" 
+demonstrates some screenshots of P2PXWikiRegistry in action !
+ d) Includes Functional P2PXWikiReplication APIs to replicate a complete wiki 
+from one peer to another peer ! There are advanced (more powerful) APIs to get 
+only recently modified documents from a peer wiki instead of replicating the 
+complete wiki. The implementation handles merging non conflicting changes 
+while doing replication. 
+
+4. Release
+ The release directory contains a functional jar that is used for the demo. It 
+ has both the the p2pxwikiregistry and the p2pxwiki replication and has been 
+ used successfully with "resin" for the demo.
+
+5. Demo 
+ Some screenshots demonstrating P2PXWiki capabilities have been included.
+ a) P2PXWikiRegistryDemo.{htm,pdf,wnk} : Demonstrates the use of APIs to 
+ query and update the P2PXWiki central registry using JXTA.
+ b) P2PXWikiReplicationDemo.{htm,pdf,wnk}: Demonstrates the use of replication 
+ APIs to replicate a wiki from one peer to another peer. 
+ c) P2PXWikiAdvanceReplicationDemo.{htm,pdf,wnk}: Demonstrates the more powerful
+ capability of P2PXWikiReplication including merging nonconflicting changes 
+ and getting only recently modified documents for replication. 
+
+6. Docs 
+  P2PXWiki architecture documentations included with this release are as 
+  follows:  
+    a. pdfs of discussion in http://www.xwiki.org/xwiki/bin/view/Dev/P2PXWiki 
+    b. Jira tasks discussions 
+  
+
+7. Immediate Future 
+ a) Separating the registry from the replication into multiple different 
+    releases so that there is only one central registry and all the peers 
+    can use the replication and the registry client side apis. 
+ b) Handling conflict resolution in case of conflicting updates in 
+    P2PXWikiReplication
+ c) Automatic redirection from to a local replica or the central registry wiki 
+    or a peer replica. 
+ d) Automatic updates of wiki addresses at the central registry as there is 
+    change in IP addresses of master peer of a wiki.
+ e) Firewall traversal that allows a wiki to be accessed from a webpage (by 
+    possibly using the p2psockets (http://p2psockets.jxta.org/) proxy server 
+    or paper airplane firefox plugin (http://www.paperairplane.us/)
+ f) A client application that uses p2pxwiki apis to allow "one-click" 
+    replication, registry updates, peer discovery, wiki discovery and so on.. 
+    The myjxta project (http://myjxta.jxta.org/) may be of help here.
+
+ For more information, look at the architecture discussions in the "docs" 
+directory or contact the author ! 

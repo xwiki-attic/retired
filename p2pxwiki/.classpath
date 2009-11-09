@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/,svn/|com/xpn/p2pxwiki/communication/jxta/|com/xpn/p2pxwiki/communication/rpc/|com/xpn/p2pxwiki/registry/|com/xpn/p2pxwiki/replication/|com/xpn/p2pxwiki/examples/" kind="src" path="src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" path="resources"/>
+	<classpathentry excluding="**/.svn/|com/xpn/test/p2pxwiki/registry/|com/xpn/test/p2pxwiki/rpc/" kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/swixml.jar"/>
+	<classpathentry kind="lib" path="lib/serializer.jar"/>
+	<classpathentry kind="lib" path="lib/saxpath.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-core.jar"/>
+	<classpathentry kind="lib" path="lib/org.mortbay.jetty.jar"/>
+	<classpathentry kind="lib" path="lib/jxtaext.jar"/>
+	<classpathentry kind="lib" path="lib/jxta.jar"/>
+	<classpathentry kind="lib" path="lib/jxl.jxta.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-core.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk14.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/portlet-api-1.0.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/junit-4.1.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/commons-logging-api-1.1.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/org.suigeneris.jrcs.rcs-0.3.0.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/velocity-1.4.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/org.suigeneris.jrcs.diff-0.3.0.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/hibernate-3.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-2.0-r2-apache-xmlrpc-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/p2psockets-apache-xmlrpc.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/ws-commons-java5-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/ws-commons-util-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/backport-util-concurrent.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry kind="lib" path="/xwiki/lib/xmlrpc-client-3.0.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/xmlrpc-common-3.0.jar"/>
+	<classpathentry kind="lib" path="/xwiki/lib/xmlrpc-server-3.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/xwiki"/>
+	<classpathentry kind="lib" path="lib/3dm-lib.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
