@@ -1,0 +1,154 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>XWiki Offline GSoC 2008 project</title>
+</head>
+<body>
+
+<h1>Google Summer Of Code 2008</h1>
+<b>Student:</b> Eduard Moraru<br/>
+<b>Mentor:</b> Sergiu Gabriel Dumitriu<br/>
+<b>Project Name:</b> XWiki Offline
+
+<h2>Contents</h2>
+<ul>
+  <li><a href="#Overview">Overview</a></li>
+    <ul>
+    <li><a href="#Requirements">Project requirements</a></li>
+    <li><a href="#Approach">Chosen approach</a></li>
+    </ul>
+  <li><a href="#Installation">Installation</a></li>
+    <ul>
+    <li><a href="#XWiki">XWiki</a></li>
+    <li><a href="#XWoot">XWoot</a></li>
+    <li><a href="#XEclipse">XEclipse</a></li>
+    </ul>
+  <li><a href="#Running">Running XEclipse</a></li>
+  <li><a href="#Building">Building</a></li>
+    <ul>
+    <li><a href="#Eclipse">In Eclipse</a></li>
+    <li><a href="#Maven">Using Maven</a></li>
+    </ul>
+</ul>
+
+<h2><a name="Overview">Overview</a></h2>
+
+
+<h3><a name="Requirements">Project requirements</a></h3>
+
+<p>As the project <a href="http://dev.xwiki.org/xwiki/bin/view/GoogleSummerOfCode/XWikiOffline2008">proposal on the XWiki Development website</a> states, the requirements for this projects are:
+<ol>
+  <li>To be able to download certain, or all, content from XWiki servers and edit it while being offline. Once back online, your work should automatically synchronize with the content of the XWikis.</li>
+  <li>Permanent and transparent synchronization process.</li>
+  <li>Integration with the current <a href="http://concerto.xwiki.com">XWiki P2P</a> work, <a href="http://concerto.xwiki.com/xwiki/bin/view/XWoot/plan">XWoot</a>.</li>
+  <li>Deployment as embedded in the XWiki Eclipse Plugin, <a href="http://code.xwiki.org/xwiki/bin/view/Extensions/XEclipseExtension">XEclipse</a>.</li>
+</ol></p>
+
+<p>Requirement number 1 and the offline work related part of requirement number 2 are already implemented in the current version of XEclipse, so these will be skipped.</p>
+
+
+<h3><a name="Approach">Chosen approach</a></h3>
+
+<p>Currently, as shown in the <a href="#XEclipse_Diagram">diagram</a> to the right and mentioned in point 1 in the project requirements above, XEclipse deals with connecting to XWikis, downloading pages, editing them and then uploading the newly edited versions back to their originating XWiki.
+
+<a name="XEclipse_Diagram"><img border="0" src="images/XEclipse.png" alt="XEclipse functionalities diagram" style="float: right;"/></a>
+
+<p>As seen from XWoot's <a href="http://concerto.xwiki.com/xwiki/bin/view/XWoot/plan">website</a> and in this <a href="http://concerto.xwiki.com/xwiki/bin/view/XWoot/video">demo video</a>, the functionalities we will need to render accessible to XEclipse's users are:
+<ul>
+  <li>P2P Neighbour management (View/Add/Delete Neighbour)</li>
+  <li>Synchronize the current node with the rest of the network</li>
+</ul>
+</p>
+
+<p>XWoot deploys as a web application capable of managing a P2P neighbors list and receiving patches with changes from the P2P network. By doing this, it also provides, trough its servlets, a limited REST-like API for receiving commands.</p>
+
+<p>Given the fact that the P2P synchronization procedure is not fired automatically by XWoot, we have to do it from XEclipse, automatically, every time we issue changes to the XWiki we are or become connected to. Thus, we do that by issuing a HTTP GET command to the Synchronize servlet at the address "/Synchronize?action=synchronize" (relative to XWoot's install location).</p>
+
+<p>For managing the list of neighbors, XWoot does not provide an URL for retrieving the list so add/remove operations in the XEclipse interface would be pointless to implement because they could not be used. As a solution to this problem, the quick and clean choice was made to offer a "Manage" option that would open up a browser window showing XWoot's management page. From there, the user could do the desired operations, without leaving XEclipse.</p>
+
+<p>This being established, two new properties have been assigned to an XWiki connection in XEclipse:
+<ul>
+  <li>The URL of the XWoot installation that uses this XWiki as content provider, together forming an XWiki P2P node</li>
+  <li>Whether or not to automatically run the synchronize procedure from XEclipse as described above. Please note that any incoming patch from the network does modify the state of the wiki. That is how XWoot works, for now at least.</li>
+</ul>
+<p>Below, there is a <a href="#XWiki_Offline_Diagram">diagram</a> showing what XEclipse has become by applying the above mentioned changes:</p>
+
+<a name="XWiki_Offline_Diagram"><img border="0" src="images/XWiki Offline P2P Diagram.png" alt="XWiki Offline P2P diagram"/></a>
+
+
+<h2><a name="Installation">Installation (download, install, setup, start)</a></h2>
+
+<p>Here are described a few steps required for installing all the components for running XEclipse.</p>
+
+<h3><a name="XWiki">XWiki Enterprise</a></h3>
+<p>Get a copy of the stable XWiki Enterprise at the XWiki <a href="http://www.xwiki.org/xwiki/bin/view/Main/Download#HXWikiEnterprise">Download</a> page. You should find installation instructions in the same place. Install it, but don't start XWiki just yet.</p>
+
+<h3><a name="XWoot">XWoot</a></h3>
+
+<p>Installing XWoot quite simple. Just grab the <a href="../../xwoot/xwootApp.war">xwootApp.war</a> file provided in the <a href="../../xwoot">xwoot directory</a> and deploy it in your favourite servlet container. I use the same jetty instance used for running the local xwiki, "XWiki Enterprise/webapps".</p>
+
+<p>After deploying(copying) the XWoot <a href="../../xwoot/xwootApp.war">.war file</a>, start your XWiki by running the start_xwiki script provided or running the desktop shortcut. This order is important if you use the same container for both XWiki and XWoot like I do. Now open a browser window and enter the address "localhost:8080/xwootApp". This is the configuration of the XWoot component which you have to fill in before continuing.</p>
+
+<h3><a name="XEclipse">XEclipse</a></h3>
+
+<p>Grab a copy of the package "Eclipse Classic" at the Eclipse <a href="http://www.eclipse.org/downloads/">Download page</a> and unpack it.</p>
+
+<p>Now, grab the XEclipse plugin <a href="../bin/org.xwiki.eclipse.feature_1.2.0.20080624.bin.dist.zip">zip file</a> in the <a href="../bin/">bin</a> directory and unpack it in the same directory you installed eclipse just now.
+
+<p>You are now set to run and test the XWiki P2P enabled XEclipse version. Some extra bugfixes are also included comparing to the current trunk version in the SVN.</p>
+
+
+<h2><a name="Running">Running XEclipse</a></h2>
+
+<p>To use XEclipse, go to <i>Window>Show View</i> and select from the <i>XWiki Eclipse</i> category both the <i>Project Explorer</i> and the <i>Page Preview</i>.<br/>
+Go to <i>New>Other</i> and from the <i>XWiki Eclipse</i> category choose <i>New Connection</i>.<br/>
+Enter the required information for the connection and press next for P2P Settings. When done, click Finish.</p>
+
+<p>Practically you have now all you need to test the functionalities. You can, of course, start another XWiki and XWoot instance and add that XWoot as a neighbor in the P2P network but what is important is to see in the Console of the XWiki the Synchronization event being triggered.</p>
+
+<p>If you skipped the P2P Settings when creating a connection and wish to add them now, you have to right-click on a connection and select the <i>P2P</i> page. There you can enter the XWoot endpoint(url of the xwoot) where to issue synchronize commands and you can check the <i>Auto synchronize</i> option.</p>
+
+<p>If you right click on a connection, you can also see the P2P submenu containing quick access to the autosynch enabling/disabling and the Manage command that opens a new editor tab showing the XWoot administration page.</p>
+
+<p>That is about it. If you have the auto-synch option enabled, you have set the xwoot endpoint and you are currently connected, after each Save command you issue upon finishing to edit a page/object, your work will be propagated throughout the P2P network and you can see debug messages in the console where you started the XWiki container.</p>
+
+<p>If you work offline, when you will come back online, upon synchronizing with your remote xwiki, you will also synchronize with the P2P network (if autosynch enabled).</p>
+
+
+<h2><a name="#Building">Building</a></h2>
+
+<h3><a name="Eclipse">In Eclipse</a></h3>
+
+<p>To build in Eclipse, you need to have installed the plugin development package and, obviously, the java development package. If you have the "Eclipse Classic" package downloaded as instructed in the install section, you are set; if not, please make sure you are using an Eclipse version downloaded from the Eclipse website and not an Eclipse installation provided by your operating system.</p>
+
+<p>You need to import the 3 projects found in these directories:</p>
+
+<pre>
+src/xeclipse/plugins/
+                     org.xwiki.eclipse.core/
+                     org.xwiki.eclipse.ui/
+                     org.xwiki.eclipse.xmlrpc/
+</pre>
+
+<p>You do this by using the <i>File>Import wizard</i> and selecting <i>Existing project</i>.</p>
+
+<p>Finally, you right click on the "org.xwiki.eclipse.core" project and select <i>Run As>Eclipse Application</i>.</p>
+
+<h3><a name="Maven">With Maven</a></h3>
+
+<p>If you do not have <a href="http://maven.apache.org/">Maven</a>, get it from the Maven <a href="http://maven.apache.org/download.html">Download site</a>.</p>
+
+<p>To build:
+<ol>
+  <li>cd to "src/features/org.xwiki.eclipse.feature"</li>
+  <li>"mvn -DeclipseInstall=/AbsolutePath/To/Your/Eclipse/Installation" compile.</li>
+</ol></p>
+
+<p>If maven complains that it cannot find startup.jar, then copy ${eclipseInstall}/plugin/org.eclipse.equinox.launcher*-xyz.jar to ${eclipseInstall}/startup.jar and retry the compile command.</p>
+
+<p>You should now have a org.xwiki.eclipse.feature_1.2.0.SNAPSHOT.bin.dist.zip file in this directory.</p>
+ 
+</body>
+</html>

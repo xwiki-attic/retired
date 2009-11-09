@@ -1,0 +1,1036 @@
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java	(working copy)
+@@ -269,6 +297,19 @@
+     /*
+      * Space retrieval
+      */
++    public XWikiEclipseSpaceSummary getSpaceSummary(String spaceKey) throws XWikiEclipseException
++    {
++        SpaceSummary space = null;
++        
++        if (isConnected()) {
++            space = remoteXWikiDataStorage.getSpaceSumary(spaceKey);
++        } else {
++            space = localXWikiDataStorage.getSpaceSumary(spaceKey);
++        }
++        
++        return new XWikiEclipseSpaceSummary(this, space);
++    }
++    
+     public List<XWikiEclipseSpaceSummary> getSpaces() throws XWikiEclipseException
+     {
+         List<SpaceSummary> spaceSummaries;
+@@ -438,7 +479,7 @@
+         pageToStatusMap.put(pageId, DIRTY_STATUS);
+     }
+ 
+-    private void clearPageStatus(String pageId) throws XWikiEclipseException
++    public void clearPageStatus(String pageId) throws XWikiEclipseException
+     {
+         conflictingPagesDataStorage.removePage(pageId);
+         pageToStatusMap.remove(pageId);
+@@ -728,27 +769,53 @@
+         }
+ 
+         localXWikiDataStorage.removePage(pageId);
++        
++        String spaceKey = page.getSpace();
++        
++        List<XWikiEclipsePageSummary> pages = null;
++        try{
++            pages = getPages(spaceKey);
++        } catch (XWikiEclipseException e){
++            CoreLog.logError("Unable to get space pages: " + e.getMessage());
++        }
++        
++        if (pages != null && pages.size() == 0){
++            // The space is left with no pages so it has to be removed.
++            localXWikiDataStorage.removeSpace(spaceKey);
++        }
+ 
+         NotificationManager.getDefault().fireCoreEvent(CoreEvent.Type.PAGE_REMOVED, this,
+             new XWikiEclipsePage(this, page));
+     }
++    
++    public void removeSpace(String spaceKey) throws XWikiEclipseException
++    {
++        XWikiEclipseSpaceSummary space = getSpaceSummary(spaceKey);
++        
++        if (space != null) {
++            remoteXWikiDataStorage.removeSpace(spaceKey);
++            localXWikiDataStorage.removeSpace(spaceKey);
++            
++            NotificationManager.getDefault().fireCoreEvent(CoreEvent.Type.SPACE_REMOVED, this, space);
++        }
++    }
+ 
+     public void removeObject(String pageId, String className, int objectId) throws XWikiEclipseException
+     {
+-        XWikiPage page = null;
++        XWikiObject object = null;
+ 
+         if (isConnected()) {
+-            page = remoteXWikiDataStorage.getPage(pageId);
++            object = remoteXWikiDataStorage.getObject(pageId, className, objectId);
+             remoteXWikiDataStorage.removeObject(pageId, className, objectId);
+         } else {
+-            page = localXWikiDataStorage.getPage(pageId);
++            object = localXWikiDataStorage.getObject(pageId, className, objectId);
+         }
+ 
+         localXWikiDataStorage.removeObject(pageId, className, objectId);
+ 
+-        /* Put in the data the page the object belonged to */
+         NotificationManager.getDefault().fireCoreEvent(CoreEvent.Type.OBJECT_REMOVED, this,
+-            new XWikiEclipsePage(this, page));
++            new XWikiEclipseObject(this, object, getClass(object.getClassName()).getData(),
++                getPageSummary(object.getPageId()).getData()));
+     }
+ 
+     public boolean renamePage(String pageId, String newSpace, String newPageName) throws XWikiEclipseException
+@@ -832,4 +899,13 @@
+ 
+         return result;
+     }
++    
++    public boolean exists(String pageId)
++    {
++        if (isConnected()){
++            return remoteXWikiDataStorage.exists(pageId);
++        }
++        
++        return localXWikiDataStorage.exists(pageId);
++    }
+ }
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManagerRegistry.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManagerRegistry.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManagerRegistry.java	(working copy)
+@@ -49,7 +49,7 @@
+         dataManagers = new ArrayList<DataManager>();
+     }
+ 
+-    public static DataManagerRegistry getDefault()
++    public synchronized static DataManagerRegistry getDefault()
+     {
+         if (sharedInstance == null) {
+             sharedInstance = new DataManagerRegistry();
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/notifications/CoreEvent.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/notifications/CoreEvent.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/notifications/CoreEvent.java	(working copy)
+@@ -36,7 +36,7 @@
+      */
+     public static enum Type
+     {
+-        DATA_MANAGER_REGISTERED, DATA_MANAGER_UNREGISTERED, DATA_MANAGER_CONNECTED, DATA_MANAGER_DISCONNECTED, PAGE_STORED, OBJECT_STORED, PAGE_REMOVED, OBJECT_REMOVED, PAGE_SELECTED, OBJECT_SELECTED, REFRESH, PAGE_RENAMED;
++        DATA_MANAGER_REGISTERED, DATA_MANAGER_UNREGISTERED, DATA_MANAGER_CONNECTED, DATA_MANAGER_DISCONNECTED, PAGE_STORED, OBJECT_STORED, PAGE_REMOVED, OBJECT_REMOVED, PAGE_SELECTED, OBJECT_SELECTED, REFRESH, PAGE_RENAMED, SPACE_REMOVED;
+     }
+ 
+     /**
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/notifications/NotificationManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/notifications/NotificationManager.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/notifications/NotificationManager.java	(working copy)
+@@ -79,7 +79,7 @@
+     /**
+      * @return The shared instance.
+      */
+-    public static NotificationManager getDefault()
++    public synchronized static NotificationManager getDefault()
+     {
+         if (sharedInstance == null) {
+             sharedInstance = new NotificationManager();
+@@ -124,7 +124,7 @@
+      * @param source The object that generated the event.
+      * @param data Additional data associated to the event.
+      */
+-    public void fireCoreEvent(CoreEvent.Type type, Object source, Object data)
++    public synchronized void fireCoreEvent(CoreEvent.Type type, Object source, Object data)
+     {
+         CoreEvent coreEvent = new CoreEvent(type, source, data);
+         Object[] objects = listenerList.getListeners();
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/IDataStorage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/IDataStorage.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/IDataStorage.java	(working copy)
+@@ -42,6 +42,10 @@
+     public void dispose();
+ 
+     public List<SpaceSummary> getSpaces() throws XWikiEclipseException;
++    
++    public SpaceSummary getSpaceSumary(String spaceKey) throws XWikiEclipseException;
++    
++    public void removeSpace(String spaceKey) throws XWikiEclipseException;
+ 
+     public List<XWikiPageSummary> getPages(String spaceKey) throws XWikiEclipseException;
+ 
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/LocalXWikiDataStorage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/LocalXWikiDataStorage.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/LocalXWikiDataStorage.java	(working copy)
+@@ -40,7 +40,6 @@
+ import org.eclipse.core.runtime.Status;
+ import org.xwiki.eclipse.core.CorePlugin;
+ import org.xwiki.eclipse.core.XWikiEclipseException;
+-import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
+ import org.xwiki.eclipse.core.utils.CoreUtils;
+ import org.xwiki.xmlrpc.model.XWikiClass;
+ import org.xwiki.xmlrpc.model.XWikiClassSummary;
+@@ -229,7 +228,46 @@
+ 
+         return result;
+     }
++    
++    public SpaceSummary getSpaceSumary(String spaceKey) throws XWikiEclipseException
++    {
++        List<SpaceSummary> spaces = getSpaces();
++        for(SpaceSummary space : spaces){
++            if (space.getKey().equals(spaceKey))
++                return space;
++        }
++        
++        return null;
++    }
+ 
++    public void removeSpace(String spaceKey) throws XWikiEclipseException
++    {
++        // Delete pages
++        List<XWikiPageSummary> pages = getPages(spaceKey);
++        for(XWikiPageSummary page : pages){
++            removePage(page.getId());
++        }
++        
++        // Delete space directory
++        try {
++            final IFolder indexFolder = CoreUtils.createFolder(baseFolder.getFolder(INDEX_DIRECTORY));
++
++            List<IResource> indexFolderResources = getChildResources(indexFolder, IResource.DEPTH_ONE);
++            for (IResource indexFolderResource : indexFolderResources) {
++                if (indexFolderResource instanceof IFolder) {
++                    IFolder folder = (IFolder) indexFolderResource;
++                    if (folder.getName().equals(spaceKey)){
++                        folder.delete(true, null);
++                        break;
++                    }
++                }
++            }
++        } catch (CoreException e) {
++            throw new XWikiEclipseException(e);
++        }
++    }
++    
++    
+     public XWikiPage storePage(final XWikiPage page) throws XWikiEclipseException
+     {
+         try {
+@@ -276,6 +314,12 @@
+                             return;
+                         }
+ 
++                        /* Remove page objects */
++                        List<XWikiObjectSummary> objects = getObjects(pageId);
++                        for(XWikiObjectSummary object : objects){
++                            removeObject(pageId, object.getClassName(), object.getId());
++                        }
++                        
+                         /*
+                          * Remove the index page folder with all the information (page and object summaries)
+                          */
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/RemoteXWikiDataStorage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/RemoteXWikiDataStorage.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/storage/RemoteXWikiDataStorage.java	(working copy)
+@@ -114,6 +114,28 @@
+             throw new XWikiEclipseException(e);
+         }
+     }
++    
++    public SpaceSummary getSpaceSumary(String spaceKey) throws XWikiEclipseException
++    {
++        List<SpaceSummary> spaces = getSpaces();
++        for(SpaceSummary space : spaces){
++            if (space.getKey().equals(spaceKey))
++                return space;
++        }
++        
++        return null;
++    }
++    
++    public synchronized void removeSpace(String spaceKey) throws XWikiEclipseException
++    {
++        Assert.isTrue(!disposed);
++        
++        try {
++            rpc.removeSpace(spaceKey);
++        } catch (XmlRpcException e) {
++            throw new XWikiEclipseException(e);
++        }
++    }
+ 
+     public synchronized XWikiPage storePage(XWikiPage page) throws XWikiEclipseException
+     {
+@@ -211,13 +233,23 @@
+ 
+     public synchronized boolean exists(String pageId)
+     {
+-        // TODO implement
++        try{
++            XWikiPage page = getPage(pageId);
++        }catch(XWikiEclipseException e){
++            return false;
++        }
++        
+         return true;
+     }
+ 
+     public synchronized boolean exists(String pageId, String className, int objectId)
+     {
+-        // TODO implement
++        try{
++            XWikiObject object = getObject(pageId, className, objectId);
++        }catch(XWikiEclipseException e){
++            return false;
++        }
++        
+         return true;
+     }
+ 
+Index: plugins/org.xwiki.eclipse.ui/plugin.xml
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/plugin.xml	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/plugin.xml	(working copy)
+@@ -150,6 +150,9 @@
+            <instanceof
+                  value="org.xwiki.eclipse.core.model.XWikiEclipseObjectSummary">
+            </instanceof>
++           <instanceof
++                 value="org.xwiki.eclipse.core.model.XWikiEclipseSpaceSummary">
++           </instanceof>
+         </or>
+      </enablement>
+   </actionProvider>
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/NavigatorContentProvider.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/NavigatorContentProvider.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/NavigatorContentProvider.java	(working copy)
+@@ -20,6 +20,8 @@
+  */
+ package org.xwiki.eclipse.ui;
+ 
++import java.util.List;
++
+ import org.codehaus.swizzle.confluence.SpaceSummary;
+ import org.eclipse.core.resources.IProject;
+ import org.eclipse.jface.viewers.AbstractTreeViewer;
+@@ -28,10 +30,13 @@
+ import org.eclipse.ui.IWorkingSet;
+ import org.eclipse.ui.model.BaseWorkbenchContentProvider;
+ import org.eclipse.ui.progress.DeferredTreeContentManager;
++import org.xwiki.eclipse.core.CoreLog;
+ import org.xwiki.eclipse.core.DataManager;
+ import org.xwiki.eclipse.core.DataManagerRegistry;
++import org.xwiki.eclipse.core.XWikiEclipseException;
+ import org.xwiki.eclipse.core.model.XWikiEclipseObject;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePage;
++import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
+ import org.xwiki.eclipse.core.model.XWikiEclipseSpaceSummary;
+ import org.xwiki.eclipse.core.notifications.CoreEvent;
+ import org.xwiki.eclipse.core.notifications.ICoreEventListener;
+@@ -56,7 +61,8 @@
+             new CoreEvent.Type[] {CoreEvent.Type.DATA_MANAGER_REGISTERED, CoreEvent.Type.DATA_MANAGER_UNREGISTERED,
+             CoreEvent.Type.DATA_MANAGER_CONNECTED, CoreEvent.Type.DATA_MANAGER_DISCONNECTED,
+             CoreEvent.Type.PAGE_STORED, CoreEvent.Type.OBJECT_STORED, CoreEvent.Type.PAGE_REMOVED,
+-            CoreEvent.Type.OBJECT_REMOVED, CoreEvent.Type.REFRESH, CoreEvent.Type.PAGE_RENAMED});
++            CoreEvent.Type.OBJECT_REMOVED, CoreEvent.Type.REFRESH, CoreEvent.Type.PAGE_RENAMED,
++            CoreEvent.Type.SPACE_REMOVED});
+ 
+         workingSet = null;
+     }
+@@ -118,15 +124,34 @@
+     {
+         switch (event.getType()) {
+             case DATA_MANAGER_REGISTERED:
+-            case DATA_MANAGER_UNREGISTERED:
+                 Display.getDefault().asyncExec(new Runnable()
+                 {
+                     public void run()
+                     {
++                        /*
++                         *  FIXME: Find a way to add new DataManagers to the viewer to avoid flicker
++                         *  and loss of expanded state caused by refresh().
++                         *  Tried: viewer.add(dataManager.getProject().getParent(), dataManager) but
++                         *  the data manager that was added could not be expanded. No arrow appeared
++                         *  next to it and isExpandable(dataManager) returns false. The arrow would
++                         *  appear only after issuing refresh(), but that destroys the expanded state
++                         *  of the viewer.
++                         */
+                         viewer.refresh();
+                     }
+                 });
+                 break;
++                
++            case DATA_MANAGER_UNREGISTERED:
++                Display.getDefault().asyncExec(new Runnable()
++                {
++                    public void run()
++                    {
++                        DataManager dataManager = (DataManager) event.getData();
++                        viewer.remove(dataManager);
++                    }
++                });
++                break;
+ 
+             case DATA_MANAGER_CONNECTED:
+             case DATA_MANAGER_DISCONNECTED:
+@@ -146,7 +171,26 @@
+                     public void run()
+                     {
+                         XWikiEclipsePage page = (XWikiEclipsePage) event.getData();
+-                        viewer.refresh(page.getSummary());
++                        
++                        // Check if this is a newly created page.
++                        if (page.getData().getVersion() == 1){
++                            // Make sure the new page/space get drawn.
++                            SpaceSummary spaceSummary = new SpaceSummary();
++                            spaceSummary.setKey(page.getData().getSpace());
++                            spaceSummary.setName(page.getData().getSpace());
++                            XWikiEclipseSpaceSummary space =
++                                new XWikiEclipseSpaceSummary(page.getDataManager(), spaceSummary); 
++                            
++                            // If the space did not previously exist, draw it.
++                            if (viewer.testFindItem(space) == null)
++                                viewer.add(page.getDataManager(), space);
++                            
++                            viewer.add(space, page.getSummary());
++                            viewer.expandToLevel(page.getSummary(), 0);
++                        }
++                        else{
++                            viewer.refresh(page.getSummary());
++                        }
+                     }
+                 });
+                 break;
+@@ -161,6 +205,7 @@
+ 
+                         SpaceSummary spaceSummary = new SpaceSummary();
+                         spaceSummary.setKey(newPage.getData().getSpace());
++                        spaceSummary.setName(newPage.getData().getSpace());
+                         XWikiEclipseSpaceSummary space =
+                             new XWikiEclipseSpaceSummary(newPage.getDataManager(), spaceSummary);
+ 
+@@ -170,36 +215,77 @@
+                     }
+                 });
+                 break;
++           
++            case PAGE_REMOVED:
++                Display.getDefault().asyncExec(new Runnable()
++                {
++                    public void run()
++                    {
++                        XWikiEclipsePage page = (XWikiEclipsePage) event.getData();
++                        String spaceKey = page.getData().getSpace();
++                        
++                        List<XWikiEclipsePageSummary> pages = null;
++                        try{
++                            pages = page.getDataManager().getPages(spaceKey);
++                        } catch (XWikiEclipseException e){
++                            CoreLog.logError("Unable to get space pages: " + e.getMessage());
++                        }
++                        
++                        if (pages != null && pages.size() == 0){
++                            // The space is left with no pages so it has to be removed.
++                            SpaceSummary spaceSummary = new SpaceSummary();
++                            spaceSummary.setKey(spaceKey);
++                            spaceSummary.setName(spaceKey);
++                            
++                            XWikiEclipseSpaceSummary space = new XWikiEclipseSpaceSummary(page.getDataManager(), spaceSummary);
++                            viewer.remove(space);
++                        } else {
++                            viewer.remove(page.getSummary());
++                        }
++                    }
++                });
++                break;
++                
+             case OBJECT_STORED:
+                 Display.getDefault().asyncExec(new Runnable()
+                 {
+                     public void run()
+                     {
+                         XWikiEclipseObject object = (XWikiEclipseObject) event.getData();
+-                        viewer.refresh(object.getSummary());
++                        XWikiEclipsePageSummary pageSumary = new XWikiEclipsePageSummary(object.getDataManager(), object.getPageSummary());
++                        /*
++                         * FIXME: For lack of a way of knowing whether the object has just been created
++                         * or modified, I chose to refresh all the objects in the page.
++                         * Best way: like the PAGE_STORED event handling, only that, in that case,
++                         * there was a way of knowing if the page was just created and that there were
++                         * visual inconsistencies. Maybe a new OBJECT_CREATED event? This could be an
++                         * elegant solution for the PAGE_STORED too, by introducing a PAGE_CREATED event.
++                         */ 
++                        viewer.refresh(pageSumary);
+                     }
+ 
+                 });
+                 break;
+ 
+-            case PAGE_REMOVED:
++            case OBJECT_REMOVED:
+                 Display.getDefault().asyncExec(new Runnable()
+                 {
+                     public void run()
+                     {
+-                        XWikiEclipsePage page = (XWikiEclipsePage) event.getData();
+-                        viewer.remove(page.getSummary());
++                        XWikiEclipseObject object = (XWikiEclipseObject) event.getData();
++                        viewer.remove(object);
+                     }
++
+                 });
+                 break;
+-
+-            case OBJECT_REMOVED:
++                
++            case SPACE_REMOVED:
+                 Display.getDefault().asyncExec(new Runnable()
+                 {
+                     public void run()
+                     {
+-                        XWikiEclipsePage page = (XWikiEclipsePage) event.getData();
+-                        viewer.refresh(page.getSummary());
++                        XWikiEclipseSpaceSummary space = (XWikiEclipseSpaceSummary) event.getData();
++                        viewer.remove(space);
+                     }
+ 
+                 });
+@@ -209,8 +295,19 @@
+                 Display.getDefault().asyncExec(new Runnable()
+                 {
+                     public void run()
+-                    {
++                    {   
++                        /*
++                         *  FIXME: This should work but it doesn't.
++                         *  
++                         *  Can't get the viewer's expanded elements to restore after a refresh.
++                         *  
++                         *  Tried many things, none seem to work. Any attempt at restoring the expanded
++                         *  state fails, although the viewer's data classes all have equals and hashCode
++                         *  methods overridden in their superclass.
++                         */
++                        Object[] expandedElements = viewer.getVisibleExpandedElements();
+                         viewer.refresh(event.getData());
++                        viewer.setExpandedElements(expandedElements);
+                     }
+                 });
+                 break;
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/WorkingSetDeferredTreeContentManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/WorkingSetDeferredTreeContentManager.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/WorkingSetDeferredTreeContentManager.java	(working copy)
+@@ -78,7 +78,9 @@
+ 
+     public WorkingSetDeferredTreeContentManager(AbstractTreeViewer viewer, IWorkingSet workingSet)
+     {
+-        super(viewer);
++        // Eclipse 3.3.2 has no DeferredTreeContentManager(AbstractTreeViewer viewer) constructor.
++        // only DeferredTreeContentManager(ITreeContentProvider provider, AbstractTreeViewer viewer)     
++        super(null, viewer);
+         this.workingSet = workingSet;
+     }
+ 
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/actions/XWikiEclipsePageSummaryActionProvider.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/actions/XWikiEclipsePageSummaryActionProvider.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/actions/XWikiEclipsePageSummaryActionProvider.java	(working copy)
+@@ -39,7 +39,6 @@
+ import org.eclipse.ui.navigator.ICommonActionConstants;
+ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
+ import org.eclipse.ui.navigator.ICommonMenuConstants;
+-import org.xwiki.eclipse.core.DataManager;
+ import org.xwiki.eclipse.core.Functionality;
+ import org.xwiki.eclipse.core.XWikiEclipseException;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePage;
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java	(working copy)
+@@ -35,6 +35,7 @@
+ import org.eclipse.swt.layout.FillLayout;
+ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.Display;
++import org.eclipse.swt.widgets.MessageBox;
+ import org.eclipse.ui.IEditorInput;
+ import org.eclipse.ui.IEditorSite;
+ import org.eclipse.ui.PartInitException;
+@@ -47,6 +48,8 @@
+ import org.xwiki.eclipse.core.XWikiEclipseException;
+ import org.xwiki.eclipse.core.model.XWikiEclipseObject;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePage;
++import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
++import org.xwiki.eclipse.core.model.XWikiEclipseSpaceSummary;
+ import org.xwiki.eclipse.core.notifications.CoreEvent;
+ import org.xwiki.eclipse.core.notifications.ICoreEventListener;
+ import org.xwiki.eclipse.core.notifications.NotificationManager;
+@@ -103,7 +106,8 @@
+         NotificationManager.getDefault().addListener(
+             this,
+             new CoreEvent.Type[] {CoreEvent.Type.DATA_MANAGER_CONNECTED, CoreEvent.Type.OBJECT_STORED,
+-            CoreEvent.Type.OBJECT_REMOVED});
++            CoreEvent.Type.OBJECT_REMOVED, CoreEvent.Type.REFRESH,
++            CoreEvent.Type.PAGE_REMOVED, CoreEvent.Type.SPACE_REMOVED, CoreEvent.Type.DATA_MANAGER_UNREGISTERED});
+     }
+ 
+     @Override
+@@ -310,7 +314,11 @@
+         final PageEditorInput input = (PageEditorInput) getEditorInput();
+         XWikiEclipsePage page = input.getPage();
+         String targetPageId = null;
+-        DataManager dataManager = (DataManager) event.getSource();
++        DataManager dataManager = null;
++        if (event.getSource() instanceof DataManager){
++            dataManager = (DataManager) event.getSource();
++        }
++        
+         boolean updatePage = false;
+ 
+         switch (event.getType()) {
+@@ -327,17 +335,107 @@
+                 updatePage = page.getDataManager().equals(dataManager) && page.getData().getId().equals(targetPageId);
+ 
+                 break;
++                
+             case OBJECT_REMOVED:
+-                targetPageId = (String) event.getData();
++                targetPageId = ((XWikiEclipseObject)event.getData()).getPageSummary().getId();
+ 
+                 updatePage = page.getDataManager().equals(dataManager) && page.getData().getId().equals(targetPageId);
+ 
+                 break;
++                
+             case DATA_MANAGER_CONNECTED:
+ 
+                 updatePage = page.getDataManager().equals(dataManager);
+ 
+                 break;
++                
++            case REFRESH:
++                Object data = event.getData();
++                if (data instanceof DataManager || data instanceof XWikiEclipsePageSummary || 
++                    data instanceof XWikiEclipseSpaceSummary){
++                    
++                    // Check if this refresh event was triggered for the page managed by this editor
++                    if (data instanceof XWikiEclipsePageSummary){
++                        XWikiEclipsePageSummary refreshedPageSummary = (XWikiEclipsePageSummary) data;
++                        if (!refreshedPageSummary.getXWikiEclipseId().equals(page.getSummary().getXWikiEclipseId()))
++                            return;
++                    } else  
++                        
++                    if (data instanceof DataManager){
++                        DataManager aDataManager = (DataManager) data;
++                        
++                        if (!aDataManager.equals(page.getDataManager()))
++                            return;
++                    } else
++                        
++                    if (data instanceof XWikiEclipseSpaceSummary){
++                        XWikiEclipseSpaceSummary space = (XWikiEclipseSpaceSummary) data;
++                        
++                        if (!space.getDataManager().equals(page.getDataManager()) ||
++                            !space.getData().getKey().equals(page.getData().getSpace()))
++                            return;
++                    }
++                    
++                    // Check if the user was in the middle of something.
++                    if (isDirty()){
++                        MessageBox messageBox = new MessageBox(Display.getCurrent().getShells()[0], SWT.YES | SWT.NO | SWT.CANCEL | SWT.ICON_QUESTION);
++                        messageBox.setMessage(String.format("Refreshing the page %s will overwrite your current work on it. Do you wish to save it?", page.getData().getId()));
++                        messageBox.setText("Save work");
++                        this.setFocus();
++                        
++                        int result = messageBox.open();
++                        if (result == SWT.YES) {
++                            this.doSave(null);
++                            
++                            // let the conflict resolution solve any conflict if it is the case.
++                            return;
++                        }else if(result == SWT.CANCEL){
++                            return;
++                        }
++                        
++                        try{
++                            page.getDataManager().clearPageStatus(page.getData().getId());
++                        }catch(Exception ex){
++                            // ignore
++                        }
++                        
++                        // we are here if the user said no
++                    }
++                    
++                    doRevertToSaved();
++                    updatePage = true;
++                }
++                break;
++                
++            case PAGE_REMOVED:
++                XWikiEclipsePage aPage = (XWikiEclipsePage) event.getData();
++                
++                if (aPage.getXWikiEclipseId().equals(page.getXWikiEclipseId())){
++                    // The page being edited has been deleted.
++                    this.close(false);
++                }
++                
++                break;
++                
++            case SPACE_REMOVED:
++                XWikiEclipseSpaceSummary aSpace = (XWikiEclipseSpaceSummary) event.getData();
++                
++                if (aSpace.getDataManager().equals(page.getDataManager()) && 
++                    aSpace.getData().getKey().equals(page.getData().getSpace())){
++                    // The space that the page being edited belonged to has been deleted.
++                    this.close(false);
++                }
++                
++                break;
++                
++            case DATA_MANAGER_UNREGISTERED:
++
++                DataManager aDataManager = (DataManager) event.getData();
++                if (aDataManager.equals(page.getDataManager())){
++                    // The connection that the page being edited belonged to has been deleted.
++                    this.close(false);
++                }
++                
++                break;
+         }
+ 
+         try {
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/DeleteXWikiElementHandler.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/DeleteXWikiElementHandler.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/DeleteXWikiElementHandler.java	(working copy)
+@@ -30,8 +30,11 @@
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.MessageBox;
+ import org.eclipse.ui.handlers.HandlerUtil;
++import org.xwiki.eclipse.core.DataManager;
++import org.xwiki.eclipse.core.DataManagerRegistry;
+ import org.xwiki.eclipse.core.model.XWikiEclipseObjectSummary;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
++import org.xwiki.eclipse.core.model.XWikiEclipseSpaceSummary;
+ import org.xwiki.eclipse.ui.utils.UIUtils;
+ import org.xwiki.eclipse.ui.utils.XWikiEclipseSafeRunnable;
+ 
+@@ -48,7 +51,7 @@
+ 
+                 MessageBox messageBox =
+                     new MessageBox(HandlerUtil.getActiveShell(event), SWT.YES | SWT.NO | SWT.ICON_QUESTION);
+-                messageBox.setMessage(String.format("Do you really want to delete '%s'?", pageSummary.getData()
++                messageBox.setMessage(String.format("Do you really want to delete the page '%s'?", pageSummary.getData()
+                     .getTitle()));
+                 int result = messageBox.open();
+                 if (result == SWT.YES) {
+@@ -76,13 +79,51 @@
+                     {
+                         public void run() throws Exception
+                         {
+-
+                             objectSummary.getDataManager().removeObject(objectSummary.getData().getPageId(),
+                                 objectSummary.getData().getClassName(), objectSummary.getData().getId());
+                         }
+                     });
+                 }
+             }
++            
++            if (selectedObject instanceof DataManager) {
++                final DataManager dataManager = (DataManager) selectedObject;
++
++                MessageBox messageBox =
++                    new MessageBox(HandlerUtil.getActiveShell(event), SWT.YES | SWT.NO | SWT.ICON_QUESTION);
++                messageBox.setMessage(String.format("Do you really want to delete the connection '%s'?\n\nWarning: Any unsaved opperations and locally stored data regarding this connection will be lost.",
++                    dataManager.getName()));
++                int result = messageBox.open();
++                if (result == SWT.YES) {
++                    SafeRunner.run(new XWikiEclipseSafeRunnable()
++                    {
++                        public void run() throws Exception
++                        {
++                            DataManagerRegistry.getDefault().unregister(dataManager);
++                            dataManager.getProject().delete(true, null);
++                        }
++                    });
++                }
++            }
++            
++            if (selectedObject instanceof XWikiEclipseSpaceSummary) {
++                final XWikiEclipseSpaceSummary spaceSummary = (XWikiEclipseSpaceSummary) selectedObject;
++
++                MessageBox messageBox =
++                    new MessageBox(HandlerUtil.getActiveShell(event), SWT.YES | SWT.NO | SWT.ICON_QUESTION);
++                messageBox.setMessage(String.format("Do you really want to delete ALL the pages under the space '%s'?", spaceSummary.getData().getName()));
++                int result = messageBox.open();
++                if (result == SWT.YES) {
++                    SafeRunner.run(new XWikiEclipseSafeRunnable()
++                    {
++                        public void run() throws Exception
++                        {
++                            spaceSummary.getDataManager().removeSpace(spaceSummary.getData().getKey());
++                        }
++                    });
++                }
++
++            }
+ 
+         }
+ 
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/properties/DataManagerPropertiesPage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/properties/DataManagerPropertiesPage.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/properties/DataManagerPropertiesPage.java	(working copy)
+@@ -103,7 +103,7 @@
+                 String password = dataManager.getPassword();
+                 passwordText.setText(password != null ? password : "");
+ 
+-                label = new Label(composite, SWT.BORDER);
++                label = new Label(composite, SWT.NONE);
+                 autoConnect = new Button(composite, SWT.CHECK);
+                 autoConnect.setText("Auto connect");
+                 GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, false).applyTo(autoConnect);
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/views/PagePreview.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/views/PagePreview.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/views/PagePreview.java	(working copy)
+@@ -33,6 +33,7 @@
+ import org.xwiki.eclipse.core.model.XWikiEclipseObjectSummary;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePage;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
++import org.xwiki.eclipse.core.model.XWikiEclipseSpaceSummary;
+ import org.xwiki.eclipse.core.notifications.CoreEvent;
+ import org.xwiki.eclipse.core.notifications.ICoreEventListener;
+ import org.xwiki.eclipse.core.notifications.NotificationManager;
+@@ -93,7 +94,8 @@
+             new CoreEvent.Type[] {CoreEvent.Type.DATA_MANAGER_CONNECTED, CoreEvent.Type.DATA_MANAGER_DISCONNECTED,
+             CoreEvent.Type.DATA_MANAGER_REGISTERED, CoreEvent.Type.DATA_MANAGER_UNREGISTERED,
+             CoreEvent.Type.OBJECT_REMOVED, CoreEvent.Type.OBJECT_STORED, CoreEvent.Type.PAGE_REMOVED,
+-            CoreEvent.Type.PAGE_STORED, CoreEvent.Type.PAGE_SELECTED, CoreEvent.Type.OBJECT_SELECTED});
++            CoreEvent.Type.PAGE_STORED, CoreEvent.Type.PAGE_SELECTED, CoreEvent.Type.OBJECT_SELECTED,
++            CoreEvent.Type.SPACE_REMOVED});
+     }
+ 
+     @Override
+@@ -233,7 +235,7 @@
+ 
+             public void run()
+             {
+-                if (url != null) {
++                if (url != null && !url.equals("")) {
+                     if (isConnected) {
+ 
+                         stackLayout.topControl = browser;
+@@ -272,12 +274,22 @@
+             update(page.getData().getUrl(), page.getDataManager().isConnected());
+         }
+ 
++        else
++            
+         if (object instanceof XWikiEclipseObject) {
+             XWikiEclipseObject xwikiObject = (XWikiEclipseObject) object;
+ 
+             update(xwikiObject.getPageSummary() != null ? xwikiObject.getPageSummary().getUrl() : null, xwikiObject
+                 .getDataManager().isConnected());
+         }
++        
++        else
++        
++        if (object instanceof XWikiEclipseSpaceSummary) {
++            XWikiEclipseSpaceSummary xwikiSpaceSummary = (XWikiEclipseSpaceSummary) object;
++
++            update(xwikiSpaceSummary.getData().getUrl(), xwikiSpaceSummary.getDataManager().isConnected());
++        }
+     }
+ 
+ }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/ConnectionSettingsWizardPage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/ConnectionSettingsWizardPage.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/ConnectionSettingsWizardPage.java	(working copy)
+@@ -20,6 +20,12 @@
+  */
+ package org.xwiki.eclipse.ui.wizards;
+ 
++import java.net.MalformedURLException;
++import java.net.URL;
++
++import org.eclipse.core.resources.IProject;
++import org.eclipse.core.resources.IWorkspaceRoot;
++import org.eclipse.core.resources.ResourcesPlugin;
+ import org.eclipse.jface.layout.GridDataFactory;
+ import org.eclipse.jface.layout.GridLayoutFactory;
+ import org.eclipse.jface.wizard.WizardPage;
+@@ -69,7 +75,7 @@
+         {
+             public void modifyText(ModifyEvent e)
+             {
+-                newConnectionWizardState.setConnectionName(connectionNameText.getText());
++                newConnectionWizardState.setConnectionName(connectionNameText.getText().trim());
+                 getContainer().updateButtons();
+             }
+         });
+@@ -90,7 +96,7 @@
+         {
+             public void modifyText(ModifyEvent e)
+             {
+-                newConnectionWizardState.setServerUrl(serverUrlText.getText());
++                newConnectionWizardState.setServerUrl(serverUrlText.getText().trim());
+                 getContainer().updateButtons();
+             }
+         });
+@@ -106,7 +112,7 @@
+         {
+             public void modifyText(ModifyEvent e)
+             {
+-                newConnectionWizardState.setUserName(userNameText.getText().replaceAll(" ", ""));
++                newConnectionWizardState.setUserName(userNameText.getText().trim());
+                 getContainer().updateButtons();
+             }
+         });
+@@ -132,18 +138,35 @@
+     @Override
+     public boolean isPageComplete()
+     {
+-        if (connectionNameText.getText() == null || connectionNameText.getText().length() == 0) {
++        String connectionName = connectionNameText.getText().trim();
++        
++        if (connectionName.length() == 0) {
+             setErrorMessage("Connection name must be specified.");
+             return false;
+         }
++        
++        IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
++        final IProject project = workspaceRoot.getProject(connectionName);
++        if (project.exists()) {
++            setErrorMessage(String.format("Connection '%s' already exists. Please choose another name.",
++                connectionName));
++            return false;
++        }
+ 
+-        if (serverUrlText.getText() == null
+-            || !(serverUrlText.getText().startsWith("http://") || serverUrlText.getText().startsWith("https://"))) {
+-            setErrorMessage("A server URL starting with 'http://' or 'https://' must be specified.");
++        if (serverUrlText.getText() == null || serverUrlText.getText().trim().length() == 0) {
++            setErrorMessage("A server URL must be specified.");
++            return false;
++        }
++        
++        try{
++            if (new URL(serverUrlText.getText().trim()).getHost().equals(""))
++                throw new MalformedURLException("Invalid hostname.");
++        }catch(MalformedURLException me){
++            setErrorMessage("The specified address is not a valid URL.");
+             return false;
+         }
+ 
+-        if (userNameText.getText() == null || userNameText.getText().length() == 0) {
++        if (userNameText.getText() == null || userNameText.getText().trim().length() == 0) {
+             setErrorMessage("User name must be specified.");
+             return false;
+         }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java	(working copy)
+@@ -64,8 +65,7 @@
+         }
+ 
+         if (newConnectionWizardState.getServerUrl() == null
+-            || !(newConnectionWizardState.getServerUrl().startsWith("http://") || newConnectionWizardState
+-                .getServerUrl().startsWith("https://"))) {
++            || newConnectionWizardState.getServerUrl().length() == 0) {
+             return false;
+         }
+ 
+@@ -76,24 +76,15 @@
+         if (newConnectionWizardState.getPassword() == null || newConnectionWizardState.getPassword().length() == 0) {
+             return false;
+         }
+-
++        
+         return super.canFinish();
+     }
+-
++    
+     @Override
+     public boolean performFinish()
+     {
+         WizardPage currentPage = (WizardPage) getContainer().getCurrentPage();
+ 
+-        IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+-
+-        final IProject project = workspaceRoot.getProject(newConnectionWizardState.getConnectionName());
+-        if (project.exists()) {
+-            currentPage.setErrorMessage(String.format("Connection '%s' already exist. Please choose another name.",
+-                newConnectionWizardState.getConnectionName()));
+-            return false;
+-        }
+-
+         try {
+             getContainer().run(true, false, new IRunnableWithProgress()
+             {
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewPageWizard.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewPageWizard.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewPageWizard.java	(working copy)
+@@ -135,4 +135,8 @@
+     {
+         // Do nothing.
+     }
++    
++    public DataManager getDataManager(){
++        return dataManager;
++    }
+ }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/PageSettingsPage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/PageSettingsPage.java	(revision 11574)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/PageSettingsPage.java	(working copy)
+@@ -116,13 +116,32 @@
+     @Override
+     public boolean isPageComplete()
+     {
+-        if (spaceText.getText() == null || spaceText.getText().length() == 0) {
+-            setErrorMessage("Space must be specified");
++        String spaceTextString = spaceText.getText().trim();
++        if (spaceTextString.length() == 0) {
++            setErrorMessage("Space must be specified.");
++            return false;
++        }
++        
++        if (spaceTextString.contains(":") || spaceTextString.contains("?")){
++            setErrorMessage("Invalid characters in space name.");
+             return false;
+         }
+ 
+-        if (nameText.getText() == null || nameText.getText().length() == 0) {
+-            setErrorMessage("Name must be specified");
++        String nameTextString = nameText.getText().trim();
++        if (nameText.getText().length() == 0) {
++            setErrorMessage("Name must be specified.");
++            return false;
++        }
++        
++        if (nameTextString.contains(":") || nameTextString.contains("?") || nameTextString.contains(".")){
++            setErrorMessage("Invalid characters in page name.");
++            return false;
++        }
++        
++        String pageId = spaceTextString + "." + nameTextString;
++        boolean exists = ((NewPageWizard)getWizard()).getDataManager().exists(pageId);
++        if (exists){
++            setErrorMessage("That page already exists.");
+             return false;
+         }
+ 

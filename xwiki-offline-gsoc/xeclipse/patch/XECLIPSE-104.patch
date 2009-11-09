@@ -1,0 +1,199 @@
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java	(revision 12005)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java	(working copy)
+@@ -21,14 +21,17 @@
+ package org.xwiki.eclipse.ui.editors;
+ 
+ import org.eclipse.core.runtime.CoreException;
++import org.eclipse.core.runtime.IProgressMonitor;
+ import org.eclipse.core.runtime.IStatus;
+ import org.eclipse.core.runtime.Status;
++import org.eclipse.core.runtime.jobs.Job;
+ import org.eclipse.jface.action.Action;
+ import org.eclipse.jface.action.ActionContributionItem;
+ import org.eclipse.jface.action.IContributionItem;
+ import org.eclipse.jface.dialogs.IMessageProvider;
+ import org.eclipse.jface.layout.GridDataFactory;
+ import org.eclipse.jface.layout.GridLayoutFactory;
++import org.eclipse.jface.text.IDocument;
+ import org.eclipse.jface.text.source.ISourceViewer;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.graphics.Color;
+@@ -53,6 +56,7 @@
+ import org.xwiki.eclipse.ui.UIConstants;
+ import org.xwiki.eclipse.ui.UIPlugin;
+ import org.xwiki.eclipse.ui.dialogs.PageConflictDialog;
++import org.xwiki.eclipse.ui.editors.PageEditorInput;
+ import org.xwiki.eclipse.ui.utils.UIUtils;
+ import org.xwiki.xmlrpc.model.XWikiExtendedId;
+ import org.xwiki.xmlrpc.model.XWikiPage;
+@@ -129,7 +133,7 @@
+ 
+         updateInfo();
+     }
+-
++    
+     @Override
+     protected void doSetInput(IEditorInput input) throws CoreException
+     {
+@@ -137,23 +141,34 @@
+             throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, "Invalid input for editor"));
+         }
+ 
+-        PageEditorInput pageEditorInput = (PageEditorInput) input;
++        PageEditorInput currentPageEditorInput = (PageEditorInput) getEditorInput();
++        PageEditorInput newPageEditorInput = (PageEditorInput) input;
+ 
+         ISourceViewer sourceViewer = getSourceViewer();
+         if (sourceViewer != null) {
++            // Remember caret position and selection in the text.
+             int caretOffset = sourceViewer.getTextWidget().getCaretOffset();
+             int topPixel = sourceViewer.getTextWidget().getTopPixel();
+-            super.doSetInput(pageEditorInput);
++            rememberSelection();
++            
++            // Replace the XWikiEclipsePage associated to our PageEditorInput instead of replacing the input itself.
++            currentPageEditorInput.setPage(newPageEditorInput.getPage(), newPageEditorInput.isReadOnly());
++            
++            IDocument currentDocument = getDocumentProvider().getDocument(currentPageEditorInput);
++            String newContent = newPageEditorInput.getPage().getData().getContent();
++            
++            // Display the new content in the current document.
++            currentDocument.set(newContent);
++            
++            // Restore caret position and selection in the text
++            restoreSelection();
+             sourceViewer.getTextWidget().setCaretOffset(caretOffset);
+             sourceViewer.getTextWidget().setTopPixel(topPixel);
+-
+-            if (!conflictDialogDisplayed) {
+-                handleConflict();
+-            }
+         } else {
+-            super.doSetInput(pageEditorInput);
++            // Editor has just been created.
++            super.doSetInput(newPageEditorInput);
+ 
+-            if (pageEditorInput.getPage().getDataManager().isInConflict(pageEditorInput.getPage().getData().getId())) {
++            if (newPageEditorInput.getPage().getDataManager().isInConflict(newPageEditorInput.getPage().getData().getId())) {
+                 UIUtils
+                     .showMessageDialog(
+                         getSite().getShell(),
+@@ -165,6 +180,34 @@
+         }
+ 
+         updateInfo();
++        
++        if (sourceViewer != null && !conflictDialogDisplayed) {
++            /*
++             * Check for and handle conflicts related to this page.
++             */
++            Job handleConflictJob = new Job("Handle Conflict Job"){
++                /*
++                 * This needs to be run after the doSetInput() returns or the editor
++                 * will not be dirty and the user will not be able to save changes.
++                 */
++                protected IStatus run(IProgressMonitor monitor) {
++                    while(isDirty()){
++                        // wait for setInput() to finish properly.
++                        try {
++                            Thread.sleep(100);
++                        } catch (InterruptedException e) {}
++                    }
++                    
++                    Display.getDefault().asyncExec(new Runnable(){
++                        public void run(){
++                            handleConflict();
++                        }
++                    });
++                    return Status.OK_STATUS;
++                }
++            };
++            handleConflictJob.schedule();
++        }
+     }
+ 
+     private void updateInfo()
+@@ -235,7 +278,7 @@
+         XWikiEclipsePage currentPage = input.getPage();
+         DataManager dataManager = currentPage.getDataManager();
+ 
+-        if (dataManager.isInConflict(currentPage.getData().getId())) {
++        if (dataManager.isInConflict(currentPage.getData().getId())) {            
+             try {
+                 XWikiEclipsePage conflictingPage = dataManager.getConflictingPage(currentPage.getData().getId());
+ 
+@@ -255,22 +298,12 @@
+                         newPage.setContent(currentPage.getData().getContent());
+                         dataManager.clearConflictingStatus(newPage.getId());
+                         setInput(new PageEditorInput(new XWikiEclipsePage(dataManager, newPage), input.isReadOnly()));
+-
+-                        /* Force the editor to be dirty */
+-                        getDocumentProvider().getDocument(getEditorInput()).set(
+-                            getDocumentProvider().getDocument(getEditorInput()).get());
+-
+-                        conflictDialogDisplayed = false;
++                        
+                         break;
+                     case PageConflictDialog.ID_USE_REMOTE:
+                         dataManager.clearConflictingStatus(conflictingPage.getData().getId());
+                         setInput(new PageEditorInput(conflictingPage, input.isReadOnly()));
+ 
+-                        /* Force the editor to be dirty */
+-                        getDocumentProvider().getDocument(getEditorInput()).set(
+-                            getDocumentProvider().getDocument(getEditorInput()).get());
+-
+-                        conflictDialogDisplayed = false;
+                         break;
+                     case PageConflictDialog.ID_MERGE:
+                         newPage = new XWikiPage(conflictingPage.getData().toRawMap());
+@@ -279,15 +312,13 @@
+                         dataManager.clearConflictingStatus(newPage.getId());
+                         setInput(new PageEditorInput(new XWikiEclipsePage(dataManager, newPage), input.isReadOnly()));
+ 
+-                        /* Force the editor to be dirty */
+-                        getDocumentProvider().getDocument(getEditorInput()).set(
+-                            getDocumentProvider().getDocument(getEditorInput()).get());
+-
+-                        conflictDialogDisplayed = false;
+                         break;
+                     default:
+-                        break;
++                        return;
+                 }
++                
++                conflictDialogDisplayed = false;
++                
+             } catch (XWikiEclipseException e) {
+                 CoreLog.logError("Error while handling conflict", e);
+             }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditorInput.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditorInput.java	(revision 12005)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditorInput.java	(working copy)
+@@ -35,9 +35,7 @@
+ 
+     public PageEditorInput(XWikiEclipsePage page, boolean readOnly)
+     {
+-        Assert.isNotNull(page);
+-        this.page = page;
+-        this.readOnly = readOnly;
++        setPage(page, readOnly);
+     }
+ 
+     public boolean isReadOnly()
+@@ -99,6 +97,13 @@
+     {
+         return page;
+     }
++    
++    public void setPage(XWikiEclipsePage page, boolean readOnly)
++    {
++        Assert.isNotNull(page);
++        this.page = page;
++        this.readOnly = readOnly;
++    }
+ 
+     @Override
+     public int hashCode()

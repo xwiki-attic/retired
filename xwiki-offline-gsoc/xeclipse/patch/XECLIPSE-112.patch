@@ -1,0 +1,1034 @@
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/CorePlugin.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/CorePlugin.java	(revision 12422)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/CorePlugin.java	(working copy)
+@@ -40,6 +40,11 @@
+      */
+     public CorePlugin()
+     {
++        /* 
++         * Load the XWootManager class so that the singleton might be created and
++         * registered as a CoreEventListener.
++         */
++        XWootManager.getDefault();
+     }
+ 
+     /*
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java	(revision 12422)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java	(working copy)
+@@ -113,6 +113,10 @@
+     public static final QualifiedName USERNAME = new QualifiedName("xwiki.eclipse", "username"); //$NON-NLS-1$ //$NON-NLS-2$
+ 
+     public static final QualifiedName ENDPOINT = new QualifiedName("xwiki.eclipse", "endpoint"); //$NON-NLS-1$ //$NON-NLS-2$
++    
++    public static final QualifiedName XWOOT_ENDPOINT = new QualifiedName("xwiki.eclipse", "xwoot_endpoint"); //$NON-NLS-1$ //$NON-NLS-2$
++    
++    public static final QualifiedName XWOOT_AUTOSYNCH_ENABLED = new QualifiedName("xwiki.eclipse", "xwoot_autosynch_enabled"); //$NON-NLS-1$ //$NON-NLS-2$
+ 
+     /**
+      * Constructor.
+@@ -175,7 +179,31 @@
+     {
+         project.setPersistentProperty(ENDPOINT, endpoint);
+     }
++    
++    public String getXwootEndpoint() throws CoreException
++    {
++        return project.getPersistentProperty(XWOOT_ENDPOINT);
++    }
++    
++    public void setXwootEndpoint(final String xwootEndpoint) throws CoreException
++    {
++        project.setPersistentProperty(XWOOT_ENDPOINT, xwootEndpoint);
++    }
+ 
++    public boolean isXwootAutosynchEnabled() throws CoreException
++    {
++        String value = project.getPersistentProperty(XWOOT_AUTOSYNCH_ENABLED);
++        if (value != null && value.equals("true"))
++            return true;
++        
++        return false;
++    }
++    
++    public void setXwootAutosynchEnabled(boolean enabled) throws CoreException
++    {
++        project.setPersistentProperty(XWOOT_AUTOSYNCH_ENABLED, enabled ? "true" : null);
++    }
++    
+     public String getUserName() throws CoreException
+     {
+         return project.getPersistentProperty(USERNAME);
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/XWootManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/XWootManager.java	(revision 0)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/XWootManager.java	(revision 0)
+@@ -0,0 +1,107 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.core;
++
++import java.net.HttpURLConnection;
++import java.net.URL;
++
++import org.eclipse.core.runtime.CoreException;
++import org.eclipse.core.runtime.IProgressMonitor;
++import org.eclipse.core.runtime.IStatus;
++import org.eclipse.core.runtime.Status;
++import org.eclipse.core.runtime.jobs.Job;
++import org.xwiki.eclipse.core.model.ModelObject;
++import org.xwiki.eclipse.core.notifications.CoreEvent;
++import org.xwiki.eclipse.core.notifications.ICoreEventListener;
++import org.xwiki.eclipse.core.notifications.NotificationManager;
++
++public class XWootManager implements ICoreEventListener
++{
++    public final String SYNCHRONIZE_COMMAND = "/Synchronize?action=synchronize";
++
++    private static XWootManager sharedInstance;
++
++    public static synchronized XWootManager getDefault()
++    {
++        if (sharedInstance == null)
++            sharedInstance = new XWootManager();
++
++        return sharedInstance;
++    }
++
++    private XWootManager()
++    {
++        NotificationManager.getDefault().addListener(
++            this,
++            new CoreEvent.Type[] {CoreEvent.Type.OBJECT_REMOVED, CoreEvent.Type.OBJECT_STORED,
++            CoreEvent.Type.PAGE_RENAMED, CoreEvent.Type.PAGE_REMOVED, CoreEvent.Type.PAGE_STORED,
++            CoreEvent.Type.SPACE_REMOVED});
++    }
++
++    public void synchronize(String xwootUrl)
++    {
++        if (xwootUrl == null)
++            return;
++
++        HttpURLConnection connection = null;
++
++        try {
++            URL synchronizeUrl = new URL(xwootUrl + SYNCHRONIZE_COMMAND);
++            connection = (HttpURLConnection) synchronizeUrl.openConnection();
++            connection.setRequestMethod("GET");
++            int response = connection.getResponseCode();
++            if (response != HttpURLConnection.HTTP_OK) {
++                throw new Exception("HTTP Response code: " + response);
++            }
++
++        } catch (Exception e) {
++            CoreLog.logError("Error while synchronizing with XWoot: " + e.getMessage());
++        } finally {
++            if (connection != null)
++                connection.disconnect();
++        }
++    }
++
++    public void handleCoreEvent(CoreEvent event)
++    {
++        ModelObject object = ((ModelObject) event.getData());
++        final DataManager dataManager = object.getDataManager();
++
++        if (dataManager.isConnected()) {
++            Job synchronizeJob = new Job("XWoot Synchronize job")
++            {
++                protected IStatus run(IProgressMonitor monitor)
++                {
++                    try {
++                        if (dataManager.isXwootAutosynchEnabled())
++                            synchronize(dataManager.getXwootEndpoint());
++                    } catch (CoreException e) {
++                        CoreLog.logError("Failed to synchronize with XWoot: " + e.getMessage());
++                    }
++                    return Status.OK_STATUS;
++                }
++
++            };
++            synchronizeJob.setPriority(Job.SHORT);
++            synchronizeJob.schedule();
++        }
++    }
++}
+Index: plugins/org.xwiki.eclipse.ui/plugin.xml
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/plugin.xml	(revision 12422)
++++ plugins/org.xwiki.eclipse.ui/plugin.xml	(working copy)
+@@ -224,6 +224,12 @@
+         id="org.xwiki.eclipse.ui.editors.Object"
+         name="Object Editor">
+   </editor>
++  <editor
++        class="org.xwiki.eclipse.ui.editors.XWootEditor"
++        icon="icons/xwiki.png"
++        id="org.xwiki.eclipse.ui.editors.XWoot"
++        name="XWoot Manager">
++  </editor>
+ 	</extension>
+ 	<extension point="org.eclipse.ui.newWizards">
+ 		<category id="org.xwiki.eclipse" name="XWiki Eclipse">
+@@ -234,6 +240,13 @@
+ 	<extension point="org.eclipse.ui.propertyPages">
+ 		<page class="org.xwiki.eclipse.ui.properties.DataManagerPropertiesPage" icon="icons/xwiki.png" id="org.xwiki.eclipse.ui.properties.DataManager" name="Data Manager" objectClass="org.xwiki.eclipse.core.DataManager">
+       </page>
++      <page
++        class="org.xwiki.eclipse.ui.properties.P2PPropertiesPage"
++        icon="icons/xwiki.png"
++        id="org.xwiki.eclipse.ui.properties.P2P"
++        name="P2P"
++        objectClass="org.xwiki.eclipse.core.DataManager">
++      </page>
+ 		<page class="org.xwiki.eclipse.ui.properties.XWikiEclipseSpaceSummaryPropertiesPage" icon="icons/xwiki.png" id="org.xwiki.eclipse.ui.properties.XWikiEclipseSpaceSummary" name="Space" objectClass="org.xwiki.eclipse.core.model.XWikiEclipseSpaceSummary">
+       </page>
+ 		<page class="org.xwiki.eclipse.ui.properties.XWikiEclipsePageSummaryPropertiesPage" icon="icons/xwiki.png" id="org.xwiki.eclipse.ui.properties.XWikiEclipsePageSummary" name="Page" objectClass="org.xwiki.eclipse.core.model.XWikiEclipsePageSummary">
+@@ -289,6 +302,16 @@
+         id="org.xwiki.eclipse.ui.commands.GrabSpace"
+         name="Grab space">
+   </command>
++  <command
++        categoryId="org.xwiki.eclipse"
++        id="org.xwiki.eclipse.ui.commands.EnableXWootAutosynch"
++        name="Enable auto-synch">
++  </command>
++  <command
++        categoryId="org.xwiki.eclipse"
++        id="org.xwiki.eclipse.ui.commands.ManageXWoot"
++        name="Manage">
++  </command>
+ 	</extension>
+ 	<extension point="org.eclipse.ui.handlers">
+ 		<handler class="org.xwiki.eclipse.ui.handlers.DataManagerConnectHandler" commandId="org.xwiki.eclipse.ui.commands.DataManagerConnect">
+@@ -374,6 +397,25 @@
+         </iterate>
+      </activeWhen>
+   </handler>
++  <handler
++        class="org.xwiki.eclipse.ui.handlers.EnableXWootAutosynchHandler"
++        commandId="org.xwiki.eclipse.ui.commands.EnableXWootAutosynch">
++  </handler>
++  <handler
++        class="org.xwiki.eclipse.ui.handlers.ManageXWootHandler"
++        commandId="org.xwiki.eclipse.ui.commands.ManageXWoot">
++     <enabledWhen>
++        <and>
++           <iterate>
++              <test
++                    forcePluginActivation="true"
++                    property="org.xwiki.eclipse.core.DataManager.isConnected"
++                    value="true">
++              </test>
++           </iterate>
++        </and>
++     </enabledWhen>
++  </handler>
+ 	</extension>
+  <extension
+        point="org.eclipse.ui.ide.projectNatureImages">
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/UIConstants.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/UIConstants.java	(revision 12422)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/UIConstants.java	(working copy)
+@@ -61,5 +61,9 @@
+     public static final String RENAME_PAGE_COMMAND = "org.xwiki.eclipse.ui.commands.RenamePage";
+ 
+     public static final String GRAB_SPACE_COMMAND = "org.xwiki.eclipse.ui.commands.GrabSpace";
++    
++    public static final String ENABLE_XWOOT_AUTOSYNCH_COMMAND = "org.xwiki.eclipse.ui.commands.EnableXWootAutosynch";
++    
++    public static final String MANAGE_XWOOT_COMMAND = "org.xwiki.eclipse.ui.commands.ManageXWoot";
+ 
+ }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/actions/DataManagerActionProvider.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/actions/DataManagerActionProvider.java	(revision 12422)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/actions/DataManagerActionProvider.java	(working copy)
+@@ -20,15 +20,23 @@
+  */
+ package org.xwiki.eclipse.ui.actions;
+ 
++import java.util.Set;
++
++import org.eclipse.core.runtime.CoreException;
+ import org.eclipse.jface.action.IMenuManager;
++import org.eclipse.jface.action.MenuManager;
+ import org.eclipse.jface.action.Separator;
++import org.eclipse.jface.viewers.ISelectionProvider;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.ui.PlatformUI;
+ import org.eclipse.ui.menus.CommandContributionItem;
+ import org.eclipse.ui.navigator.CommonActionProvider;
+ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
+ import org.eclipse.ui.navigator.ICommonMenuConstants;
++import org.xwiki.eclipse.core.CoreLog;
++import org.xwiki.eclipse.core.DataManager;
+ import org.xwiki.eclipse.ui.UIConstants;
++import org.xwiki.eclipse.ui.utils.UIUtils;
+ 
+ public class DataManagerActionProvider extends CommonActionProvider
+ {
+@@ -37,9 +45,17 @@
+     private CommandContributionItem disconnect;
+ 
+     private CommandContributionItem newPage;
++    
++    private CommandContributionItem enableXWoot;
++    
++    private CommandContributionItem manageXWoot;
++    
++    private ISelectionProvider selectionProvider;
+ 
+     public void init(final ICommonActionExtensionSite aSite)
+     {
++        selectionProvider = aSite.getViewSite().getSelectionProvider();
++        
+         /* This is for Eclipse 3.4 */
+         // CommandContributionItemParameter contributionItemParameter =
+         // new CommandContributionItemParameter(PlatformUI.getWorkbench(),
+@@ -73,6 +89,14 @@
+             new CommandContributionItem(PlatformUI.getWorkbench(), null, UIConstants.NEW_PAGE_COMMAND, null, null,
+                 null, null, null, null, null, SWT.NONE);
+ 
++        enableXWoot = 
++            new CommandContributionItem(PlatformUI.getWorkbench(), null, UIConstants.ENABLE_XWOOT_AUTOSYNCH_COMMAND, null, null,
++                null, null, null , null, null, SWT.NONE);
++        
++        manageXWoot = 
++            new CommandContributionItem(PlatformUI.getWorkbench(), null, UIConstants.MANAGE_XWOOT_COMMAND, null, null,
++                null, null, null, null, null, SWT.NONE);
++        
+     }
+ 
+     public void fillContextMenu(IMenuManager menu)
+@@ -81,6 +105,38 @@
+         menu.appendToGroup(ICommonMenuConstants.GROUP_ADDITIONS, connect);
+         menu.appendToGroup(ICommonMenuConstants.GROUP_ADDITIONS, disconnect);
+         menu.appendToGroup(ICommonMenuConstants.GROUP_ADDITIONS, new Separator());
++        menu.appendToGroup(ICommonMenuConstants.GROUP_ADDITIONS, getXWootMenu());
++        menu.appendToGroup(ICommonMenuConstants.GROUP_ADDITIONS, new Separator());
+         menu.appendToGroup(ICommonMenuConstants.GROUP_ADDITIONS, newPage);
+     }
++    
++    private IMenuManager getXWootMenu()
++    {
++        MenuManager menuManager = new MenuManager("P2P");
++
++        Set selectedObjects = UIUtils.getSelectedObjectsFromSelection(selectionProvider.getSelection());
++        if (selectedObjects.size() == 1) {
++            Object selectedObject = selectedObjects.iterator().next();
++
++            if (selectedObject instanceof DataManager) {
++                
++                boolean enabled = false;
++                try{
++                    enabled = ((DataManager)selectedObject).isXwootAutosynchEnabled();
++                }catch(CoreException e){
++                    CoreLog.logError("Unable to get xwoot auto synch enabled value: " + e.getMessage());
++                }
++                
++                // for lack of a better way of changing the CommandContributionItem's label.
++                enableXWoot = 
++                    new CommandContributionItem(PlatformUI.getWorkbench(), null, UIConstants.ENABLE_XWOOT_AUTOSYNCH_COMMAND, null, null,
++                        null, null, enabled ? "Disable auto-synch" : null , null, null, SWT.NONE);
++                
++                menuManager.add(enableXWoot);
++                menuManager.add(manageXWoot);
++            }
++        }
++
++        return menuManager;
++    }
+ }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/XWootEditor.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/XWootEditor.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/XWootEditor.java	(revision 0)
+@@ -0,0 +1,107 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.ui.editors;
++
++import org.eclipse.core.runtime.CoreException;
++import org.eclipse.core.runtime.IProgressMonitor;
++import org.eclipse.swt.SWT;
++import org.eclipse.swt.browser.Browser;
++import org.eclipse.swt.widgets.Composite;
++import org.eclipse.ui.IEditorInput;
++import org.eclipse.ui.IEditorSite;
++import org.eclipse.ui.IWorkbenchPage;
++import org.eclipse.ui.PartInitException;
++import org.eclipse.ui.part.EditorPart;
++import org.xwiki.eclipse.core.CoreLog;
++
++public class XWootEditor extends EditorPart
++{
++    public static final String ID = "org.xwiki.eclipse.ui.editors.XWoot";
++
++    private Browser browser;
++
++    @Override
++    public void doSave(IProgressMonitor monitor)
++    {
++    }
++
++    @Override
++    public void doSaveAs()
++    {
++    }
++
++    @Override
++    public void init(IEditorSite site, IEditorInput input) throws PartInitException
++    {
++        setSite(site);
++        setInput(input);
++        setPartName(input.getName());
++    }
++
++    @Override
++    protected void setInput(IEditorInput input)
++    {
++        if (!(input instanceof XWootEditorInput)) {
++            throw new IllegalArgumentException("Invalid input for editor");
++        }
++
++        super.setInput(input);
++    }
++
++    @Override
++    public boolean isDirty()
++    {
++        return false;
++    }
++
++    @Override
++    public boolean isSaveAsAllowed()
++    {
++        return false;
++    }
++
++    @Override
++    public void createPartControl(Composite parent)
++    {
++        browser = new Browser(parent, SWT.NONE);
++        String xwootEndpoint = null;
++        try {
++            xwootEndpoint =
++                ((XWootEditorInput) this.getEditorInput()).getDataManager().getXwootEndpoint();
++        } catch (CoreException e) {
++            CoreLog.logError("Unable to get xwoot endpoint.");
++        }
++
++        browser.setUrl(xwootEndpoint);
++    }
++
++    @Override
++    public void setFocus()
++    {
++        browser.getDisplay().asyncExec(new Runnable(){
++            public void run(){
++                browser.setFocus();
++            }
++        });
++        
++    }
++
++}
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/XWootEditorInput.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/XWootEditorInput.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/XWootEditorInput.java	(revision 0)
+@@ -0,0 +1,95 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.ui.editors;
++
++import org.eclipse.jface.resource.ImageDescriptor;
++import org.eclipse.ui.IEditorInput;
++import org.eclipse.ui.IPersistableElement;
++import org.xwiki.eclipse.core.DataManager;
++
++public class XWootEditorInput implements IEditorInput
++{
++    private DataManager dataManager;
++
++    public XWootEditorInput(DataManager dataManager)
++    {
++        this.dataManager = dataManager;
++    }
++
++    public boolean exists()
++    {
++        return false;
++    }
++
++    public ImageDescriptor getImageDescriptor()
++    {
++        return null;
++    }
++
++    public String getName()
++    {
++        return "XWoot: " + dataManager.getName();
++    }
++
++    public IPersistableElement getPersistable()
++    {
++        return null;
++    }
++
++    public String getToolTipText()
++    {
++        return getName();
++    }
++
++    public Object getAdapter(Class adapter)
++    {
++        return null;
++    }
++
++    public DataManager getDataManager()
++    {
++        return dataManager;
++    }
++
++    @Override
++    public int hashCode()
++    {
++        return dataManager.hashCode();
++    }
++
++    @Override
++    public boolean equals(Object obj)
++    {
++        if (this == obj)
++            return true;
++        if (obj == null)
++            return false;
++        if (getClass() != obj.getClass())
++            return false;
++        XWootEditorInput other = (XWootEditorInput) obj;
++        if (dataManager == null) {
++            if (other.dataManager != null)
++                return false;
++        } else if (!dataManager.getXWikiEclipseId().equals(other.dataManager.getXWikiEclipseId()))
++            return false;
++        return true;
++    }
++}
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/EnableXWootAutosynchHandler.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/EnableXWootAutosynchHandler.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/EnableXWootAutosynchHandler.java	(revision 0)
+@@ -0,0 +1,58 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.ui.handlers;
++
++import java.util.Set;
++
++import org.eclipse.core.commands.AbstractHandler;
++import org.eclipse.core.commands.ExecutionEvent;
++import org.eclipse.core.commands.ExecutionException;
++import org.eclipse.core.runtime.CoreException;
++import org.eclipse.jface.viewers.ISelection;
++import org.eclipse.ui.handlers.HandlerUtil;
++import org.xwiki.eclipse.core.CoreLog;
++import org.xwiki.eclipse.core.DataManager;
++import org.xwiki.eclipse.ui.utils.UIUtils;
++
++public class EnableXWootAutosynchHandler extends AbstractHandler
++{
++
++    public Object execute(ExecutionEvent event) throws ExecutionException
++    {
++        ISelection selection = HandlerUtil.getCurrentSelection(event);
++
++        Set selectedObjects = UIUtils.getSelectedObjectsFromSelection(selection);
++        for (Object selectedObject : selectedObjects) {
++            if (selectedObject instanceof DataManager) {
++                final DataManager dataManager = (DataManager) selectedObject;
++
++                try {
++                    dataManager.setXwootAutosynchEnabled(!dataManager.isXwootAutosynchEnabled());
++                } catch (CoreException e) {
++                    CoreLog.logError("Unable to save xwoot autosynch option: " + e.getMessage());
++                }
++            }
++        }
++
++        return null;
++    }
++
++}
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/ManageXWootHandler.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/ManageXWootHandler.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/ManageXWootHandler.java	(revision 0)
+@@ -0,0 +1,83 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.ui.handlers;
++
++import java.util.Set;
++
++import org.eclipse.core.commands.AbstractHandler;
++import org.eclipse.core.commands.ExecutionEvent;
++import org.eclipse.core.commands.ExecutionException;
++import org.eclipse.core.runtime.CoreException;
++import org.eclipse.jface.viewers.ISelection;
++import org.eclipse.swt.widgets.Display;
++import org.eclipse.ui.PartInitException;
++import org.eclipse.ui.PlatformUI;
++import org.eclipse.ui.handlers.HandlerUtil;
++import org.xwiki.eclipse.core.CoreLog;
++import org.xwiki.eclipse.core.DataManager;
++import org.xwiki.eclipse.ui.editors.XWootEditor;
++import org.xwiki.eclipse.ui.editors.XWootEditorInput;
++import org.xwiki.eclipse.ui.utils.UIUtils;
++
++public class ManageXWootHandler extends AbstractHandler
++{
++
++    public Object execute(ExecutionEvent event) throws ExecutionException
++    {
++        ISelection selection = HandlerUtil.getCurrentSelection(event);
++
++        Set selectedObjects = UIUtils.getSelectedObjectsFromSelection(selection);
++        for (Object selectedObject : selectedObjects) {
++            if (selectedObject instanceof DataManager) {
++                final DataManager dataManager = (DataManager) selectedObject;
++
++                String xwootEndpoint = null;
++                try {
++                    xwootEndpoint = dataManager.getXwootEndpoint();
++                } catch (CoreException e) {
++                    CoreLog.logError("Unable to get xwoot endpoint.");
++                }
++
++                if (xwootEndpoint == null) {
++                    UIUtils
++                        .showMessageDialog(
++                            Display.getDefault().getActiveShell(),
++                            "XWoot endpoint not defined",
++                            "Please go to the P2P section in the Properties page for this connection and specify the XWoot endpoint associated with the XWiki.");
++                    return null;
++                }
++
++                try {
++                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
++                        .openEditor(new XWootEditorInput(dataManager), XWootEditor.ID, true);
++                } catch (PartInitException e) {
++                    UIUtils.showMessageDialog(Display.getDefault().getActiveShell(),
++                        "Error opening editor", "There was an error while opening the editor: "
++                            + e.getMessage());
++                }
++
++            }
++        }
++
++        return null;
++    }
++
++}
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/properties/P2PPropertiesPage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/properties/P2PPropertiesPage.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/properties/P2PPropertiesPage.java	(revision 0)
+@@ -0,0 +1,110 @@
++package org.xwiki.eclipse.ui.properties;
++
++import java.net.MalformedURLException;
++import java.net.URL;
++
++import org.eclipse.core.runtime.CoreException;
++import org.eclipse.core.runtime.SafeRunner;
++import org.eclipse.jface.layout.GridDataFactory;
++import org.eclipse.jface.layout.GridLayoutFactory;
++import org.eclipse.swt.SWT;
++import org.eclipse.swt.widgets.Button;
++import org.eclipse.swt.widgets.Composite;
++import org.eclipse.swt.widgets.Control;
++import org.eclipse.swt.widgets.Display;
++import org.eclipse.swt.widgets.Label;
++import org.eclipse.swt.widgets.Text;
++import org.eclipse.ui.dialogs.PropertyPage;
++import org.xwiki.eclipse.core.DataManager;
++import org.xwiki.eclipse.ui.utils.UIUtils;
++import org.xwiki.eclipse.ui.utils.XWikiEclipseSafeRunnable;
++
++public class P2PPropertiesPage extends PropertyPage
++{
++    private DataManager dataManager;
++
++    private Text xwootEndpointText;
++    
++    private Button autoSynchronizeCheck;
++    
++    public final String defaultMessage = "No xwoot endpoint defined.";
++    
++    @Override
++    protected Control createContents(Composite parent)
++    {
++        final Composite composite = new Composite(parent, SWT.NONE);
++        GridLayoutFactory.fillDefaults().numColumns(2).applyTo(composite);
++
++        SafeRunner.run(new XWikiEclipseSafeRunnable()
++        {
++            public void run() throws Exception
++            {
++                dataManager = (DataManager) getElement().getAdapter(DataManager.class);
++
++                Label label = new Label(composite, SWT.BORDER);
++                label.setText("XWoot Endpoint:");
++                xwootEndpointText = new Text(composite, SWT.BORDER);
++                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, false).applyTo(xwootEndpointText);
++                String endpoint = dataManager.getXwootEndpoint();
++                xwootEndpointText.setText(endpoint != null ? endpoint : defaultMessage);
++                xwootEndpointText.setToolTipText("Example: http://www.example.com:8080/xwootApp");
++
++                label = new Label(composite, SWT.None);
++                autoSynchronizeCheck = new Button(composite, SWT.CHECK);
++                autoSynchronizeCheck.setText("Auto synchronize");
++                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, false).applyTo(autoSynchronizeCheck);
++                autoSynchronizeCheck.setSelection(dataManager.isXwootAutosynchEnabled());
++                autoSynchronizeCheck.setToolTipText("Wether to synchronize your work with the P2P network automatically.");
++            }
++
++        });
++        return composite;
++    }
++    
++    @Override
++    public boolean performOk()
++    {
++        String enteredXwootEndpoint = xwootEndpointText.getText().trim();
++        
++        try{
++            if (enteredXwootEndpoint.equals("") || enteredXwootEndpoint.equals(defaultMessage)){
++                dataManager.setXwootEndpoint(null);
++            }
++            else{
++                // test if the url is valid
++                if (new URL(enteredXwootEndpoint).getHost().equals(""))
++                    throw new MalformedURLException("Invalid hostname.");
++                
++                dataManager.setXwootEndpoint(enteredXwootEndpoint);
++            }
++            
++            dataManager.setXwootAutosynchEnabled(autoSynchronizeCheck.getSelection());
++            
++        }catch(MalformedURLException me){
++            UIUtils.showMessageDialog(Display.getDefault().getActiveShell(), "Invalid URL",
++                "The entered XWoot endpoit is invalid:\n" +
++                " " + me.getMessage());
++            return false;
++        }catch(CoreException ce){
++            UIUtils.showMessageDialog(Display.getDefault().getActiveShell(), "Error",
++                "There was an error while saving a value:\n" + 
++                " " + ce.getMessage());
++        }
++
++        return true;
++    }
++    
++    protected void performDefaults()
++    {
++        SafeRunner.run(new XWikiEclipseSafeRunnable()
++        {
++            public void run() throws Exception
++            {
++                String xwootEndpoint = dataManager.getXwootEndpoint();
++                xwootEndpointText.setText(xwootEndpoint != null ? xwootEndpoint : defaultMessage);
++                autoSynchronizeCheck.setSelection(dataManager.isXwootAutosynchEnabled());
++            }
++        });
++    }
++
++}
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java	(revision 12422)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java	(working copy)
+@@ -53,6 +53,7 @@
+     public void addPages()
+     {
+         addPage(new ConnectionSettingsWizardPage("Connection settings"));
++        addPage(new XWootSettingsWizardPage("XWiki P2P settings"));
+     }
+ 
+     @Override
+@@ -140,6 +141,8 @@
+                         project.setPersistentProperty(DataManager.USERNAME, newConnectionWizardState.getUserName());
+                         project.setPersistentProperty(DataManager.PASSWORD, newConnectionWizardState.getPassword());
+                         project.setPersistentProperty(DataManager.AUTO_CONNECT, "true");
++                        project.setPersistentProperty(DataManager.XWOOT_ENDPOINT, !newConnectionWizardState.getXwootUrl().equals("") ? newConnectionWizardState.getXwootUrl() : null);
++                        project.setPersistentProperty(DataManager.XWOOT_AUTOSYNCH_ENABLED, newConnectionWizardState.isXwootAutosynch() ? "true" : null);
+ 
+                         IProjectDescription description = project.getDescription();
+                         description.setNatureIds(new String[] {XWikiEclipseNature.ID});
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizardState.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizardState.java	(revision 12422)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizardState.java	(working copy)
+@@ -29,6 +29,10 @@
+     private String userName;
+ 
+     private String password;
++    
++    private String xwootUrl;
++    
++    private boolean xwootAutosynch;
+ 
+     public String getServerUrl()
+     {
+@@ -69,4 +73,24 @@
+     {
+         this.connectionName = connectionName;
+     }
++    
++    public String getXwootUrl()
++    {
++        return xwootUrl;
++    }
++    
++    public void setXwootUrl(String xwootUrl)
++    {
++        this.xwootUrl = xwootUrl;
++    }
++
++    public boolean isXwootAutosynch()
++    {
++        return xwootAutosynch;
++    }
++
++    public void setXwootAutosynch(boolean xwootAutosynch)
++    {
++        this.xwootAutosynch = xwootAutosynch;
++    }
+ }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/XWootSettingsWizardPage.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/XWootSettingsWizardPage.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/XWootSettingsWizardPage.java	(revision 0)
+@@ -0,0 +1,127 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.ui.wizards;
++
++import java.net.MalformedURLException;
++import java.net.URL;
++
++import org.eclipse.jface.layout.GridDataFactory;
++import org.eclipse.jface.layout.GridLayoutFactory;
++import org.eclipse.jface.wizard.WizardPage;
++import org.eclipse.swt.SWT;
++import org.eclipse.swt.events.ModifyEvent;
++import org.eclipse.swt.events.ModifyListener;
++import org.eclipse.swt.events.SelectionEvent;
++import org.eclipse.swt.events.SelectionListener;
++import org.eclipse.swt.widgets.Composite;
++import org.eclipse.swt.widgets.Label;
++import org.eclipse.swt.widgets.Text;
++import org.eclipse.swt.widgets.Button;
++import org.xwiki.eclipse.ui.UIConstants;
++import org.xwiki.eclipse.ui.UIPlugin;
++import org.xwiki.eclipse.ui.wizards.NewConnectionWizard;
++import org.xwiki.eclipse.ui.wizards.NewConnectionWizardState;
++
++public class XWootSettingsWizardPage extends WizardPage
++{
++    private NewConnectionWizardState newConnectionWizardState;
++
++    private Text xwootEndpointText;
++
++    private Button xwootAutosynchEnabledButton;
++    
++    public XWootSettingsWizardPage(String pageName)
++    {
++        super(pageName);
++        setTitle("XWiki P2P settings (optional)");
++        setImageDescriptor(UIPlugin.getImageDescriptor(UIConstants.CONNECTION_SETTINGS_BANNER));
++    }
++
++    public void createControl(Composite parent)
++    {
++        newConnectionWizardState = ((NewConnectionWizard) getWizard()).getNewConnectionWizardState();
++
++        Composite composite = new Composite(parent, SWT.NONE);
++        GridLayoutFactory.fillDefaults().numColumns(2).margins(10, 10).applyTo(composite);
++
++        /* XWoot Url */
++        Label label = new Label(composite, SWT.NONE);
++        label.setText("XWoot URL:");
++
++        xwootEndpointText = new Text(composite, SWT.BORDER);
++        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, false).applyTo(xwootEndpointText);
++        xwootEndpointText.addModifyListener(new ModifyListener()
++        {
++            public void modifyText(ModifyEvent e)
++            {                
++                newConnectionWizardState.setXwootUrl(xwootEndpointText.getText());
++                getContainer().updateButtons();
++            }
++        });
++        newConnectionWizardState.setXwootUrl("");
++        xwootEndpointText.setToolTipText("Example: http://localhost:8080/xwootApp");
++        
++        /* layout spacer */
++        label = new Label(composite, SWT.NONE);
++
++        /* Autosynch */
++        xwootAutosynchEnabledButton = new Button(composite, SWT.CHECK);
++        xwootAutosynchEnabledButton.setText("Auto synchronize");
++        xwootAutosynchEnabledButton.setToolTipText("Wether to synchronize your work with the P2P network automatically.");
++
++        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, false).applyTo(xwootAutosynchEnabledButton);
++        xwootAutosynchEnabledButton.addSelectionListener(new SelectionListener()
++        {
++            public void widgetSelected(SelectionEvent e)
++            {
++                newConnectionWizardState.setXwootAutosynch(xwootAutosynchEnabledButton.getSelection());
++                getContainer().updateButtons();
++            }
++
++            public void widgetDefaultSelected(SelectionEvent e)
++            {
++                // empty method
++            }
++        });
++
++        setControl(composite);
++    }
++
++    @Override
++    public boolean isPageComplete()
++    {        
++        /* XWoot URL */
++        String xwootUrl = xwootEndpointText.getText().trim();
++        try{
++            if (xwootUrl.length() != 0 && new URL(xwootUrl).getHost().equals("")){
++                throw new MalformedURLException("Invalid hostname.");
++            }
++        }catch(MalformedURLException me){
++            setErrorMessage("The specified address is not a valid URL.");
++            return false;
++        }
++
++        /* Clear error messages if everything's fine. */
++        setErrorMessage(null);
++
++        return true;
++    }
++}

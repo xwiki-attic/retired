@@ -1,0 +1,226 @@
+Index: plugins/org.xwiki.eclipse.ui/plugin.xml
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/plugin.xml	(revision 11899)
++++ plugins/org.xwiki.eclipse.ui/plugin.xml	(working copy)
+@@ -228,7 +228,15 @@
+ 	<extension point="org.eclipse.ui.newWizards">
+ 		<category id="org.xwiki.eclipse" name="XWiki Eclipse">
+       </category>
+-		<wizard category="org.xwiki.eclipse" class="org.xwiki.eclipse.ui.wizards.NewConnectionWizard" icon="icons/xwiki.png" id="org.xwiki.eclipse.ui.wizards.NewConnection" name="New connection">
++		<wizard
++        category="org.xwiki.eclipse"
++        class="org.xwiki.eclipse.ui.wizards.NewConnectionWizard"
++        finalPerspective="org.xwiki.eclipse.ui.perspectives.XWikiPerspective"
++        hasPages="true"
++        icon="icons/xwiki.png"
++        id="org.xwiki.eclipse.ui.wizards.NewConnection"
++        name="New connection"
++        project="true">
+       </wizard>
+ 	</extension>
+ 	<extension point="org.eclipse.ui.propertyPages">
+@@ -426,4 +434,13 @@
+           id="org.xwiki.eclipse.ui.workingsets.XWikiEclipseElementFactory">
+     </factory>
+  </extension>
++ <extension
++       point="org.eclipse.ui.perspectives">
++    <perspective
++          class="org.xwiki.eclipse.ui.perspectives.XWikiPerspectiveFactory"
++          icon="icons/xwiki.png"
++          id="org.xwiki.eclipse.ui.perspectives.XWikiPerspective"
++          name="XWiki Eclipse">
++    </perspective>
++ </extension>
+ </plugin>
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/UIConstants.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/UIConstants.java	(revision 11899)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/UIConstants.java	(working copy)
+@@ -61,5 +61,7 @@
+     public static final String RENAME_PAGE_COMMAND = "org.xwiki.eclipse.ui.commands.RenamePage";
+ 
+     public static final String GRAB_SPACE_COMMAND = "org.xwiki.eclipse.ui.commands.GrabSpace";
++    
++    public static final String NAVIGATOR_VIEW_ID = "org.xwiki.eclipse.ui.views.Navigator";
+ 
+ }
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/perspectives/XWikiPerspectiveFactory.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/perspectives/XWikiPerspectiveFactory.java	(revision 0)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/perspectives/XWikiPerspectiveFactory.java	(revision 0)
+@@ -0,0 +1,97 @@
++/*
++ * See the NOTICE file distributed with this work for additional
++ * information regarding copyright ownership.
++ *
++ * This is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * This software is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this software; if not, write to the Free
++ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
++ *
++ */
++package org.xwiki.eclipse.ui.perspectives;
++
++import org.eclipse.ui.IFolderLayout;
++import org.eclipse.ui.IPageLayout;
++import org.eclipse.ui.IPerspectiveDescriptor;
++import org.eclipse.ui.IPerspectiveFactory;
++import org.eclipse.ui.PlatformUI;
++import org.xwiki.eclipse.ui.UIConstants;
++import org.xwiki.eclipse.ui.UIPlugin;
++import org.xwiki.eclipse.ui.views.PagePreview;
++import org.xwiki.eclipse.ui.wizards.NewConnectionWizard;
++
++/**
++ * Provides a new perspective designed for using XEclipse containing
++ * the XWiki Navigator, Outline and Page Preview views.
++ * 
++ * @author Eduard Moraru
++ */
++public class XWikiPerspectiveFactory implements IPerspectiveFactory
++{
++    /*
++     * The perspective's ID.
++     */
++    public final static String PERSPECTIVE_ID =
++        UIPlugin.PLUGIN_ID + ".perspectives.XWikiPerspective";
++
++    /*
++     * (non-Javadoc)
++     * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
++     */
++    public void createInitialLayout(IPageLayout layout)
++    {
++        defineActions(layout);
++        defineLayout(layout);
++    }
++
++    /*
++     * Defines perspective specific actions providing shortcuts for New Wizard, Show Views and
++     * Open Perspective operations.
++     */
++    private void defineActions(IPageLayout layout)
++    {
++        // Add "new wizards".
++        layout.addNewWizardShortcut(NewConnectionWizard.WIZARD_ID);
++
++        // Add "show views".
++        layout.addShowViewShortcut(UIConstants.NAVIGATOR_VIEW_ID);
++        layout.addShowViewShortcut(PagePreview.VIEW_ID);
++        layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
++        
++        // Add "open perspective". Looks nicer with something there. 
++        for(IPerspectiveDescriptor descriptor : PlatformUI.getWorkbench().getPerspectiveRegistry().getPerspectives()){
++            layout.addPerspectiveShortcut(descriptor.getId());
++        }
++    }
++
++    /*
++     * Specifies what views are included in this perspective and their layout.
++     */
++    private void defineLayout(IPageLayout layout)
++    {
++        // Editors are placed for free.
++        String editorArea = layout.getEditorArea();
++
++        // Place navigator and outline to left of editor area.
++        IFolderLayout left =
++            layout.createFolder("Left", IPageLayout.LEFT, (float) 0.25, editorArea);
++        left.addView(UIConstants.NAVIGATOR_VIEW_ID);
++        left.addView(IPageLayout.ID_OUTLINE);
++        
++        // Place page preview to bottom of editor area.
++        IFolderLayout bottom =
++            layout.createFolder("Bottom", IPageLayout.BOTTOM, (float) 0.6, editorArea);
++        bottom.addView(PagePreview.VIEW_ID);
++    }
++
++}
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/views/PagePreview.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/views/PagePreview.java	(revision 11899)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/views/PagePreview.java	(working copy)
+@@ -40,6 +40,11 @@
+ 
+ public class PagePreview extends ViewPart implements ISelectionListener, ICoreEventListener
+ {
++    /*
++     * The View's ID
++     */
++    public final static String VIEW_ID = "org.xwiki.eclipse.ui.views.PagePreview";
++    
+     private Composite mainComposite;
+ 
+     private Composite browserComposite;
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java	(revision 11899)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/wizards/NewConnectionWizard.java	(working copy)
+@@ -27,6 +27,8 @@
+ import org.eclipse.core.resources.IWorkspaceRoot;
+ import org.eclipse.core.resources.ResourcesPlugin;
+ import org.eclipse.core.runtime.CoreException;
++import org.eclipse.core.runtime.IConfigurationElement;
++import org.eclipse.core.runtime.IExecutableExtension;
+ import org.eclipse.core.runtime.IProgressMonitor;
+ import org.eclipse.jface.operation.IRunnableWithProgress;
+ import org.eclipse.jface.viewers.IStructuredSelection;
+@@ -34,12 +36,24 @@
+ import org.eclipse.jface.wizard.WizardPage;
+ import org.eclipse.ui.INewWizard;
+ import org.eclipse.ui.IWorkbench;
++import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
+ import org.xwiki.eclipse.core.DataManager;
+ import org.xwiki.eclipse.core.XWikiEclipseNature;
+ import org.xwiki.xmlrpc.XWikiXmlRpcClient;
+ 
+-public class NewConnectionWizard extends Wizard implements INewWizard
++public class NewConnectionWizard extends Wizard implements INewWizard, IExecutableExtension
+ {
++    /*
++     * The Wizard's ID
++     */
++    public final static String WIZARD_ID = "org.xwiki.eclipse.ui.wizards.NewConnection";
++    
++    /*
++     * The ConfigurationElement required to activate the XWiki Eclipse perspective after finishing
++     * creating the new connection.
++     */
++    private IConfigurationElement config;
++    
+     private NewConnectionWizardState newConnectionWizardState;
+ 
+     public NewConnectionWizard()
+@@ -155,6 +169,9 @@
+ 
+         }
+ 
++        // Ask the user to switch to XWiki Eclipse perspective.
++        BasicNewProjectResourceWizard.updatePerspective(config);
++        
+         return true;
+     }
+ 
+@@ -168,4 +185,11 @@
+         return newConnectionWizardState;
+     }
+ 
++    public void setInitializationData(IConfigurationElement config, String propertyName,
++        Object data) throws CoreException
++    {
++        // Store the ConfigurationElement to use later when calling updatePerspective().
++        this.config = config;
++    }
++
+ }

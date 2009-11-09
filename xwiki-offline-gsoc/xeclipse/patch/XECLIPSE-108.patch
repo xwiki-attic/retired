@@ -1,0 +1,45 @@
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/DeleteXWikiElementHandler.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/DeleteXWikiElementHandler.java	(revision 11523)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/handlers/DeleteXWikiElementHandler.java	(working copy)
+@@ -30,6 +30,7 @@
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.widgets.MessageBox;
+ import org.eclipse.ui.handlers.HandlerUtil;
++import org.xwiki.eclipse.core.DataManager;
+ import org.xwiki.eclipse.core.model.XWikiEclipseObjectSummary;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
+ import org.xwiki.eclipse.ui.utils.UIUtils;
+@@ -76,13 +77,31 @@
+                     {
+                         public void run() throws Exception
+                         {
+-
+                             objectSummary.getDataManager().removeObject(objectSummary.getData().getPageId(),
+                                 objectSummary.getData().getClassName(), objectSummary.getData().getId());
+                         }
+                     });
+                 }
+             }
++            
++            if (selectedObject instanceof DataManager) {
++                final DataManager dataManager = (DataManager) selectedObject;
++
++                MessageBox messageBox =
++                    new MessageBox(HandlerUtil.getActiveShell(event), SWT.YES | SWT.NO | SWT.ICON_QUESTION);
++                messageBox.setMessage(String.format("Do you really want to delete the connection '%s'?\n\nWarning: Any unsaved opperations will be lost.",
++                    dataManager.getName()));
++                int result = messageBox.open();
++                if (result == SWT.YES) {
++                    SafeRunner.run(new XWikiEclipseSafeRunnable()
++                    {
++                        public void run() throws Exception
++                        {
++                            dataManager.getProject().delete(true, null);
++                        }
++                    });
++                }
++            }
+ 
+         }
+ 

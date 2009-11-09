@@ -1,0 +1,174 @@
+Index: plugins/org.xwiki.eclipse.ui/META-INF/MANIFEST.MF
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/META-INF/MANIFEST.MF	(revision 11123)
++++ plugins/org.xwiki.eclipse.ui/META-INF/MANIFEST.MF	(working copy)
+@@ -5,19 +5,19 @@
+ Bundle-Version: 1.2.0.SNAPSHOT
+ Bundle-Activator: org.xwiki.eclipse.ui.UIPlugin
+ Bundle-Vendor: XWiki
+-Require-Bundle: org.eclipse.ui;bundle-version="3.4.0",
+- org.eclipse.core.runtime;bundle-version="3.4.0",
+- org.xwiki.eclipse.core;bundle-version="1.2.0",
++Require-Bundle: org.xwiki.eclipse.core;bundle-version="1.2.0",
+  org.xwiki.eclipse.xmlrpc;bundle-version="1.4.0",
+- org.eclipse.ui.navigator;bundle-version="3.3.100",
+- org.eclipse.ui.editors;bundle-version="3.4.0",
+- org.eclipse.jface.text;bundle-version="3.4.0",
+- org.eclipse.ui.forms;bundle-version="3.3.100",
+- org.eclipse.core.resources;bundle-version="3.4.0",
+- org.eclipse.compare;bundle-version="3.4.0",
+- org.eclipse.ui.views;bundle-version="3.3.0",
+- org.eclipse.core.expressions;bundle-version="3.4.0",
+- org.eclipse.ui.ide;bundle-version="3.4.0",
+- org.eclipse.ui.navigator.resources;bundle-version="3.3.100"
++ org.eclipse.ui.navigator,
++ org.eclipse.ui.editors,
++ org.eclipse.jface.text,
++ org.eclipse.ui.forms,
++ org.eclipse.core.resources,
++ org.eclipse.compare,
++ org.eclipse.ui.views,
++ org.eclipse.core.expressions,
++ org.eclipse.ui.ide,
++ org.eclipse.ui.navigator.resources,
++ org.eclipse.ui,
++ org.eclipse.core.runtime
+ Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ Bundle-ActivationPolicy: lazy
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/WorkingSetDeferredTreeContentManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/WorkingSetDeferredTreeContentManager.java	(revision 11123)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/WorkingSetDeferredTreeContentManager.java	(working copy)
+@@ -78,7 +78,9 @@
+ 
+     public WorkingSetDeferredTreeContentManager(AbstractTreeViewer viewer, IWorkingSet workingSet)
+     {
+-        super(viewer);
++        // Eclipse 3.3.2 has no DeferredTreeContentManager(AbstractTreeViewer viewer) constructor.
++        // only DeferredTreeContentManager(ITreeContentProvider provider, AbstractTreeViewer viewer)     
++        super(null, viewer);
+         this.workingSet = workingSet;
+     }
+ 
+Index: plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java
+===================================================================
+--- plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java	(revision 11123)
++++ plugins/org.xwiki.eclipse.ui/src/main/java/org/xwiki/eclipse/ui/editors/PageEditor.java	(working copy)
+@@ -35,6 +35,7 @@
+ import org.eclipse.swt.layout.FillLayout;
+ import org.eclipse.swt.widgets.Composite;
+ import org.eclipse.swt.widgets.Display;
++import org.eclipse.swt.widgets.MessageBox;
+ import org.eclipse.ui.IEditorInput;
+ import org.eclipse.ui.IEditorSite;
+ import org.eclipse.ui.PartInitException;
+@@ -47,6 +48,7 @@
+ import org.xwiki.eclipse.core.XWikiEclipseException;
+ import org.xwiki.eclipse.core.model.XWikiEclipseObject;
+ import org.xwiki.eclipse.core.model.XWikiEclipsePage;
++import org.xwiki.eclipse.core.model.XWikiEclipsePageSummary;
+ import org.xwiki.eclipse.core.notifications.CoreEvent;
+ import org.xwiki.eclipse.core.notifications.ICoreEventListener;
+ import org.xwiki.eclipse.core.notifications.NotificationManager;
+@@ -103,7 +105,7 @@
+         NotificationManager.getDefault().addListener(
+             this,
+             new CoreEvent.Type[] {CoreEvent.Type.DATA_MANAGER_CONNECTED, CoreEvent.Type.OBJECT_STORED,
+-            CoreEvent.Type.OBJECT_REMOVED});
++            CoreEvent.Type.OBJECT_REMOVED, CoreEvent.Type.REFRESH});
+     }
+ 
+     @Override
+@@ -310,7 +312,11 @@
+         final PageEditorInput input = (PageEditorInput) getEditorInput();
+         XWikiEclipsePage page = input.getPage();
+         String targetPageId = null;
+-        DataManager dataManager = (DataManager) event.getSource();
++        DataManager dataManager = null;
++        if (event.getSource() instanceof DataManager){
++            dataManager = (DataManager) event.getSource();
++        }
++        
+         boolean updatePage = false;
+ 
+         switch (event.getType()) {
+@@ -338,6 +344,47 @@
+                 updatePage = page.getDataManager().equals(dataManager);
+ 
+                 break;
++            case REFRESH:
++                Object data = event.getData();
++                if (data instanceof DataManager || data instanceof XWikiEclipsePageSummary){
++                    
++                    // Check if this refresh event was triggered for the page managed by this editor
++                    if (data instanceof XWikiEclipsePageSummary){
++                        XWikiEclipsePageSummary refreshedPageSummary = (XWikiEclipsePageSummary) data;
++                        String refreshedPageId = refreshedPageSummary.getData().getId();
++                        String editedPageId = page.getData().getId();
++                        if (!refreshedPageSummary.getDataManager().equals(page.getDataManager()) || !refreshedPageId.equals(editedPageId))
++                            return;
++                    }
++                    
++                    // Check if the user was in the middle of something.
++                    if (isDirty()){
++                        MessageBox messageBox = new MessageBox(Display.getCurrent().getShells()[0], SWT.YES | SWT.NO | SWT.CANCEL | SWT.ICON_QUESTION);
++                        messageBox.setMessage(String.format("Refreshing the page %s will overwrite your current work on it. Do you wish to save it?", page.getData().getId()));
++                        messageBox.setText("Save work");
++                        this.setFocus();
++                        
++                        int result = messageBox.open();
++                        if (result == SWT.YES) {
++                            this.doSave(null);
++                            
++                            // let the conflict resolution solve any conflict if it is the case.
++                            return;
++                        }else if(result == SWT.CANCEL){
++                            return;
++                        }
++                        
++                        try{
++                            page.getDataManager().clearPageStatus(page.getData().getId());
++                        }catch(Exception ex){
++                            // ignore
++                        }
++                        
++                        // we are here if the user said no
++                    }
++                    updatePage = true;
++                }
++                break;
+         }
+ 
+         try {
+Index: plugins/org.xwiki.eclipse.core/META-INF/MANIFEST.MF
+===================================================================
+--- plugins/org.xwiki.eclipse.core/META-INF/MANIFEST.MF	(revision 11123)
++++ plugins/org.xwiki.eclipse.core/META-INF/MANIFEST.MF	(working copy)
+@@ -5,10 +5,10 @@
+ Bundle-Version: 1.2.0.SNAPSHOT
+ Bundle-Activator: org.xwiki.eclipse.core.CorePlugin
+ Bundle-Vendor: XWiki
+-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0",
+- org.eclipse.core.resources;bundle-version="3.4.0",
+- org.xwiki.eclipse.xmlrpc;bundle-version="1.4.0",
+- org.eclipse.core.expressions;bundle-version="3.4.0"
++Require-Bundle: org.xwiki.eclipse.xmlrpc;bundle-version="1.4.0",
++ org.eclipse.core.runtime,
++ org.eclipse.core.resources,
++ org.eclipse.core.expressions
+ Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ Bundle-ActivationPolicy: lazy
+ Export-Package: org.xwiki.eclipse.core,
+Index: plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java
+===================================================================
+--- plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java	(revision 11123)
++++ plugins/org.xwiki.eclipse.core/src/main/java/org/xwiki/eclipse/core/DataManager.java	(working copy)
+@@ -435,7 +435,7 @@
+         pageToStatusMap.put(pageId, DIRTY_STATUS);
+     }
+ 
+-    private void clearPageStatus(String pageId) throws XWikiEclipseException
++    public void clearPageStatus(String pageId) throws XWikiEclipseException
+     {
+         conflictingPagesDataStorage.removePage(pageId);
+         pageToStatusMap.remove(pageId);
