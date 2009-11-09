@@ -1,0 +1,1 @@
+Replacing text area w/ custom panel ( to support images )
