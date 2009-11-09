@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>MeetingReportClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.MeetingReportClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124409792000</creationDate>
+<date>1126238036000</date>
+<version>1.11</version>
+<content>#set($obj = $doc.getObject("Projects.MeetingReportClass", 0))
+
+#if($context.action=="inline")
+#set($newtitle = $request.date)
+#set($user = $request.user)
+#if($newtitle)
+1 Adding the report for $doc.display("datereport", $obj) by $doc.display("user", $obj)
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+var user = "Projects.${user}";
+{pre}
+document.forms.edit["Projects.MeetingReportClass_0_datereport"].value = title;
+document.forms.edit["Projects.MeetingReportClass_0_user"].value = user;
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the report for $doc.display("datereport", $obj) by $doc.display("user", $obj)
+#end
+
+Select the tasks done&lt;br/&gt;
+$doc.display("thingsdone", $obj)
+
+Enter the description of the things done&lt;br/&gt;
+$doc.display("donedescription", $obj)
+
+Select the tasks to do&lt;br/&gt;
+$doc.display("thingstodo", $obj)
+
+Enter the description of the things to do&lt;br/&gt;
+$doc.display("tododescription", $obj)
+
+Enter the impediments&lt;br/&gt;
+$doc.display("impediments", $obj)
+
+#else
+#set($date=$doc.display("datereport", $obj))
+#set($user=$doc.display("user", $obj))
+#set ($cont=$user.indexOf(".")+1)
+#if ($cont&gt;0)
+#set ($username=$user.substring($cont))
+#end
+1 Report for $date by [$username&gt;$user]
+
+1.1 Things done
+$doc.display("thingsdone", $obj)
+&lt;br/&gt;
+$doc.display("donedescription", $obj)
+
+1.1 Things to do
+$doc.display("thingstodo", $obj)
+&lt;br/&gt;
+$doc.display("tododescription", $obj)
+
+1.1 Impediments
+$doc.display("impediments", $obj)
+
+#end
+</content>
+</xwikidoc>

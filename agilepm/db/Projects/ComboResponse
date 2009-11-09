@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>ComboResponse</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<author>XWiki.Admin</author>
+<creationDate>1125469434000</creationDate>
+<date>1126731771000</date>
+<version>1.32</version>
+<content>{pre}
+$response.setContentType("text/xml")
+&lt;ajax-response&gt;
+#set($field=$request.field)
+#set($source=$request.source)
+#set($value=$request.value)
+#set($filter=$request.filter)
+  &lt;response type="element" id="$field"&gt;
+&lt;form name="activeForm" onsubmit="updateCell('$field', '${field}input');return false;" style="margin:0;" action=""&gt;&lt;select id="${field}input" size="1" onchange="updateCell('$field', '${field}input');return false;"&gt;
+#if($source=='iterations')
+#set($ClassName='IterationClass')
+#set($ClassTemplate='IterationClassTemplate')
+#end
+#if($source=='scales')
+#set($ClassName='ProjectClass')
+#set($ClassTemplate='ProjectClassTemplate')
+#end
+#if($source=='users')
+#set($ClassName='ProgrammerClass')
+#set($ClassTemplate='ProgrammerClassTemplate')
+#end
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$ClassName' and obj.name &lt;&gt; 'Projects.$ClassTemplate' order by doc.creationDate asc")
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$ClassName",0))
+#if($source=='scales')
+#if($filter==$listdoc.fullName)
+#set($scales=$listdoc.display("scale",$obj).split(','))
+#foreach ($scale in $scales)
+#if($scale==$value)
+&lt;option value="$scale" selected="true"&gt;
+#else
+&lt;option value="$scale"&gt;
+#end
+$scale&lt;/option&gt;
+#end
+#end
+#else
+#if($listdoc.fullName==$value)
+&lt;option value="$listdoc.fullName" selected="true"&gt;
+#else
+&lt;option value="$listdoc.fullName"&gt;
+#end
+$listdoc.name&lt;/option&gt;
+#end
+#end
+&lt;/select&gt;&lt;/form&gt;
+  &lt;/response&gt;
+&lt;/ajax-response&gt;
+{/pre}</content>
+</xwikidoc>

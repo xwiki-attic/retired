@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>UserRoleClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.UserRoleClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124373901000</creationDate>
+<date>1125353576000</date>
+<version>1.4</version>
+<content>#set($obj = $doc.getObject("Projects.UserRoleClass", 0))
+
+#if($context.action=="inline")
+#set($newtitle = $request.name)
+#if($newtitle)
+1 Adding the role $doc.display("name", $obj) for project $doc.display("project", $obj) &lt;br/&gt;
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+var project = "${request.project}";
+{pre}
+document.forms.edit["Projects.UserRoleClass_0_name"].value = title;
+document.forms.edit["Projects.UserRoleClass_0_project"].value = project;
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the role $doc.display("name", $obj)
+#end
+
+Enter the description&lt;br/&gt;
+$doc.display("description", $obj)
+
+#else
+#set ($project=$doc.display("project", $obj))
+#set ($posPrj=$project.indexOf(".")+1)
+#if ($posPrj&gt;0)
+#set ($nameproject=$project.substring($posPrj))
+#end
+1 Project [$nameproject&gt;$project]
+1 Role $doc.display("name", $obj)
+
+1.1 $doc.display("description", $obj)
+
+#end
+</content>
+</xwikidoc>

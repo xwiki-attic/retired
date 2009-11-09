@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>IterationClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.IterationClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124303533000</creationDate>
+<date>1125540567000</date>
+<version>1.88</version>
+<content>#set($obj = $doc.getObject("Projects.IterationClass", 0))
+#if($context.action=="inline")
+#set($newtitle = $request.number)
+#if($newtitle)
+1 Adding the iteration $doc.display("number", $obj) for release $doc.display("release", $obj) of project $doc.display("project", $obj)
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+var project = "${request.project}";
+var release = "${doc.web}.${request.release}";
+{pre}
+document.forms.edit["Projects.IterationClass_0_number"].value = title;
+document.forms.edit["Projects.IterationClass_0_project"].value = project;
+document.forms.edit["Projects.IterationClass_0_release"].value = release;
+
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the iteration $doc.display("name", $obj)
+1 Release $doc.display("release", $obj) of project $doc.display("project", $obj)
+#end
+
+Enter the start date of the release&lt;br/&gt;
+$doc.display("startdate", $obj)
+
+Enter the budget: &lt;br/&gt;
+$doc.display("budget", $obj)
+
+#else
+#set ($project=$doc.display("project", $obj))
+#set ($posPrj=$project.indexOf(".")+1)
+#if ($posPrj&gt;0)
+#set ($projectname=$project.substring($posPrj))
+#end
+#set ($release=$doc.display("release", $obj))
+#set ($posPrj=$release.indexOf(".")+1)
+#if ($posPrj&gt;0)
+#set ($releasename=$release.substring($posPrj))
+#set ($number=$doc.display("number", $obj))
+#end
+1 Project [$projectname&gt;$project]
+1 Iteration $number of Release [$releasename&gt;$release]&lt;br /&gt;
+1.1 Stories
+{table}
+Type|Title|Role|Assigned
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.StoryClass' and obj.name &lt;&gt; 'Projects.StoryClassTemplate' order by doc.creationDate desc")
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.StoryClass",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($dociter=$listdoc.display("iteration","view",$obj))
+#if(($project==$docproject)&amp;&amp;($dociter=="${release}_${number}"))
+#set($cont=$listdoc.role.lastIndexOf("."))
+#if($cont)
+#set($cont=$cont+1)
+#set($role=$listdoc.role.substring($cont))
+#end
+#set($cont=$listdoc.assigned.lastIndexOf("."))
+#if($cont)
+#set($cont=$cont+1)
+#set($assigned=$listdoc.assigned.substring($cont))
+#end
+$!listdoc.display("type","view",$obj) | [$!{listdoc.display("title","view",$obj)}&gt;$item] | [$!role&gt;Projects.$role]|[$!assigned&gt;$!assigned]
+#end
+#end
+{table}
+#includeTopic("XWiki.XWikiCommonJavascript")
+1.1 Add a Story
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="Projects.${project}" /&gt;
+&lt;input type="hidden" name="template" value="Projects.StoryClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="project" value="$project" /&gt;
+&lt;input type="hidden" name="iteration" value="${release}_${number}" /&gt;
+&lt;input type="text" name="title" size="40" value="New Story Name"/&gt;
+&lt;input type="button" value="Add a Story" onclick='updateName(this.form.title, this.form.title); action="../../inline/" + this.form.webname.value + "/" + this.form.title.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+#end</content>
+</xwikidoc>

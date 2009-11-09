@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>SetValueResponse</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<author>XWiki.Admin</author>
+<creationDate>1125940637000</creationDate>
+<date>1126210915000</date>
+<version>1.32</version>
+<content>{pre}
+$response.setContentType("text/xml")
+#set($status=$request.status)
+#set($document=$request.doc)
+#set($classDoc=$request.typedoc)
+#set($field=$request.field)
+#set($value=$request.value)
+#set($Pxwiki = $xwiki.getXWiki())
+#set($Pcontext = $context.getContext())
+#if(($Pxwiki)&amp;&amp;($document))
+#set($Pdoc=$Pxwiki.getDocument($document,$Pcontext))
+#set($rights=$Pxwiki.checkAccess("edit",$Pdoc,$Pcontext))
+#else
+#set($rights=false)
+#end
+#if($rights)
+$Pdoc.setStringValue($classDoc, $field, $value)
+$Pxwiki.saveDocument($Pdoc,$Pcontext)
+#end
+&lt;ajax-response&gt;
+  &lt;response type="element" id="$status"&gt;
+  Field $field of $document updated
+   &lt;/response&gt;
+&lt;/ajax-response&gt;
+{/pre}</content>
+</xwikidoc>

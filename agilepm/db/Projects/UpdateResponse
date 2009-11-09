@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>UpdateResponse</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<author>XWiki.Admin</author>
+<creationDate>1125296419000</creationDate>
+<date>1125337087000</date>
+<version>1.68</version>
+<content>{pre}
+$response.setContentType("text/xml")
+&lt;ajax-response&gt;
+#set($field=$request.field)
+#set($posSep=$field.indexOf("--"))
+#if($posSep&gt;0)
+#set($posCls="Projects.$field.substring(0,$posSep)")
+#set($posSep2=$field.indexOf("__"))
+#set($posSep=$posSep+2)
+#set($posDoc=$field.substring($posSep,$posSep2))
+#set($posSep2=$posSep2+2)
+#set($posFld=$field.substring($posSep2))
+#end
+#set($value=$request.value)
+#set($PRxwiki = $xwiki.getXWiki())
+#set($PRcontext = $context.getContext())
+#if($PRxwiki)
+#set($PRdoc=$PRxwiki.getDocument($posDoc,$PRcontext))
+#set($rights=$PRxwiki.checkAccess("edit",$PRdoc,$PRcontext))
+#else
+#set($NPRdoc=$xwiki.getDocument($posDoc))
+#set($rights=false)
+#end
+#if($rights)
+$PRdoc.setStringValue($posCls, $posFld, $value)
+$PRxwiki.saveDocument($PRdoc,$PRcontext)
+#end
+   &lt;response type="element" id="$field"&gt;
+     &lt;div onclick="editCell('$field',this,30);"&gt;
+#if($PRxwiki)
+$PRdoc.display($posFld, $PRcontext)
+#else
+$NPRdoc.display($posFld,"view")
+#end
+&lt;/div&gt;
+   &lt;/response&gt;
+&lt;/ajax-response&gt;
+{/pre}</content>
+</xwikidoc>

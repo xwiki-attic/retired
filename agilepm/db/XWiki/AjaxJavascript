@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWiki</web>
+<name>AjaxJavascript</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<author>XWiki.Admin</author>
+<creationDate>1125292163000</creationDate>
+<date>1126729319000</date>
+<version>1.17</version>
+<content>{pre}
+&lt;script type="text/javascript"&gt;
+&lt;!--
+  function updateCell(cellID, inputID) {
+    var newValue = document.getElementById(inputID).value;
+    document.getElementById(cellID).innerHTML = "&lt;span class=\"update\"&gt;Updating...&lt;/span&gt;";
+    ajaxEngine.registerAjaxElement (cellID);
+    ajaxEngine.sendRequest ('getUpdatedCell', 
+       'field='+cellID,
+       'value='+newValue);
+	}
+
+  function editCell(id, cellSpan, width) {
+    var oldCellSpan = cellSpan.innerHTML;
+    document.getElementById(id).innerHTML = "&lt;form name=\"activeForm\" onsubmit=\"updateCell('"+id+"', '"+id+"input');return false;\" style=\"margin:0;\" action=\"\"&gt;&lt;input type=\"text\" id=\""+id+"input\" size=\""+ width + "\" onblur=\"updateCell('"+id+"', '"+id+"input');return false;\"&gt;&lt;/form&gt;";
+document.getElementById(id+"input").value = oldCellSpan;
+document.getElementById(id+"input").focus();
+//document.getElementById(id).style.background = '#ffd';
+//document.getElementById(id).style.border = '1px solid #fc0';
+	}
+
+  function editCombo(id, source, newvalue, filter) {
+    document.getElementById(id).innerHTML = "&lt;span class=\"update\"&gt;Loading...&lt;/span&gt;";
+    ajaxEngine.registerAjaxElement (id);
+    ajaxEngine.sendRequest ('getComboEdit', 
+       'field='+id, 'source='+source, 'value='+newvalue, 
+       'filter='+filter);
+	}
+
+// --&gt;
+&lt;/script&gt;
+{/pre}</content>
+</xwikidoc>

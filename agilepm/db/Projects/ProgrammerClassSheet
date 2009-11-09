@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>ProgrammerClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.ProgrammerClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124333949000</creationDate>
+<date>1126732358000</date>
+<version>1.50</version>
+<content>#set($obj = $doc.getObject("Projects.ProgrammerClass", 0))
+
+#if($context.action=="inline")
+#set($newtitle = $request.user)
+
+#if($newtitle)
+1 Adding the user $doc.display("user", $obj)
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+{pre}
+document.forms.edit["Projects.ProgrammerClass_0_user"].value = title;
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the user $doc.display("user", $obj)
+#end
+
+Enter the name&lt;br/&gt;
+$doc.display("name", $obj)
+
+#else
+
+1 User $doc.display("user", $obj): $doc.display("name", $obj)
+
+#set($user = $doc.fullName)
+#set($repDate=$xwiki.formatDate($xwiki.getCurrentDate(),'yyyyMMdd'))
+1 Reports
+
+{table}
+Date|Impediments
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.MeetingReportClass' and obj.name &lt;&gt; 'Projects.MeetingReportClassTemplate'")
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($bentrydoc = $xwiki.getDocument($item))
+#set($obj = $bentrydoc.getObject("Projects.MeetingReportClass",0))
+#set($docuser = $bentrydoc.display("user","view",$obj))
+#if($user==$docuser)
+[$!{bentrydoc.datereport}&gt;$item] | $bentrydoc.display("impediments","view",$obj)
+#end
+#end
+{table}
+#includeTopic("XWiki.XWikiCommonJavascript")
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="${user}" /&gt;
+&lt;input type="hidden" name="template" value="Projects.MeetingReportClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="user" value="${doc.name}"/&gt;
+&lt;input type="hidden" name="date" value="${repDate}"/&gt;
+&lt;input type="button" value="Add a Report" onclick='action="../../inline/" + this.form.webname.value + "/" + this.form.user.value + this.form.date.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+
+1 Tasks assigned
+
+{table}
+Type|Title|Project|Release|Iteration|Progress
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.StoryClass' and obj.name &lt;&gt; 'Projects.StoryClassTemplate'")
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($bentrydoc = $xwiki.getDocument($item))
+#set($obj = $bentrydoc.getObject("Projects.StoryClass",0))
+#set ($project=$bentrydoc.display("project", $obj))
+#set ($cont=$project.indexOf(".")+1)
+#if ($cont&gt;0)
+#set ($projectname=$project.substring($cont))
+#end
+#set ($iteration=$bentrydoc.display("iteration", $obj))
+#set($cont=$iteration.indexOf('.') +1)
+#if($cont&gt;0)
+#set($iterationname=$iteration.substring($cont))
+#set($cont=$iterationname.indexOf('_'))
+#if($cont&gt;0)
+#set($release=$iterationname.substring(0,$cont))
+#set($cont=$cont+1)
+#set($iterationnumber=$iterationname.substring($cont))
+#else
+#set($release="")
+#set($iterationnumber="")
+#set($iteration="")
+#end
+#end
+#if($user==$bentrydoc.assigned)
+$!bentrydoc.display("type","view",$obj) | [$!{bentrydoc.display("title","view",$obj)}&gt;$item] | [$projectname&gt;$project] | [$!release&gt;$release] | [$!iterationnumber&gt;$iteration] | $!bentrydoc.display("progress","view",$obj).trim()
+#end
+#end
+{table}
+
+#end
+</content>
+</xwikidoc>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>Programmer20050914</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent>Projects.MeetingReportClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1126732512000</creationDate>
+<date>1126733175000</date>
+<version>1.2</version>
+<object>
+<class>
+<name>Projects.MeetingReportClass</name>
+<datereport>
+<name>datereport</name>
+<prettyName>datereport</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<dateFormat>yyyyMMdd</dateFormat>
+<emptyIsToday>1</emptyIsToday>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.DateClass</classType>
+</datereport>
+<user>
+<name>user</name>
+<prettyName>user</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>2</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</user>
+<thingsdone>
+<name>thingsdone</name>
+<prettyName>thingsdone</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<size>4</size>
+<number>3</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.StoryClass' and obj.name&lt;&gt;'Projects.StoryClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</thingsdone>
+<donedescription>
+<name>donedescription</name>
+<prettyName>donedescription</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>40</size>
+<rows>5</rows>
+<number>4</number>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</donedescription>
+<thingstodo>
+<name>thingstodo</name>
+<prettyName>thingstodo</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<size>5</size>
+<number>5</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.StoryClass' and obj.name&lt;&gt;'Projects.StoryClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</thingstodo>
+<tododescription>
+<name>tododescription</name>
+<prettyName>tododescription</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>40</size>
+<rows>5</rows>
+<number>6</number>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</tododescription>
+<impediments>
+<name>impediments</name>
+<prettyName>impediments</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>7</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</impediments>
+</class>
+<name>Projects.Programmer20050914</name>
+<number>0</number>
+<className>Projects.MeetingReportClass</className>
+<property>
+<datereport>2005-09-14 00:00:00.0</datereport>
+</property>
+<property>
+<donedescription>* Stories in the backlog reachable through a link for any release
+* Added scrolling and dynamic resize in drag and drop stories assignation
+* Add selection of scale through a combo to use the scale defined for the project
+* Minor bug display fixing</donedescription>
+</property>
+<property>
+<impediments>No</impediments>
+</property>
+<property>
+<thingsdone>
+<value>Projects.ViewAsignedStories</value>
+<value>Projects.SummerCodeUILookFeel</value>
+<value>Projects.AssignStories</value>
+</thingsdone>
+</property>
+<property>
+<thingstodo>
+<value>Projects.ViewAsignedStories</value>
+<value>Projects.ReportProgressDailyMeeting</value>
+<value>Projects.SummerCodeUILookFeel</value>
+</thingstodo>
+</property>
+<property>
+<tododescription>* Enhance with Ajax functionality selection of tasks done and to do in the meeting report
+* Work on dynamic resizing of Rico accordions
+* Add story points unit functionality</tododescription>
+</property>
+<property>
+<user>Projects.Programmer</user>
+</property>
+</object>
+<content>#includeForm("Projects.MeetingReportClassSheet")</content>
+</xwikidoc>

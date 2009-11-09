@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>AjaxResponse</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<author>XWiki.Admin</author>
+<creationDate>1125251680000</creationDate>
+<date>1125353894000</date>
+<version>1.28</version>
+<content>{pre}
+$response.setContentType("text/xml")
+&lt;ajax-response&gt;
+#set($type=$request.responseType)
+#set($project=$request.project)
+   &lt;response type="element" id="$type"&gt;
+#if($type=='projectsList')
+#set($ClassName='ProjectClass')
+#set($ClassTemplate='ProjectClassTemplate')
+#end
+#if($type=='usersList')
+#set($ClassName='ProgrammerClass')
+#set($ClassTemplate='ProgrammerClassTemplate')
+#end
+#if($type=='releasesList')
+#set($ClassName='ReleaseClass')
+#set($ClassTemplate='ReleaseClassTemplate')
+#end
+#if($type=='rolesList')
+#set($ClassName='UserRoleClass')
+#set($ClassTemplate='UserRoleClassTemplate')
+#end
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$ClassName' and obj.name &lt;&gt; 'Projects.$ClassTemplate' and obj.name&lt;&gt;'Projects.WebHome' order by doc.creationDate desc")
+#foreach ($item in $xwiki.searchDocuments($sql))
+&lt;tr&gt;
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$ClassName",0))
+#if($type=='projectsList')
+&lt;td&gt;&lt;span class="wikilink"&gt;&lt;a href="$listdoc.name"&gt;
+$!{listdoc.display("name","view",$obj)}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${listdoc.name}__description"&gt;&lt;div onclick="editCell('${ClassName}--${listdoc.name}__description', this, 30);"&gt;
+$!listdoc.display("description","view",$obj)&lt;/div&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${listdoc.name}__scale"&gt;&lt;div onclick="editCell('${ClassName}--${listdoc.name}__scale', this, 30);"&gt;$!listdoc.display("scale","view",$obj)&lt;/div&gt;&lt;/td&gt;
+#end
+#if($type=='usersList')
+&lt;td&gt;&lt;span class="wikilink"&gt;&lt;a href="$listdoc.user"&gt;
+$!{listdoc.display("user","view",$obj)}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${listdoc.name}__name"&gt;&lt;div onclick="editCell('${ClassName}--${listdoc.name}__name', this, 30);"&gt;$!listdoc.display("name","view",$obj)&lt;/div&gt;&lt;/td&gt;
+#end
+#if($type=='releasesList')
+#set($docproject=$listdoc.display("project","view",$obj))
+#if($project==$docproject)
+&lt;td&gt;&lt;span class="wikilink"&gt;&lt;a href="$listdoc.name"&gt;
+$!{listdoc.display("name","view",$obj)}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${listdoc.name}__marketingname"&gt;&lt;div onclick="editCell('${ClassName}--${listdoc.name}__marketingname', this, 30);"&gt;
+$!listdoc.display("marketingname","view",$obj)&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;$!listdoc.display("releasedate","view",$obj)&lt;/td&gt;
+#end
+#end
+#if($type=='rolesList')
+#set($docproject=$listdoc.display("project","view",$obj))
+#if($project==$docproject)
+&lt;td&gt;&lt;span class="wikilink"&gt;&lt;a href="$listdoc.name"&gt;
+$!{listdoc.display("name","view",$obj)}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${listdoc.name}__description"&gt;&lt;div onclick="editCell('${ClassName}--${listdoc.name}__description', this, 30);"&gt;$!listdoc.display("description","view",$obj)&lt;/div&gt;&lt;/td&gt;
+#end
+#end
+&lt;/tr&gt;
+#end
+  &lt;/response&gt;
+&lt;/ajax-response&gt;
+{/pre}</content>
+</xwikidoc>

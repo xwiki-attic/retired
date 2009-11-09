@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>ReleaseClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.ReleaseClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124258103000</creationDate>
+<date>1126683166000</date>
+<version>1.269</version>
+<content>#set($obj = $doc.getObject("Projects.ReleaseClass", 0))
+#set($sep = ';')
+#if($context.action=="inline")
+#set($newtitle = $request.name)
+#if($newtitle)
+1 Adding the release $doc.display("name", $obj) for project $doc.display("project", $obj) &lt;br/&gt;
+#set($doc.parent= $request.parent)
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+var project = "${request.project}";
+{pre}
+document.forms.edit["Projects.ReleaseClass_0_name"].value = title;
+document.forms.edit["Projects.ReleaseClass_0_project"].value = project;
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the release $doc.display("name", $obj)
+#end
+Enter a marketing name for the release&lt;br/&gt;
+$doc.display("marketingname", $obj)
+
+Enter the estimated release date: &lt;br/&gt;
+$doc.display("releasedate", $obj)
+
+#else
+#set ($project=$doc.display("project", $obj))
+#set ($marketing=$doc.display("marketingname", $obj))
+#set ($posPrj=$project.indexOf(".")+1)
+#if ($posPrj&gt;0)
+#set ($projectname=$project.substring($posPrj))
+#end
+#set ($release=$doc.name)
+1 Project [$projectname&gt;$project]
+1.1 Release $marketing - $release
+{pre}
+&lt;script type="text/javascript"&gt;
+  var onloads = new Array();
+  XWiki.addLibrary ('scriptaculous');
+  XWiki.addLibrary ('rico');
+  function bodyOnLoad() {
+    for ( var i = 0 ; i &lt; onloads.length ; i++ )
+      onloads[i]();
+  }
+  function onload() { bodyOnLoad(); }
+&lt;/script&gt;
+{/pre}
+#includeTopic("XWiki.XWikiCommonJavascript")
+#includeTopic("XWiki.PrototypeJavascript")
+#set($ClassName='IterationClass')
+#set($ClassTemplate='IterationClassTemplate')
+#set($SClassName='StoryClass')
+#set($SClassTemplate='StoryClassTemplate')
+#set($it=0)
+#set($cols=2)
+#set($ddLists='')
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$ClassName' and obj.name &lt;&gt; 'Projects.$ClassTemplate' order by doc.creationDate desc")
+#set ($sqlS = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$SClassName' and obj.name &lt;&gt; 'Projects.$SClassTemplate' order by doc.creationDate desc")
+&lt;div id="ReleasesDiv"&gt;
+&lt;div id="panel1"&gt;
+  &lt;div id="panel1Header" class="accordionTabTitleBar"&gt;
+    Show iterations and stories
+  &lt;/div&gt;
+  &lt;div id="panel1Content" class="accordionTabContentBox"&gt;
+   &lt;div id="panel1Scroller" style="height:195px;overflow:auto"&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="panel2"&gt;
+  &lt;div id="panel2Header" class="accordionTabTitleBar"&gt;
+	Modify assignments &lt;/div&gt;
+  &lt;div id="panel2Content" class="accordionTabContentBox"&gt;
+   &lt;div id="panel2Scroller" style="height:195px;overflow:auto"&gt;
+&lt;table&gt;
+#set($it=0)
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$ClassName",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($number=$listdoc.display("number","view",$obj))
+#set($docrelease=$listdoc.display("release","view",$obj))
+#set($posRls=$docrelease.indexOf('.')+1)
+#if ($posRls&gt;0)
+#set($docrelease=$docrelease.substring($posRls))
+#end
+#if(($project==$docproject)&amp;&amp;($docrelease==$release))
+#if($it%$cols==0)
+&lt;tr&gt;
+#end
+&lt;td&gt;&lt;div&gt;&lt;a href="${release}_${number}"&gt;Iteration $number&lt;/a&gt;&lt;/div&gt;
+&lt;ul id="${release}_${number}" style="height:50px;width:175px;"&gt;
+#set($ddLists="$ddLists${release}_${number},")
+#foreach ($item in $xwiki.searchDocuments($sqlS))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$SClassName",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($dociter=$listdoc.display("iteration","view",$obj))
+#if(($project==$docproject)&amp;&amp;($dociter=="Projects.${release}_${number}"))
+#set($title=$listdoc.display("title", $obj))
+&lt;li id="${release}_${number}${sep}$title"&gt;$title&lt;/li&gt;
+#end
+#end
+&lt;/ul&gt;
+&lt;/td&gt;
+#set($it=$it+1)
+#if($it%$cols==0)
+&lt;/tr&gt;
+#end
+#end
+#end
+#if($it%$cols==1)
+&lt;/tr&gt;
+#end
+&lt;tr&gt;&lt;td&gt;&lt;div&gt;Backlog&lt;/div&gt;
+&lt;ul id="backlog" style="height:50px;width:175px;"&gt;
+#set($backlog='Projects.backlog')
+#foreach ($item in $xwiki.searchDocuments($sqlS))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$SClassName",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($dociter=$listdoc.display("iteration","view",$obj))
+#if(($project==$docproject)&amp;&amp;(($dociter=='')||($dociter==$backlog)))
+#set($title=$listdoc.display("title", $obj))
+&lt;li id="backlog${sep}${title}"&gt;$title&lt;/li&gt;
+#end
+#end
+&lt;/ul&gt;&lt;/td&gt;
+&lt;td&gt;&lt;input type="button" value="Save changes" onclick="sendChanges(); getStoriesList();"&gt;&lt;div id="statusSetValue"&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+{pre}
+&lt;script&gt;
+onloads.push( registerAjaxStuff );
+onloads.push(getStoriesList);
+onloads.push( makeAccordion );
+function registerAjaxStuff() {
+  ajaxEngine.registerRequest ('getStoriesList', 'IterationResponse?xpage=rdf');
+  ajaxEngine.registerAjaxElement ('panel1Scroller');
+}
+function getStoriesList() {
+  ajaxEngine.sendRequest ('getStoriesList', 
+       'responseType=panel1Scroller',
+       'project=$project', 'release=$release');
+  }
+function makeAccordion() {
+  var accord = new Rico.Accordion( 'ReleasesDiv', {panelHeight:200});
+}
+#set($list=$ddLists.split(','))
+#set($containers='')
+#foreach ($iter in $list)
+#if($iter!='')
+#set($containers="$containers'$iter',")
+#end
+#end
+#set($containers="$containers'backlog'")
+#foreach ($iter in $list)
+#if($iter!='')  Sortable.create('$iter',{dropOnEmpty:true,containment:[$containers],constraint:false,heightItem:14});
+#end
+#end
+Sortable.create('backlog',{dropOnEmpty:true,containment:[$containers],constraint:false,heightItem:14});
+XWikiAjax.start('statusSetValue');
+function sendChanges() {
+ var containers = [$containers];
+ for (var i=0; i&lt;containers.length; i++) {
+  element = $(containers[i]);
+  var options = Sortable.options(containers[i]);
+  var elements = Sortable.findElements(element, options);
+  if (elements) {
+   for (var j=0; j&lt;elements.length; j++) {
+    var posElement = elements[j].id;
+    var posSep = posElement.lastIndexOf ('$sep');
+    posElement = posElement.substring(0, posSep);
+    if (element.id != posElement) {
+       var posValue = elements[j].id.substring (posSep+1);
+       XWikiAjax.addRequest('Projects.'+posValue, 'Projects.StoryClass', 'iteration', 'Projects.'+element.id);
+       var newElement = $(elements[j].id);
+       newElement.id = element.id+'$sep'+posValue;
+    }
+   }
+  }
+ }
+ XWikiAjax.end();
+ getStoriesList();
+}
+&lt;/script&gt;
+{/pre}
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="Projects.${projectname}" /&gt;
+&lt;input type="hidden" name="template" value="Projects.IterationClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="number" value="$count" /&gt;
+&lt;input type="hidden" name="release" value="$release" /&gt;
+&lt;input type="hidden" name="project" value="$project" /&gt;
+&lt;input type="button" value="Add a Iteration" onclick='action="../../inline/" + this.form.webname.value + "/" + this.form.release.value + "_" + this.form.number.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+1.1 Add a Story
+&lt;form action="" id="newstory"&gt;
+&lt;input type="hidden" name="parent" value="Projects.${project}" /&gt;
+&lt;input type="hidden" name="template" value="Projects.StoryClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="project" value="$project" /&gt;
+&lt;input type="text" name="title" size="40" value="New Story Name"/&gt;
+&lt;input type="button" value="Add a Story" onclick='updateName(this.form.title, this.form.title); action="../../inline/" + this.form.webname.value + "/" + this.form.title.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+#end</content>
+</xwikidoc>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>XWiki.ProjectClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124162334000</creationDate>
+<date>1126724003000</date>
+<version>1.81</version>
+<object>
+<class>
+<name>Projects.ProjectClass</name>
+<name>
+<name>name</name>
+<prettyName>name</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<description>
+<name>description</name>
+<prettyName>description</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>40</size>
+<number>2</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</description>
+<scale>
+<name>scale</name>
+<prettyName>scale</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>15</size>
+<number>3</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</scale>
+</class>
+<name>Projects.WebHome</name>
+<number>0</number>
+<className>Projects.ProjectClass</className>
+<property>
+<description></description>
+</property>
+</object>
+<content>#includeTopic("XWiki.PrototypeJavascript")
+#includeTopic("XWiki.RicoJavascript")
+#includeTopic("XWiki.AjaxJavascript")
+{pre}
+&lt;script type="text/javascript"&gt;
+  var onloads = new Array();
+  function bodyOnLoad() {
+    for ( var i = 0 ; i &lt; onloads.length ; i++ )
+      onloads[i]();
+  }
+  function onload() { bodyOnLoad(); }
+  onloads.push( registerAjaxStuff );
+  onloads.push(getProjectsList);
+  onloads.push(getUsersList);
+  function registerAjaxStuff() {
+  ajaxEngine.registerRequest ('getProjectsList', 'AjaxResponse?xpage=rdf');
+  ajaxEngine.registerRequest ('getUsersList', 'AjaxResponse?xpage=rdf');
+  ajaxEngine.registerRequest ('getUpdatedCell',
+'UpdateResponse?xpage=rdf');
+  ajaxEngine.registerAjaxElement ('projectsList');
+  ajaxEngine.registerAjaxElement ('usersList');
+  }
+  function getProjectsList() {
+    ajaxEngine.sendRequest ('getProjectsList', 
+       'responseType=projectsList');
+  }
+  function getUsersList() {
+    ajaxEngine.sendRequest ('getUsersList', 
+       'responseType=usersList');
+  }
+&lt;/script&gt;
+{/pre}
+&lt;div id="ProjectsDiv"&gt;
+&lt;div id="panel1"
+  &lt;div id="panel1Header" class="accordionTabTitleBar"&gt;
+    Projects
+  &lt;/div&gt;
+  &lt;div id="panel1Content"  class="accordionTabContentBox"&gt;
+  &lt;table class="wiki-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;th&gt;Scale&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id="projectsList"&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+#includeTopic("XWiki.XWikiCommonJavascript")
+1.1 Add a Project
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="Projects.WebHome" /&gt;
+&lt;input type="hidden" name="template" value="Projects.ProjectClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="description" value="" /&gt;
+&lt;input type="text" name="name" value="Wiki name of the project" size="40"&gt;&lt;input type="button" value="Add this Project" onclick='updateName(this.form.name, this.form.description); action="../../inline/" + this.form.webname.value + "/" + this.form.name.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="panel2"&gt;
+  &lt;div id="panel2Header" class="accordionTabTitleBar"&gt;
+	  	Team
+  &lt;/div&gt;
+  &lt;div id="panel2Content" class="accordionTabContentBox"&gt;
+  &lt;table class="wiki-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;User&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id="usersList"&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+1.1 Add a User
+
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="Projects.WebHome" /&gt;
+&lt;input type="hidden" name="template" value="Projects.ProgrammerClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="text" name="user" value="New User" size="40"&gt;&lt;input type="button" value="Add this user" onclick='updateName(this.form.user, this.form.user); action="../../inline/" + this.form.webname.value + "/" + this.form.user.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+{pre}
+&lt;script type="text/javascript"&gt;
+  onloads.push( makeAccordion );
+  function makeAccordion() {
+    var accordion = new Rico.Accordion( 'ProjectsDiv', {panelHeight:250}); }
+&lt;/script&gt;
+{/pre}</content>
+</xwikidoc>

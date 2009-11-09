@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>IterationClass</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>XWiki.XWikiClasses</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124268682000</creationDate>
+<date>1125369548000</date>
+<version>1.14</version>
+<class>
+<name>Projects.IterationClass</name>
+<number>
+<name>number</name>
+<prettyName>number</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>4</size>
+<numberType>integer</numberType>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+</number>
+<enddate>
+<name>enddate</name>
+<prettyName>enddate</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<dateFormat>dd/MM/yyyy</dateFormat>
+<emptyIsToday>1</emptyIsToday>
+<number>2</number>
+<classType>com.xpn.xwiki.objects.classes.DateClass</classType>
+</enddate>
+<startdate>
+<name>startdate</name>
+<prettyName>startdate</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<dateFormat>dd/MM/yyyy</dateFormat>
+<emptyIsToday>1</emptyIsToday>
+<number>3</number>
+<classType>com.xpn.xwiki.objects.classes.DateClass</classType>
+</startdate>
+<budget>
+<name>budget</name>
+<prettyName>budget</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>10</size>
+<numberType>long</numberType>
+<number>4</number>
+<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+</budget>
+<release>
+<name>release</name>
+<prettyName>release</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>5</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</release>
+<project>
+<name>project</name>
+<prettyName>project</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>6</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</project>
+</class>
+<content>&lt;!-- replace Main with the Space where you want your documents to be created --&gt;
+&lt;!-- replace the default parent with the one of your choice --&gt;
+&lt;!-- Save this template using the ?Save? button --&gt;
+#set( $class = $doc.name.substring(0,$doc.name.indexOf("Class")))
+#set($defaultparent = "XWiki.${class}Class")
+#set($defaultweb = "Projects")
+#includeForm("XWiki.ClassSheet")</content>
+</xwikidoc>

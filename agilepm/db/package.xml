@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package>
+<infos>
+<name>Backup</name>
+<description>on Wed Sep 14 16:30:40 GMT-05:00 2005 by XWiki.superadmin</description>
+<licence>GPL</licence>
+<author>XWiki</author>
+<version>1.0.0</version>
+<backupPack>true</backupPack>
+</infos>
+<files>
+<file defaultAction="0" language="">XWiki.XWikiCommonJavascript</file>
+<file defaultAction="0" language="">XWiki.PrototypeJavascript</file>
+<file defaultAction="0" language="">XWiki.RicoJavascript</file>
+<file defaultAction="0" language="">XWiki.AjaxJavascript</file>
+<file defaultAction="0" language="">XWiki.DragDropJavascript</file>
+<file defaultAction="0" language="">XWiki.UtilJavascript</file>
+<file defaultAction="0" language="">XWiki.EffectsJavascript</file>
+<file defaultAction="0" language="">XWiki.Prototype14Javascript</file>
+<file defaultAction="0" language="">Projects.ReleaseClass</file>
+<file defaultAction="0" language="">Projects.ProjectClass</file>
+<file defaultAction="0" language="">Projects.ProjectClassSheet</file>
+<file defaultAction="0" language="">Projects.ProjectClassTemplate</file>
+<file defaultAction="0" language="">Projects.WebHome</file>
+<file defaultAction="0" language="">Projects.AgileManager</file>
+<file defaultAction="0" language="">Projects.SummerOfCode</file>
+<file defaultAction="0" language="">Projects.ReleaseClassSheet</file>
+<file defaultAction="0" language="">Projects.ReleaseClassTemplate</file>
+<file defaultAction="0" language="">Projects.IterationClass</file>
+<file defaultAction="0" language="">Projects.IterationClassSheet</file>
+<file defaultAction="0" language="">Projects.IterationClassTemplate</file>
+<file defaultAction="0" language="">Projects.StoryClass</file>
+<file defaultAction="0" language="">Projects.StoryClassSheet</file>
+<file defaultAction="0" language="">Projects.StoryClassTemplate</file>
+<file defaultAction="0" language="">Projects.ProgrammerClass</file>
+<file defaultAction="0" language="">Projects.ProgrammerClassSheet</file>
+<file defaultAction="0" language="">Projects.ProgrammerClassTemplate</file>
+<file defaultAction="0" language="">Projects.Admin</file>
+<file defaultAction="0" language="">Projects.UserRoleClass</file>
+<file defaultAction="0" language="">Projects.UserRoleClassSheet</file>
+<file defaultAction="0" language="">Projects.UserRoleClassTemplate</file>
+<file defaultAction="0" language="">Projects.AgileManagerProgrammer</file>
+<file defaultAction="0" language="">Projects.MeetingReportClass</file>
+<file defaultAction="0" language="">Projects.SummerOfCode_2</file>
+<file defaultAction="0" language="">Projects.MeetingReportClassTemplate</file>
+<file defaultAction="0" language="">Projects.MeetingReportClassSheet</file>
+<file defaultAction="0" language="">Projects.Programmer</file>
+<file defaultAction="0" language="">Projects.Programmer20050908</file>
+<file defaultAction="0" language="">Projects.AjaxResponse</file>
+<file defaultAction="0" language="">Projects.UpdateResponse</file>
+<file defaultAction="0" language="">Projects.OpenSourceDirectory</file>
+<file defaultAction="0" language="">Projects.PostSoC</file>
+<file defaultAction="0" language="">Projects.AgileManagerUsers</file>
+<file defaultAction="0" language="">Projects.AgileManagerProjectManager</file>
+<file defaultAction="0" language="">Projects.SummerOfCode_1</file>
+<file defaultAction="0" language="">Projects.ViewAsignedStories</file>
+<file defaultAction="0" language="">Projects.IterationResponse</file>
+<file defaultAction="0" language="">Projects.NewStoriesToBacklog</file>
+<file defaultAction="0" language="">Projects.ComboResponse</file>
+<file defaultAction="0" language="">Projects.ChangeProjectMetrics</file>
+<file defaultAction="0" language="">Projects.AssignStories</file>
+<file defaultAction="0" language="">Projects.SetValueResponse</file>
+<file defaultAction="0" language="">Projects.ReportProgressDailyMeeting</file>
+<file defaultAction="0" language="">Projects.TrackProgress</file>
+<file defaultAction="0" language="">Projects.AddTasksTestsNotes</file>
+<file defaultAction="0" language="">Projects.ChooseAgileVocabulary</file>
+<file defaultAction="0" language="">Projects.SummerCodeUILookFeel</file>
+<file defaultAction="0" language="">Projects.Programmer20050914</file>
+</files>
+</package>

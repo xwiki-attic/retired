@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>ProjectClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.ProjectClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124161781000</creationDate>
+<date>1126457812000</date>
+<version>1.82</version>
+<content>#set($obj = $doc.getObject("Projects.ProjectClass", 0))
+#if($context.action=="inline")
+#set($newtitle = $request.name)
+#if($newtitle)
+1 Adding the project $doc.display("name", $obj)
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+{pre}
+document.forms.edit["Projects.ProjectClass_0_name"].value = title;
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the project $doc.display("name", $obj)
+#end
+
+Insert a description of the project &lt;br/&gt;
+$doc.display("description", $obj)
+
+Enter a comma-separated list for scoring stories: &lt;br/&gt;
+$doc.display("scale", $obj)
+
+#else
+#set ($project=$doc.display("name", $obj))
+1 $project
+$doc.display("description", $obj)
+#includeTopic("XWiki.PrototypeJavascript")
+#includeTopic("XWiki.RicoJavascript")
+#includeTopic("XWiki.AjaxJavascript")
+{pre}
+&lt;script type="text/javascript"&gt;
+  var onloads = new Array();
+  function bodyOnLoad() {
+    for ( var i = 0 ; i &lt; onloads.length ; i++ )
+      onloads[i]();
+  }
+  function onload() { bodyOnLoad(); }
+&lt;/script&gt;
+{/pre}
+
+&lt;div id="ProjectsDiv"&gt;
+&lt;div id="panel1"&gt;
+  &lt;div id="panel1Header" class="accordionTabTitleBar"&gt;
+    Releases
+  &lt;/div&gt;
+  &lt;div id="panel1Content"  class="accordionTabContentBox"&gt;
+  &lt;table class="wiki-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Codename&lt;/th&gt;&lt;th&gt;Marketing Name&lt;/th&gt;&lt;th&gt;Release Date&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id="releasesList"&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;script&gt;
+  onloads.push( registerAjaxStuff );
+  onloads.push(getReleasesList);
+  onloads.push(getRolesList);
+  function registerAjaxStuff() {
+  ajaxEngine.registerRequest ('getReleasesList', 'AjaxResponse?xpage=rdf');
+  ajaxEngine.registerRequest ('getRolesList', 'AjaxResponse?xpage=rdf');
+  ajaxEngine.registerRequest ('getUpdatedCell',
+'UpdateResponse?xpage=rdf');
+  ajaxEngine.registerAjaxElement ('releasesList');
+  ajaxEngine.registerAjaxElement ('rolesList');
+  }
+  function getReleasesList() {
+    ajaxEngine.sendRequest ('getReleasesList', 
+       'responseType=releasesList',
+       'project=$doc.fullName');
+  }
+  function getRolesList() {
+    ajaxEngine.sendRequest ('getRolesList', 
+       'responseType=rolesList',
+       'project=$doc.fullName');
+  }
+&lt;/script&gt;
+#includeTopic("XWiki.XWikiCommonJavascript")
+1.1 Add a Release
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="Projects.${project}" /&gt;
+&lt;input type="hidden" name="template" value="Projects.ReleaseClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="project" value="$doc.fullName" /&gt;
+&lt;input type="text" name="name" value="WikiName of the Release" size="40"&gt;
+&lt;input type="button" value="Add this Release" onclick='updateName(this.form.name, this.form.marketingname); action="../../inline/" + this.form.webname.value + "/" + this.form.name.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="panel2"&gt;
+  &lt;div id="panel2Header" class="accordionTabTitleBar"&gt;
+	User Roles
+  &lt;/div&gt;
+  &lt;div id="panel2Content" class="accordionTabContentBox"&gt;
+  &lt;table class="wiki-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id="rolesList"&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+1.1 Add a Role
+&lt;form action="" id="newdoc"&gt;
+&lt;input type="hidden" name="parent" value="Projects.${project}" /&gt;
+&lt;input type="hidden" name="template" value="Projects.UserRoleClassTemplate" /&gt;
+&lt;input type="hidden" name="sheet" value="1" /&gt;
+&lt;input type="hidden" name="webname" value="Projects" /&gt;
+&lt;input type="hidden" name="project" value="$doc.fullName" /&gt;
+&lt;input type="text" name="name" value="${project}UserRole" size="40"&gt;
+&lt;input type="button" value="Add this user role" onclick='updateName(this.form.name, this.form.name); action="../../inline/" + this.form.webname.value + "/" + this.form.name.value; this.form.submit();' /&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  onloads.push( makeAccordion );
+  function makeAccordion() {
+    var accordion = new Rico.Accordion( 'ProjectsDiv', {panelHeight:250}); }
+&lt;/script&gt;
+#end</content>
+</xwikidoc>

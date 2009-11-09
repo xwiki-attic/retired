@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>StoryClassSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Projects.StoryClass</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124317625000</creationDate>
+<date>1126730348000</date>
+<version>1.105</version>
+<object>
+<class>
+<name>Projects.StoryClass</name>
+<title>
+<name>title</name>
+<prettyName>title</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</title>
+<iteration>
+<name>iteration</name>
+<prettyName>iteration</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>1</relationalStorage>
+<displayType>input</displayType>
+<multiSelect>0</multiSelect>
+<size>1</size>
+<number>2</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.IterationClass' and obj.name&lt;&gt;'Projects.IterationClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</iteration>
+<description>
+<name>description</name>
+<prettyName>description</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>3</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</description>
+<type>
+<name>type</name>
+<prettyName>type</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<size>1</size>
+<number>4</number>
+<values>Story|Task|Epic</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</type>
+<assigned>
+<name>assigned</name>
+<prettyName>assigned</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<size>1</size>
+<number>5</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.ProgrammerClass' and obj.name&lt;&gt;'Projects.ProgrammerClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</assigned>
+<role>
+<name>role</name>
+<prettyName>role</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<size>1</size>
+<number>6</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.UserRoleClass' and obj.name&lt;&gt;'Projects.UserRoleClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</role>
+<related>
+<name>related</name>
+<prettyName>related</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<size>1</size>
+<number>7</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.StoryClass' and obj.name&lt;&gt;'Projects.StoryClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</related>
+<score>
+<name>score</name>
+<prettyName>score</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<size>1</size>
+<number>8</number>
+<values>1|2|3|4|5</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</score>
+<estimated>
+<name>estimated</name>
+<prettyName>estimated</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>6</size>
+<numberType>integer</numberType>
+<number>9</number>
+<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+</estimated>
+<remaining>
+<name>remaining</name>
+<prettyName>remaining</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>6</size>
+<numberType>integer</numberType>
+<number>10</number>
+<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+</remaining>
+<current>
+<name>current</name>
+<prettyName>current</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>6</size>
+<numberType>integer</numberType>
+<number>11</number>
+<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+</current>
+<progress>
+<name>progress</name>
+<prettyName>progress</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>6</size>
+<numberType>float</numberType>
+<number>12</number>
+<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+</progress>
+<project>
+<name>project</name>
+<prettyName>project</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>13</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</project>
+</class>
+<name>Projects.StoryClassSheet</name>
+<number>0</number>
+<className>Projects.StoryClass</className>
+<property>
+<progress>1</progress>
+</property>
+<property>
+<score>2</score>
+</property>
+</object>
+<content>#set($obj = $doc.getObject("Projects.StoryClass", 0))
+#if($context.action=="inline")
+#set($newtitle = $request.title)
+#if($newtitle)
+1 Adding the story $doc.display("title", $obj) for project $doc.display("project", $obj)
+#set($newtitle = $newtitle.replace('"',"'"))
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+var project = "${request.project}";
+{pre}
+document.forms.edit["Projects.StoryClass_0_title"].value = title;
+document.forms.edit["Projects.StoryClass_0_project"].value = project;
+{/pre}
+&lt;/script&gt;
+#else
+1 Editing the story $doc.display("title", $obj)
+Related to $doc.display("related",$obj) &lt;br/&gt;
+Assign to: $doc.display("assigned", $obj) &lt;br/&gt;
+Select the iteration: &lt;br/&gt;
+$doc.display("iteration", $obj)
+#end
+#set($doc.iteration=$request.iteration)
+Enter the description of the story&lt;br/&gt;
+$doc.display("description", $obj)
+
+Select the type of story: &lt;br/&gt;
+$doc.display("type", $obj)
+
+Select the user role model: &lt;br/&gt;
+$doc.display("role", $obj)
+
+#if(!$newtitle)
+Select the score of the story: &lt;br/&gt;
+$doc.display("score", $obj)
+
+1.1 Report Status
+{table}
+Progress|$doc.display("progress",$obj)
+Current|$doc.display("current",$obj)
+Estimated|$doc.display("estimated",$obj)
+Remaining|$doc.display("remaining",$obj)
+{table}
+#end
+#else
+#includeTopic("XWiki.PrototypeJavascript")
+#includeTopic("XWiki.RicoJavascript")
+#includeTopic("XWiki.AjaxJavascript")
+#set($ClassName="StoryClass")
+#set ($project=$doc.display("project", $obj))
+#set ($cont=$project.indexOf(".")+1)
+#if ($cont&gt;0)
+#set ($projectname=$project.substring($cont))
+#end
+&lt;table class="xwikitable"&gt;
+&lt;tr&gt;&lt;th&gt;Project&lt;/th&gt;&lt;td&gt;[$projectname&gt;$project]&lt;/td&gt;&lt;/tr&gt;
+#set ($iteration=$doc.display("iteration", $obj))
+{pre}
+&lt;tr&gt;&lt;th onclick="editCombo('${ClassName}--${doc.name}__iteration', 'iterations','$iteration','');"&gt;Iteration&lt;/th&gt;
+&lt;td id="${ClassName}--${doc.name}__iteration" &gt;
+{/pre}
+#set($cont=$iteration.indexOf('.') +1)
+#if($cont&gt;0)
+#set($iterationname=$iteration.substring($cont))
+#set($cont=$iterationname.indexOf('_'))
+#if($cont&gt;0)
+#set($release=$iterationname.substring(0,$cont))
+#set($cont=$cont+1)
+#set($iterationnumber=$iterationname.substring($cont))
+[${release}&gt;${release}]_[${iterationnumber}&gt;${iteration}]
+#else
+Iteration back in the backlog
+#end
+#else
+No iteration assigned yet
+#end
+&lt;/td&gt;&lt;/tr&gt;
+#set ($assigned=$doc.display("assigned", $obj))
+{pre}
+&lt;tr&gt;&lt;th onclick="editCombo('${ClassName}--${doc.name}__assigned', 'users','$assigned', '');"&gt;Assigned to&lt;/th&gt;
+&lt;td id="${ClassName}--${doc.name}__assigned" &gt;
+{/pre}
+#set($cont=$assigned.indexOf('.') +1)
+#if($cont&gt;0)
+#set($assignedto=$assigned.substring($cont))
+[$assignedto&gt;$assigned] 
+#else
+Not assigned yet
+#end
+&lt;/td&gt;&lt;/tr&gt;
+#set($cont=$doc.role.lastIndexOf('.') +1)
+#set($role=$doc.role.substring($cont))
+&lt;tr&gt;&lt;th&gt;User Role&lt;/th&gt;&lt;td&gt;[$role&gt;$doc.role]&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+1.1 $doc.display("type", $obj): $doc.display("title", $obj)
+*$doc.display("description", $obj)*
+&lt;br/&gt;
+{pre}
+&lt;script type="text/javascript"&gt;
+  var onloads = new Array();
+  function bodyOnLoad() {
+    for ( var i = 0 ; i &lt; onloads.length ; i++ )
+      onloads[i]();
+  }
+  function onload() { bodyOnLoad(); }
+&lt;/script&gt;
+{/pre}
+#set($score=$doc.display("score", $obj).trim())
+#if($score=='')
+#set($score="0")
+#end
+#set($progress=$doc.display("progress", $obj))
+#if($progress=='')
+#set($progress="0.0")
+#end
+#set($current=$doc.display("current", $obj))
+#if($current=='')
+#set($current="0")
+#end
+#set($estimated=$doc.display("estimated", $obj))
+#if($estimated=='')
+#set($estimated="0")
+#end
+#set($remaining=$doc.display("remaining", $obj))
+#if($remaining=='')
+#set($remaining="0")
+#end
+1 Status
+{pre}
+  &lt;table class="wiki-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th onclick="editCombo('${ClassName}--${doc.name}__score', 'scales', '$score', '$project');"&gt;Score&lt;/th&gt; &lt;th&gt;Progress&lt;/th&gt;&lt;th&gt;Current&lt;/th&gt;
+&lt;th&gt;Estimated&lt;/th&gt;&lt;th&gt;Remaining&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td id="${ClassName}--${doc.name}__score"&gt;$score&lt;/td&gt;
+&lt;td id="${ClassName}--${doc.name}__progress"&gt;&lt;div onclick="editCell('${ClassName}--${doc.name}__progress', this, 30);"&gt;$progress&lt;/div&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${doc.name}__current"&gt;&lt;div onclick="editCell('${ClassName}--${doc.name}__current', this, 30);"&gt;$current&lt;/div&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${doc.name}__estimated"&gt;&lt;div onclick="editCell('${ClassName}--${doc.name}__estimated', this, 30);"&gt;$estimated&lt;/div&gt;&lt;/td&gt;
+&lt;td id="${ClassName}--${doc.name}__remaining"&gt;&lt;div onclick="editCell('${ClassName}--${doc.name}__remaining', this, 30);"&gt;$remaining&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;script&gt;
+  onloads.push( registerAjaxStuff );
+  function registerAjaxStuff() {
+  ajaxEngine.registerRequest ('getUpdatedCell',
+'UpdateResponse?xpage=rdf');
+  ajaxEngine.registerRequest ('getComboEdit',
+'ComboResponse?xpage=rdf');
+  }
+&lt;/script&gt;
+{/pre}
+1 Related
+#set($projectparent = "'Projects.$project'")
+#set($projectrelated = $doc.fullName)
+#set($storyname = $doc.name)
+{table}
+Type|Title|Role|Assigned
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.StoryClass' and obj.name &lt;&gt; 'Projects.StoryClassTemplate' and doc.web=$projectparent")
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($bentrydoc = $xwiki.getDocument($item))
+#set($obj = $bentrydoc.getObject("Projects.StoryClass",0))
+#if(($bentrydoc.related=="$projectrelated")&amp;&amp;($bentrydoc.title != "$storyname"))
+#set($cont=$bentrydoc.role.lastIndexOf("."))
+#if($cont)
+#set($cont=$cont+1)
+#set($role=$bentrydoc.role.substring($cont))
+#end
+#set($cont=$bentrydoc.assigned.lastIndexOf("."))
+#if($cont)
+#set($cont=$cont+1)
+#set($assigned=$bentrydoc.assigned.substring($cont))
+#end
+$!bentrydoc.display("type","view",$obj) | [$!{bentrydoc.display("title","view",$obj)}&gt;$item] | [$!role&gt;Projects.$project.$role]|[$!assigned&gt;Projects.$assigned]
+#end
+#end
+{table}
+#end</content>
+</xwikidoc>

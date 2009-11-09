@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>IterationResponse</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<author>XWiki.Admin</author>
+<creationDate>1125384153000</creationDate>
+<date>1126684569000</date>
+<version>1.53</version>
+<content>{pre}
+$response.setContentType("text/xml")
+&lt;ajax-response&gt;
+#set($type=$request.responseType)
+#set($project=$request.project)
+#set($release=$request.release)
+#set($ClassName='IterationClass')
+#set($ClassTemplate='IterationClassTemplate')
+#set($SClassName='StoryClass')
+#set($SClassTemplate='StoryClassTemplate')
+#set($it=0)
+#set($cols=2)
+#set($ddLists='')
+#set ($sql = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$ClassName' and obj.name &lt;&gt; 'Projects.$ClassTemplate' order by doc.creationDate desc")
+   &lt;response type="element" id="$type"&gt;&lt;table&gt;
+#foreach ($item in $xwiki.searchDocuments($sql))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$ClassName",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($number=$listdoc.display("number","view",$obj))
+#set($docrelease=$listdoc.display("release","view",$obj))
+#set($posRls=$docrelease.indexOf('.')+1)
+#if ($posRls&gt;0)
+#set($docrelease=$docrelease.substring($posRls))
+#end
+#if(($project==$docproject)&amp;&amp;($docrelease==$release))
+#if($it%$cols==0)
+&lt;tr&gt;
+#end
+&lt;td&gt;&lt;div&gt;&lt;a href="${release}_${number}"&gt;Iteration $number&lt;/a&gt;&lt;/div&gt;
+&lt;ul&gt;
+#set ($sqlS = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$SClassName' and obj.name &lt;&gt; 'Projects.$SClassTemplate' order by doc.creationDate desc")
+#foreach ($item in $xwiki.searchDocuments($sqlS))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$SClassName",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($dociter=$listdoc.display("iteration","view",$obj))
+#if(($project==$docproject)&amp;&amp;($dociter=="Projects.${release}_${number}"))
+#set($title=$listdoc.display("title", $obj))
+&lt;li&gt;&lt;a href="$listdoc.name"&gt;$title&lt;/a&gt;&lt;/li&gt;
+#end
+#end
+&lt;/ul&gt;
+&lt;/td&gt;
+#set($it=$it+1)
+#if($it%$cols==0)
+&lt;/tr&gt;
+#end
+#end
+#end
+#if($it%$cols==1)
+&lt;/tr&gt;
+#end
+&lt;tr&gt;&lt;td&gt;&lt;div&gt;Backlog&lt;/div&gt;
+&lt;ul&gt;
+#set ($sqlS = ", BaseObject as obj where  obj.name=doc.fullName and obj.className='Projects.$SClassName' and obj.name &lt;&gt; 'Projects.$SClassTemplate' order by doc.creationDate desc")
+#set($backlog='Projects.backlog')
+#foreach ($item in $xwiki.searchDocuments($sqlS))
+#set($listdoc = $xwiki.getDocument($item))
+#set($obj = $listdoc.getObject("Projects.$SClassName",0))
+#set($docproject=$listdoc.display("project","view",$obj))
+#set($dociter=$listdoc.display("iteration","view",$obj))
+#if((($docproject!='')&amp;&amp;($project==$docproject))&amp;&amp;(($dociter=='')||($dociter==$backlog)))
+#set($title=$listdoc.display("title", $obj))
+&lt;li&gt;&lt;a href="$listdoc.name"&gt;$title&lt;/a&gt;&lt;/li&gt;
+#end
+#end
+&lt;/ul&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+  &lt;/response&gt;
+&lt;/ajax-response&gt;
+{/pre}</content>
+</xwikidoc>

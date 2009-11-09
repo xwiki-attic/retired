@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>ReleaseClass</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>XWiki.XWikiClasses</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124247943000</creationDate>
+<date>1124260664000</date>
+<version>1.11</version>
+<class>
+<name>Projects.ReleaseClass</name>
+<name>
+<name>name</name>
+<prettyName>name</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<marketingname>
+<name>marketingname</name>
+<prettyName>marketingname</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>2</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</marketingname>
+<releasedate>
+<name>releasedate</name>
+<prettyName>releasedate</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<dateFormat>dd/MM/yyyy HH:mm:ss</dateFormat>
+<emptyIsToday>1</emptyIsToday>
+<number>3</number>
+<classType>com.xpn.xwiki.objects.classes.DateClass</classType>
+</releasedate>
+<released>
+<name>released</name>
+<prettyName>released</prettyName>
+<unmodifiable>0</unmodifiable>
+<number>4</number>
+<displayType>yesno</displayType>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</released>
+<project>
+<name>project</name>
+<prettyName>project</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>5</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</project>
+</class>
+<content>&lt;!-- replace Main with the Space where you want your documents to be created --&gt;
+&lt;!-- replace the default parent with the one of your choice --&gt;
+&lt;!-- Save this template using the ?Save? button --&gt;
+#set( $class = $doc.name.substring(0,$doc.name.indexOf("Class")))
+#set($defaultparent = "XWiki.${class}Class")
+#set($defaultweb = "Projects")
+#includeForm("XWiki.ClassSheet")</content>
+</xwikidoc>

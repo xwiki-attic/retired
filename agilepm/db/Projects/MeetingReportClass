@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>Projects</web>
+<name>MeetingReportClass</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>XWiki.XWikiClasses</parent>
+<author>XWiki.Admin</author>
+<creationDate>1124381488000</creationDate>
+<date>1126237957000</date>
+<version>1.25</version>
+<class>
+<name>Projects.MeetingReportClass</name>
+<datereport>
+<name>datereport</name>
+<prettyName>datereport</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>20</size>
+<dateFormat>yyyyMMdd</dateFormat>
+<emptyIsToday>1</emptyIsToday>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.DateClass</classType>
+</datereport>
+<user>
+<name>user</name>
+<prettyName>user</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>2</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</user>
+<thingsdone>
+<name>thingsdone</name>
+<prettyName>thingsdone</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<size>4</size>
+<number>3</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.StoryClass' and obj.name&lt;&gt;'Projects.StoryClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</thingsdone>
+<donedescription>
+<name>donedescription</name>
+<prettyName>donedescription</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>40</size>
+<rows>5</rows>
+<number>4</number>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</donedescription>
+<thingstodo>
+<name>thingstodo</name>
+<prettyName>thingstodo</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>0</relationalStorage>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<size>5</size>
+<number>5</number>
+<sql>select obj.name from BaseObject as obj where obj.className='Projects.StoryClass' and obj.name&lt;&gt;'Projects.StoryClassTemplate'</sql>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</thingstodo>
+<tododescription>
+<name>tododescription</name>
+<prettyName>tododescription</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>40</size>
+<rows>5</rows>
+<number>6</number>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</tododescription>
+<impediments>
+<name>impediments</name>
+<prettyName>impediments</prettyName>
+<unmodifiable>0</unmodifiable>
+<size>30</size>
+<number>7</number>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</impediments>
+</class>
+<content>&lt;!-- replace Main with the Space where you want your documents to be created --&gt;
+&lt;!-- replace the default parent with the one of your choice --&gt;
+&lt;!-- Save this template using the ?Save? button --&gt;
+#set( $class = $doc.name.substring(0,$doc.name.indexOf("Class")))
+#set($defaultparent = "XWiki.${class}Class")
+#set($defaultweb = "Projects")
+#includeForm("XWiki.ClassSheet")</content>
+</xwikidoc>
