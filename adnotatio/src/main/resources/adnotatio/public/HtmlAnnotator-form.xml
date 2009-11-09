@@ -1,0 +1,33 @@
+<form>
+    <div class='formLayout'>
+        <panel type="tabs">
+            <panel type="tab" label="Annotation" selected="true">
+                <table width='100%'>
+                <tr>
+                    <td width='20%'>Title:</td>
+                    <td><input name='title' value='' class='formField' /></td>
+                </tr>
+                </table>
+                <div>
+                    Description:
+                    <textarea name='description' value='' class='formField'/>
+                </div>
+                <div>
+                    <input type='submit' label='Submit'/>
+                    <input type='cancel' label='Cancel'/>
+                </div>
+            </panel>
+            <panel type="tab" label="Selection details">
+                <div class='inline info'>
+                    First word position: <input type='readonly' name='annotationStart' class='view' /> 
+                </div>
+                <div class='inline info'>
+                    Length: <input type='readonly' name='annotationLen' class='view' />
+                </div>
+                <div class='inline info'>
+                    Selection: &amp;laquo;<input type='readonly' name='selection' class='view' />&amp;raquo; 
+                </div>
+            </panel>
+        </panel>
+    </div>
+</form>

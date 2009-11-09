@@ -1,0 +1,24 @@
+btn.apply=Apply
+btn.clear=Clear
+btn.cancel=Cancel
+lbl.more=More info...
+checkOne.travels=Travels
+checkOne.music=Music
+checkOne.books=Books
+checkOne.undefined=Not defined
+radioOne.1=One
+radioOne.2=Two
+radioOne.3=Three
+titi.value=This is a titi widget!
+tab.main=Main description
+tab.preference=Preferences
+tab.others=Other stuff
+disclosure.1=More X
+disclosure.2=More Y 
+
+label.firstName=First Name:
+label.lastName=Last Name:
+label.description=Description:
+
+label.youlike=You like:
+label.radio=Select one:

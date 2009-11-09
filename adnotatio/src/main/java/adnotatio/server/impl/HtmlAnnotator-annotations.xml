@@ -1,0 +1,30 @@
+<annotations>
+    <annotation>
+        <annotationStart>1</annotationStart>
+        <annotationLen>3</annotationLen>
+        <title>Title 123</title>
+        <description>This is a description of the annotation</description>
+        <selection>section This section</selection>
+    </annotation>
+    <annotation>
+        <annotationStart>1</annotationStart>
+        <annotationLen>3</annotationLen>
+        <title>Title 354</title>
+        <description>This is a description of the annotation</description>
+        <selection>section This section</selection>
+    </annotation>
+    <annotation>
+        <annotationStart>23</annotationStart>
+        <annotationLen>2</annotationLen>
+        <title>HTML rocks!</title>
+        <description>I think that (X)HTML is a super standard!</description>
+        <selection>HTML 4</selection>
+    </annotation>
+    <annotation>
+        <annotationStart>209</annotationStart>
+        <annotationLen>4</annotationLen>
+        <title>DOM</title>
+        <description>I like a lot the XML Document Object Model (DOM)! It is so easy to use!</description>
+        <selection>XML Document Object Model</selection>
+    </annotation>
+</annotations>

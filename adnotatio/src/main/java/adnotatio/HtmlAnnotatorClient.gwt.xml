@@ -1,0 +1,9 @@
+<module>
+	<inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.google.gwt.xml.XML'/>
+    <inherits name='com.google.gwt.http.HTTP'/>
+    <inherits name='adnotatio.Renderer'/>
+    <inherits name='adnotatio.Common'/>
+	<entry-point class='adnotatio.client.app.HtmlAnnotatorClient'/>
+    <servlet path="/service" class="adnotatio.server.ServiceServlet"/>
+</module>

@@ -1,0 +1,17 @@
+<div>
+    <h1>Test section</h1>
+    <p><strong>This section is informative.</strong></p>
+    <p>XHTML is a family of current and future document types and modules that reproduce, subset, and extend HTML&nbsp;4 [<a class='nref' href='#ref-html4'>HTML4</a>]. XHTML family
+    document types are <abbr title='Extensible Markup Language'>XML</abbr> based, and ultimately are designed to work in conjunction with XML-based user agents. The details of this family and its
+    evolution are discussed in more detail in [<a class='nref' href='#ref-xhtmlmod'>XHTMLMOD</a>].</p>
+    <p>XHTML 1.0 (this specification) is the first document type in the XHTML family. It is a reformulation of the three HTML&nbsp;4 document types as applications of XML 1.0 [<a class='nref' href='#ref-xml'>XML</a>]. It is intended to be used as a language for content that is both XML-conforming and, if some simple <a href='#guidelines'>guidelines</a> are
+    followed, operates in HTML&nbsp;4 conforming user agents. Developers who migrate their content to XHTML 1.0 will realize the following benefits:</p>
+    <ul>
+    <li>XHTML documents are XML conforming. As such, they are readily viewed, edited, and validated with standard XML tools.</li>
+    <li>XHTML documents can be written to operate as well or better than they did before in existing HTML&nbsp;4-conforming user agents as well as in new, XHTML 1.0 conforming user agents.</li>
+    <li>XHTML documents can utilize applications (e.g. scripts and applets) that rely upon either the HTML Document Object Model or the XML Document Object Model [<a class='nref' href='#ref-dom'>DOM</a>].</li>
+    <li>As the XHTML family evolves, documents conforming to XHTML 1.0 will be more likely to interoperate within and among various XHTML environments.</li>
+    </ul>
+    <p>The XHTML family is the next step in the evolution of the Internet. By migrating to XHTML today, content developers can enter the XML world with all of its attendant benefits, while still
+    remaining confident in their content's backward and future compatibility.</p>
+</div>

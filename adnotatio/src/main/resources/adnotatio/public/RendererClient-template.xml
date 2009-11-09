@@ -1,0 +1,115 @@
+<div>
+    <style>
+        .mainPanel { padding: 1em; background-color: #eeeeee; border: 3px solid silver; width: 50%; }
+        .formLayout { width: 100%; }
+        .formLayout * { vertical-align: top; }
+        .formLayout th { text-align: right; }
+
+        .formField {  border: 1px solid silver; width: 100%; }
+        textarea.formField { height: 15em; }
+        
+        .gwt-DisclosurePanel { width: 100%; }
+        .gwt-DisclosurePanel-open { }
+        .gwt-DisclosurePanel-close { }
+        
+        .gwt-TabPanel { margin-top: 4px; width: 100%; }
+        .gwt-TabPanelBottom { border: 2px solid silver; }
+        .gwt-TabBar { padding-top: 2px;   }
+        .gwt-TabBar .gwt-TabBarFirst { width: 0.5em; }
+        .gwt-TabBar .gwt-TabBarRest { }
+        .gwt-TabBar .gwt-TabBarItem { padding: 4px; border: 1px solid white; border-bottom: none; margin-right: 0.3em;
+          cursor: pointer;
+          cursor: hand;
+        }
+        .gwt-TabBar .gwt-TabBarItem-selected { padding: 4px; font-weight: bold; cursor: default; border: 1px solid silver; border-top: 3px solid silver; border-bottom: none; background-color: #DCDCDC; }
+        
+    </style>
+    <h1>Form test</h1>
+    
+    <div class="mainPanel">
+        <input type='hidden' name='hiddenToto' value='Toto' />
+        <panel type="tabs">
+            <panel type="tab" labelKey="tab.main" selected="true" name="firstPanel">
+                <table class='formLayout'>
+                    <thead>
+                      <col style='width: 25%'></col>
+                      <col style='width: 75%'></col>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th><label labelKey="label.firstName" /></th>
+                        <td><input name='firstName' value='' class='formField' /></td>
+                    </tr>
+                    <tr>
+                        <th><label labelKey="label.lastName" /></th>
+                        <td><input name='lastName' value='' class='formField' /></td>
+                    </tr>
+                    <tr>
+                        <th><label labelKey="label.description" /></th>
+                        <td><textarea name='description' class='formField' /></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type='clear' labelKey='btn.clear' for="firstPanel"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </panel>
+            <panel type="tab" labelKey="tab.preference" name="secondPanel">
+                <table class='formLayout'>
+                    <thead>
+                      <col style='width: 25%'></col>
+                      <col style='width: 75%'></col>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th><label labelKey="label.youlike" /></th>
+                        <td>
+                            <input type="checkbox" name="checkOne" value="1" labelKey="checkOne.travels" />
+                            <input type="checkbox" name="checkOne" value="2" checked="true" labelKey="checkOne.books" />
+                            <input type="checkbox" name="checkOne" value="3" labelKey="checkOne.music" />
+                            <input type="checkbox" name="checkOne" labelKey="checkOne.undefined" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label labelKey="label.radio" /></th>
+                        <td>
+                            <input type="radio" name="radioOne" labelKey="radioOne.1"  />
+                            <input type="radio" name="radioOne" labelKey="radioOne.2" />
+                            <input type="radio" name="radioOne" labelKey="radioOne.3" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type='clear' labelKey='btn.clear' for="secondPanel"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </panel>
+            <panel type="tab" labelKey="tab.others">
+                <panel type="disclosure" labelKey="disclosure.1">
+                    <ul style='margin-top: 0em;'>
+                    <li>This is a long, long text...</li>
+                    <li>This is a long, long text...</li>
+                    </ul>
+                </panel>
+                <panel type="disclosure" labelKey="disclosure.2">
+                    <ul style='margin-top: 0em;'>
+                    <li>This is a long, long text...</li>
+                    <li>This is a long, long text...</li>
+                    <li>This is a long, long text...</li>
+                    </ul>
+                </panel>
+            </panel>
+        </panel>
+        <div style='margin-top: 1em;'>
+            <input type='submit' labelKey='btn.apply' />
+            <input type='cancel' labelKey='btn.cancel' />
+        </div>
+    </div>    
+    
+</div>

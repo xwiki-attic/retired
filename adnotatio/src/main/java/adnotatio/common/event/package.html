@@ -1,0 +1,38 @@
+<p>This package contains a generic notification system used to dispatch events to
+corresponding  registered listeners. Clients can create their own events and
+register the corresponding specific listeners.
+</p>
+<p>
+This system was designed to properly handle situations when an event listener 
+fires a new event.
+</p>
+<p>It has no external dependencies and it can be used on the client side as well
+as on the server.</p>
+
+<p>Example of usage of this event system:</p>
+<pre>
+//A new user-defined type of events
+class MyEvent extends Event {
+    String fMessage;
+    public MyEvent(String msg) {
+        super(MyEvent.class);
+        fMessage = msg;
+    }
+    public String getMessage() { return fMessage; }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        EventManager manager = new EventManager();
+        // Registers a new listener which is notified about all MyEvent events
+        manager.addListener(MyEvent.class, new EventListener() {
+            public void handleEvent(Event event) {
+                MyEvent e = (MyEvent) event;
+                System.out.println(e.getMessage());
+            }
+        });
+        // Now we fire a new event
+        manager.fireEvent(new MyEvent("Hello, world!"));
+    }
+}
+</pre>

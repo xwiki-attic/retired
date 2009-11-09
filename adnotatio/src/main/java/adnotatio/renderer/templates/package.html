@@ -1,0 +1,9 @@
+This package contains a very extensible XML template system used to define 
+declarativly GWT interfaces. This framework extensively uses the bridge pattern
+to uniform the work with various GWT widgets. The main widget traverses XML 
+nodes and generates a template where dynamic GWT widgets are inserted. All these
+GWT widgets are managed by wrapper objects extending the FieldInfo class. 
+The FieldInfo provides the common interface used to set/get/update the data
+managed by various underlying GWT widgets. Individual fields can be accessed by
+their names defined in the template. Multiple fields can have the same name. All 
+widgets  with the same names are groupped in a list of fields.

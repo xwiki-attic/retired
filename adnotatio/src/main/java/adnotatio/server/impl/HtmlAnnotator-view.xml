@@ -1,0 +1,14 @@
+<div>
+    <strong><html type='inline' name='title'/></strong>
+    <html name='description'/>
+    <panel type="disclosure" title="More..." class='details'>
+        <div class='inline info'>
+            First word position: <html type='inline' name='annotationStart' class='view' /> 
+            Length: <html type='inline' name='annotationLen' class='view' />
+        </div>
+        <div class='inline info'>
+            Selection: &amp;laquo;<html type='inline' name='selection' class='view' />&amp;raquo; 
+        </div>
+    </panel>
+    <hr />
+</div>

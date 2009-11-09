@@ -1,0 +1,31 @@
+.gwt-DialogBox { background-color: gray; border: 3px solid gray; }
+.gwt-DialogBox .Caption { size: 150%; }
+.gwt-DialogBox .dialogPanel { background-color: white; text-align: left; width: 40em; }
+
+.gwt-TabPanel { margin-top: 4px; width: 100%; }
+.gwt-TabPanelBottom { border: 2px solid silver; padding: 0.5em; background: #eeeeee; }
+.gwt-TabBar { padding-top: 2px;   }
+.gwt-TabBar .gwt-TabBarFirst { width: 0.5em; }
+.gwt-TabBar .gwt-TabBarRest { }
+.gwt-TabBar .gwt-TabBarItem { padding: 4px; border: 1px solid #eeeeee; border-bottom: none; margin-right: 0.3em;
+  cursor: pointer;
+  cursor: hand;
+}
+.gwt-TabBar .gwt-TabBarItem-selected { padding: 4px; font-weight: bold; cursor: default; border: 1px solid silver; border-top: 3px solid silver; border-bottom: none; background-color: #DCDCDC; }
+
+.selected { border-bottom: 1px dotted red; cursor: pointer; cursor: hand; }
+.highlight { background-color: #FFF8DC; cursor: pointer; cursor: hand; }
+.edited { background-color: #FFD700; }
+
+.formLayout { }
+.formField {  border: 1px solid silver; width: 100%; }
+textarea.formField { height: 15em; }
+
+.details  { }
+.details .header > * { font-size: 85%; }
+.details .content { margin: 0 0 0.5em 2em; }
+
+.view { background-color: white; }
+.info { font-size: 85%; color: gray; }
+.header { margin-bottom: 0.5em; }
+.inline * { display: inline; } 

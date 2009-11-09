@@ -1,0 +1,9 @@
+<annotations>
+    <annotation>
+        <annotationStart>6</annotationStart>
+        <annotationLen>6</annotationLen>
+        <title>This is a new annotation</title>
+        <description>A very long description of this annotation</description>
+        <selection>XHTML is a family of current</selection>
+    </annotation>
+</annotations>
