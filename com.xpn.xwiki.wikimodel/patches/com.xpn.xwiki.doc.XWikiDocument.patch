@@ -1,0 +1,36 @@
+Index: /home/sebastocha/Workspace2/com.xpn.xwiki/core/src/main/java/com/xpn/xwiki/doc/XWikiDocument.java
+===================================================================
+--- /home/sebastocha/Workspace2/com.xpn.xwiki/core/src/main/java/com/xpn/xwiki/doc/XWikiDocument.java	(revision 2655)
++++ /home/sebastocha/Workspace2/com.xpn.xwiki/core/src/main/java/com/xpn/xwiki/doc/XWikiDocument.java	(working copy)
+@@ -2862,7 +2862,8 @@
+         int i0 = fullname.lastIndexOf(":");
+         int i1 = fullname.lastIndexOf(".");
+ 
+-        if (i0 != -1) {
++        //:SL:
++        if (i0 != -1 && i1 >i0) {
+             database = fullname.substring(0, i0);
+             web = fullname.substring(i0 + 1, i1);
+             name = fullname.substring(i1 + 1);
+@@ -4099,4 +4100,21 @@
+             log.warn("Unhandled exception setting context", ex);
+         }
+     }
++    
++    public String toString()
++    {
++        return getFullName();
++    }
++
++    protected Map<String, Object> customData = new HashMap<String, Object>();
++
++    public Object getCustomData(String key)
++    {
++        return customData.get(key);
++    }
++
++    public void setCustomData(String key, Object obj)
++    {
++        customData.put(key, obj);
++    }
+ }

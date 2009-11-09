@@ -1,0 +1,23 @@
+
+
+<dl class="content1">
+<!--
+<dt>TOC</dt>
+<dd>
+##$xresource.getTableOfContent("content",1,3)
+</dd>
+-->
+<div style="border:solid 1px #ccc; padding: 0px 0px 10px 10px; "> 
+#set ($sections = $xresource.getAllSectionKeys())
+#foreach ($section in $sections)
+#if ($section && $section!="content")
+<dt>$xresource.formatLink($section, $context.context)</dt>
+#end
+<dd>
+$xresource.getHtml($section,$context.context)
+
+</dd>
+#end
+</div>
+<br/>
+</dl>
