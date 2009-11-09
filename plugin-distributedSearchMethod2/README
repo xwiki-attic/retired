@@ -1,0 +1,3 @@
+directory "lucene" should go to "trunks/xwiki-platform-plugins"
+directory "wiki" should go to "trunks/xwiki-product-enterprise/wiki/"
+directory "xwiki-configuration-resources" should go to "trunks/xwiki-platform-tools/xwiki-configuration-resources"

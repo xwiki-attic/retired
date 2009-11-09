@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWiki</web>
+<name>Treeview</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>Main.AllDocs</parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1181560077000</creationDate>
+<date>1208777608000</date>
+<contentUpdateDate>1208777608000</contentUpdateDate>
+<version>12.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<name>tags</name>
+<prettyName>Tags</prettyName>
+<unmodifiable>0</unmodifiable>
+<relationalStorage>1</relationalStorage>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<size>30</size>
+<separator> </separator>
+<cache>0</cache>
+<separators> ,|</separators>
+<values></values>
+<number>1</number>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWiki.Treeview</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#if($request.nodeName)
+  #set ($hiddenSpaces = ["XWiki", "Admin", "Panels"])
+  #set ($hiddenPages = ["Main.WebRss", "Main.WebSearch", "Main.LuceneSearch", "Main.BlogRss", "Blog.Macros", "Main.TagsRss", "Main.RegisterNewUserAction", "Main.SpaceIndex", "Blog.Category"])
+  #set ($blackListedPages = ["WebPreferences"])
+  #set($node = $request.get("nodeName"))
+  $response.setContentType("text/xml") 
+  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  &lt;results&gt;
+  #set($res = "false") 
+  #foreach ($page in $xwiki.searchDocuments("doc.space = '$node' and (doc.parent = '${node}.WebHome' or doc.parent = '' or doc.parent is null or doc.parent not like '${node}%') order by doc.name"))
+   #if (($page != "${node}.WebHome") &amp;&amp; (!$hiddenPages.contains($page) || ($hiddenPages.contains($page) &amp;&amp; $xwiki.hasAdminRights())))
+    #set($index = $page.indexOf(".") + 1)
+    #set($pageName = $page.substring($index))
+    #if (!$blackListedPages.contains($pageName) || ($blackListedPages.contains($pageName) &amp;&amp; $xwiki.hasAdminRights()))
+       #set($res = "true")
+       &lt;rs label="$pageName.replaceAll('"', '\\\"')" parent="$page"&gt;$xwiki.getURL("${page}")&lt;/rs&gt;
+    #end
+   #end
+  #end
+  #if($res == "false")
+ 	#set($ppp = $node.replaceAll("'", "''"))
+ 	#set($space = $xwiki.search("select distinct doc.space from XWikiDocument doc where doc.name= '$ppp' order by 1"))
+ 	#foreach ($page in $xwiki.searchDocuments("doc.parent = '$space.get(0).$ppp' order by doc.name"))
+   	  #if (!$hiddenPages.contains($page) || ($hiddenPages.contains($page) &amp;&amp; $xwiki.hasAdminRights()))
+      	#set($index = $page.indexOf(".") + 1)
+      	#set($pageName = $page.substring($index))
+      	#if (!$blackListedPages.contains($pageName) || ($blackListedPages.contains($pageName) &amp;&amp; $xwiki.hasAdminRights()))
+        	#set($res = "true")
+        	&lt;rs label="$pageName.replaceAll('"', '\\\"')" parent="$page"&gt;$xwiki.getURL("${page}")&lt;/rs&gt;
+      	#end
+      #end
+    #end
+  #end
+  &lt;/results&gt;
+#else
+&lt;script type='text/javascript' src='${request.contextPath}/yui/yahoo/yahoo-min.js' &gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='${request.contextPath}/yui/treeview/treeview-min.js' &gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='${request.contextPath}/yui/treeview/checknode.js' &gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='${request.contextPath}/yui/event/event-min.js' &gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='${request.contextPath}/yui/connection/connection-min.js' &gt;&lt;/script&gt;
+&lt;div id="treeview"&gt;&lt;/div&gt;
+{pre}
+&lt;script type="text/javascript"&gt;
+//&lt;![CDATA[
+var tree;
+function loadNodeData(node, fnLoadComplete)  {
+  var url = "$doc.getURL()?xpage=plain&amp;nodeName="+node.label;
+  var callback = {
+   success: function(oResponse) {
+     var xml = oResponse.responseXML;
+     var results = xml.getElementsByTagName('results')[0].childNodes;
+     for (var i = 0; i &lt; results.length; i++)
+	if (results[i].hasChildNodes()) {
+	 var nodeObject = {label: results[i].getAttribute('label'), href: results[i].childNodes[0].nodeValue};
+         var tempNode = new YAHOO.widget.TextNode(nodeObject, node, false);
+     }
+     oResponse.argument.fnLoadComplete();
+   },
+   failure: function(oResponse) {
+	oResponse.argument.fnLoadComplete();
+   },
+   argument: {
+		"node": node,
+		"fnLoadComplete": fnLoadComplete
+   },
+   timeout: 7000
+  };
+  YAHOO.util.Connect.asyncRequest('GET', url, callback);
+}
+  
+function buildTree() 
+{
+ var tree = new YAHOO.widget.TreeView("treeview");
+ //turn dynamic loading on for entire tree:
+ tree.setDynamicLoad(loadNodeData, 1);
+ var root = tree.getRoot();
+ #set ($hiddenSpaces = ["XWiki", "Admin", "Panels"])
+ #set ($hiddenPages = ["Main.WebRss", "Main.WebSearch", "Main.LuceneSearch", "Main.BlogRss", "Blog.Macros", "Main.TagsRss", "Main.RegisterNewUserAction", "Main.SpaceIndex", "Blog.Category"])
+ #set ($blackListedPages = ["WebPreferences"])
+ // Add spaces as top level nodes
+ #foreach ($space in $xwiki.spaces)
+   #if (!$hiddenSpaces.contains($space) || ($hiddenSpaces.contains($space) &amp;&amp; $xwiki.hasAdminRights()))
+     nodeObject = { label: "$space", href:"$xwiki.getURL("${space}.WebHome")" };
+     var spaceNode = new YAHOO.widget.TextNode(nodeObject, root, false); 
+   #end
+ #end
+ tree.draw();
+}
+     
+//once the DOM has loaded, we can go ahead and set up our tree:
+Event.observe(window, "load", buildTree);
+//]]&gt;
+&lt;/script&gt;
+{/pre}
+#end
+</content></xwikidoc>
