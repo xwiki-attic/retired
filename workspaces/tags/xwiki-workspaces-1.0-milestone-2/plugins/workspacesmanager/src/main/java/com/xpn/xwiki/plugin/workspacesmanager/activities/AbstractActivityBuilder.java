@@ -1,0 +1,75 @@
+/*
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+package com.xpn.xwiki.plugin.workspacesmanager.activities;
+
+import java.util.Date;
+
+import com.xpn.xwiki.XWikiContext;
+import com.xpn.xwiki.doc.XWikiDocument;
+import com.xpn.xwiki.plugin.activitystream.api.ActivityEvent;
+import com.xpn.xwiki.plugin.activitystream.api.ActivityEventPriority;
+import com.xpn.xwiki.plugin.activitystream.api.ActivityEventType;
+import com.xpn.xwiki.plugin.activitystream.impl.ActivityEventImpl;
+
+/**
+ * Abstract activity builder that knows how to prepare an event based on passed documents
+ * 
+ * @version $Id: $
+ */
+public abstract class AbstractActivityBuilder implements ActivityBuilder
+{
+
+    public abstract ActivityEvent createActivity(String streamName, String applicationName,
+        XWikiDocument olddoc, XWikiDocument newdoc, XWikiContext context)
+        throws WorkspaceActivityStreamException;
+
+    protected abstract String getDocumentTitle(XWikiDocument olddoc, XWikiDocument newdoc,
+        XWikiContext context);
+
+    protected ActivityEvent prepareActivity(String streamName, String applicationName,
+        XWikiDocument olddoc, XWikiDocument newdoc, XWikiContext context)
+    {
+        XWikiDocument doc = context.getDoc();
+        ActivityEvent activityEvent = new ActivityEventImpl();
+        activityEvent.setStream(streamName);
+        activityEvent.setPage(doc.getFullName());
+        if (doc.getDatabase() != null) {
+            activityEvent.setWiki(doc.getDatabase());
+        }
+        Date eventDate;
+        activityEvent.setPriority(ActivityEventPriority.NOTIFICATION);
+        String eventType;
+        if (olddoc != null && newdoc == null) {
+            eventType = ActivityEventType.CREATE;
+            eventDate = olddoc.getDate();
+        } else if (newdoc != null && olddoc.isNew() == true) {
+            eventType = ActivityEventType.DELETE;
+            eventDate = olddoc.getDate();
+        } else {
+            eventType = ActivityEventType.UPDATE;
+            eventDate = doc.getDate();
+        }
+        activityEvent.setDate(eventDate);
+        activityEvent.setType(eventType);
+        activityEvent.setApplication(applicationName);
+        return activityEvent;
+    }
+
+}

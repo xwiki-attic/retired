@@ -1,0 +1,407 @@
+#macro(spaceactivity $workspace $class $icon)
+ #set($stories = $xwsmgr.getStories($workspace.spaceName, 5))
+ #set($link=$workspace.homeURL)
+ #set($cookieName="${context.user}_dashboard_${workspace.spaceName}")
+ #set($expanded = "expanded")
+ #if($doc.fullName=="XWS.MyDashboard")
+  #set($expanded = $xwiki.getUserPreferenceFromCookie($cookieName))
+ #end
+ <div class="inlinepanel ${expanded} ${class}">
+ <div class="inlinepaneltitle">
+  <img src=$xwiki.getSkinFile($icon) alt="" width="21" height="15" />
+  <a href="$link">${workspace.displayTitle}</a>
+ </div>
+ <div class="inlinepanelcontents">
+ #spacestories($workspace.spaceName "5")
+ </div>
+ </div>
+#end
+
+#macro(spacedetails $workspace)
+ <div class="spacedetails">
+  <div class="spacedetails-header">
+  <div>
+  <span class="spacecolor" style="background-color:#${workspace.color};margin-right:5px;padding-right:10px;">&nbsp;</span>
+  <span class="spacename">
+   <a href="$workspace.homeURL">
+   $workspace.displayTitle
+   </a>
+  </span>
+  </div>
+  <div align="right">
+  <span class="spacedetailslink" onclick="toggleClass($('details_${workspace.spaceName}'),'hidden')"><img src="$xwiki.getSkinFile('images/spacedetails.png')" alt="$msg.get('xws.spacedetails.viewdetails')" title="$msg.get('xws.spacedetails.viewdetailstitle')"/></span>
+  </div>
+  </div>
+  <div class="clearfloats"></div>
+  <div id="details_${workspace.spaceName}" class="spacedetails-body hidden">
+  #if($xwiki.xwsmgr.isMember($workspace.spaceName, $context.user))
+   #if($xwiki.xwsmgr.isAdmin($workspace.spaceName, $context.user)) #message("$msg.get('xws.spacedetails.memberadmin')")
+   #elseif($xwiki.xwsmgr.isWriter($workspace.spaceName, $context.user)) #message("$msg.get('xws.spacedetails.memberwriter')")
+   #elseif($xwiki.xwsmgr.isReader($workspace.spaceName, $context.user)) #message("$msg.get('xws.spacedetails.memberreader')")
+   #else #message("$msg.get('xws.spacedetails.member')")
+   #end
+  #else
+   #message("$msg.get('xws.spacedetails.notmember')")
+  #end
+  #if(!$workspace.description.trim().equals(""))
+  <div class="spacedescription">$workspace.description</div>
+  #end
+  <div>
+   <div class="spacecreator-title"> $msg.get('xws.spacedetails.creator')</div>
+   <div class="spacecreator">$xwiki.getUserName($workspace.creator) </div>
+  </div>
+  <div>
+    <div class="spacedate-title"> $msg.get('xws.spacedetails.creationdate')</div>
+    <div class="spacedate">$xwiki.formatDate($workspace.creationDate, $msg.get('xws.dateformat'))</div>
+  </div>
+  <div>
+    <div class="spacememberscount-title"> $msg.get('xws.spacedetails.memberscount')</div>
+    <div class="spacememberscount">$xwiki.xwsmgr.countMembers($workspace.spaceName) </div>
+  </div>
+  <div>
+    <div class="spacemode-title"> $msg.get('xws.spacedetails.publicationmode')</div>
+    <div class="spacemode">$workspace.accessLevel</div>
+  </div>
+  <div>
+     <div class="spacetype-title"> $msg.get('xws.spacedetails.spacetype')</div>
+     <div class="spacetype">$workspace.spacetype</div>
+  </div>
+  <div class="clearfloats"></div>
+ </div>
+ </div>
+#end
+
+#macro( fullName $wikiname)
+ #set($udoc=$xwiki.getDocument($wikiname))
+ #set($uobj=$udoc.getObject("XWiki.XWikiUsers"))
+ #set($fn= "${uobj.get('first_name')} ${uobj.get('last_name')}" )
+ #if($fn && !$fn.trim().equals(""))
+  $fn
+ #else
+  $wikiname
+ #end
+#end
+
+#macro(spacestories $workspaceName $number)
+#set($as = $xwiki.xwsactivitystream)
+#set($events = $as.getEventsForWorkspace($workspaceName, 15, 0))
+ #foreach($event in $events)
+  #if($event.type.equals("workspace_stream"))
+   #wsstream($event)
+  #else
+   #wsactivity($event, false)
+  #end
+ #end
+#end
+
+#macro(wsstream $activity $withSpace)
+ <div class="workspace-event">
+ #if($withSpace && $withSpace==true)
+  #set($ws=$xwiki.xwsmgr.getSpace($activity.stream))
+  <span class="event-workspace">
+   #wscolorbox($ws) <b><a href="${ws.homeURL}">$ws.displayTitle</a></b>
+  </span>
+ #end
+ <span class="event-author">$xwiki.getUserName($activity.user)</span>
+ <span class="event-action event-stream">$msg.get('space.stream.saidonworkstream') <em>&#171; $activity.displayBody &#187;</em></span>
+ <span class="event-date">$xwiki.formatDate($activity.date, $msg.get('xws.dateformat'))</span>
+ </div>
+#end
+
+#macro(wsactivity $activity $withSpace)
+ <div class="workspace-event">
+ #if($withSpace && $withSpace==true)
+  #set($ws=$xwiki.xwsmgr.getSpace($activity.stream))
+  <span class="event-workspace">
+   #wscolorbox($ws) <b><a href="${ws.homeURL}">$ws.displayTitle</a></b>
+  </span>
+ #end
+ <span class="event-author">$xwiki.getUserName($activity.user)</span>
+ <span class="event-action">$activity.displayBody</span>
+ #if($activity.param1 && !$activity.param1.equals(""))
+  <span class="event-document">
+  #if($xwiki.exists($activity.page))
+   <a href="${activity.getUrl()}">$msg.get($activity.param1)</a>
+  #else
+   <em>$msg.get($activity.param1)</em>
+  #end
+  </span>
+ #end
+ <span class="event-date">$xwiki.formatDate($activity.date, $msg.get('xws.dateformat'))</span>
+</div>
+#end
+
+#macro(wscolorbox $ws)
+ <span style="background-color:#${ws.color}">&nbsp;&nbsp;&nbsp;</span>
+#end
+
+#macro(sidebarlb $url $message $class)
+## Displays a button in the action bar that links to a Lightbox, displaying in it the content at the $url
+ <div class="${class}">
+ <a onclick="window.lb = new Lightbox('${url}');return false;" href="#"> $msg.get(${message})</a>
+ </div>
+#end
+
+#macro(sidebarlink $url $message $class)
+## Displays a button in the action bar with a synchronous link
+ <div class="${class}" >
+  <a href="$url"> $msg.get($message)</a>
+ </div>
+#end
+
+#macro(sidebarbuttons $app)
+ #set($aDoc=$xwiki.getDocument("XWSApps.${app}App"))
+ #set($aObj=$aDoc.getObject("XWiki.XWSApplicationClass"))
+ #set($buttons=$!aObj.getProperty("sidebar_buttons").getValue())
+ $xwiki.parseContent($buttons)
+#end
+
+#macro(xwstitle $app $doc)
+ #set($aDoc=$xwiki.getDocument("XWSApps.${app}App"))
+ #set($aObj=$aDoc.getObject("XWiki.XWSApplicationClass"))
+ #set($title = $!aObj.getProperty("docentry_title").getValue())
+ #if($title != "")
+  $xwiki.parseContent($title)
+ #else
+  #if($doc.title!="") $doc.title #else $doc.name #end
+ #end
+#end
+
+##
+## Small hcard : photo + link to profile
+##
+#macro( smallhcard $wikiname)
+ #set($udoc=$xwiki.getDocument($wikiname))
+ #if(!$udoc.isNew())
+  <div class="vcard smallvcard" id="vcard_${wikiname}">
+  ## Try to find an profile picture...
+  #set($purl="")
+  #set($attachs = $udoc.getAttachmentList())
+  #foreach($attach in $attachs)
+   #if($attach.image)
+    #set($purl = $udoc.getAttachmentURL($attach.filename,"download","width=50"))
+   #end
+  #end
+  #if(!$purl || $purl=="")
+   #set($purl=$xwiki.getSkinFile("images/nophoto-small.png"))
+  #end
+   <img src="${purl}" class="photo" />
+   <span class="fn n">$xwiki.getUserName($wikiname)</span>
+  </div> ## vcard
+ #end
+#end
+
+#macro(mediumcontentheader $title $img)
+    <div class="contentheader">
+      <h1>$title</h1>
+    </div>
+#end
+
+#macro(loginboxstart $logo)
+  <div class="loginbox">
+    <div class="mediumcontentheader">
+      <div class="mediumcontentheadericon">
+        <img src="$xwiki.getSkinFile($logo)" alt="$logo" />
+      </div>
+    </div>
+    <div class="mediumcontentcontainer">
+#end
+
+#macro(mediumcontentfooter)
+<!--mediumfooter-->
+#end
+
+#macro(loginboxend)
+    </div>
+    <div class="mediumcontentfooter"></div>
+  </div>
+#end
+
+#macro(mediumcontentblocstart)
+  <div class="mediumcontentblocstart"></div>
+  <div class="mediumcontentbloccontent">
+#end
+
+#macro(mediumcontentblocend)
+  </div>
+  <div class="mediumcontentblocend"></div>
+#end
+
+## Content Large ##
+
+#macro(largecontentheader $title $img)
+  <div class="largecontent">
+    <div class="largecontentheader">
+      <div class="largecontentheadericon">
+        <img src="$xwiki.getSkinFile($img)" alt="$img" />
+      </div>
+      <h1 class="largecontenttitle">$title</h1>
+    </div>
+    <div class="largecontentcontainer">
+#end
+
+#macro(largecontentfooter)
+    </div>
+    <!-- largecontentfooter-->
+  </div>
+#end
+
+## Panels ##
+
+#macro(panelheader $title)
+<div class="panel">
+<b class="top">
+<b class="b1"></b>
+<b class="b2"></b>
+<b class="b3"></b>
+<b class="b4"></b>
+</b>
+<div class="xwikipanelmenucontainer">
+<h5 class="xwikipaneltitle">$title</h5>
+<div class="xwikipanelcontents">
+#end
+#macro(panelmenuheader $title)
+<div class="panel">
+<b class="top">
+<b class="b1"></b>
+<b class="b2"></b>
+<b class="b3"></b>
+<b class="b4"></b>
+</b>
+<div class="xwikipanelmenucontainer">
+<h5 class="xwikipaneltitle">$title</h5>
+<div class="xwikipanelmenucontents">
+#end
+#macro(panelhiddenheader $title)
+<div class="panel">
+<b class="top">
+<b class="b1"></b>
+<b class="b2"></b>
+<b class="b3"></b>
+<b class="b4"></b>
+</b>
+<div class="xwikipanelmenucontainer">
+<h5 class="xwikipaneltitle">$title</h5>
+<div class="xwikipanelcontents">
+#end
+#macro(largepanelheader $title)
+<div class="panel">
+<b class="top">
+<b class="b1"></b>
+<b class="b2"></b>
+<b class="b3"></b>
+<b class="b4"></b>
+</b>
+<div class="xwikipanelmenucontainer">
+<h5 class="xwikipaneltitle">$title</h5>
+<div class="xwikipanelcontents">
+#end
+
+
+#macro(panelfooter)
+</div>
+</div>
+<b class="bottom">
+<b class="b4b"></b>
+<b class="b3b"></b>
+<b class="b2b"></b>
+<b class="b1b"></b>
+</b>
+</div>
+#end
+
+## Button Box ##
+#macro(buttonCancelSubmit $btvalue1 $btvalue2)
+<span class="buttonwrapper">
+  <input id="cancel" class="cancel" value="$btvalue1" type="reset">
+</span>
+<span class="buttonwrapper">
+  <input id="submit" class="button" value="$btvalue2" type="submit">
+</span>
+#end
+#macro(buttonPopupCancelSubmit $btvalue1 $btvalue2)
+<script type="text/javascript">
+  Event.observe("cancel", "click", cancelAction);
+  function cancelAction() {
+        toggleClass($('lb-bg'), 'hidden');toggleClass($('lb-align'), 'hidden');
+  }
+</script>
+<span class="buttonwrapper">
+  <input id="cancel" class="cancel" value="$btvalue1" type="reset" href="#">
+</span>
+<span class="buttonwrapper">
+  <input id="submit" class="button" value="$btvalue2" type="submit">
+</span>
+#end
+
+
+#macro(smalllightboxlink $linktext $lightboxcontent)
+<a href="javascript:void(0);" onclick="javascript:$('lb-content').style.height = '100%'; $('lb-content').innerHTML = '${lightboxcontent}'; toggleClass($('lb-bg'), 'hidden'); toggleClass($('lb-align'), 'hidden'); forceClass($('lb'), 'small'); checkSize();">$linktext</a>
+#end
+
+#macro(largelightboxlink $linktext $lightboxcontent)
+<a href="javascript:void(0);" onclick="javascript:$('lb-content').style.height = '100%'; $('lb-content').innerHTML = '${lightboxcontent}'; toggleClass($('lb-bg'), 'hidden'); toggleClass($('lb-align'), 'hidden'); forceClass($('lb'), 'large'); checkSize();">$linktext</a>
+#end
+
+
+#* Panels in document *#
+
+#macro(startInlinePanel $title $skinfileicon $class)
+<div class="inlinepanel expanded ${class}">
+<div class="inlinepaneltitle" onclick="if(eltHasClass(this.parentNode, 'expanded')) createCookie('XWiki.XWikiGuest_${panel}','collapsed', ''); else eraseCookie('XWiki.XWikiGuest_${panel}'); togglePanelVisibility(this.parentNode);"><img src=$xwiki.getSkinFile($skinfileicon) alt="" width="21" height="15" /> <span onclick="$xwiki.getURL('#')">$title</span></div> 
+<div class="inlinepanelcontents">
+#end
+
+#macro(endInlinePanel)
+</div>
+</div>
+#end
+
+#macro(startDashboardPanel $title $link $img $class)
+<div class="inlinepanel expanded ${class}">
+<div class="inlinepaneltitle"><img src=$xwiki.getSkinFile($img) alt="" width="21" height="15" /><a href="$link">$title</a><span class="inlinepanel-showhide" onclick="if(eltHasClass(this.parentNode, 'expanded')) createCookie('XWiki.XWikiGuest_${panel}','collapsed', ''); else eraseCookie('XWiki.XWikiGuest_${panel}'); togglePanelVisibility(this.parentNode);"></span></div> 
+<div class="inlinepanelcontents">
+#end
+
+
+#macro(endDashboardPanel)
+</div>
+</div>
+#end
+#macro(category $document)
+  #set($tspace=$xwsmgr.getRootSpace("${document.space}"))
+  #set($category = "")
+  #set($tObj = $document.getObject('XWiki.TagClass',0))
+  #set($tag = $tObj.get('tags'))
+  #if($tag && $tag.startsWith(".XWiki_WSCAT_"))
+    #set($i = $tag.lastIndexOf('_')+1)
+    #set($tagid = $tag.substring($i))
+    #if($tspace)
+      #set($pDoc= $xwiki.getDocument("${tspace.spaceName}.WebPreferences"))
+      #set($cObj = $pDoc.getObject("XWSCode.SpaceCategoryClass","id","${tagid}"))
+      #if($cObj) #set($category = $cObj.get('name')) #end
+     #end
+  #end
+  #set($catURL = $xwiki.getURL("${tspace.spaceName}.WebHome","view","viewer=categories&category=${category}"))
+  <a href="${catURL}">
+  #if($category && $category != "")$category#else$msg.get('space.common.categories.notclassified')#end
+  </a>
+#end
+
+
+#macro(dynamicsize $sz)
+##
+## Formats nicely a file size
+##
+#if($sz < 1024)
+$sz bytes
+#else
+#set($ksz = $sz / 1024)
+#if($ksz < 1024)
+${ksz}kb
+#else
+#set($Msz = $sz / 1048576)
+${Msz}Mb
+#end
+#end
+#end

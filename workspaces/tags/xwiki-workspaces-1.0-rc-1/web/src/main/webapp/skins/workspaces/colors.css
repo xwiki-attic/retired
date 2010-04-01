@@ -1,0 +1,286 @@
+/* global colors */
+body#body{background-color: #fff;}
+#contentcontainer { color: #333;}
+.content #contentcolumn, .contenthideleft #contentcolumn, #editcolumn {
+  background-color: transparent;
+}
+.commentscontainer,
+#xwikimaincontainerinner{ background-color:#transparent;}
+#body #pagename{ 
+background-image: url(images/header3.png);
+background-repeat: no-repeat;
+}
+#contentcontainer.contenthideright{}
+#body #lb .b1, #body #lb .b2, #body #lb .b3, #body #lb .b4, #body #lb .b1b, #body #lb .b2b, #body #lb .b3b, #body #lb .b4b {
+  background-color: #EEF3F6;
+}
+/*
+.contenthideright #contentcolumncontainer {	background-color: #fff;}
+*/
+/* --- Colors of XWS --- */
+/* LB 65% : #2C0705 - bleu sombre : #660066 - bleu moyen : #A365A3 - bleu clair : #E0CCE0 */
+#body.body-xwiki #contentcontainer, 
+#body.body-xwiki #company { }
+#body.body-xwiki  {background-color: #dde5f1;}
+
+#body.body-xwiki #xwikimaincontainer {
+  background-color: #fff;
+  background-image :url(images/BG-space-blue.png) ;
+  background-repeat: repeat-y;
+  background-position: -190px 0;
+  }
+
+#body.body-xwiki #xwikimaincontainerinner {
+  background-image: url(images/BG-space-blue.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+}
+#body.body-xwiki #pagename{ background-image: none; }
+#body.body-xwiki #pagename a {
+	color:  #fff;
+}
+#body.body-xwiki #footer {
+background-image: url(images/BGF-space-blue.png);/*  TEMP A VIRER  */
+background-position: top right;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+	padding: 0px 30px 0 0;
+
+}
+#body.body-xwiki #leftPanelsFooter{
+background-image: url(images/BGF-space-blue.png);/*  TEMP A VIRER  */
+background-position: top left;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+  background-position: -190px 0;
+  margin-left: -30px;
+}
+
+/* menu */
+body.body-xwiki .xwikipanelmenucontainer, body.body-xwiki .expanded .xwikipanelmenucontainer, body.body-xwiki .editbody .leftsidecolumns {
+  background-color: #660066;
+  }
+.file-service-content-xwiki .file-service-addfile-bt span, #body.body-xwiki .accordionTabTitleBar h6{
+  color: #FFF;
+  background-color: #eeF3F6;
+}
+#body.body-xwiki .accordionTabTitleBar h6 a{
+  color: #FFF;
+}
+#body.body-xwiki .b1, #body.body-xwiki .b2, #body.body-xwiki .b3, #body.body-xwiki .b4, #body.body-xwiki .b1b, #body.body-xwiki .b2b, #body.body-xwiki .b3b, #body.body-xwiki .b4b {
+  background-color: #660066;
+  border-color: #660066;
+  }
+#body.body-xwiki .xwikipanelmenucontainer .xwikipaneltitle, #body.body-xwiki .xwikipanelmenucontainer .expanded .xwikipaneltitle, #body.body-xwiki .xwikipaneltitle:hover, #body.body-xwiki .expanded .xwikipaneltitle:hover, #body.body-xwiki .xwikipaneltitle:active, #body.body-xwiki .expanded .xwikipaneltitle:active {
+  color: #eeF3F6;
+}
+/* fonts */
+#body.body-xwiki .heading-1, #body.body-xwiki .heading-1-1, #body.body-xwiki .heading-1-1-1, #body.body-xwiki .heading-1-1-1-1, #body.body-xwiki h1, #body.body-xwiki h2, #body.body-xwiki h3, #body.body-xwiki h4, #body.body-xwiki h5 {
+  color: #660066;
+}
+#body.body-xwiki div.blog .article_footer {  background-color: #E4EACC;}
+#body.body-xwiki div.blog div.mediumcontentheader {}
+
+.WHtable tr.org td.tdspace a{
+color: #660066;
+}
+#body.body-xwiki table.WHtable caption{
+	background-color: #eeF3F6;
+	color: #FFF;
+}
+#body.body-xwiki table.WHtable caption a, #body.body-xwiki table.WHtable caption a:link{
+	color: #FFF;
+}
+.file-service-content-xwiki table.WHtable thead tr.tablegend td, .gallery-service-content-xwiki table.WHtable thead tr.tablegend td, #body.body-xwiki table.WHtable thead tr.tablegend td{
+	background-color: #E0CCE0 ;
+}
+.file-service-title-xwiki, .gallery-service-title-xwiki {
+  background-color: #eeF3F6;
+}
+.file-service-content-xwiki, .gallery-service-content-xwiki {
+  border-color: #97AFD4;
+}
+#body.body-xwiki .alphabetic-bar-middle, #body.body-xwiki #tabmenucontent3 li,#body.body-xwiki #subtabmenucontent3 li {
+background-color:#eeF3F6;
+}
+
+
+
+
+
+/*-- global elements --*/
+.file-service-content table.WHtable thead tr.tablegend, .gallery-service-content table.WHtable thead tr.tablegend, /*#body.body-user table.WHtable caption */ {
+  background-image: url(images/bgglossy.png) repeat-x scroll 0% 50%;
+  zoom:1;
+}
+
+/* --- Colors of undefined space here--- */
+
+#body.body-user .WHtable tr.here td.tdspace a, #body.body-space .WHtable tr.here td.tdspace a, #body.body-org .WHtable tr.here td.tdspace a{
+	color: #f90;
+}
+/*
+.file-service-title-here, .gallery-service-title-here {
+  background-color: #f90;
+}
+*/
+.file-service-content-here, .gallery-service-content-here {
+  border-color: #f90;
+}
+
+.file-service-content-here .file-service-addfile-bt span{
+  font-weight: bold;
+/*
+	background-color: #f90;
+	color: #FFF;
+*/
+}
+
+.file-service-content-here table.WHtable thead tr.tablegend td, .gallery-service-content-here table.WHtable thead tr.tablegend td {
+	background-color: #f90;
+}
+
+
+
+/* --- Colors of login --- */
+html body#body.loginbody, .loginbody, #body.loginbody #xwikimaincontainerinner, #body.loginsubmitbody, .loginsubmitbody, #body.loginsubmitbody #xwikimaincontainerinner, #body.loginsubmitbody #xwikimaincontainer {
+  background-color: #eeF3F6;
+  background-image: none;
+	background: #eeF3F6 none;
+}
+
+/* --- Colors of administration of spaces --- */
+#body.body-admin-spaces  {background-color: #4d5672;}
+#body.body-admin-spaces #company {background: transparent url(images/admin.png) no-repeat 50% 50%;}
+#body.body-admin-spaces #xwikimaincontainer {
+background-color: #2c3853;
+  background-image :url(images/BG-admin-blue.png);
+  background-repeat: repeat-y;
+  }
+
+#body.body-admin-spaces #xwikimaincontainerinner {
+  background-image: url(images/BG-admin-blue.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+}
+#body.body-admin-spaces #pagename{ 
+background-color: #2c3853;
+}
+#body.body-admin-spaces #pagename a {
+	color:  #fff;
+}
+#body.body-admin-spaces #footer {
+background-color: #2c3853;
+background-image: url(images/BGF-admin-blue.png);
+background-position: top right;
+background-repeat:no-repeat;
+}
+#body.body-admin-spaces #leftPanelsFooter{
+background-image: url(images/BGF-admin-blue.png);
+background-position: top left;
+background-repeat:no-repeat;
+}
+
+
+
+
+
+#body.body-admin-spaces, #body.body-admin-spaces .inlinepanelcontents .member-entry.odd {
+  background-color: #4D5672;
+}
+ #body.body-admin-spaces .inlinepanelcontents .member-entry.even {
+  background-color: #2C3853;
+}
+#body.body-admin-spaces #contentcolumncontainer .inlinepanel .inlinepaneltitle, #body.body-admin-spaces .inlinepanel #space-admin-header a, #body.body-admin-spaces .inlinepanel #space-writer-header a, #body.body-admin-spaces .inlinepanel #space-reader-header a {
+  color: #2C3853;
+}
+#body.body-admin-spaces #contentcolumncontainer {
+  border-top: 1px solid #fff;
+  background-color: transparent;
+}
+#body.body-admin-spaces .infomessage {
+  background-color: #000;
+  color: #f90;
+}
+#body.body-admin-spaces #contentcontainer {
+  color: #fff;
+}
+
+
+/* --- Colors of administration of accounts --- */
+#body.body-admin-members  {background-color: #746D7A;} 
+#body.body-admin-members #company {background: transparent url(images/admin.png) no-repeat 50% 50%;}
+#body.body-admin-members #xwikimaincontainer {
+background-color: #3B3141;
+  background-image :url(images/BG-admin-vin.png);
+  background-repeat: repeat-y;
+  }
+
+#body.body-admin-members #xwikimaincontainerinner {
+  background-image: url(images/BG-admin-vin.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+}
+#body.body-admin-members #pagename{ 
+background-color: #3B3141;
+}
+#body.body-admin-members #pagename a {
+	color:  #fff;
+}
+#body.body-admin-members #footer {
+background-color: #3B3141;
+background-image: url(images/BGF-admin-vin.png);
+background-position: top right;
+background-repeat:no-repeat;
+}
+#body.body-admin-members #leftPanelsFooter{
+background-image: url(images/BGF-admin-vin.png);
+background-position: top left;
+background-repeat:no-repeat;
+}
+
+ #body.body-admin-members .inlinepanelcontents .member-entry.odd {
+  background-color: #746D7A;
+}
+ #body.body-admin-spaces .inlinepanelcontents .member-entry.even {
+  background-color: #3b3141;
+}
+#body.body-admin-members #contentcolumncontainer .inlinepanel .inlinepaneltitle, #body.body-admin-members .inlinepanel #space-admin-header a, #body.body-admin-members .inlinepanel #space-writer-header a, #body.body-admin-members .inlinepanel #space-reader-header a {
+  color: #2C3853;
+}
+#body.body-admin-members #contentcolumncontainer {
+  border-top: 1px solid #fff;
+  background-color: transparent;
+}
+#body.body-admin-members .infomessage {
+  background-color: #000;
+  color: #f90;
+}
+#body.body-admin-members #contentcontainer {
+  color: #fff;
+}
+
+.heading-1-1-1 a:link, .heading-1-1-1 a:visited{
+  text-decoration: none;
+  color: #333;
+}
+
+.heading-1-1-1 a:hover, .heading-1-1-1 a:active{
+  text-decoration: none;
+  color: #333;
+}
+
+#body.body-user table.WHtable tr.even, #body.body-space table.WHtable tr.even, #body.body-org table.WHtable tr.even{
+  background-color: #ECECEC;
+}
+
+#body.body-user table.WHtable tr.tabline1.odd, #body.body-space table.WHtable tr.tabline1.odd, #body.body-org table.WHtable tr.tabline1.odd{
+  background-color: #ECECEC;
+}
+
+#body.body-user table.WHtable tr.tabline2, #body.body-space table.WHtable tr.tabline2, #body.body-org table.WHtable tr.tabline2{
+  background-color: #FFF;
+}
+
+#body.body-user table.WHtable tr.tabline2 even, #body.body-space table.WHtable tr.tabline2 even, #body.body-org table.WHtable tr.tabline2 even{
+  background-color: #FFF;
+}
+

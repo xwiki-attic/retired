@@ -1,0 +1,29 @@
+#gallery a.gallery-item {
+  border-style:dotted;
+  border-width:2px;
+  float:left;
+  height:230px;
+  margin:10px 10px 0pt 0pt;
+  text-align:center;
+  text-decoration:none;
+  width:210px;
+}
+#gallery a.gallery-item span {
+        display:block;
+	text-align:center;
+	padding: 5px 3px;
+	color: #999;
+	}
+#body.body-user #gallery a.gallery-item:hover {
+  border-color:#A5B853;
+}
+
+.photo-download-link{
+  padding: 10px 0;
+}
+
+.photo-download-link a{
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}

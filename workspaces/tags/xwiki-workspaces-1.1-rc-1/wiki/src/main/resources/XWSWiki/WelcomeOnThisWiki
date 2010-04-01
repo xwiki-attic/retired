@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>XWSWiki</web>
+<name>WelcomeOnThisWiki</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201129959000</creationDate>
+<date>1201515958000</date>
+<contentUpdateDate>1201515958000</contentUpdateDate>
+<version>1.4</version>
+<title>WelcomeOnThisWiki</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSWiki.WelcomeOnThisWiki</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>1.1.1 Welcome to your wiki's first page !
+
+This is a wiki page. A wiki page is like an usual web page, but a page you can edit! You can use it to share information with other people the way you would use a Word document. Here are a few benefits of using a wiki page instead of a Word document :
+
+* the page is online, so you can access its latest version at any time.
+* there is a version history so that you can rollback unwanted changes and come back to a previous version of your work.
+* every authors of this space can edit it to add new pieces of information and correct mistakes.
+
+~~You can find additional information about what a wiki is and how you could use it [here&gt;http://en.wikipedia.org/wiki/Wiki].~~
+
+1.1.1 The home of your wiki
+
+This specific page is the home of your wiki. You may want to use it to introduce the wiki concept to other members of this space, or to state the intent of the work you would like to see taking place here.
+
+To get started, simply click on the "edit" button at the right of this page.</content>
+</xwikidoc>

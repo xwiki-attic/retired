@@ -1,0 +1,24 @@
+#set($tocreate=$request.getParameter("tocreate"))
+#set($title = $request.getParameter("title"))
+#set($template = "")
+#set($template = $request.getParameter("template"))
+#set($parent = "")
+#set($parent=$request.getParameter("parent"))
+##
+## Send redirect
+##
+#set($docname=$title)
+#set($docname=$util.clearAccents($docname))
+#set($docname=$docname.replaceAll("[^a-zA-Z0-9]",""))
+#set($newdoc=$xwiki.getDocument($docname))
+#if($newdoc.isNew())
+#if($tocreate == "post")
+$response.sendRedirect($newdoc.getURL("inline", "parent=${parent}&template=XWiki.ArticleClassTemplate&XWiki.ArticleClass_0_title=$title&title=$title"))
+#elseif($tocreate == "gallery")
+$response.sendRedirect($newdoc.getURL("save", "template=XWSCode.GalleryTemplate&parent=${parent}&title=$title&xredirect=${newdoc.getURL('inline')}"))
+#else
+$response.sendRedirect($newdoc.getURL("edit", "template=${template}&parent=${parent}&title=$title&editor=wysiwyg"))
+#end
+#else
+$response.sendRedirect($newdoc.getURL("view", "xpage=docalreadyexists"))
+#end

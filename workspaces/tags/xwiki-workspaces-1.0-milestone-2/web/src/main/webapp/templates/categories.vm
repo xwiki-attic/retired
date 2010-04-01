@@ -1,0 +1,67 @@
+<div class="wiki-doc-entry">
+#template("xwscontentheader.vm")
+#set($pDoc = $xwiki.getDocument("${doc.space}.WebPreferences"))
+#set($catObjs = $pDoc.getObjects('XWSCode.SpaceCategoryClass'))
+#if($request.category && $request.category!="")
+ #set($selected = $request.category)
+#else
+ #set($selected = "")
+#end
+<form action="$doc.getURL('view')">
+<div>
+<input type="hidden" name="viewer" value="categories" />
+<select name="category">
+<option value="">$msg.get('space.common.categories.notclassified')</option>
+#foreach($cat in $catObjs)
+<option value="${cat.get('id')}" #if($selected==${cat.get('id')}) selected #set($pretty=$cat.get('name'))#end>${cat.get('name')}</option>
+#end
+</select>
+<span class="buttonwrapper">
+ <input type="submit" value="$msg.get('space.common.categories.changecategory')" />
+</span>
+</div>
+</form>
+#if(!$pretty || $pretty=="") #set($pretty="$msg.get('space.common.categories.notclassified')") #end
+<h1> $msg.get('space.common.categories.category') : $pretty</h1>
+#if($selected == "") ## Not classified
+ #set($hql = ", BaseObject as obj, DBStringListProperty as prop where obj.name=doc.fullName and obj.className='XWiki.TagClass' and obj.id=prop.id.id and prop.id.name='tags' and size(prop.list) = 0 and (doc.web='${doc.space}_Wiki' or doc.web='${doc.space}_Blog') and doc.name<>'WebHome' and doc.name<>'WebPreferences'")
+ #set($docnames = $xwiki.searchDocuments($hql))
+#else ## Classified
+ #set($hql = ", BaseObject as obj, DBStringListProperty as prop where obj.name=doc.fullName and obj.className='XWiki.TagClass' and obj.id=prop.id.id and prop.id.name='tags' and '.XWiki_WSCAT_${selected}' in elements(prop.list) and (doc.web='${doc.space}_Wiki' or doc.web='${doc.space}_Blog') and doc.name<>'WebHome' and doc.name<>'WebPreferences'")
+ #set($docnames = $xwiki.searchDocuments($hql))
+#end
+ #if($docnames.size() > 0)
+  <table id="searchTableUnique" class="grid sortable doOddEven WHtable">
+   <caption>
+   <div id="caption-left"></div>
+   <div id="caption-center">
+   <span class="caption">
+   $msg.get('space.common.categories.docsforcategory') <b>$pretty</b>
+   </span>
+   </div>
+   <div id="caption-right"></div>
+     <tr class="tablegend sortHeader">
+       <th class="tdtitle">$msg.get('space.common.categories.thead.pagename')</th>
+       <th class="tddate">$msg.get('space.common.categories.thead.lastmodif')</th>
+       <th class="tdauthor">$msg.get('space.common.categories.thead.lastauthor')</th>
+     </tr>
+  #foreach($pDoc in $docnames)
+    #set($document=$xwiki.getDocument($pDoc))       
+    #set($lastauthor=$document.getContentAuthor())
+    #set($itemdate = $document.getDate())
+    #formatdate($itemdate)
+    <tr>
+         <td class="tdtitle">#if($document.title != "") <a href=$document.getURL('view')>$document.title</a> #else <a href="$document.getURL('view')">$document.name</a>#end
+           #if($document.getComment()!="")
+             <span class="comment-line" style="display:none;"><em class="tddesc"> $msg.get('commons.page.versioncomment') : $document.getComment()</em></span>
+           #end
+         </td>
+         <td class="tddate">$itemdate</td>
+         <td class="tdauthor">$xwiki.getUserName($lastauthor)</td>
+    </tr>
+  #end
+  </table>
+ #else
+  #info("${msg.get('space.common.categories.nodocforcategory')}")
+ #end
+</div>

@@ -1,0 +1,8 @@
+###
+### Display document contents in normal "view" mode
+###
+<div class="wiki-doc-entry">
+#template("xwscontentheader.vm")
+$cdoc.getRenderedContent()
+#template("xwscontentfooter.vm")
+</div>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSPhotos</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1194534618000</creationDate>
+<date>1208167895000</date>
+<contentUpdateDate>1208167895000</contentUpdateDate>
+<version>4.1</version>
+<title>SpacePhotos</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSPhotos.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Photos entry point for Space
+## ============================================
+## Displays list of photo galleries for a space
+## Mandatory input : $space
+## ============================================
+#if($request.do)
+ #if($request.do=="upload")
+  #includeInContext('XWSCode.PhotoUpload')
+ #elseif($request.do=="delete" &amp;&amp; $request.which &amp;&amp; $request.which!="")
+  ## ----------------
+  ## Delete a gallery
+  ## ----------------
+    #set($url=$xwiki.xwsmgr.getApplicationURL(${workspace.spaceName},"Photos"))
+    #set($gallery=$request.which)
+    #set($gDoc=$xwiki.getDocument($gallery))
+    #if($request.confirm &amp;&amp; $request.confirm=="1")
+      ## Perform deletion
+      ## $doc.deleteDocument()
+      #set($msgdeleted = $xwiki.arrayList)
+      #set($ok = $msgdeleted.add("&lt;u&gt;$gDoc.title&lt;/u&gt;"))
+      &lt;div class="infomessage"&gt;
+      &lt;h2&gt;$msg.get("space.photos.galleries.gallerydeleted", $msgdeleted)&lt;/h2&gt;
+      &lt;a class="button" href="$url"&gt;$msg.get("space.photos.galleries.returntogalleries")&lt;/a
+      #set($hql = "where doc.space='${doc.space}' and doc.parent='$gallery'")
+      #set($photoList = $xwiki.searchDocuments($hql))
+      &lt;ul&gt;
+      #foreach($dName in $photoList)
+       #set($pDoc = $xwiki.getDocument($dName))
+       #if($pDoc.getAttachmentList().size() &gt; 0)
+	#set($photo = $pDoc.getAttachmentList().get(0))
+        #set($filename = $photo.filename)
+        $pDoc.delete()
+        &lt;li&gt;$filename $msg.get("space.photos.galleries.photodeleted")&lt;/li&gt;
+       #end
+      #end
+      &lt;/ul&gt;
+      $gDoc.delete()
+      &lt;div class="clearfloats"&gt;&lt;/div&gt;
+      &lt;div&gt;
+      #else
+       ## Ask for the confirmation
+       #set($url=$doc.getURL("view","do=delete&amp;confirm=1&amp;which=${gallery}"))
+       #set($msgparams = $xwiki.arrayList)
+       #set($ok = $msgparams.add("&lt;u&gt;$gDoc.title&lt;/u&gt;"))
+       &lt;div class="infomessage"&gt;
+       &lt;h2&gt;$msg.get("space.photos.galleries.confirmdeletegalleries", $msgparams)&lt;/h2&gt;
+       &lt;a class="button" href="$url"&gt;$msg.get("space.photos.galleries.confirmdelete")&lt;/a&gt;
+       #set($hql = "where doc.space='${doc.space}' and doc.parent='${gallery}'")
+       #set($photoList = $xwiki.searchDocuments($hql))
+       &lt;div id="gallery"&gt;
+        #foreach($dName in $photoList)
+	 #set($pDoc = $xwiki.getDocument($dName))
+         #if($pDoc.getAttachmentList().size() &gt; 0)
+	  #set($photo = $pDoc.getAttachmentList().get(0))
+          #if($photo.isImage())
+           #set($filename = $photo.filename)
+           #set($width=$xwiki.image.getWidth($pDoc.fullName,${filename}))
+           #set($height=$xwiki.image.getHeight($pDoc.fullName,${filename}))
+           #set($maxsize=100)
+           #if($width &gt; $height)
+            #set($imageurl=$pDoc.getAttachmentURL(${filename},'download',"width=$maxsize"))
+           #else
+            #set($imageurl=$pDoc.getAttachmentURL(${filename},'download',"height=$maxsize"))
+           #end
+           #if($filename.length() &gt; 16)
+            #set($abbr = "${filename.substring(0,15)}...")
+           #else
+            #set($abbr = $filename)
+           #end
+           &lt;div class="gallery-item-edit"&gt;
+            &lt;a class="gallery-item" href="$pDoc.getURL('view','viewer=photo')" style="width: 120px; height: 120px;"&gt;
+             &lt;em&gt;$abbr&lt;/em&gt; &lt;img src="${imageurl}"/&gt;
+            &lt;/a&gt;
+           &lt;/div&gt;
+          #end
+         #end
+        #end
+      &lt;div class="clearfloats"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+     &lt;/div&gt;
+    #end
+ #else
+   #error("$msg.get('service.common.error.badrequest')")
+ #end
+#else
+#set($hql = ", BaseObject as obj where doc.space='${doc.space}' and obj.name=doc.fullName and obj.className='XWSCode.PhotoGalleryClass'")
+#set($galleries = $xwiki.searchDocuments($hql))
+#if($galleries &amp;&amp; $galleries.size()&gt;0)
+ 1 $msg.get('space.photos.galleries')
+ &lt;div id="gallery"&gt;
+ #set($index = 0)
+ #foreach($gallery in $galleries)
+  #set($index = $index + 1)
+  #set($galDoc = $xwiki.getDocument($gallery))
+  #if($galDoc &amp;&amp; $galDoc.title != "")
+   #set($hql = "where doc.name like '${galDoc.name}_%' and doc.parent='${galDoc.fullName}'")
+   #set($photoList = $xwiki.searchDocuments($hql))
+   #set($link = $galDoc.fullName)
+   #set($id = "gallery_" + $index)
+   &lt;a id="$id" class="gallery-item" href="$!xwiki.getURL("${link}", "view")"&gt;
+    &lt;span class="heading-1-1"&gt; $galDoc.title&lt;/span&gt;
+    #set($photo_index = 1)
+    #foreach($dName in $photoList)
+     #if($photo_index &lt;= 4)
+      #set($pDoc = $xwiki.getDocument($dName))
+      #if($pDoc.getAttachmentList().size() &gt; 0)
+       #set($photo = $pDoc.getAttachmentList().get(0))
+       #if($photo.isImage())
+        #set($filename = $photo.filename)
+        #set($imageurl=$pDoc.getAttachmentURL(${filename},'download',"height=73"))
+        &lt;img src="${imageurl}" width="80" height="73"/&gt;
+        #set($photo_index = $photo_index + 1)
+       #end
+      #end
+     #end
+    #end
+    #set($glry = $galDoc.getObject('XWSCode.PhotoGalleryClass'))
+    #set($desc = $glry.display("description","view"))
+    #if($desc.length() &gt; 80)
+     #set($desc = $desc.substring(0,79))
+    #end
+    &lt;span class="gallery-desc"&gt;$desc&lt;/span&gt;
+     &lt;/a&gt;
+  #end
+ #end
+ &lt;/div&gt;
+ &lt;div class="clearfloats"&gt;&lt;/div&gt;
+#else
+#info("$msg.get('space.photos.galleries.nogallery')")
+#end
+#end</content>
+</xwikidoc>

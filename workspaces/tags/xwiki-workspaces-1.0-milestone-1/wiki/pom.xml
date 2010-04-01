@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xpn.xwiki.products</groupId>
+    <artifactId>xwiki-workspaces-parent</artifactId>
+    <version>1.0-milestone-1</version>
+  </parent>
+  <artifactId>xwiki-workspaces-wiki</artifactId>
+  <name>XWiki Products - Workspaces - Wiki</name>
+  <packaging>xar</packaging>
+  <description>XWiki Products - Workspaces - Wiki</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.xpn.xwiki.products</groupId>
+      <artifactId>xwiki-enterprise-wiki</artifactId>
+      <version>${product.enterprise.version}</version>
+      <type>xar</type>
+    </dependency>
+  </dependencies>
+</project>

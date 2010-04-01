@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>CreateMySpace</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201040770000</creationDate>
+<date>1206990987000</date>
+<contentUpdateDate>1206990987000</contentUpdateDate>
+<version>3.1</version>
+<title>CreateMySpace</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.CreateMySpace</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#if($request.method=="POST")	
+  #set($newspace = $xwsmgr.createSpaceFromRequest("XWS_SpaceTemplate"))
+  #if($newspace)
+    #info("$msg.get('xws.createmyspace.success')")
+  #else
+    #error("xws.createmyspace.error")
+  #end
+#else
+
+#set($newspace = $xwsmgr.getSpace(""))
+$newspace.set("spacetype", "workspace")
+#set($ok = $xwsmgr.updateSpaceFromRequest($newspace))
+
+#set($user=$context.user)
+#if($user.indexOf(":")&gt;0)
+ #error("$msg.get('xws.createmyspace.notregistered')")
+#else
+ #info("$msg.get('xws.createmyspace.help')")
+ #set($wikiname=$context.user)
+ #set($spacename=$wikiname.substring(6))
+ &lt;form action="" method="POST"&gt;
+  &lt;input type="hidden" name="XWiki.SpaceClass_0_displayTitle" value="${spacename}" /&gt;
+  &lt;input type="hidden" name="XWiki.SpaceClass_0_description" value="$msg.get('xws.createmyspace.spaceof') #fullName(${wikiname})" /&gt;
+  &lt;input type="hidden" name="XWiki.WorkspaceSpaceClass_0_accesslevel" value="private" /&gt;
+  &lt;input type="hidden" name="XWiki.WorkspaceSpaceClass_0_spacetype" value="userspace" /&gt;
+  &lt;input type="hidden" name="XWiki.WorkspaceSpaceClass_0_color" value="555555" /&gt;
+  &lt;div align="center"&gt;
+   &lt;span class="buttonwrapper"&gt;
+    &lt;input type="submit" value="$msg.get('xws.createmyspace.submit')" /&gt;
+   &lt;/span&gt;
+  &lt;/div&gt;
+ &lt;/form&gt;
+#end
+
+#end</content>
+</xwikidoc>

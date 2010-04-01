@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>CreateNewWorkspaceForm</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1208697558000</creationDate>
+<date>1216745595000</date>
+<contentUpdateDate>1216745595000</contentUpdateDate>
+<version>5.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>XWiki.JavaScriptExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>onDemand=On demand|always=Always</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWSCode.CreateNewWorkspaceForm</name>
+<number>0</number>
+<className>XWiki.JavaScriptExtension</className>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>   function colorChanged(wColor)
+   {
+      return function()
+      {
+         colorPreview.innerHTML = "&amp;nbsp; &amp;nbsp;";
+         colorPreview.style.backgroundColor = "#" + wColor.value;
+      }
+   }
+   function blurField(field)
+   {
+      return function(){field.style.border="1px solid green;"};
+   }
+   function validateTitle()
+   {
+     return function(){
+      var image = vSpan.getElementsByTagName("img")[0];
+      if(!image)
+      {
+         image = document.createElement('img');
+         vSpan.appendChild(image);
+      
+      }
+      if(dTitle.value.length &lt;= maxTitleChars &amp;&amp; dTitle.value.length &gt; 0) 
+      {
+         image.src = "$xwiki.getSkinFile('images/ok.png')";
+         dTitle.style.border = "1px solid green;"
+      }
+      else 
+      {
+         image.src = "$xwiki.getSkinFile('images/fail.png')";
+         dTitle.style.border = "1px solid red;"
+      }
+     }
+   }
+   function titleKeyTyped()
+   {
+     return function()
+     { 
+         // prevent to type more than expected      
+         if(dTitle.value.length &gt; maxTitleChars)
+             dTitle.value = dTitle.value.substring(0, maxTitleChars);
+         // inform how much chars can be still typed
+         $('spacetitlecharsleft').innerHTML = maxTitleChars - dTitle.value.length;
+     }
+   }
+
+/*
+ * getElementsByClassName rewrite.
+ * Developed by Robert Nyman, http://www.robertnyman.com
+ * Code/licensing: http://code.google.com/p/getelementsbyclassname/
+ */
+function getElementsByClassName(className, tag, elm){
+	var testClass = new RegExp("(^|\\s)" + className + "(\\s|$)");
+	var tag = tag || "*";
+	var elm = elm || document;
+	var elements = (tag == "*" &amp;&amp; elm.all)? elm.all : elm.getElementsByTagName(tag);
+	var returnElements = [];
+	var current;
+	var length = elements.length;
+	for(var i=0; i&lt;length; i++){
+		current = elements[i];
+		if(testClass.test(current.className)){
+			returnElements.push(current);
+		}
+	}
+	return returnElements;
+}</code>
+</property>
+<property>
+<name>Create new workspace validation</name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.CreateNewWorkspaceForm</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#macro(applicationlist)
+&lt;div class="form-entry"&gt;
+ &lt;div class="form-entry-title"&gt;$msg.get('xws.createworkspace.spaceapps')&lt;/div&gt;
+ &lt;div class="form-entry-legend"&gt;&lt;em&gt;$msg.get('xws.createworkspace.spaceapps.legend')&lt;/em&gt;&lt;/div&gt;
+ &lt;span class="form-entry-input"&gt;
+ #set($amApi = $xwiki.applicationmanager)
+ #foreach($app in $amApi.applicationDocumentList)
+&lt;div class="app-name"&gt;&lt;input type="checkbox" id="application_${app.appName}" name="application_${app.appName}" checked="checked" /&gt;*$msg.get("xws.apps.${app.appName.toLowerCase()}")*&lt;/div&gt;&lt;div class="app-description"&gt;$msg.get("xws.apps.${app.appName.toLowerCase()}.desc")&lt;/div&gt;  #end
+ &lt;/span&gt;
+ &lt;span class="form-entry-valid"&gt;&lt;/span&gt;
+&lt;/div&gt;
+#end
+#macro(formentry $title $input $legend)
+&lt;div class="form-entry"&gt;
+ &lt;div class="form-entry-title"&gt;$title&lt;/div&gt;
+ #if(!$legend.equals(""))
+ &lt;div class="form-entry-legend"&gt;&lt;em&gt;$legend&lt;/em&gt;&lt;/div&gt;
+ #end
+ &lt;span class="form-entry-input"&gt;$input&lt;/span&gt;
+ &lt;span class="form-entry-valid"&gt;&lt;/span&gt;
+&lt;/div&gt;
+#end
+&lt;form action="$doc.getURL('view')" class="CreateNewWorkspace" method="post"&gt;
+&lt;fieldset style="border: 1px solid #CCC; padding: 15px;"&gt;
+&lt;legend style="border: 1px solid #CCC; padding: 6px; font-size: 1.3em;"&gt; $msg.get('xws.createworkspace.enterformdata') &lt;/legend&gt;
+&lt;input type="hidden" name="section" value="$!request.section" /&gt;
+#formentry($msg.get('xws.createworkspace.spacetitle'),$newspace.display("displayTitle","edit"),$msg.get('xws.createworkspace.spacetitle.legend'))
+#formentry($msg.get('xws.createworkspace.spacedesc'),$newspace.display("description","edit"),$msg.get('xws.createworkspace.spacedesc.legend')) 
+#applicationlist()
+#formentry($msg.get('xws.createworkspace.spacetype'),$newspace.display("accesslevel","edit"),$msg.get('xws.createworkspace.spacetype.legend'))
+#formentry($msg.get('xws.createworkspace.spacecolor'),$newspace.display("color","edit"),$msg.get('xws.createworkspace.spacecolor.legend'))
+&lt;input type="hidden" name="XWiki.WorkspaceSpaceClass_0_spacetype" id="XWiki.WorkspaceSpaceClass_0_spacetype" value="workspace"/&gt;
+ &lt;div align="center"&gt;
+  &lt;span class="buttonwrapper"&gt;
+   &lt;button type="submit"&gt;$msg.get('xws.createworkspace.submit')&lt;/button&gt;
+  &lt;/span&gt;
+ &lt;/div&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;
+## Inject js via jsx plugin (see XWiki.JavascriptExtension object in this document).
+$xwiki.jsx.use("XWSCode.CreateNewWorkspaceForm")
+## Initialize event observers.
+{pre}
+&lt;script type="text/javascript"&gt;
+// &lt;![CDATA[ 
+   var maxTitleChars = 50;
+   var dTitle = $('XWiki.SpaceClass_0_displayTitle');
+   var sDesc = $('XWiki.SpaceClass_0_description');
+   var wAccess = $('XWiki.WorkspaceSpaceClass_0_accesslevel');
+   var wColor = $('XWiki.WorkspaceSpaceClass_0_color');
+   var colorPreview = getElementsByClassName("form-entry-valid","*",wColor.parentNode.parentNode)[0];
+   var vSpan = getElementsByClassName("form-entry-valid","*",dTitle.parentNode.parentNode)[0];
+   Event.observe(dTitle,"keyup", titleKeyTyped());   
+   Event.observe(dTitle,"blur", validateTitle());
+   // Green the optional/already filled fields on blur...
+   Event.observe(sDesc,"blur", blurField(sDesc));
+   Event.observe(wAccess,"blur", blurField(wAccess));
+   Event.observe(wColor,"blur", blurField(wColor));
+   Event.observe(wColor,"change", colorChanged(wColor));
+   titleKeyTyped()() // (in case the page is refreshed.)
+// ]]&gt;
+&lt;/script&gt;
+{/pre}
+</content></xwikidoc>

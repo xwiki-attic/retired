@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>GlobalAdminPanel</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1222112022000</creationDate>
+<date>1222113921000</date>
+<contentUpdateDate>1222113921000</contentUpdateDate>
+<version>12.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>Panels.PanelClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<category>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>category</name>
+<number>5</number>
+<prettyName>Category</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>Information|Navigation|Tools|Administration|Other</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</category>
+<content>
+<editor>Text</editor>
+<name>content</name>
+<number>4</number>
+<prettyName>Content</prettyName>
+<rows>25</rows>
+<size>60</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</content>
+<description>
+<editor>Text</editor>
+<name>description</name>
+<number>3</number>
+<prettyName>Description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<type>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>type</name>
+<number>2</number>
+<prettyName>Panel type</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>view|edit</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</type>
+</class>
+<name>XWSCode.GlobalAdminPanel</name>
+<number>0</number>
+<className>Panels.PanelClass</className>
+<property>
+<category>Navigation</category>
+</property>
+<property>
+<content>#if($context.action=="view") ## XWiki Workspaces administration
+#panelheader("$msg.get('xws.admin.panel.welcome.title')")
+ $msg.get('xws.admin.panel.welcome.content')&lt;br /&gt;&lt;br /&gt;
+ * *&lt;a href="$xwiki.getURL('XWiki.XWikiPreferences','view')"&gt; $msg.get('xws.admin.panel.links.adminhome')&lt;/a&gt;*
+ * *&lt;a href="$xwiki.getURL('XWiki.XWikiPreferences','view','section=Spaces')"&gt; $msg.get('xws.admin.panel.links.manageworkspaces')&lt;/a&gt;*
+ * *&lt;a href="$xwiki.getURL('XWiki.XWikiPreferences','view','section=Users')"&gt; $msg.get('xws.admin.panel.links.manageusers')&lt;/a&gt;*
+ * *&lt;a href="$xwiki.getURL('XWiki.XWikiPreferences','view','section=Groups')"&gt; $msg.get('xws.admin.panel.links.managegroups')&lt;/a&gt;*
+#panelfooter()
+#else ## XE Administration
+ #panelheader(" $msg.get('xws.admin.panel.enterprise.header') ")
+&lt;br /&gt;
+ $msg.get('xws.admin.panel.enterprise.introduction')
+&lt;br /&gt;&lt;br /&gt;
+ $msg.get('xws.admin.panel.enterprise.otherLinks')
+ * *[$msg.get('xws.admin.panel.enterprise.whatsNew')&gt;Main.WhatsNew]*
+ * *[$msg.get('xws.admin.panel.enterprise.allDocs')&gt;Main.AllDocs]*
+ * *[$msg.get('xws.admin.panel.enterprise.scheduler')&gt;Scheduler.WebHome]*
+#end</content>
+</property>
+<property>
+<description>The panel offered in XWiki Workspaces global administration UI</description>
+</property>
+<property>
+<name>Global Admin Panel</name>
+</property>
+<property>
+<type>view</type>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.GlobalAdminPanel</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#includeForm("Panels.PanelSheet")
+</content></xwikidoc>

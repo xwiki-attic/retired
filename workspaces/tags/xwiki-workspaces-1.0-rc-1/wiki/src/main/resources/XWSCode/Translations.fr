@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>Translations</name>
+<language>fr</language>
+<defaultLanguage></defaultLanguage>
+<translation>1</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1206990552000</creationDate>
+<date>1207135822000</date>
+<contentUpdateDate>1207135822000</contentUpdateDate>
+<version>2.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.Translations</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>XWiki.WorkspaceSpaceClass_accesslevel_public=Public
+XWiki.WorkspaceSpaceClass_accesslevel_private=Privé
+
+XWiki.WorkspaceSpaceClass_color_555555=Gris
+XWiki.WorkspaceSpaceClass_color_0000FF=Bleu
+XWiki.WorkspaceSpaceClass_color_003399=Minuit
+XWiki.WorkspaceSpaceClass_color_009900=Vert
+XWiki.WorkspaceSpaceClass_color_009933=Mer
+XWiki.WorkspaceSpaceClass_color_660033=Violet
+XWiki.WorkspaceSpaceClass_color_663300=Marron
+XWiki.WorkspaceSpaceClass_color_990000=Corail
+XWiki.WorkspaceSpaceClass_color_996699=Bleu violet
+XWiki.WorkspaceSpaceClass_color_99CCFF=Bleu ciel
+XWiki.WorkspaceSpaceClass_color_99FF00=Vert jaune
+XWiki.WorkspaceSpaceClass_color_CC3300=Rouge indien
+XWiki.WorkspaceSpaceClass_color_CC9900=Or
+XWiki.WorkspaceSpaceClass_color_CC9999=Charbon
+XWiki.WorkspaceSpaceClass_color_CC99FF=Pourpre
+XWiki.WorkspaceSpaceClass_color_CCCC66=Kaki
+XWiki.WorkspaceSpaceClass_color_FF99CC=Rose
+XWiki.WorkspaceSpaceClass_color_FFCC33=Orange
+
+xws.dateformat=MMM d, yyyy
+
+
+xws.members.title=Membres
+xws.members.allmembers=Voir tous les membres de l'espace de travail
+xws.members.admins=Administrateurs
+xws.members.writers=Auteurs
+xws.members.readers=Lecteurs
+
+xws.spacedetails.createdby=crée par
+xws.spacedetails.on=le
+xws.spacedetails.members=membre(s)
+xws.spacedashboard.recentmodifications=Activité récente dans l'espace
+xws.mydashboard.recentactivity=Activité récente sur mes espaces
+xws.mydashboard.help=Votre tableau de bord vous permet de suivre l'activité récente des espaces desquels vous êtes membres (en tant que lecteur, auteur ou admin). Vous pouvez consulter la liste de tous les espaces desquels vous êtes membres ainsi que des espaces publics auxquels vous avez accès sur la page [Mes Espaces&gt;XWiki.MySpaces]. Vous pouvez rejoindre cette page à n'importe quel moment en cliquant sur le bouton "Mes Espaces" dans la barre de menu horizontale.
+
+xws.wysiwyg.chooseworkspace=Choisissez un espace de travail
+xws.wysiwyg.docsforapplication=Documents pour cette application
+xws.wysiwyg.nodocforthisapp=Désolé, aucun document n'a été trouvé
+xws.wysiwyg.resultsforspace=Résultats pour cet espace
+xws.wysiwyg.spacehomelink=Lien vers la page d'accueil de cet espace de travail
+
+xws.search.title=Recherche
+xws.search.date=Date
+xws.search.application=Application
+xws.search.document=Document
+xws.search.lastauthor=Dernier Auteur
+xws.search.at=à
+
+xws.workspace.homepage=page d'accueil de l'espace
+
+xws.activities.workspacecreated=a &lt;b&gt;créé&lt;/b&gt; l'espace de travail
+xws.activities.homepageupdated=a &lt;b&gt;modifié&lt;/b&gt; la 
+xws.activities.wiki.update=a &lt;b&gt;modifié&lt;/b&gt; la page wiki
+xws.activities.blog.update=a &lt;b&gt;modifié&lt;/b&gt; le billet de blog
+xws.activities.files.update=a &lt;b&gt;mis à jour&lt;/b&gt; le fichier
+xws.activities.photos.update=a &lt;b&gt;modifié&lt;/b&gt; la galerie photo
+xws.activities.wiki.create=a &lt;b&gt;créé&lt;/b&gt; la page wiki
+xws.activities.blog.create=a &lt;b&gt;publié&lt;/b&gt; le billet de blog
+xws.activities.files.create=a &lt;b&gt;ajouté&lt;/b&gt; le fichier
+xws.activities.photos.create=a &lt;b&gt;créé&lt;/b&gt; la galerie photo
+xws.activities.wiki.delete=a &lt;b&gt;supprimer&lt;/b&gt; la page wiki
+xws.activities.blog.delete=a &lt;b&gt;supprimer&lt;/b&gt; le billet de blog
+xws.activities.files.delete=a &lt;b&gt;supprimer&lt;/b&gt; le fichier
+xws.activities.photos.delete=a &lt;b&gt;supprimer&lt;/b&gt; la galerie
+
+xws.admin.adduserstogroup=Ajoutez les utilisateurs au groupe &lt;em&gt;{0}&lt;/em&gt;
+xws.admin.addusershelp=Veuillez sélectionner les utilisateurs que vous souhaitez ajouter à ce groupe dans la liste située sur la gauche de votre écran. Vous pouvez utiliser le champ de recherche afin de filter les utilisateurs par leur nom. Vous pouvez ensuite cliquer sur la flèche verte située à côté de leur nom afin de les ajouter au groupe sélectionné. Une fois la flèche cliquée, le nom de cet utilisateur sera visible dans la colonne de droite. &lt;br /&gt; Lorsque vous avez ajouté tous les utilisateurs que vous souhaitiez inclure dans le groupe, vous pouvez valider votre action en cliquant sur le bouton \"Valider\" situé en bas de la page. &lt;br /&gt; Petit rappel : les utilisateurs déjà membres de cet espace ne seront pas visibles dans la liste d'utilisateurs à ajouter.
+xws.admin.availableusers=Utilisateurs à ajouter
+xws.admin.selectedusers=Utilisateurs ajoutés au groupe
+xws.admin.adduserstospace=Ajoutez les utilisateurs sélectionnés au groupe {0}
+xws.group.admin=Admin
+xws.group.reader=Lecteur
+xws.group.writer=Auteur
+
+xws.menuview.globaladmin=Admin Global
+xws.menuview.mydashboard=Mon tableau de bord
+xws.menuview.myspace=Mon Espace Personnel
+xws.menuview.myspaces=Mes Espaces
+xws.menuview.myprofile=Mon Profil
+xws.menuview.logout=Quitter la Session
+
+xws.createworkspace.title=Créer un nouvel espace de travail
+xws.createworkspace.enterformdata=Entrez les informations liées à cet espace de travail :
+xws.createworkspace.spacetitle=Nom du nouvel espace
+xws.createworkspace.spacetype=Niveau d'accès
+xws.createworkspace.spacedesc=Description
+xws.createworkspace.spacecreated=L'espace &amp;lt;a href="{0}"&amp;gt;{1}&amp;lt;/a&amp;gt; a bien été créé.
+xws.createworkspace.spacecreationfailed=Ooops - un problème a eu lieu durant la création de cet espace. Désolé - et si vous essayiez à nouveau ?
+xws.createworkspace.spacecolor=Couleur de l'espace
+
+xws.createmyspace.success=Votre espace a été crée avec succès
+xws.createmyspace.error=Une erreur est survenue lors de la création de votre espace
+xws.createmyspace.notregistered=Vous ne pouvez pas créer d'espace personnel car vous n'êtes pas enregistré sur ce wiki.
+xws.createmyspace.spaceof=Espace personnel de
+xws.createmyspace.submit=Créer mon espace!
+xws.createmyspace.help=Cliquer sur ce bouton vous permet de créer votre espace personnel. Votre espace personnel inclus un Blog, un Wiki, un répertoire de fichiers ainsi qu'un album photo. Vous pouvez l'utiliser pour conserver vos informations, notes et fichiers personnels.
+
+xws.createorgspace.title=Créez l'espace de travail de toute votre organisation
+xws.createorgspace.formlegend=Veuillez entrer les informations décrivant l'espace de travail de votre organisation
+xws.createorgspace.displaytitle=Nom de votre organisation
+xws.createorgspace.description=Description
+xws.createorgspace.submit=Créer l'espace de l'organisation
+xws.createorgspace.visitorgspace=Accéder à l'espace de l'organisation
+xws.createorgspace.createworkspaces=Créer de nouveaux espaces de travail
+xws.createorgspace.spacecreated=L'espace de travail de toute votre organisation a bien été créé. Vous pouvez commencer à l'utiliser dès maintenant ou choisir de continuer à créer de nouveaux espaces de travail.
+xws.createorgspace.mustbeadmin=Vous devez être administrateur pour créer l'espace de l'organisation
+xws.createorgspace.help=Cliquez sur ce bouton afin de créer l'espace de travail de toute votre organisation. Cet espace sera accessible à tous les membres de votre organisation. Chaque membres est informé des nouveautés ayant lieu dans cet espace. Il contient un blog, un wiki, une photothèque et un espace de partage de fichiers. Vous pouvez l'utiliser afin de publier de l'information à destination de toute votre organisation.
+
+xws.space.details.createdby=créé par
+xws.space.details.on=le
+xws.space.details.members=membre(s)
+
+xws.apps.wiki=Wiki
+xws.apps.blog=Blog
+xws.apps.files=Fichiers
+xws.apps.photos=Photos
+xws.apps.wiki.createwikipage=Créer une page wiki
+xws.apps.blog.createblogpost=Écrire un article de blog
+xws.apps.photos.createphotogallery=Publier une galerie photo
+xws.apps.files.createfile=Ajouter un fichier
+
+xws.myspaces.myspace=Espace Personnel
+xws.myspaces.orgspace=Espace de l'organisation
+xws.myspaces.mymemberships=Les Espaces auxquels j'appartiens
+xws.myspaces.publicspaces=Espaces Publics
+xws.myspaces.publicspaces.info=Les espaces publics sont visibles par tout les utilisateurs enregistrés.
+xws.myspaces.mymemberships.emptylist=Vous ne participez à aucun espace pour le moment.
+xws.myspaces.mymemberships.info=Ce sont les espaces auxquels vous prenez part en tant que lecteur, auteur ou Admin.
+xws.myspaces.getstartedpanel=Cette page vous offre la liste de tous les espaces auxquels vous avez accès en tant que lecteur, auteur ou admin. &lt;br /&gt; Elle vous permet également de naviguer dans la liste de tous les espaces publics et des espaces privés auxquels vous appartenez. Elle vos donne également accès à votre espace personnel et à celui de votre organisation. &lt;br /&gt; Par ailleurs, vous disposez en bas de page de la possibilité de créer de nouveaux espaces de travail.
+
+xws.admin.welcome=Bienvenue sur l'espace d'administration de votre XWiki Workspaces
+xws.admin.managespaces=Gérer les espaces
+xws.admin.manageusers=Gérer les utilisateurs
+xws.admin.activespaces=Liste des espaces actifs
+xws.admin.archivedspaces=Liste des espaces archivés
+xws.admin.archive.alt=Archive
+xws.admin.archive.title=Archiver cet espace
+xws.admin.delete.alt=Supprimer
+xws.admin.delete.title=Supprimer cet espace définitivement
+xws.admin.confirmdeletion=Supprimer défitivement un espace supprimera également les données des applications de cet espace : pages wiki, articles de blog, galeries photos et fichiers. Confirmez que vous souhaitez supprimer définitivement l'espace *{0}* ainsi que les données qui lui sont associés.
+xws.admin.spacedeleted=L'espace *{0}* ainsi que les données qui lui sont associées ont étés supprimés avec succès.
+xws.admin.errordeletingspace=Une erreur est survenue lors de la suppression de l'espace *{0}*.
+xws.admin.spacearchived=L'espace *{0}* a bien été archivé. Vous pouvez désormais le retrouver dans la liste des espaces archivés. Vous pouvez à tout moment le rendre actif à nouveau par un simple clic.
+xws.admin.errorarchiving=Ooops - Une erreur s'est produite pendant le processus d'archivage de l'espace.
+xws.admin.restore.alt=Restaurer
+xws.admin.restore.title=Restaurer cet espace
+xws.admin.spacerestored=L'espace {0} a bien été restauré. Vous pouvez le retrouver à nouveau dans la liste des espaces actifs.
+xws.admin.lastworkspaces=Derniers espaces de travail créés
+xws.admin.latestusers=Derniers utilisateurs ajoutés
+xws.admin.registernewuser=Inscrire un nouvel utilisateur
+xws.admin.browseallusers=Voir la liste de tous les utilisateurs
+xws.admin.createnewworkspace=Créer un nouvel espace de travail
+xws.admin.manageallspaces=Suivre et gérer l'ensemble de vos espaces de travail
+xws.admin.panel.welcome.title=XWS Admin Center
+xws.admin.panel.welcome.content=Bienvenue sur le panel d'administration de votre XWiki Workspaces. Vous y trouverez tous les liens nécessaires pour gérer ce 
+xws.admin.panel.links.title=Accès Rapide
+xws.admin.panel.links.adminhome=Accueil de l'administration
+xws.admin.panel.links.manageworkspaces=Gérer les espaces de travail
+xws.admin.panel.links.manageusers=Gérer les utilisateurs
+xws.admin.users.links=liens
+
+xws.stories.homeapplication=Accueil de l'espace
++space.wiki.lastchanges=Derniers documents modifiés sur l'espace de travail {0}
+space.wiki.docindex=Index des documents pour l'espace de travail &lt;em&gt;{0}&lt;/em&gt;
+space.wiki.alldocuments=Toutes les pages wiki
+space.wiki.nodocument=Il n'y a pour le moment aucune page dans ce wiki
+space.wiki.thead.pagename=Titre de la page
+space.wiki.thead.lastmodifiedon=Derniere modification
+space.wiki.thead.lastauthor=Dernier auteur
+space.wiki.renamepage.title=Renommer
+space.wiki.renamepage.newname=Nouveau nom
+space.wiki.renamepage.updatedocs=Mettre à jour les backlinks
+space.wiki.renamepage.emptyname=Veuillez entrer un nom de page valide
+space.wiki.renamepage.alreadyexists=Un document avec ce nom (&amp;lt;a href="{1}"&amp;gt;{0}&amp;lt;/a&amp;gt;) existe déjà dans ce wiki
+space.wiki.createpage=Créer une page wiki
+space.wiki.createpage.pagename=Nom de la page
+
+space.blog.blogof=Blog de
+space.blog.blogofspace=Blog de cet espace
+space.blog.error.noarticlefound=Cette page ne contient pas d'article de blog
+space.blog.article.category=Categorie
+space.blog.article.backtoblog=Retour au blog
+space.blog.article.title=Titre de cet article
+space.blog.article.content=Contenu de cet article
+space.blog.createarticle=Ajouter un article de blog
+space.blog.createarticle.articlename=Nom de l'article
+space.blog.noarticleforcategory=Il n'y a pas d'article dans cette catégorie
+space.blog.article.by=par
+space.blog.article.on=le
+space.blog.article.modifiedby=modifié par
+space.blog.article.permalink=permalink
+space.blog.article.comments=Commentaires
+
+space.files.table.caption=Fichiers pour l'espace de travail &lt;em&gt;{0}&lt;/em&gt;
+space.files.addfile=Ajouter ce fichier
+space.files.uploadnewfile=Mettre un nouveau fichier en ligne
+space.files.replacefilename=Remplacez le nom de ce fichier par
+space.files.title=Fichiers
+space.files.file=Fichier
+space.files.fileuploaded=Le fichier *{0}* a été mis en ligne avec succès.	
+space.files.file.details=Voir les versions et commentaires pour ce fichier
+space.files.file.download=Télécharger la dernière version de ce fichier
+space.files.existingversions=Versions existantes
+space.files.uploadnewversion=Mettre une nouvelle version en ligne
+space.files.tablecaption=Fichiers
+space.files.thead.attachtype=Type
+space.files.thead.attachname=Nom
+space.files.thead.attachsize=Taille
+space.files.thead.attachversion=Version
+space.files.thead.attachdate=Date
+space.files.thead.attachauthor=Auteur
+space.files.thead.actions=Actions
+space.files.fileentry.downloadthisattachment=Télécharger ce fichier
+space.files.fileentry.viewattachmenthistory=Voir l'historique de ce fichier
+space.files.fileentry.confirmdelattachment=Confirmer la suppression de ce fichier
+space.files.fileentry.deletethisattachment=Supprimer ce fichier
+space.files.attachnewfile=Ajouter un nouveau fichier
+space.files.emptylist=Il n'y a pas de fichier disponible dans cet espace
+
+space.photos.galleries.creategallery=Publier une nouvelle galerie
+space.photos.galleries.create.gallerytitle=Titre de la galerie
+space.photos.galleries.gallerydeleted=La galerie {0} a été supprimée
+space.photos.galleries.returntogalleries=Retour à la liste des galeries
+space.photos.galleries.photodeleted=supprimée
+space.photos.galleries.confirmdeletegalleries=Supprimer la galerie {0} ainsi que les photos qu'elle contient
+space.photos.galleries.confirmdelete=Confirmer la supression
+space.photos.galleries.nogallery=Il n'y a pas de galerie photo dans cet espace pour le moment
+space.photos.galleries=Galeries photo
+space.photos.error.nogalleryfound=Aucune galerie photo n'a pu être trouvée sur cette page
+space.photos.gallery.editing=Édition
+space.photos.gallery.description=Description
+space.photos.gallery.deleteconfirm=Souhaitez vous supprimer cette image ?
+space.photos.gallery.addphotostogallery=Ajouter des images à la galerie
+space.photos.gallery.uploadsuccess=Cette image a bien été ajoutée à la galerie photo
+space.photos.gallery.existingphotos=Images disponibles dans cette galerie
+space.photos.gallery.photo.seeoriginal=Voir l'original de cette image
+space.photos.photo.uploadedon=Postée le
+
+space.prefs.categories=Catégories de l'espace
+space.prefs.categories.caption=Liste des catégories
+space.prefs.categories.thead.name=Nom
+space.prefs.categories.thead.actions=Actions
+space.prefs.categories.addcategory=Ajouter une catégorie
+
+space.prefs.details.title=Informations liées à cet espace
+space.prefs.details.edit=Éditer les informations liées à cet espace
+
+space.prefs.members.title=Membres de l'espace
+space.prefs.members.welcomemsg=Gérer les rôles des membres de cet espace
+space.prefs.members.admins=Admins
+space.prefs.members.writers=Auteurs
+space.prefs.members.readers=Lecteurs
+space.prefs.members.addmembertogroup=Ajouter de nouveaux membres à cet espace
+space.prefs.members.makeadmin=admin
+space.prefs.members.makewriter=auteur
+space.prefs.members.makereader=lecteur
+space.prefs.members.emptylist=Il n'y a pas d'utilisateur dans ce groupe pour le moment
+space.prefs.members.nomembertoadd=Tous les membres de l'organisation font automatiquement partie de cet espace
+
+space.prefs.rights.title=Mode de publication de l'espace
+space.prefs.rights.caption=Choisir parmi les modes disponibles
+space.prefs.rights.thead.mode=Mode
+space.prefs.rights.thead.description=Description
+space.prefs.rights.public=Public
+space.prefs.rights.public.desc=En plus des caractéristiques de l'espace privé, cet espace est accessible par tous les membres de l'organisation
+space.prefs.rights.private=Privé
+space.prefs.rights.private.desc=Seuls les membres ayant été invités dans cet espace peuvent y participer
+space.prefs.rights.updaterights=Mettre à jour le mode de publication
+space.prefs.rights.updated=Le mode de publication de cet espace de travail a été mis à jour
+
+space.prefs.common.error.nowebpreffound=Ce document doit être appliqué à un espace de travail
+
+space.user.spacelist.title=Espaces de collaboration
+space.user.spacelist.welcomemsg=Tous les espaces de travail auxquels vous participez
+space.user.spacelist.restrictedandpublicspaces=Liste des espaces publics et protégés
+space.user.spacelist.emptylist=Vous ne participez à aucun espace pour le moment
+space.user.spacelist.createnewspace=Créer un nouvel espace
+space.user.spacelist.create.spacename=Nom de cet espace
+space.user.spacelist.createthespace=Créer l'espace
+space.user.spacelist.spacecreated=Cet espace a été créé avec succès
+space.user.spacelist.spacename=Nom de l'espace
+space.user.spacelist.role=Rôle
+space.user.spacelist.actions=Actions
+
+space.user.changepwd.title=Changer mon mot de passe
+space.user.changepwd.pwdnotmatching=Les 2 mots de passe que vous avez entrés ne correspondent pas. Veuillez essayer à nouveau.
+space.user.changepwd.newpwd=Nouveau mot de passe
+space.user.changepwd.confirmpwd=Confirmez ce mot de passe
+space.user.changepwd.info=Une fois que vous aurez changé votre mot de passe, il vous sera demandé de vous reconnecter à l'aide de ce mot de passe
+space.user.changepwd.notallowed=Vous n'êtes pas autorisé à faire cette action.
+space.user.profile.changepicture=Changer ma photo de profil
+space.user.hcard.photo=Photo
+space.user.hcard.error.nohcardfound=Aucune VCard n'a pu être trouvée pour cet utilisateur
+
+space.menu.prefs.home=Accueil de l'espace
+space.menu.prefs.details=Informations sur cet espace
+space.menu.prefs.members=Membres de l'espace
+space.menu.prefs.rights=Mode de publication de cet espace
+space.menu.prefs.categories=Catégories
+
+space.dashboard.stories.commenton=commentaire sur
+space.dashboard.stories.incategory=dans
+space.dashboard.stories.by=par
+
+space.common.categories.notclassified=Non classifié
+space.commons.categories.notclassified=Non classifié
+space.common.categories.thead.pagename=Nom de la page
+space.common.categories.thead.lastmodif=Modifié le
+space.common.categories.thead.lastauthor=Dernier auteur
+space.common.categories.changecategory=Changer cette catégorie
+space.common.categories.category=Catégorie
+space.common.categories.docsforcategory=Documents pour la catégorie &lt;b&gt;{0}&lt;/b&gt; dans l'espace de travail &lt;em&gt;{1}&lt;/em&gt;
+space.common.categories.pagename=Nom de la page
+space.common.categories.lastmodif=Modifiée le
+space.common.categories.lastauthor=Dernier auteur
+space.common.categories.nodocforcategory=Il n'y a pas de document pour cette catégorie
+space.common.error.nospacefound=Ce document doit être appliqué à un espace de travail
+
+admin.directory.members.title=Répertoire des utilisateurs
+admin.directory.members.memberdeleted=L'utilisateur {0} a bien été supprimé
+admin.directory.members.memberregistered=L'utilisateur {0} a bien été enregistré
+admin.directory.members.errorwhieregister=Une erreur est survenue durant l'inscription de cet utilisateur
+admin.directory.members.formtitle=Ajouter un utilisateur
+admin.directory.members.addfield=Afficher un autre champ
+admin.directory.members.confirmdelete=Supprimer un membre supprimera également son espace personnel ainsi que toutes les données que cet espace contient. Souhaitez-vous vraiment le supprimer ?
+admin.directory.members.errorwhileregister=Une erreur a eu lieu pendant l'inscription du membre {0}
+
+admin.menu.spacehome=Accueil de l'espace
+admin.menu.administration=Administration
+
+
+commons.actions.yes=Oui
+commons.actions.no=Non
+commons.actions.delete=Supprimer
+commons.actions.add=Ajouter
+commons.actions.edit=Éditer
+commons.actions.choosefile=Choisir un fichier
+commons.actions.confirm=Confirmer
+
+commons.form.cancel=Annuler
+commons.form.validate=Valider
+commons.form.replacefile=Souhaitez-vous remplacer ce fichier
+commons.form.fields.lastname=Nom de famille
+commons.form.fields.firstname=Prénom
+commons.form.fields.mail=Email
+commons.form.fields.nickname=Pseudo
+commons.form.fields.jobtitle=Fonction
+commons.form.fields.mobile=Tel Portable
+commons.form.fields.phone=Téléphone
+commons.form.fields.organization=Organisation
+commons.form.fields.office=Bureau
+commons.form.fields.service=Service
+commons.form.fields.address=Adresse
+commons.form.fields.zipcode=Code postal
+commons.form.fields.city=Ville
+commons.form.fields.country=Pays
+
+commons.misc.getstarted=Se lancer
+commons.misc.acknowledgemsg= &lt;br /&gt; Pigé, pas besoin de me montrer ce message à nouveau !
+
+commons.error.erroroccured=Ooops - Une erreur a eu lieu.
+commons.error.unknowerror=Ooops - Une erreur a eu lieu.
+commons.error.actionnotallowed=Désolé, mais vous n'êtes pas autorisé à faire ceci.
+
+commons.users.guest=Invité
+commons.users.admin=Administrateur
+
+commons.page.attachments=Fichiers joints
+commons.page.attachments.download=Télécharger ce fichier joint
+commons.page.attachments.delete=Supprimer ce fichier joint
+commons.page.attachments.confirmdelete=Confirmer la suppression de ce fichier joint
+commons.page.attachments.viewrevisions=Voir les versions de ce fichier
+commons.page.attachments.publisher=Attaché par
+commons.page.attachments.on=le
+commons.page.attachments.emptylist=Il n'y a pas de fichiers joints à ce document
+commons.page.attachments.addattachment=Ajouter un fichier joint
+commons.page.attachments.choosefile=Choisissez le fichier à joindre
+commons.page.versioncomment=Dernière modification
+commons.page.comments=Commentaires
+commons.page.edit.title=Titre
+commons.page.edit.category=Catégorie
+
+commons.wysiwyg.link.wikipageslist=Liste des pages wiki
+commons.wysiwyg.link.articlelist=Liste des articles de blog
+
+service.common.error.badrequest=Requête non valide
+
+actionbar.blog.addarticle=Ajouter un article
+actionbar.blog.editarticle=Éditer cet article
+actionbar.blog.deletearticle=Supprimer l'article
+actionbar.wiki.categories=Catégories
+actionbar.wiki.createpage=Créer une page
+actionbar.wiki.showhistory=Historique
+actionbar.wiki.renamepage=Renommer
+actionbar.wiki.delete=Supprimer
+actionbar.wiki.editpage=Éditer
+actionbar.photos.creategallery=Créer une nouvelle galerie
+actionbar.photos.managegalleries=Gérer les galeries
+actionbar.photos.editgallery=Éditer cette galerie
+actionbar.spaces.createspace=Créer un espace
+actionbar.addressbook.editinfos=Éditer mon profil
+actionbar.inline.editing=Édition
+actionbar.buttons.globaladmin=Administration de l'organisation
+actionbar.buttons.spaceadmin=Administration de l'espace
+actionbar.buttons.rss=RSS
+actionbar.buttons.home=Mon tableau de bord
+actionbar.buttons.myspace=Mon Espace Personnel
+actionbar.buttons.myspaces=Tous Mes Espaces
+actionbar.buttons.myprofile=Mon profil
+actionbar.buttons.exit=Me déconnecter</content>
+</xwikidoc>

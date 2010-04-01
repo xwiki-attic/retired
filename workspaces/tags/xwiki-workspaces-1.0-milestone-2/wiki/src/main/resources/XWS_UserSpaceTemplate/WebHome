@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>XWS_UserSpaceTemplate</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201517066000</creationDate>
+<date>1201518622000</date>
+<contentUpdateDate>1201518622000</contentUpdateDate>
+<version>1.2</version>
+<title>WebHome</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWS_UserSpaceTemplate.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>
+1.1.1 Welcome from your personal space
+
+This is your very own space, where you can store information about your stuff. There is a wiki where you can put your notes, a file manager where you can keep your documents and make them available from anywhere, a blog that you can use as a personal notepad and a picture gallery to store your images.
+
+Your personal space is private : only you can see it. It is meant as a place where you can keep your very own information : a draft you want to improve before you add it to a public wiki, a viewpoint you wish to work on prior to publishing it...
+
+1.1.1 Getting started
+
+You may want to replace the contents of this page : to do so, simply click the "edit" button on the right. You can also create new wiki pages or blog posts by clicking on the "+" button next to their name in the panel on the left.</content>
+</xwikidoc>

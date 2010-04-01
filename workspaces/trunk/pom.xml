@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xpn.xwiki.platform</groupId>
+    <artifactId>xwiki</artifactId>
+    <version>17</version>
+  </parent>
+  <groupId>com.xpn.xwiki.products</groupId>
+  <artifactId>xwiki-workspaces-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>XWiki Products - Workspaces - Parent POM</name>
+  <version>1.2-SNAPSHOT</version>
+  <description>XWiki Products - Workspaces - Parent POM</description>
+  <scm>
+    <connection>scm:svn:http://svn.xwiki.org/svnroot/xwiki/workspaces/trunk</connection>
+    <developerConnection>scm:svn:https://svn.xwiki.org/svnroot/xwiki/workspaces/trunk</developerConnection>
+    <url>http://svn.xwiki.org/svnroot/xwiki/workspaces/trunk</url>
+  </scm>
+  <modules>
+    <!-- XWS modules -->
+    <module>wiki</module>
+    <module>plugins</module>
+    <module>database</module>
+    <module>web</module>
+    <module>distribution</module>
+  </modules>
+  <properties>
+    <!-- Versions of XWiki dependencies used in XWS modules -->
+    <platform.tool.xar-handler.version>1.8</platform.tool.xar-handler.version>
+    <platform.tool.xar-plugin.version>1.11</platform.tool.xar-plugin.version>
+    <platform.tool.configuration.version>1.14</platform.tool.configuration.version>
+    <platform.tool.jetty.version>1.10</platform.tool.jetty.version>
+    <platform.tool.packager.version>1.10</platform.tool.packager.version>
+    <platform.tool.test.version>1.11</platform.tool.test.version>
+    <platform.core.version>1.5.2</platform.core.version>
+    <platform.web.version>1.5.2</platform.web.version>
+    <platform.panels.version>1.8</platform.panels.version>
+    <product.enterprise.version>1.5.2</product.enterprise.version>
+    <plugin.spacemanager.version>1.1.1</plugin.spacemanager.version>
+    <plugin.appmanager.version>1.3</plugin.appmanager.version>
+    <plugin.mailsender.version>1.4</plugin.mailsender.version>
+    <plugin.activitystream.version>1.1</plugin.activitystream.version>
+    <plugin.invitationmanager.version>1.0.1</plugin.invitationmanager.version>
+  </properties>
+  <profiles>
+    <profile>
+      <id>ci</id>
+      <activation>
+        <!-- This property is automatically defined by the Maven release plugin when executing
+             a release. Thus this profile will be automatically enabled when releasing -->
+        <property>
+          <name>performRelease</name>
+        </property>
+      </activation>
+      <modules>
+        <module>installers</module>
+        <module>distribution-test</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>mysql</id>
+      <properties>
+        <xwiki.db.connection.url>jdbc:mysql://localhost/xwiki?useServerPrepStmts=false&amp;amp;amp;sessionVariables=sql_mode=''</xwiki.db.connection.url>
+      </properties>
+    </profile>
+  </profiles>
+  <build>
+    <extensions>
+      <extension>
+        <groupId>com.xpn.xwiki.platform.tools</groupId>
+        <artifactId>xwiki-xar-handlers</artifactId>
+        <version>${platform.tool.xar-handler.version}</version>
+      </extension>
+    </extensions>
+    <plugins>
+      <plugin>
+        <groupId>com.xpn.xwiki.platform.tools</groupId>
+        <artifactId>xwiki-xar-plugin</artifactId>
+        <version>${platform.tool.xar-plugin.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

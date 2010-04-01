@@ -1,0 +1,923 @@
+/* @group Layout */
+
+body {
+  overflow-y: scroll;
+}
+
+#body {
+  overflow-y: hidden;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html html {
+  overflow-y: auto;
+}
+
+/**
+General layout of the page
+for @media screen displays
+**/
+
+body {
+   font-size: 62.5%; /* 10px */
+   font-family: sans-serif;
+   color: #222;
+}
+#xwikimaincontainer {
+  font-size: 1.2em; /* 12px [1] */
+  line-height: 1.2em;
+  margin: 25px 0 0 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  min-height: 100%;
+  overflow-y: scroll;
+}
+
+/*
+---------------------------------------
+---------------------------------------
+*/
+.hidden { display:  none;}
+
+a img {border:  none;}
+
+html, body, #body {
+  margin: 0;
+  padding: 0;
+
+}
+
+body#body{
+  margin: 0 ;  /* padding et margin nul pour emulation min width*/
+  min-width: 960px;
+  /* IE  Expression pour min-width  pb au resize a voir
+  width:expression(document.body.clientWidth < 970 ? "960px" : "100%" ); */
+}
+
+#xwikimaincontainer {
+  margin: 25px 0 0 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  overflow-y: hidden;
+  min-height: 100%;
+  }
+
+#xwikimaincontainerinner {
+  padding: 0 30px 0 0;
+  border: none;
+  text-align: left;
+  clear: both;
+}
+
+
+html > body .minwidth, html > body .minwidthb, html > body .minwidthc{
+  display: none;
+}
+.minwidth, .minwidthb, .minwidthc{
+  width: 740px;
+  height: 0px;
+}
+* html .minwidth, * html .minwidthb, * html .minwidthc{
+  height: 1px !important;
+  overflow: hidden;
+}
+.minwidthb{}
+.minwidthc{}
+.clearfloats{
+	clear: both;
+}
+.layoutsection{clear: both;}
+#contentcontainer{
+	height:1%;
+	}
+.leftsidecolumns{
+ position:relative;
+ float: left;
+ width: 100%;
+	}
+.contenthideright #contentcolumncontainer{
+	margin:0 0 0 230px;
+	/*overflow: auto;*/
+	}
+#contentcolumn {
+ position:relative;
+ float: left;
+ width: 100%;
+ padding: 0;
+ /* margin: 0; display: inline; for IE dbl margin bug *//*  TEMP A verifier  */
+}
+div.main{
+	padding: 30px;
+}
+#leftPanels {
+  position:relative;
+  float: left;
+  width:  220px;
+  margin-left: -100%;
+  margin-top: 5px;
+  position: relative;
+}
+
+div.orange-panel, div.green-panel, div.blue-panel{
+	margin-left: 25px;
+}
+
+.center{
+  text-align: center;
+}
+/* @end */
+
+
+
+/* @group Header */
+/*
+---------------------------------------
+Global header
+---------------------------------------
+*/
+#organame{
+	display:  none;
+}
+
+#headerglobal{
+  display: block;
+  height: 115px;
+  z-index: 1;
+  
+}
+#globallinks {
+  position:relative;
+  float: left;
+  font-size: 1em;
+  line-height: 1.2em;
+  width: 220px;
+  margin-left: -200px;
+}
+#globalmenu {
+  padding: 0.5em;
+  text-align: right;
+  font-size: 1em;
+  line-height: 1.1em;
+}
+#globalmenu .glink { display: block;}
+#globalmenu #headerlanguages a{ text-transform: capitalize;}
+#globalmenu span { display: none;}
+#company{
+  position:relative;
+  float: left;
+  width: 220px;
+  height:  115px;
+  
+}
+#body.body-xwiki #company{
+	float: none;
+	width:  auto;
+}
+#body.body-xwiki .main{
+	text-align: center;
+	margin-left: 30px;
+}
+#companylogo{padding: 0 20px;}
+#globaldoctitle {display: none; /*pour éviter pb dans IE -- a regler*/}
+#globaldoctitle h1{}
+#pagename {
+  float: none;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin: 0 0 0 229px;
+  padding: 85px 30px 0 ;  
+}
+#pagename a {
+  text-decoration: none;
+  line-height: 30px;
+}
+body.body-org #pagename a {
+  color: #FFF;
+  }
+/* @end */
+/* @group footer */
+/*
+---------------------------------------
+Space header, footer
+---------------------------------------
+*/
+#footer {
+ height: 1%;
+	margin-right: 0px;
+        position: relative;
+	padding: 0px 30px 0px 210px;
+	text-align: center;
+        height:150px;
+  right: -30px;
+        clear: both;
+        display: block;
+}
+#footer p {
+  padding: 75px 0px 20px 0px;
+  margin: 0;
+  text-align: right;
+}
+#leftPanelsFooter{
+        position:relative;
+	float: left;
+	width: 240px;
+	height: 150px;
+	margin:  0 0 0 -240px;
+}
+#headerspace hr, #footerglobal hr{display: none;}
+#footerglobal a, #headerspace a{
+  color: #fff;
+  text-decoration: none;
+}
+#headerspace {
+	clear:both;
+  height: 25px;
+  padding-left: 10px;
+  color:  #fff;
+  background-color: #3175d9;
+}
+#headerspace a{line-height: 25px;}
+#footerglobal {
+	clear:both;
+  text-align: center;
+  background-color: #e5edff;
+  padding: 5px;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  color: #666;
+}
+#footerglobal a{
+  color: #555;
+  text-decoration: none;
+}
+
+
+#xwikilicence {}
+#xwikidocinfo {}
+#xwikiplatformversion {}
+/* @end */
+
+/* @group actionbar */
+#actionbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: transparent url(images/ab-shadow.png) repeat-x top;
+  color: #fff;
+  z-index: 100000;
+}
+#actionbarleft {
+  left: 0px;
+  float: left;
+  margin: 4px 0 0 35px;
+  position: absolute;
+}
+#actionbarright {
+  height: 40px;
+  float: right;
+  margin: 0;
+  z-index: 71;
+}
+#actionbaradminleft {
+  float: left; 
+  border-left: 1px solid #666;
+  margin-left: 10px;
+  height: 25px;
+}
+
+/* link-button in actionbar */
+#actionbar a {
+  border: 1px solid #fff;
+  border-left: 0;
+  border-right: 0;
+  height: 14px;
+  display: block;
+  float: left;
+  text-decoration: none;
+  line-height: 14px;
+  color: #fff;
+}
+#actionbar a:hover {
+  color: #ddd;
+}
+#actionbaradminleft a {
+  border: 0;
+  padding: 5px;
+}
+.submenuitem a {
+  padding: 3px 2px;
+}
+
+/* button in actionbarright */
+#actionbarright a {
+  width: 36px;
+  height: 25px;
+  border: 0;
+}
+a#actionalert {
+  background: url(images/ab-feed.png) no-repeat;
+}
+a#actionalert:hover {
+  background: url(images/ab-feed-hover.png) no-repeat;
+}
+a#actioninvite {
+  background: url(images/ab-feed.png) no-repeat;
+}
+a#actioninvite:hover {
+  background: url(images/ab-feed-hover.png) no-repeat;
+}
+a#actionmyhome {
+  background: url(images/ab-myhome.png) no-repeat;
+}
+a#actionmyhome:hover {
+  background: url(images/ab-myhome-hover.png) no-repeat;
+}
+a#actionmyspaces {
+  background: url(images/ab-myspaces.png) no-repeat;
+}
+a#actionmyspaces:hover {
+  background: url(images/ab-myspaces-hover.png) no-repeat;
+}
+a#actionhelp {
+  background: url(images/ab-help.png) no-repeat;
+}
+a#actionhelp:hover {
+  background: url(images/ab-help-hover.png) no-repeat;
+}
+a#actionadmin {
+  background: url(images/ab-admin.png) no-repeat;
+}
+a#actionadmin:hover {
+  background: url(images/ab-admin-hover.png) no-repeat;
+}
+a#actionmyexit {
+  background: url(images/ab-myexit.png) no-repeat;
+  width: 38px;
+}
+a#actionmyexit:hover {
+  background: url(images/ab-myexit-hover.png) no-repeat;
+}
+/* left image for link-button in actionbar */
+.actionbar-bt-left {
+  float: left;
+  background: url(images/actionbar-bt-left.gif) no-repeat left;
+  width: 8px;
+  height: 16px;
+  margin-left: 15px;
+}
+/* right image for link-button in actionbar */
+.actionbar-bt-right {
+  float: left;
+  background: url(images/actionbar-bt-right.gif) no-repeat right;
+  width: 8px;
+  height: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  line-height: 22px;
+}
+/* submenu in actionbar */
+.submenu-bloc {
+  background: url(images/menu-invite.gif);
+  width: 135px;
+  height: 99px;
+  padding: 10px;
+  float: left;
+  position: absolute;
+  z-index: 70;
+}
+#invite-bloc {
+  margin: 25px 0 0 -74px;
+}
+#alert-bloc {
+  margin: 25px 0 0 13px;
+}
+#username {
+  float: left;
+  margin: 6px 15px 0 0;
+  color: #fff;
+}
+/* @end */
+
+/* @group Panels */
+
+/*Left Panels*/
+
+  /*space: #DDE5F1*/
+  /*user: #E4EACC*/
+  /*org: #EBCDCD*/
+
+.orange-panel, .green-panel, .blue-panel{  padding: 0 0 30px 0;}
+
+.xwikipanelsubcontent{
+  padding: 10px 0 0 0;
+}
+
+.wikipanelmenucontents p{
+  display: none;
+}
+
+.orange-panel .panel-title-container{
+  background: transparent url(images/panel-colect-title.png) left top no-repeat;
+  width: 190px;
+  height: 22px;
+  text-align: center;
+  clear: both;
+  diaplay: block;
+}
+
+.green-panel .panel-title-container{
+  background: transparent url(images/panel-organize-title.png) left top no-repeat;
+  width: 190px;
+  height: 22px;
+  text-align: center;
+  clear: both;
+  diaplay: block;
+}
+
+.blue-panel .panel-title-container{
+  background: transparent url(images/panel-share-title.png) left top no-repeat;
+  width: 190px;
+  height: 22px;
+  text-align: center;
+  clear: both;
+  diaplay: block;
+}
+
+.panel-title{
+  width: 170px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel-title-text{
+  width: 150px;
+  height: 20px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.2em;
+  margin-bottom: 8px;
+  overflow: hidden;
+  color: #fff;
+  float: left;
+}
+
+.panel-title-arrow{
+  width: 12px;
+  height: 20px;
+  float: right;
+}
+
+.xwikipanelmenuextended{
+  padding: 0 5px 0 0;
+}
+.xwikipanelmenuextended a{
+  display: block;
+  clear: both;
+}
+.xwikiextendedcontentbg{
+  padding: 7px 0 16px 0;
+}
+.xwikiextendedcontentbg a{
+  left: 25px;
+  width: 150px;
+  position: relative;
+}
+
+.xwikipanelsubcontent p{
+  display: none;
+}
+
+.img-on{
+  background: transparent url(images/panel-content-extended-top.png) left top no-repeat;
+  vertical-align: bottom;
+  width: 190px;
+  height: 4px;
+  font-size: 4px;
+  line-height: 4px;
+}
+
+.xwikiextendedcontentbg, .bg-on{
+  background: transparent url(images/panel-content-extended-bg.png) repeat-y left top;
+  vertical-align: top;
+  width: 190px;
+  margin-top: 0px;
+}
+
+.xwikiextendedcontenttop{
+  background: transparent url(images/panel-content-extended-top.png) left top no-repeat;
+  vertical-align: top;
+  height: 4px;
+}
+
+.xwikiextendedcontentbottom{
+  background: transparent url(images/panel-content-extended-bottom.png) left bottom no-repeat;
+  vertical-align: top;
+  height: 4px;
+}
+
+.no-arrow{
+  padding: 10px 0 0 0;
+  left: 15px;
+  width: 175px;
+  height: 1.2em;
+  position: relative;
+}
+
+.title-moved{
+  width: 190px;
+  height: 1.2em;
+}
+
+.title-moved .arrow{
+  width: 12px;
+  height: 12px;
+  float: left;
+  position: relative;
+  left:3px;
+}
+
+.title-moved .arrow div, .title-moved .arrow div.hidden{
+  width: 12px;
+  height: 12px;
+}
+
+.orange-panel .title-moved .arrow div{
+  background: transparent url(images/arrow-orange-off.png) left bottom no-repeat;
+  vertical-align: top;
+}
+
+.orange-panel .title-moved .arrow div.hidden{
+  background: transparent url(images/arrow-orange-on.png) left bottom no-repeat;
+  vertical-align: top;
+  display: inline;
+  float: left;
+}
+
+.green-panel .title-moved .arrow div{
+  background: transparent url(images/arrow-green-off.png) left bottom no-repeat;
+  vertical-align: top;
+}
+
+.green-panel .title-moved .arrow div.hidden{
+  background: transparent url(images/arrow-green-on.png) left bottom no-repeat;
+  vertical-align: top;
+  display: inline;
+  float: left;
+}
+
+.blue-panel .title-moved .arrow div{
+  background: transparent url(images/arrow-blue-off.png) left bottom no-repeat;
+  vertical-align: top;
+}
+
+.blue-panel .title-moved .arrow div.hidden{
+  background: transparent url(images/arrow-blue-on.png) left bottom no-repeat;
+  vertical-align: top;
+  display: inline;
+  float: left;
+}
+
+.panel-title-arrow div{
+  background: transparent url(images/arrow-panel-title-on.png) left bottom no-repeat;
+  vertical-align: top;
+  width: 12px;
+  height: 12px;
+  top: 4px; 
+  position: relative;
+}
+
+.panel-title-arrow div.hidden{
+  background: transparent url(images/arrow-panel-title-off.png) left bottom no-repeat;
+  vertical-align: top;
+  display: inline;
+  width: 12px;
+  height: 12px;
+  top: 4px; 
+  position: relative;
+  float: left;
+}
+
+
+.title-moved .bold{
+  width: 170px;
+  height: 1.2em;
+  float: right;
+  position: relative;
+}
+
+.xwikipanelmenucontainer a:link, .xwikipanelmenucontainer a:visited{
+  color: #000;
+  text-decoration: none;
+}
+
+.orange-panel .xwikipanelmenucontainer a:hover, .orange-panel .xwikipanelmenucontainer a:active{
+  color: #dc9415;
+  text-decoration: none;
+}
+
+.green-panel .xwikipanelmenucontainer a:hover, .green-panel .xwikipanelmenucontainer a:active{
+  color: #86a812;
+  text-decoration: none;
+}
+
+.blue-panel .xwikipanelmenucontainer a:hover, .blue-panel .xwikipanelmenucontainer a:active{
+  color: #2192ca;
+  text-decoration: none;
+}
+
+.bold a:link, .bold a:visited, .bold a:hover, .bold a:active{
+  font-weight: bold;
+}
+#publication-options-content  .xwikiextendedcontentbg strong {
+	position:relative;
+	left:25px;
+}
+/*------------------------------------------------------------*/
+
+#body.body-admin-spaces .xwikipanelmenucontainer a:link, #body.body-admin-spaces .xwikipanelmenucontainer a:visited{
+  color: #FFF;
+  text-decoration: none;
+}
+
+#body.body-admin-spaces .orange-panel .xwikipanelmenucontainer a:hover, #body.body-admin-spaces .orange-panel .xwikipanelmenucontainer a:active{
+  color: #FFF;
+  text-decoration: none;
+}
+
+#body.body-admin-spaces .green-panel .xwikipanelmenucontainer a:hover, #body.body-admin-spaces .green-panel .xwikipanelmenucontainer a:active{
+  color: #FFF;
+  text-decoration: none;
+}
+
+#body.body-admin-spaces .blue-panel .xwikipanelmenucontainer a:hover, #body.body-admin-spaces .blue-panel .xwikipanelmenucontainer a:active{
+  color: #FFF;
+  text-decoration: none;
+}
+
+.bold a:link, .bold a:visited, .bold a:hover, .bold a:active{
+  font-weight: bold;
+}
+
+/*-------------------------------------------------------------*/
+
+#leftPanels .xwikipanelmenucontainer{
+  background-color: transparent;
+}
+
+/*Panels Header*/
+
+
+/*Panels Footer*/
+
+
+/* @end */
+
+
+/* @group Tables */
+table.xwikidatatable
+{
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.3em;
+  border-collapse: collapse;
+  border: 1px solid #333;
+ margin: 1em 0;
+}
+table.xwikidatatable th
+{
+background-color:#333;
+color: #FFF;
+padding:3px;
+}
+table.xwikidatatable td
+{
+padding:5px 3px;
+border-top:1px solid #ccc;
+border-bottom:1px solid #ccc;
+}
+#body.body-user table.WHtable,
+#body.body-space table.WHtable,
+#body.body-org table.WHtable{
+  width: 100%;
+  font-size: 1em;
+  line-height: 1em;
+  border-right: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+#body.body-admin-spaces table.WHtable {
+  width: 100%;
+  font-size: 1em;
+  line-height: 1em;
+  border: 1px solid #697F8B;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+#body.body-user table.WHtable a, #body.body-user table.WHtable a:link,
+#body.body-space table.WHtable a, #body.body-space table.WHtable a:link ,
+#body.body-org table.WHtable a, #body.body-org table.WHtable a:link  {
+	text-decoration: none;
+	color : #666;
+}
+#body.body-user table.WHtable a:hover,
+#body.body-space table.WHtable a:hover,
+#body.body-org table.WHtable a:hover {
+	text-decoration: none;
+}
+
+#body.body-user table.WHtable .caption,
+#body.body-space table.WHtable .caption,
+#body.body-org table.WHtable .caption,
+#body.body-admin-spaces table.WHtable .caption{
+  font-size: 1.3em;
+  line-height: 2em;
+  padding: 0 0 0 12px;
+}
+
+#body.body-admin-spaces table.WHtable caption{
+  background-color: #FFF;
+  color: #2C3853;
+}
+
+#body.body-user table.WHtable thead a,
+#body.body-space table.WHtable thead a,
+#body.body-org table.WHtable thead a,
+#body.body-admin-spaces table.WHtable thead a{
+  font-size: 10px;
+  line-height: 1.3em;  
+}
+
+#body.body-user table.WHtable th, #body.body-user table.WHtable td,
+#body.body-space table.WHtable th, #body.body-space table.WHtable td,
+#body.body-org table.WHtable th, #body.body-org table.WHtable td,
+#body.body-admin-spaces table.WHtable th, #body.body-admin-spaces table.WHtable td {
+	padding: 7px 3px 7px 20px;
+        text-align: left;
+}
+
+#body.body-user table.WHtable thead th, #body.body-user table.WHtable thead td,
+#body.body-space table.WHtable thead th, #body.body-space table.WHtable thead td,
+#body.body-org table.WHtable thead th, #body.body-org table.WHtable thead td,
+#body.body-admin-spaces table.WHtable thead th, #body.body-admin-spaces table.WHtable thead td {
+	padding: 3px 3px 3px 20px;
+        text-align: left;
+}
+
+#body.body-user table.WHtable th a:link, #body.body-user table.WHtable th a:visited, #body.body-user table.WHtable th a:hover, #body.body-user table.WHtable th a:active,
+#body.body-space table.WHtable th a:link, #body.body-space table.WHtable th a:visited, #body.body-space table.WHtable th a:hover, #body.body-space table.WHtable th a:active,
+#body.body-org table.WHtable th a:link, #body.body-org table.WHtable th a:visited, #body.body-org table.WHtable th a:hover, #body.body-org table.WHtable th a:active{
+        font-weight: normal;
+}
+
+#body.body-user th.tdcat, #body.body-user th.tdtitle, #body.body-user th.tddate,
+#body.body-space th.tdcat, #body.body-space th.tdtitle, #body.body-space th.tddate,
+#body.body-org th.tdcat, #body.body-org th.tdtitle, #body.body-org th.tddate  {
+        border-right: 1px solid #FFF;
+}
+
+#body.body-user .thspace, #body.body-user .tdspace {
+	with:20%;
+	font-weight: bold;
+}
+#body.body-user tr.work td.tdspace{
+	padding-left: 35px;
+	line-height: 15px;
+	background-image: url("icons/mini-space.png");
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+}
+#body.body-user tr.user td.tdspace{
+	padding-left: 35px;
+	line-height: 15px;
+	background-image: url("icons/mini-user.png");
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+}
+#body.body-user tr.here td.tdspace{
+	padding-left: 35px;
+	line-height: 15px;
+	background-image: url("icons/mini-home.png");
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+}
+#body.body-user tr.org td.tdspace{
+	padding-left: 35px;
+	line-height: 15px;
+	background-image: url("icons/mini-org.png");
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+}
+#body.body-user .thtitle, #body.body-user .tdtitle {
+	width:  40%;
+}
+#body.body-user .tdtitle a {
+	font-weight:  bold;
+}
+#body.body-user .thcat, #body.body-user .tdcat {
+	width : 15%;
+}
+#body.body-user .thauthor, #body.body-user .tdauthor {
+	width : 20%;
+	color: #333;
+	}
+#body.body-user .thdate, #body.body-user .tddate{
+	width:  5%;
+	white-space: nowrap;
+	color: #999;
+}
+
+/* @end Tables */
+
+
+/* Wiki CSS */
+
+#body.body-user .message, #body.body-space .message, #body.body-org .message {
+  font-size : 0.85em;
+  color: #888;
+  padding: 0;
+  text-align: right;
+  margin: 0;
+ border-top:1px solid #ddd;
+/*
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
+*/
+}
+
+ #doc-comment-div div.infomessage {
+	text-align: center;
+	font-size: 1.2em;
+	color: #dc9415;	
+}
+ #doc-comment-div div.infomessage em{
+	display:  block;
+	color: #999;
+	font-size: 0.9em;
+}
+
+div.file-service-addfile-bt {
+         display:table-cell;
+        padding : 5px 10px;
+        border: 1px solid #999;
+        background: transparent url(images/buttons.png) repeat-x 0% 25%;
+	 	 }
+div.file-service-addfile-bt a{
+	text-decoration: none;
+	font-weight: bold;
+	color:  #fff;
+}
+.file-service-addfile {
+background-color: #f5fbce;
+padding: 10px;
+border: 1px solid #aec047;
+}
+
+#body.body-user .message a, #body.body-space .message a, #body.body-org .message a {
+  color: #888;
+  font-weight: bold;
+  text-decoration : none;
+}
+
+.mceContentBody {
+  height: 100%;
+  width: 100%;
+  font-size: 13px;
+  color: #000;
+  overflow-y: visible;
+}
+
+iframe {
+  overflow-y: scroll;
+}
+
+
+/* Letter chooser header */
+
+.letter-separator{
+  color: #cccccc;
+}
+
+
+.infomessage{
+	padding: 10px;
+	border: 1px solid #deff59;
+	background-color: #fcffd2;
+	text-align: center;
+	font-weight: bold;
+	
+}
+/*temp a virer*/
+.main .actionbar-bt-right, .main .actionbar-bt-left, #catswitcher{display: none;}
+

@@ -1,0 +1,82 @@
+###
+### Main "edit" template
+###
+### General wrapper for edit actions
+###
+##
+## Determine what editor to show
+##
+#if((!$editor) || ($editor == ""))
+#set($editor = $request.getParameter("editor"))
+#if((!$editor) || ($editor == ""))
+<!-- advanced: $doc.isAdvancedContent()  pref: $xwiki.getUserPreference("editor") -->
+#if(($xwiki.getUserPreference("editor")=="Wysiwyg")&&(!$doc.isAdvancedContent()))
+#set($editor="wysiwyg")
+#else
+#set($editor="wiki")
+#end
+#end
+#end
+##
+## "Compute" the title
+##
+#set($title = $xwiki.parseContent($msg.get("editpageTitle")))
+##
+## Header
+##
+#template("xwikivars.vm")
+#template("layoutvars.vm")
+#template("htmlheader.vm")
+#template("header.vm")
+#if($editor == "wiki" || $editor == "wysiwyg")
+<form id="edit" method="post" action="$doc.getURL("preview")" >
+#end
+##
+## Content
+##
+#set($force = $!request.get("force"))
+#if (($tdoc.getLocked()==true)&&(!$force))
+<div class="layoutsection">
+#xwikimessageboxstart($msg.get("notice") "$msg.get('doclockedby') $xwiki.getLocalUserName($doc.getLockingUser())")
+<a href="$doc.getURL($context.action, "$!{request.getQueryString().replaceAll('&', '&amp;').replaceAll('&amp;amp;', 
+'&amp;')}&amp;force=1")">$msg.get("forcelock")</a>
+#xwikimessageboxend()
+</div>
+#else
+<div id="xwikieditor" class="layoutsection">
+<div id="xwikieditorinner">
+<div class="leftsidecolumns">
+<div id="editcolumn" class="editor">
+<div id="contentcolumncontainer">
+<div class="alleditcontent">
+#if($editor == "wiki" || $editor == "wysiwyg")
+#if ("$doc.title" == "" && "$request.title" != "")
+#set ($doc.title = $request.title)
+#end
+##
+## Workspaces space header
+##
+#if($workspace)
+#template("xwseditheader.vm")
+#end
+#end
+#template("editmodes.vm")
+#template("edit${editor}.vm")
+</div> ## alleditcontent
+</div> ## contentcolumncontainer
+</div> ## editcolumn
+<div class="clearfloats"></div>
+</div> ## leftsidecolumns
+#template("editpanels.vm")
+<div class="clearfloats"></div>
+</div> ## xwikieditorinner
+</div> ## xwikieditor
+#end
+##
+## Footer
+##
+#if($editor == "wiki" || $editor == "wysiwyg")
+</form>
+#end
+#template("footer.vm")
+

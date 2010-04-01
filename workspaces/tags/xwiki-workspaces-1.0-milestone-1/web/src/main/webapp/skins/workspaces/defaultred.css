@@ -1,0 +1,110 @@
+/* --- Colors of an organisation --- */
+/* LB 65% : #2C0705 - rouge sombre : #990000 - rouge moyen : #C16565 - rouge clair : #EBCDCD */
+
+#body.body-org #company {background: transparent url(images/org.png) no-repeat 50% 50%; }
+#body.body-org  {background-color: #EBCDCD;}
+
+#body.body-org #xwikimaincontainer {
+  background-color: #fff;
+  background-image :url(images/BG-org-red.png) ;
+  background-repeat: repeat-y;
+  }
+
+#body.body-org #xwikimaincontainerinner {
+  background-image: url(images/BG-org-red.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+}
+#body.body-org #pagename{ 
+background-color: #990000;
+}
+#body.body-org #pagename a {
+	color:  #fff;
+}
+#body.body-org #footer {
+background-image: url(images/BGF-org-red.png);/*  TEMP A VIRER  */
+background-position: top right;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+}
+#body.body-org #leftPanelsFooter{
+background-image: url(images/BGF-org-red.png);/*  TEMP A VIRER  */
+background-position: top left;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+}
+
+
+
+
+
+
+/* menu */
+body.body-org .xwikipanelmenucontainer, body.body-org .expanded .xwikipanelmenucontainer, body.body-org .editbody .leftsidecolumns {
+  background-color: #990000;
+  }
+  
+.file-service-content-org .file-service-addfile-bt span, #body.body-org .accordionTabTitleBar h6{
+  color: #FFF;
+  background-color: #C16565;
+}
+#body.body-org .accordionTabTitleBar h6 a{
+  color: #FFF;
+}
+#body.body-org .b1, #body.body-org .b2, #body.body-org .b3, #body.body-org .b4, #body.body-org .b1b, #body.body-org .b2b, #body.body-org .b3b, #body.body-org .b4b {
+  background-color: #990000;
+  border-color: #990000;
+  }
+#body.body-org .xwikipanelmenucontainer .xwikipaneltitle, #body.body-org .xwikipanelmenucontainer .expanded .xwikipaneltitle, #body.body-org .xwikipaneltitle:hover, #body.body-org .expanded .xwikipaneltitle:hover, #body.body-org .xwikipaneltitle:active, #body.body-org .expanded .xwikipaneltitle:active {
+  /*color: #C16565;*/
+  color: #FFF;
+}
+/* fonts */
+#body.body-org .heading-1, #body.body-org .heading-1-1, #body.body-org .entry-title a, #body.body-org .heading-1-1-1, #body.body-org .heading-1-1-1-1, #body.body-org h1, #body.body-org h2, #body.body-org h3, #body.body-org h4, #body.body-org h5 {
+  color: #333;
+}
+
+
+#body.body-org div.blog div.mediumcontentheader {}
+
+.WHtable tr.org td.tdspace a, #body.body-org .WHtable tr.here td.tdspace a{
+  color: #990000;
+}
+#body.body-org table.WHtable caption{
+	background-color: #C16565;
+	color: #FFF;
+}
+#body.body-org table.WHtable caption a, #body.body-org table.WHtable caption a:link{
+	color: #FFF;
+}
+.file-service-content-org table.WHtable thead tr.tablegend td, .gallery-service-content-org table.WHtable thead tr.tablegend td, #body.body-org table.WHtable thead tr.tablegend td, #body.body-org table.WHtable thead tr.tablegend th{
+	background-color: #EBCDCD;
+}
+
+.file-service-title-org, .gallery-service-title-org {
+  background-color: #C16565;
+}
+.file-service-content-org, .gallery-service-content-org {
+  border-color: #C16565;
+}
+#body.body-org .alphabetic-bar-middle, #body.body-org #tabmenucontent3 li,#body.body-org #subtabmenucontent3 li {
+background-color:#C16565 ;
+}
+#body.body-org .panel-child {
+  background-color: #EBCDCD;
+}
+#body.body-org #gallery a.gallery-item {
+  border-color: #EBCDCD;
+}
+#body.body-org #gallery a.gallery-item:hover {
+  border-color: #990000;
+}
+#body.body-org #collaborative-spaces thead {
+  background-color: #990000;
+  color: #fff;
+}
+#body.body-org #collaborative-spaces .even ,
+#body.body-org #collaborative-spaces tr.even td{
+  background-color: #EBCDCD;
+}
+#body.body-org #collaborative-spaces tr.odd td{
+  background-color: #FFF;
+}

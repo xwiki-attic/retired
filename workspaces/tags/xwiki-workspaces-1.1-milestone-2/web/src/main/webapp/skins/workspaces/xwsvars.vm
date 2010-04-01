@@ -1,0 +1,20 @@
+#set($xwsmgr = $xwiki.xwsmgr)
+#set($workspace=$xwsmgr.getSpace())
+#set($isGlobalAdmin=false)
+#set($isPowerUser=false)
+#set($workspaceCreator=false)
+#set($workspaceInviter=false)
+#set($workspaceAdmin=false)
+#if($xwiki.xwsmgr.isAdmin($workspace.spaceName, $context.user)) #set($workspaceAdmin=true) #end
+#if($xwiki.rightsmanager.getAllGroupsNamesForMember($context.user).contains("XWiki.XWikiAdminGroup"))
+ #set($isGlobalAdmin=true)
+ #set($workspaceCreator=true)
+ #if(!$xwiki.getXWikiPreference("workspace_inviters").equals("nobody")) #set($workspaceInviter=true) #end
+#elseif($xwiki.rightsmanager.getAllGroupsNamesForMember($context.user).contains("XWiki.XWikiPowerUsersGroup"))
+ #set($isPowerUser=true)
+ #if($xwiki.getXWikiPreference("workspace_creators").equals("powerusers")) #set($workspaceCreator=true) #end
+ #if($xwiki.getXWikiPreference("workspace_inviters").equals("powerusers") && $workspaceAdmin) #set($workspaceInviter=true) #end 
+#else
+ #if($xwiki.getXWikiPreference("workspace_creators").equals("everybody")) #set($workspaceCreator=true) #end
+ #if($xwiki.getXWikiPreference("workspace_inviters").equals("spaceadmins") && $workspaceAdmin) #set ($workspaceInviter=true) #end
+#end

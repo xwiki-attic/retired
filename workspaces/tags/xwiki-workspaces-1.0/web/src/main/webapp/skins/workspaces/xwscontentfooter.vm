@@ -1,0 +1,63 @@
+#if($xwiki.xwsmgr.space && $doc.name!="WebHome" && $doc.name!="WebPreferences")
+###
+### Comments page in the "view" mode
+###
+##
+<a name="comments"></a>
+<div id="comments">
+ <div class="comments-title">
+  <div class="comments-inner-tittle">
+   <a href="#comments" onclick="toggleClass($('commentscontainer'),'hidden')">$msg.get('commons.page.comments') (${doc.comments.size()})</a>
+  </div>
+ </div>
+ #if($request.sc)
+  #set($displaycomments=true)
+ #end
+ <div id="commentscontainer" #if(!$displaycomments)class="hidden#end">
+#if($xwiki.getWebPreferenceAsInt("commentsorder",1)==1) #set($comments = $doc.getComments()) #else #set($comments = $doc.getComments(false)) #end
+#if($comments.size()>0)
+#foreach($comment in $comments)
+  #set($index = $index + 1)
+  #if($velocityCount > 1)    <hr class="commentspacer"/>
+  #end
+  <div name="comment_$velocityCount" id="xwikicomment_${velocityCount}" class="xwikicomment #if($velocityCount % 2 == 1) odd #else even #end">
+     <div class="commentheader"><span class="commentauthor">$!xwiki.getLocalUserName($doc.display('author','view', $comment))</span>
+        #set($date = $comment.getProperty("date").value)
+        #if($date)
+           | <span class="commentdate">$xwiki.formatDate($date, $msg.get('xws.dateformat.withtime'))</span>
+        #end
+        #if(($space && $space.admin) || (!$space && $hasedit)) <span class="commentdelete"><a class="commentremove" href="$doc.getURL("objectremove" , "classname=XWiki.XWikiComments&amp;classid=${comment.number}&amp;xredirect=${request.getRequestURL()}")"
+    onclick="return confirm('$msg.get("confirmcommentremove")')">[$msg.get("removethiscomment")]</a></span>
+        #end
+     </div>
+     <div id="commentcontent_$velocityCount" class="">
+          $doc.getRenderedContent($doc.display("comment","view",$comment))
+     </div>
+    </div>
+#end
+#else
+$msg.get("nocomments")
+#end
+#if($xwiki.hasAccessLevel("comment"))
+<div id="commentaddform">
+#set($cclass = $xwiki.getDocument("XWiki.XWikiComments").getxWikiClass())
+#set($comment = $cclass.newObject())
+      <form action="$doc.getURL("commentadd")" method="post">
+	<div class="addcomment_title">$msg.get("addcomment")</div>
+	#if($request.viewer && $request.viewer!="")
+	 #set($aux="&viewer=${request.viewer}")
+        #end
+        <input type="hidden" name="xredirect" value="${doc.getURL("view","sc=1$!{aux}")}" />
+	<input type="hidden" name="XWiki.XWikiComments_author" value="$context.user"/>
+        <input type="hidden" name="XWiki.XWikiComments_date" value=""/>
+        <div><textarea id='XWiki.XWikiComments_comment' rows='5' cols="80" name='XWiki.XWikiComments_comment' style="width: 100%;"></textarea></div>
+        <div>
+        <span class="buttonwrapper"><input type="submit" value="$msg.get("addcomment")" class="button"/></span>
+        <span class="buttonwrapper"><input type="reset" value="$msg.get("cancel")" onclick="hideForm(this.form);" class="button"/></span>
+        </div>
+      </form>
+</div> ## commentadd
+#end
+  </div> ## commentscontainer
+</div> ## comment
+#end

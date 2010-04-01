@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>AdminHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201522742000</creationDate>
+<date>1205428231000</date>
+<contentUpdateDate>1205428231000</contentUpdateDate>
+<version>6.1</version>
+<title>AdminHome</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.AdminHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#includeMacros("XWSCode.XWSMacros")
+#set($sm=$xwiki.xwsmgr)
+##
+## If the organization's space has not been created yet, it's the only option available.
+##
+#set($org= $sm.getOrganizationSpace())
+#if(!$org)
+ #includeInContext("XWSCode.CreateOrgSpace")
+#else
+ ## Last 10 workspaces
+ 1 $msg.get('xws.createworkspace.title')
+ #includeInContext("XWSCode.CreateNewWorkspace")
+ 1.1.1 $msg.get('xws.admin.lastworkspaces')
+ #set($lastSpaces = $sm.getLastSpaces(10))
+ #foreach($sp in $lastSpaces)
+  #spacedetails($sp)
+ #end
+#end</content>
+</xwikidoc>

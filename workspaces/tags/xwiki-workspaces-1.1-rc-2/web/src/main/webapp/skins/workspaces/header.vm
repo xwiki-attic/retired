@@ -1,0 +1,40 @@
+###
+### Global header
+###
+### The uppermost area of each page
+### Contains the company logo, links to global actions and the search facility
+###
+  <div id="headerglobal" class="layoutsection">
+    <div class="minwidthb"></div>
+    <div id="company">
+    </div>
+      <div id="pagename">
+      ## The 'page name' in workspaces is the most upper page title, written in black above the "page area".
+      ## The name displayed is computed on a per-case basis, as stated below.
+      ## @TODO this should be replaced using IX (interface extensions) when available.
+        #if($workspace)
+           ## if the page belongs to a workspace the most upper page name is a link to the workspace home, displaying the workspace pretty name.
+           <a rel="home" title="Space home" href="$workspace.homeURL">$workspace.displayTitle</a>
+        #else
+           ## otherwise, the page name is evaluated the following way :
+           ## 1- We handle specific cases where we want a particular page name
+           #set($fullName="${doc.space}.${doc.name}") ## To avoid virtual wikis issues if using $doc.fullName
+           #if("${fullName}"=="Main.WebHome" && "$context.user"=="XWiki.XWikiGuest")
+             $msg.get("xws.pagename.${fullName}.XWikiGuest")
+           #elseif($doc.getObject("XWiki.XWikiUsers"))
+             #if($doc.fullName.equals("$context.user")) $msg.get("xws.pagename.MyProfile") #else $msg.get("xws.pagename.UserProfile") #end
+           ## 2- It it's not 1-, then we look if there a translation key matching xws.pagename.${doc.fullName}
+           #else
+             #if($msg.get("xws.pagename.${fullName}")!="xws.pagename.${fullName}") $msg.get("xws.pagename.${fullName}")
+           ## 3- If there is no translation found in 2-, we display the document full name.
+             #else $doc.fullName #end
+           #end
+        #end
+        #if($workspace) #set($link=$workspace.homeURL) #else #set($link=$xwiki.getURL("Main.WebHome")) #end
+      </div>
+      <div id="globaldoctitle">
+        <h1>$!headertitle</h1>
+      </div>
+    #set($showattachments = "no")
+    #set($showcomments = "no")
+  </div>

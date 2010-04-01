@@ -1,0 +1,111 @@
+/* --- Colors of a collaborative space --- */
+/* LB 65% : #192232 - bleu sombre : #527AB7 - bleu moyen :#97AFD4 - bleu clair : #DDE5F1 */
+
+ 
+#body.body-space #company {background: transparent url(images/spaces.png) no-repeat 50% 50%; }
+#body.body-space  {background-color: #DDA5F1;}
+
+#body.body-space #xwikimaincontainer {
+  background-color: #fff;
+  background-image :url(images/BG-space-blue.png) ;
+  background-repeat: repeat-y;
+  }
+
+#body.body-space #xwikimaincontainerinner {
+  background-image: url(images/BG-space-blue.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+}
+#body.body-space #pagename{ 
+background-color: #527AB7;
+}
+#body.body-space #pagename a {
+	color:  #fff;
+}
+#body.body-space #footer {
+background-image: url(images/BGF-space-blue.png);/*  TEMP A VIRER  */
+background-position: top right;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+}
+#body.body-space #leftPanelsFooter{
+background-image: url(images/BGF-space-blue.png);/*  TEMP A VIRER  */
+background-position: top left;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+}
+
+
+
+
+
+
+/* menu */
+body.body-space .xwikipanelmenucontainer, body.body-space .expanded .xwikipanelmenucontainer, body.body-space .editbody .leftsidecolumns {
+  background-color: #527AB7;
+  }
+  
+.file-service-content-space .file-service-addfile-bt span, #body.body-space .accordionTabTitleBar h6{
+  color: #FFF;
+  background-color: #97AFD4;
+}
+#body.body-space .accordionTabTitleBar h6 a{
+  color: #FFF;
+}
+#body.body-space .b1, #body.body-space .b2, #body.body-space .b3, #body.body-space .b4, #body.body-space .b1b, #body.body-space .b2b, #body.body-space .b3b, #body.body-space .b4b {
+  background-color: #527AB7;
+  border-color: #527AB7;
+  }
+#body.body-space .xwikipanelmenucontainer .xwikipaneltitle, #body.body-space .xwikipanelmenucontainer .expanded .xwikipaneltitle, #body.body-space .xwikipaneltitle:hover, #body.body-space .expanded .xwikipaneltitle:hover, #body.body-space .xwikipaneltitle:active, #body.body-space .expanded .xwikipaneltitle:active {
+  /*color: #97AFD4;*/
+  color: #FFF;
+}
+/* fonts */
+#body.body-space .heading-1, #body.body-space .heading-1-1, #body.body-space .entry-title a, #body.body-space .heading-1-1-1, #body.body-space .heading-1-1-1-1, #body.body-space h1, #body.body-space h2, #body.body-space h3, #body.body-space h4, #body.body-space h5 {
+  color: #333;
+}
+
+
+#body.body-space div.blog div.mediumcontentheader {}
+
+.WHtable tr.space td.tdspace a, #body.body-space .WHtable tr.here td.tdspace a{
+  color: #527AB7;
+}
+#body.body-space table.WHtable caption{
+	background-color: #97AFD4;
+	color: #FFF;
+}
+#body.body-space table.WHtable caption a, #body.body-space table.WHtable caption a:link{
+	color: #FFF;
+}
+.file-service-content-space table.WHtable thead tr.tablegend td, .gallery-service-content-space table.WHtable thead tr.tablegend td, #body.body-space table.WHtable thead tr.tablegend td, #body.body-space table.WHtable thead tr.tablegend th{
+	background-color: #DDE5F1;
+}
+
+.file-service-title-space, .gallery-service-title-space {
+  background-color: #97AFD4;
+}
+.file-service-content-space, .gallery-service-content-space {
+  border-color: #97AFD4;
+}
+#body.body-space .alphabetic-bar-middle, #body.body-space #tabmenucontent3 li,#body.body-space #subtabmenucontent3 li {
+background-color:#97AFD4 ;
+}
+#body.body-space .panel-child {
+  background-color: #DDA5F1;
+}
+#body.body-space #gallery a.gallery-item {
+  border-color: #DDA5F1;
+}
+#body.body-space #gallery a.gallery-item:hover {
+  border-color: #527AB7;
+}
+#body.body-space #collaborative-spaces thead {
+  background-color: #527AB7;
+  color: #fff;
+}
+#body.body-space #collaborative-spaces .even,
+#body.body-space #collaborative-spaces tr.even td{
+  background-color: #DDA5F1;
+}
+#body.body-space #collaborative-spaces tr.odd td{
+  background-color: #fff;
+}

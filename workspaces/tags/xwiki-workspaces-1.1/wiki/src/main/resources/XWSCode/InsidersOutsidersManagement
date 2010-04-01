@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>InsidersOutsidersManagement</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1213100705000</creationDate>
+<date>1213631722000</date>
+<contentUpdateDate>1213631722000</contentUpdateDate>
+<version>411.1</version>
+<title>InsidersOutsidersManagement</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<content>##Macros
+
+#macro(outsiderRow $user)
+&lt;tr id="table4_line_$user"&gt;
+	&lt;td&gt;
+	 &lt;div style="float:right;width:10%;text-align:left;"&gt;
+	  &lt;a id="a41_$user" style="cursor: pointer;" href="javascript:void(0);moveOutsiderToInsiders('$user');"&gt;
+	 	  &lt;img src="/xwiki/skins/workspaces/images/move-right-green.png" style="display:inline;" title='$msg.get("xws.admin.moveToInsiders")' /&gt;
+	  &lt;/a&gt;
+	 &lt;/div&gt;
+	 &lt;div id="divT4_$user" style="width: 90%; float: left;"&gt;
+	  $xwiki.getUserName($user)
+	 &lt;/div&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+#end
+
+#macro(insiderRow $user)
+&lt;tr id="table5_line_$user"&gt;
+	&lt;td&gt;
+	 &lt;div style="float:left;width:10%;text-align:right;"&gt;
+	  &lt;a id="a51_$user" style="cursor: pointer;" href="javascript:void(0);moveInsiderToOutsiders('$user');"&gt;
+	 	  &lt;img src="/xwiki/skins/workspaces/images/move-left-red.png" style="display:inline;" title='$msg.get("xws.admin.moveToOutsiders")' /&gt;
+	  &lt;/a&gt;
+	 &lt;/div&gt;
+	 &lt;div id="divT5_$user" style="width: 90%; float: right;"&gt;
+	  $xwiki.getUserName($user)
+	 &lt;/div&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+#end
+
+#set($xsm=$xwiki.xwsmgr)
+#set($outsiders = $xsm.getOutsiders())
+#set($insiders = $xsm.getInsiders())
+&lt;div id="users-table"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td id="outsidersColumn"&gt;   ##Outsiders
+   &lt;div id="outsidersHead"&gt;
+      $msg.get('xws.admin.Outsiders')
+      &lt;br/&gt;
+      &lt;input type="text" id="outsidersFilter" name="filterOutsiders" onkeyup="filterOutsider();"&gt;&lt;/input&gt;
+   &lt;/div&gt; 
+   &lt;div class="selectedUsers"&gt;
+    &lt;table id="outsidersTable"&gt;
+     &lt;tbody id="outsidersTableBody" overflow="auto"&gt;
+       #foreach($user in $outsiders)
+         #outsiderRow($user)
+       #end
+     &lt;/tbody&gt;
+    &lt;/table&gt;
+   &lt;/div&gt;
+&lt;/td&gt;
+&lt;td id="insidersColumn"&gt;   ##Insiders
+  &lt;div id="insidersHead"&gt;
+      $msg.get('xws.admin.Insiders')
+      &lt;br/&gt;
+      &lt;input type="text" id="insidersFilter" name="filterInsiders" onkeyup="filterInsider();"&gt;&lt;/input&gt;
+  &lt;/div&gt;
+   &lt;div class="selectedUsers"&gt;
+    &lt;table id="insidersTable"&gt;
+     &lt;tbody id="insidersTableBody" overflow="auto"&gt;
+      #foreach($user in $insiders)
+       #insiderRow($user)
+      #end
+     &lt;/tbody&gt;
+    &lt;/table&gt;
+   &lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;form action="$xwiki.getURL('XWSCode.GlobalMembersService','view')" method="get" id="insidersOutsidersForm"&gt;
+&lt;/form&gt;
+
+{pre}
+&lt;script type="text/javascript"&gt;
+// &lt;![CDATA[
+var movedUsersIO=new Array();
+
+function addTo(array,key,value)
+{
+    array[key]=value;
+}
+
+function moveOutsiderToInsiders(user) {
+	document.getElementById("table4_line_"+user).style.display="none";
+	addInsider(user);
+}
+
+function moveInsiderToOutsiders(user) {
+	document.getElementById("table5_line_"+user).style.display="none";
+	addOutsider(user);
+}
+
+function addInsider(user)
+{
+    var aux=document.getElementById("insidersTableBody");
+    var nodes=aux.childNodes;
+    var found=false;
+    var foundElement=null;
+    for (var i=0;i&lt;nodes.length &amp;&amp; !found;i++) {
+        if(nodes[i].id == ("table5_line_"+user)) {
+            nodes[i].style.display="";
+            found=true;
+            foundElement=nodes[i];
+        }
+    }
+    if(!found) {
+        var rand=aux.insertRow(0);
+        var colo=rand.insertCell(0);
+        rand.id = "table5_line_"+user;
+        rand.style.width="100";
+        generateInsiderHTML(user,colo);
+        //rand.style.display="table-row";
+    }
+    movedUsersIO[user]="insider";
+    userRowsIO[user]="table5_line_"+user;
+}
+
+function addOutsider(user)
+{
+    var aux=document.getElementById("outsidersTableBody");
+    var nodes=aux.childNodes;
+    var found=false;
+    var foundElement=null;
+    for (var i=0;i&lt;nodes.length &amp;&amp; !found;i++) {
+        if(nodes[i].id == ("table4_line_"+user)) {
+            nodes[i].style.display="";
+            found=true;
+            foundElement=nodes[i];
+        }
+    }
+    if(!found) {
+        var rand=aux.insertRow(0);
+        var colo=rand.insertCell(0);
+        rand.id = "table4_line_"+user;
+        rand.style.width="100";
+        generateOutsiderHTML(user,colo);
+        //rand.style.display="table-row";
+    }
+    movedUsersIO[user]="outsider";
+    userRowsIO[user]="table4_line_"+user;
+}
+
+function generateInsiderHTML(user,cell)
+{
+    //Arrow
+    ArrowDiv=document.createElement("div");
+    ArrowDiv.setAttribute("style","float:left");
+    ArrowDiv.style.styleFloat ="left";
+    ArrowDiv.style.width="10%";
+    ArrowDiv.style.textAlign="right";
+    //ArrowDiv.style.display="inline";
+        firstArrowLink=document.createElement("a");
+        //firstArrowLink.style.display="inline";
+        firstArrowLink.id="a51_"+user;
+        firstArrowLink.style.cursor="pointer";
+        firstArrowLink.href="javascript:void(0);moveInsiderToOutsiders(" +'"' +user+'"' + ");";     //TODO: add de action link
+            firstArrowImg=document.createElement("img");
+            firstArrowImg.src="/xwiki/skins/workspaces/images/move-left-red.png";
+            firstArrowImg.title=moveToOutsidersMessage;
+            //firstArrowImg.style.display="inline";
+        firstArrowLink.appendChild(firstArrowImg);
+    ArrowDiv.appendChild(firstArrowLink);
+    //username div
+    userNameDiv=document.createElement("div");
+    userNameDiv.setAttribute("style","float:right");
+    userNameDiv.style.styleFloat ="right";
+    userNameDiv.style.width="90%";
+    userNameDiv.style.display="inline";
+    userNameDiv.innerHTML=getUserLinkIO(user,"T5");
+    userNameDiv.id="divT5_"+user;
+    cell.appendChild(ArrowDiv);
+    cell.appendChild(userNameDiv);
+}
+
+function generateOutsiderHTML(user,cell)
+{
+    //Arrow
+    ArrowDiv=document.createElement("div");
+    ArrowDiv.setAttribute("style","float:right");
+    ArrowDiv.style.styleFloat ="right";
+    ArrowDiv.style.width="10%";
+    ArrowDiv.style.textAlign="left";
+    //ArrowDiv.style.display="inline";
+        firstArrowLink=document.createElement("a");
+        //firstArrowLink.style.display="inline";
+        firstArrowLink.id="a41_"+user;
+        firstArrowLink.style.cursor="pointer";
+        firstArrowLink.href="javascript:void(0);moveOutsiderToInsiders(" +'"' +user+'"' + ");";
+            firstArrowImg=document.createElement("img");
+            firstArrowImg.src="/xwiki/skins/workspaces/images/move-right-green.png";
+            firstArrowImg.title=moveToInsidersMessage;
+            //firstArrowImg.style.display="inline";
+        firstArrowLink.appendChild(firstArrowImg);
+    ArrowDiv.appendChild(firstArrowLink);
+    //username div
+    userNameDiv=document.createElement("div");
+    userNameDiv.setAttribute("style","float:left");
+    userNameDiv.style.styleFloat ="left";
+    userNameDiv.style.width="90%";
+    userNameDiv.style.display="inline";
+    userNameDiv.innerHTML=getUserLinkIO(user,"T4");
+    userNameDiv.id="divT4_"+user;
+    cell.appendChild(ArrowDiv);
+    cell.appendChild(userNameDiv);
+}
+
+/**
+ * @param user
+ * @param targetGroup - values: "T4","T5"
+ * @return the link to the user's profile. Displays users's pretty name(FirstName + LastName)
+ */
+function getUserLinkIO(user,targetTable)
+{
+    switch(targetTable)
+    {
+        case "T4": el_id="divT5_"+user;
+                   break;
+        case "T5": el_id="divT4_"+user;
+                   break;
+        default: return user; //returns the xwiki user name.(!link)
+    }
+    userLink=document.getElementById(el_id);
+    if(userLink == null)
+    {
+    	return user;
+    }
+    else
+    {
+    	return userLink.innerHTML;
+    }
+}
+
+function saveIO() {
+    var movedUser;
+    for(movedUser in movedUsersIO)
+    {
+        if(movedUsersIO[movedUser]!=null)
+        {
+        	//alert(movedUser);
+            var theActionForm=document.getElementById("insidersOutsidersForm");
+            var newElement=document.createElement("input");
+            newElement.setAttribute("type","hidden");
+            if(movedUsersIO[movedUser]=="insider")
+            {
+                  newElement.setAttribute("name","NEW_INSIDER");
+            }
+            if(movedUsersIO[movedUser]=="outsider")
+            {
+                  newElement.setAttribute("name","NEW_OUTSIDER");
+            }
+            newElement.setAttribute("value",movedUser);
+            theActionForm.appendChild(newElement);
+        }
+    }
+    var scrollXY=getScrollXY();
+    var scrollY=scrollXY[1];
+    var newElement=document.createElement("input");
+    newElement.setAttribute("type","hidden");
+    newElement.setAttribute("name","VERTICAL_SCROLL");
+    newElement.setAttribute("value",scrollY);
+    theActionForm.appendChild(newElement);
+    document.getElementById("insidersOutsidersForm").submit();
+}
+
+function filterOutsider()
+{
+    var x="";
+    input=document.getElementById("outsidersFilter");
+    filterText=input.value.toLowerCase();
+    for(x in userRowsIO)
+    {
+        s=userRowsIO[x].toString().toLowerCase();
+        if(s.indexOf("table4_line_")!=-1)
+        {
+            rowElement=document.getElementById(userRowsIO[x].toString());
+            userPrettyName=document.getElementById("divT4_"+x).textContent.toLowerCase();
+            if(userPrettyName.indexOf(filterText)==-1)
+            {
+                rowElement.style.display="none";
+            }
+            else
+            {
+                rowElement.style.display="";
+            }
+        }
+    }
+}
+
+function filterInsider()
+{
+    var x="";
+    input=document.getElementById("insidersFilter");
+    filterText=input.value.toLowerCase();
+    for(x in userRowsIO)
+    {
+        s=userRowsIO[x].toString().toLowerCase();
+        if(s.indexOf("table5_line_")!=-1)
+        {
+            rowElement=document.getElementById(userRowsIO[x].toString());
+            userPrettyName=document.getElementById("divT5_"+x).textContent.toLowerCase();
+            if(userPrettyName.indexOf(filterText)==-1)
+            {
+                rowElement.style.display="none";
+            }
+            else
+            {
+                rowElement.style.display="";
+            }
+        }
+    }
+}
+
+function refresh() {
+	window.location=window.location;
+}
+
+function changeBgColor(rowid) {
+	row=document.getElementById(rowid);
+	oldColor=row.style.backgroundColor;
+	row.style.backgroundColor='#FFFF00';
+	
+	row.style.backgroundColor=oldColor;
+}
+
+function getScrollXY() {
+  var scrOfX = 0, scrOfY = 0;
+  if( typeof( window.pageYOffset ) == 'number' ) {
+    //Netscape compliant
+    scrOfY = window.pageYOffset;
+    scrOfX = window.pageXOffset;
+  } else if( document.body &amp;&amp; ( document.body.scrollLeft || document.body.scrollTop ) ) {
+    //DOM compliant
+    scrOfY = document.body.scrollTop;
+    scrOfX = document.body.scrollLeft;
+  } else if( document.documentElement &amp;&amp; ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+    //IE6 standards compliant mode
+    scrOfY = document.documentElement.scrollTop;
+    scrOfX = document.documentElement.scrollLeft;
+  }
+  return [ scrOfX, scrOfY ];
+}
+#if($request.scroll)
+	Event.observe(window, 'load', doScroll(0,$request.getParameter("scroll")));
+#end
+
+function doScroll(x,y)
+{
+	window.scroll(x,y);
+}
+// ]]&gt;
+&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+// &lt;![CDATA[
+    var userRowsIO=new Array();
+	var moveToInsidersMessage= '$msg.get("xws.admin.moveToInsiders")';
+	var moveToOutsidersMessage= '$msg.get("xws.admin.moveToOutsiders")';
+    #foreach($userName in $outsiders)
+          addTo(userRowsIO,'$userName',"table4_line_"+'$userName');
+    #end
+    #foreach($userName in $insiders)
+          addTo(userRowsIO,'$userName',"table5_line_"+'$userName');
+    #end
+// ]]&gt;
+&lt;/script&gt;
+{/pre}
+
+&lt;span class="buttonwrapper"&gt;
+&lt;a href="javascript:saveIO();"&gt;$msg.get('xws.admin.clicktosave')&lt;/a&gt;
+&lt;a href="javascript:refresh();"&gt;$msg.get('commons.form.cancel')&lt;/a&gt;
+&lt;/span&gt;</content>
+</xwikidoc>

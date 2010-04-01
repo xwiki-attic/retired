@@ -1,0 +1,32 @@
+body {
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, "Bitstream Vera Sans", sans-serif;
+  color: #64839A;
+}
+a:active, #footerbar a:active, #headerglobal #headermenu ul li a:active, a:focus {
+  outline: none;
+}
+.heading-1 {
+  font-size: 2.5em;
+    line-height: 1.2em;
+  margin: 15px 0;
+letter-spacing:-1px;
+}
+.heading-1-1 {
+  font-size: 2em;
+    line-height: 1.2em;
+  margin: 10px 0;
+letter-spacing:-1px;
+}
+.heading-1-1-1 {
+  font-size: 1.6em;
+  line-height: 1.2em;
+  margin: 5px 0;
+letter-spacing:-1px;
+}
+.main h1 {
+	font-size: 2.8em;
+	line-height: 1em;
+	margin-bottom: 0;
+}
+.main .mediumcontentheader h1 {margin-bottom: 1em;}

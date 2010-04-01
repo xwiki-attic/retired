@@ -1,0 +1,73 @@
+#if(($context.getMode()==0) && ($context.action!="login") && ($context.action!="loginsubmit"))
+ <div id="actionmenu">
+ #if($context.action=='edit')
+  #if($doc.title.length() > 100)
+   #set($doctitle = "${doc.title.substring(0,99)}...")
+  #else
+   #set($doctitle = $doc.title) 
+  #end
+  <div class="centered"><div class="editinfo">$msg.get("editing"): $doctitle</div></div>
+ #else
+  <div id="leftmenu">
+  #if($workspace)
+   #if($xwsmgr.applicationName=="Wiki")
+    #sidebarbuttons("Wiki") 
+   #elseif($xwsmgr.applicationName=="Blog")
+    #sidebarbuttons("Blog")
+   #elseif($xwsmgr.applicationName=="Photos")
+    #sidebarbuttons("Photos")
+   #elseif(!$doc.space.endsWith("_Files")) ## Space home buttons
+    #if($workspace && $doc.name=="WebHome" && $doc.hasAccessLevel("edit") && (!$viewer || $viewer!="userdashboard"))
+   <div class="webhomebuttons">
+     #sidebarlink("$doc.getURL('edit','editor=wysiwyg')","Editer le contenu", "editcontent")
+    <div class="buttonsbottom"></div>
+    </div>
+    #end
+   #end
+  #elseif($doc.web=="XWiki")
+   #if($doc.getObject("XWiki.XWikiUsers") && $context.action!="inline")
+   <div class="webhomebuttons">
+     #sidebarlink("$doc.getURL('inline')","$msg.get('actionbar.profile.editprofile')", "editprofil")
+     #sidebarlink("$doc.getURL('view','xpage=passwd')","$msg.get('actionbar.profile.changepasswd')", "changepasswd")
+     #sidebarlink("$doc.getURL('view','xpage=changemyavatar')","$msg.get('actionbar.profile.changeavatar')", "changeavatar")
+    <div class="buttonsbottom"></div>
+    </div>
+   #end
+  #end
+  </div><!--leftmenu-->
+     #if ($context.action != "loginerror")
+      #if (!$isguest)
+	<div class="usertopbuttons">
+       #if($hasGlobalAdmin)
+         #set($adminURL=$xwiki.getURL('XWSAdmin.WebHome','view'))
+         <a id="globaladminbutton" href="${adminURL}" title="$msg.get('actionbar.buttons.globaladmin')"><span>$msg.get("xws.menuview.globaladmin")</span></a>
+       #end
+       <a id="mydashboardbutton" href="${xwiki.getURL('XWS.MyDashboard','view')}" title="$msg.get('actionbar.buttons.home')"><span>$msg.get("xws.menuview.mydashboard")</span></a>
+       #set($myspace=$xwsmgr.mySpace)
+       #if($myspace)
+        <a id="myspacebutton" href="${myspace.homeURL}" title="$msg.get('actionbar.buttons.myspace')"><span>$msg.get("xws.menuview.myspace")</span></a>
+       #end
+       #set($udoc=$xwiki.getDocument("$context.user"))
+       #if(!$udoc.isNew())
+        <a id="myprofilebutton" href="${udoc.getURL("view")}" title="$msg.get('actionbar.buttons.myprofile')"><span>$msg.get("xws.menuview.myprofile")</span></a>
+       #end
+       <a id="myspacesbutton" href="${xwiki.getURL("XWS.MySpaces", "view")}" title="$msg.get('actionbar.buttons.myspaces')"><span>$msg.get("xws.menuview.myspaces")</span></a>
+       #set($logouturl = $xwiki.getURL("XWiki.XWikiLogout","logout"))
+        <a id="logoutbutton" href="$!logouturl" title="$msg.get('actionbar.buttons.exit')"><span>$msg.get("xws.menuview.logout")</span></a>
+	</div>
+       #end
+	<span id="username">
+        $xwiki.getUserName($context.user)
+        </span>
+      #end
+    #end
+  </div>
+#end
+#if($hasadmin && $isAdvancedUser)
+  ##
+  ## Buttons for XWiki Developers
+  ##
+  <div id="xwikitoolbar">
+  #template("xwikitoolbar.vm")
+  </div>
+#end

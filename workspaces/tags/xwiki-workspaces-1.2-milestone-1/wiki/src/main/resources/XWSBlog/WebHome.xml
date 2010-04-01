@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSBlog</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1195481342000</creationDate>
+<date>1214214223000</date>
+<contentUpdateDate>1214214223000</contentUpdateDate>
+<version>8.1</version>
+<title>SpaceBlog</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSBlog.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Entry point for a Space Blog
+## ============================================
+## Lists Blog articles inside a space
+## Mandatory input: $workspace
+## ============================================
+#if($request.xpage &amp;&amp; $request.xpage.equals("rdf"))
+ #set($space = ${doc.space})
+ #set ($sql = "where 1=1 and doc.space='${space}' order by doc.date desc")
+ #set ($list = $xwiki.searchDocuments($sql , true, 20 , 0))
+ #set ($baseurl =  "http://${request.serverName}")
+ #set ($description = $msg.get('space.blog.rss.title',[${workspace.displayTitle}]))
+ #includeForm("XWiki.BlogRssCode")
+#else
+&lt;div class="blog"&gt;
+&lt;div align="right"&gt;
+ &lt;a href="$doc.getURL("view", "xpage=rdf")"&gt;
+  &lt;img src="$xwiki.getSkinFile("icons/black-rss.png")" title="$msg.get('space.blog.rss.subscribe')" alt="rss icon"/&gt;
+ &lt;/a&gt;
+&lt;/div&gt;
+## Initialize blog parameters
+#set($nbstart = $request.nbstart)
+#set($category = "")
+#if($request.category &amp;&amp; $request.category != "")
+ #set($category=$request.category)
+#end
+#set($nbitems = "10")
+## Display blog from macro
+#includeMacros("XWSCode.BlogMacros")
+#blog($category $nbitems $nbstart)
+&lt;/div&gt;
+#end</content>
+</xwikidoc>

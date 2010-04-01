@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>ProcessInvitation</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1211215052000</creationDate>
+<date>1213789516000</date>
+<contentUpdateDate>1213789516000</contentUpdateDate>
+<version>4.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.ProcessInvitation</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#set($allowRegister = false)
+#if( $request.invitation )
+  #set($invdoc = $xwiki.getDocument($request.invitation))
+  #if(!$invdoc.isNew())
+    #set($io = $invdoc.getObject("XWiki.InvitationClass"))
+    #if($io)
+      #set($spname = $invdoc.get("space"))
+      #set($sp = $xwsmgr.getSpace($spname))
+      #if($sp)     
+        #set($code = $io.get("code")) 
+        #set($invitee = $io.get("invitee"))
+        #if($code==$request.code || $hasAdmin)
+          #set($inv = $xwiki.invitationmanager)
+          #if($request.type == "accept")
+            ## Verify invitation
+            #if($inv.verifyInvitation($spname,$invitee,$code))
+              #if($context.user.equals('XWiki.XWikiGuest'))
+                #info("$msg.get('invitations.process.help',[$sp.displayTitle])")
+                #if($request.registered &amp;&amp; $request.registered=="1")
+                 #info("$msg.get('invitations.process.registered')")
+                #else
+                 #set($allowRegister = true)
+                 #warning("$msg.get('invitations.process.you_can_register')")
+                #end
+                ## define a redirect for login.
+                #set($redirect=$doc.getURL("view","${request.queryString}"))
+                #includeInContext('XWSCode.LoginRegister')
+              #else
+                #set($acceptInv = $inv.acceptInvitation($spname, $invitee, $code))
+                #if($acceptInv)
+                  #info("$msg.get('invitations.process.join_success',[$sp.homeURL,$sp.displayTitle])")
+                #else
+                 #error("$msg.get('invitations.process.join_failure')")
+                #end
+              #end
+            #else
+              #error("$msg.get('invitations.process.invitation_not_valid')")
+            #end
+          #elseif($request.type == "cancel")
+            #if($invdoc.hasAccessLevel('admin'))
+              $inv.cancelInvitation($io.get("invitee"),$spname)
+              #if($request.xredirect) $response.sendRedirect($xwiki.getFormEncoded($request.xredirect)) #end
+            #end
+          #else
+            #error("invitations.process.no_process_type")
+          #end
+        #else 
+         #error("invitations.process.no_rights")
+        #end ##no rights
+      #else
+        #error($msg.get("invitations.process.no_such_space"))
+      #end ##there is no such space
+    #else
+      #error($msg.get("invitations.process.no_such_invitation"))
+    #end ##no invitation object
+  #else ##the invitation doc is new
+    #error($msg.get("invitations.process.no_such_invitation"))
+  #end ##the invitation doc is new
+#else ##there is no invitation parameter
+  #error($msg.get("invitations.process.no_params"))
+#end
+</content></xwikidoc>

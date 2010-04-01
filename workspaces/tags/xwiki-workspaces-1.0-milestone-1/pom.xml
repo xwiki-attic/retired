@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xpn.xwiki.platform</groupId>
+    <artifactId>xwiki</artifactId>
+    <version>14</version>
+  </parent>
+  <groupId>com.xpn.xwiki.products</groupId>
+  <artifactId>xwiki-workspaces-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>XWiki Products - Workspaces - Parent POM</name>
+  <version>1.0-milestone-1</version>
+  <description>XWiki Products - Workspaces - Parent POM</description>
+  <scm>
+    <connection>scm:svn:http://svn.xwiki.org/svnroot/xwiki/xwiki-products/xwiki-workspaces/tags/xwiki-workspaces-1.0-milestone-1</connection>
+    <developerConnection>scm:svn:https://svn.xwiki.org/svnroot/xwiki/xwiki-products/xwiki-workspaces/tags/xwiki-workspaces-1.0-milestone-1</developerConnection>
+    <url>http://svn.xwiki.org/svnroot/xwiki/xwiki-products/xwiki-workspaces/tags/xwiki-workspaces-1.0-milestone-1</url>
+  </scm>
+  <modules>
+    <module>wiki</module>
+    <module>database</module>
+    <module>plugins</module>
+    <module>web</module>
+    <module>distribution</module>
+  </modules>
+  <properties> 
+    <!-- Versions of XWiki dependencies used in XWS modules -->
+    <platform.tool.xar-handler.version>1.8</platform.tool.xar-handler.version>
+    <platform.tool.xar-plugin.version>1.9</platform.tool.xar-plugin.version>
+    <platform.tool.configuration.version>1.10</platform.tool.configuration.version>
+    <platform.tool.jetty.version>1.9</platform.tool.jetty.version>
+    <platform.tool.packager.version>1.8</platform.tool.packager.version>
+    <platform.core.version>1.3</platform.core.version>
+    <platform.web.version>1.3</platform.web.version>
+    <platform.panels.version>1.5</platform.panels.version>
+    <product.enterprise.version>1.3</product.enterprise.version>
+    <plugin.spacemanager.version>1.0</plugin.spacemanager.version>
+    <plugin.appmanager.version>1.1</plugin.appmanager.version>
+    <plugin.mailsender.version>1.0.2</plugin.mailsender.version>
+  </properties>
+  <build>
+    <extensions>
+      <extension>
+        <groupId>com.xpn.xwiki.platform.tools</groupId>
+        <artifactId>xwiki-xar-handlers</artifactId>
+        <version>${platform.tool.xar-handler.version}</version>
+      </extension>
+    </extensions>
+    <plugins>
+      <plugin>
+        <groupId>com.xpn.xwiki.platform.tools</groupId>
+        <artifactId>xwiki-xar-plugin</artifactId>
+        <version>${platform.tool.xar-plugin.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

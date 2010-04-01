@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>XWS_SpaceTemplate</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201129302000</creationDate>
+<date>1201517054000</date>
+<contentUpdateDate>1201517054000</contentUpdateDate>
+<version>1.6</version>
+<title>WebHome</title>
+<template></template>
+<defaultTemplate>workspace</defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWS_SpaceTemplate.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>
+1.1.1 Welcome to your new space
+
+You have just created a new space. A space is a place designed to share information about a topic, a project, a department... To this aim, a set of applications is available to help you publish content :
+
+* A blog : the blog is a place where you can post news and start discussions.
+* A wiki : the wiki provides you with the ability to create new pages and edit them together.
+* A file manager : the file manager let you upload files (such as Excel sheets &amp; PDFs) to make them available to other space members.
+* An picture gallery : the picture gallery is specifically meant to publish and share images and photographs.
+
+Panels on the left provide you with a list of current members of the space and displays existing categories.
+
+1.1.1 Getting started
+
+You may want to edit this page to replace its content with an introduction stating what this space is all about and why it was created for.</content>
+</xwikidoc>

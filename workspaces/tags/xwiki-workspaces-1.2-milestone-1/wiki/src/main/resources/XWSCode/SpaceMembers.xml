@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>SpaceMembers</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1194252470000</creationDate>
+<date>1221826705000</date>
+<contentUpdateDate>1221826705000</contentUpdateDate>
+<version>6.1</version>
+<title>SpaceMembers</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<attachment>
+<filename>user.png</filename>
+<filesize>955</filesize>
+<author>XWiki.Admin</author>
+<date>1221826049000</date>
+<version>1.2</version>
+<comment></comment>
+<content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAADMUlEQVR42mSSTWgcdRjGf/O1Mzu7Ozu7m81X07RlaaqbxoIVK4FKDoIf0ENoKhQEBYWCqBfR9mB7UMGih3qyxQoeIi3SIlSlpq0lpiRpCK3aVg1pErvtbuLkq+vWZjO7M5m/hyXR0gfey4+Hh+eFRxJC8PbzMf4vRYbsJu9V0whebkxbt/suJ41AiD2m7iOQHvBKQgj63jPWgGnAqX51R0OyOtKQEDQ3JWje+AhnzjqFquetlxX94YBvD5j/AQlUxRMDV30KedjaDtltj9OxbQu9X/Z/3mg7+wTKml8FyDvLa8D3eU0TcPjEIKd7T3Ps0KfMOz+zEkrzxHa7LTfuoGrSgwG5hZY14LornU2xvyCxkZ63jrBpfTMfH3yX4R8vkqh/tOvuYoukKLJY9csAy4sFhDAQwsDzpNGWjhd83DuQ+47t3Xv5+jfBrp6XmPzjxqCipgRSjNWTAZ78UBC+P4nu51AUcezK6MRVKg4sjMGv5yAYZGHOJVGf2alWbqJ7OTT3Dno1X3vBuDfI4WufsfuVZ+jx27k+NbeB+UWImzB7G0hSmvuTVDDFeEcOtzhFvKHEvaJXawBgazO0GlfYc/wIx2fPNn1y8MB5HAfqIxzd9wG3Sqr0RbGfpD9MyMujudOEqjO1BqsSQoLqrUFvZn44+U7f0smho/xdvEb3RxfY+ez5k2XnUnF5ecPrD+1g4PIvdHV+5Xa/uE68+Uan4ZYDVD1BqiVDtQppu8pycY7M5hTvH/qJgaGJhaeeDqcXZr1agBHaXzrz/W7Nkyvhm+OzxKNxohGdsKYSi0dRFIlkKoaMTDbbCkDzuv2jz+1q3KECZNoSlaWyZ41NFmisT2NFItiJKFZMR9dNNFWgaDJWJMzE1Aynvhki05aMZjbXGSqAaarp2buLbM02Ebds7HiMdJ2FHY9iGiGEJBEEgnxhjhu/T9G2xeJSv569eG6xS63ViTA5VuLCDw6xSJiQoRDWDUKahiyv4K/ILJXLuEsebsWj/TGbVF2EhkY9LAkh6D0xoIyMTLdqmgiSiXgQjZhYMRNNkal4gVAUKfA9j3/KLuX7ZQrTJcNOSfOWFSr/OwBP1UoZyCMP3wAAAABJRU5ErkJggg==</content>
+</attachment>
+<attachment>
+<filename>group.png</filename>
+<filesize>991</filesize>
+<author>XWiki.Admin</author>
+<date>1221826049000</date>
+<version>1.2</version>
+<comment></comment>
+<content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAADVUlEQVR42mySW0xbdQDGf+d/Tu+jhULLrXJZYAITmMsM61aJMkkUjZnuQY1mmc44n/SFR40mxqgx08QlZjMmusXhpriLCWrwurAhM0SZVQRGCZStQMelQEsv5/T8fTCLJvN7+/Ilv+RLfsrJF20A2G2Sn8NW97Z6/U9vkUMkM6VjQ2Fjj8sBigJrGzb27R5lNQWKYgMkAEIIBSEUFFScttTFX37LBhYWUxUVNb6O5iavTKYMcrpkPW3n/6I+usNAmgaZtLH/ji1Fhyz+Ds73jiOUawTb29CTC/FCb8Hwg60jJNI2pMyjKNq/gC3+YuIJJ1Oz+Xdq65tqn3jtJ/xek54PLpA2FsBSGri+7D5a5YliSO0WgMiaBWTNAjJ514mUWQ1MsOfAQb6ameG2miYuD68vdjYMkMtbUYS45YJYujrNwuw089GV4wIHrP0Blz4Du0TPlqd21kXuSxv2oVTWlMuxtBQKx4RQUFVQVdAe+lhSPdCFpbCKCxe/G2a6dQe3e2D8C/q/Ph+7P0hLPK63Gbk8d+6+l8jIj885N2X61jZsXwohUU6e/oGZRZWrs2nKrILA4svSX2ASWS1l3RdSxJU3k9aNhKsl1MjDr4wSPtfN4KnDY8UBe6OUJprFouIWK7u8WvL1qevynn3d3+LxaOwtdxDs+lV2aa/y0ofvQcYN5NgcfIah3sMNOd0EBbS5uVRobDI2kJiHx5/aynh4hE1OJ/FyP5++a+X9ZzNg3wzpKVgeJB0ZYi0LVp0qKYmKpaXULofVyWP7m8mnbVSWFdPcup3Fv77nhWAzsRtw+ewpcBTB2CU+/+gYK2vQ4Nfn63wmmstlqZ2YzFJfVYrF5qTMV4jLbVL75AF87ixvHXqeM2c/oe2BDuKmi9/Hpqnx0bjzjWCO3ARaRaU7lljJ0nN6lJISNzZNZWvTXRQUZs3ewVURLd+OxAM+BX9JJVfydxv9EfV4RWBlNJeQTyvn+gbpOREmr6t4Cm3U1bUyNxfhyJFH+oFOb6CJ1fUUxng30aEo1XvfBs2Fz6OS3NCPaqYpsVgFFk3D6bTQ3t5MKNQC0AmwfG0UACMco29w8h/9jBQ3lgA4qP1Xy5qabYRCys36DWAFVgFFz+fJ6fmbmwRcQOTvAQAuMGHVCj9mDQAAAABJRU5ErkJggg==</content>
+</attachment>
+<object>
+<class>
+<name>XWiki.JavaScriptExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>onDemand=On demand|always=Always</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWSCode.SpaceMembers</name>
+<number>0</number>
+<className>XWiki.JavaScriptExtension</className>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>function getMemberList(url,what,showLoading){
+  if(showLoading==true)
+  {
+  setLoadingBg('space-'+what+'-list',true);
+  $('space-'+what+'-list').style.height = '50px';
+  }
+  var aj = new Ajax.Updater(
+    'space-'+what+'-list', 
+    url + "?xpage=plain&amp;do=list&amp;what=" + what,
+     {
+        method:'get',
+        onSuccess: function() { 
+          setLoadingBg('space-'+what+'-list', false);
+          $('space-'+what+'-list').style.height = '';
+        }
+     }
+  );
+}
+function updateRights(url,who,from,to)
+{
+   setLoadingBg('space-'+from+'-list',true);
+   setLoadingBg('space-'+to+'-list',true);
+   var aj = new Ajax.Request(
+    url + "?xpage=plain&amp;do=move&amp;who=" + who + "&amp;from=" + from + "&amp;to=" + to,
+	 {
+	    method: 'get',
+	   	onSuccess: function() {
+	        getMemberList(url,from,true);
+		getMemberList(url,to,true);		
+		}
+	 }
+   )
+}
+function updateRights(url,who,from,to)
+{
+   setLoadingBg('space-'+from+'-list',true);
+   setLoadingBg('space-'+to+'-list',true);
+   var aj = new Ajax.Request(
+    url + "?xpage=plain&amp;do=move&amp;who=" + who + "&amp;from=" + from + "&amp;to=" + to,
+	 {
+	    method: 'get',
+	   	onSuccess: function() {
+	        getMemberList(url,from,true);
+		getMemberList(url,to,true);		
+		}
+	 }
+   )
+}
+function removeMember(url, who, from)
+{
+   setLoadingBg('space-'+from+'-list',true);
+   var aj = new Ajax.Request(
+    url + "?xpage=plain&amp;do=remove&amp;who=" + who + "&amp;from=" + from,
+	 {
+	    method: 'get',
+	   	onSuccess: function() {
+	        getMemberList(url,from,true);
+		}
+	 }
+   )
+}</code>
+</property>
+<property>
+<name>Space members</name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>onDemand=On demand|always=Always</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWSCode.SpaceMembers</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code></code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.SpaceMembers</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Space Members management Sheet
+## ============================================
+## Displays list of member of the space per
+## group they belong to (reader/writer/admin)
+## Offers buttons to move/remove/add members
+## from groups.
+## ============================================
+##
+## ---------
+## Macros
+## ---------
+#macro(startInlinePanelAdmin $title $skinfileicon)
+&lt;div class="inlinepanel expanded"&gt;
+&lt;h5 class="inlinepaneltitle"&gt;$title&lt;/h5&gt; 
+&lt;div class="inlinepanelcontents"&gt;
+#end
+## -----------
+## Entry point
+## -----------
+#if($request.action=="select")
+ #includeInContext("XWSCode.AddMembersToWorkspace")
+#else
+1 $msg.get('space.prefs.members.title')
+
+1.1.1 $msg.get('space.prefs.members.spacemembers')
+&lt;div id="spacemembers"&gt;
+#set($mgr=$xwiki.xwsmgr)
+#set($spacename=$workspace.spaceName)
+ #if($request.action=="add")
+ #if($xwiki.xwsmgr.isAdmin($ws.spaceName, $context.user) || $doc.hasAccessLevel("admin"))
+  #foreach($param in $request.getParameterNames())
+   #if($param.startsWith('right_'))
+    #set($wikiname=$param.substring(6))
+     #if($request.group=="admin")
+      #set($ok = $mgr.addAdmin($spacename,$wikiname))
+     #elseif($request.group=="writer")
+      #set($ok = $mgr.addWriter($spacename,$wikiname,true))
+     #elseif($request.group=="reader")
+      #set($ok = $mgr.addReader($spacename,$wikiname,true))
+     #end
+   #end
+  #end
+ #end
+ #end
+&lt;div id="space-members-container"&gt;
+ #startInlinePanelAdmin("$msg.get('space.prefs.members.admins')" "admin-icon.png")
+ &lt;div id="space-admin"&gt;
+  &lt;div id="space-admin-list"&gt;&lt;/div&gt; ##loaded through ajax call
+  #if($space.admin || $doc.hasAccessLevel("admin"))
+    &lt;div id="space-admin-header"&gt;
+      &lt;a href="$doc.getURL('view','s=m&amp;action=select&amp;group=admin')"&gt;
+      $msg.get('space.prefs.members.addmembertogroup')
+      &lt;/a&gt;
+    &lt;/div&gt;
+  #end
+ &lt;/div&gt;
+ &lt;div class="clearfloats"&gt;&lt;/div&gt;
+ #endInlinePanel()
+ #startInlinePanelAdmin("$msg.get('space.prefs.members.writers')" "writer-icon.png")
+ &lt;div id="space-writers"&gt;
+  &lt;div id="space-writer-list"&gt;&lt;/div&gt;
+  #if($space.admin || $doc.hasAccessLevel("admin"))
+    &lt;div id="space-writer-header"&gt;
+      &lt;a href="$doc.getURL('view','s=m&amp;action=select&amp;group=writer')"&gt;
+      $msg.get('space.prefs.members.addmembertogroup')
+      &lt;/a&gt;
+    &lt;/div&gt;
+  #end
+ &lt;/div&gt;
+&lt;div class="clearfloats"&gt;&lt;/div&gt;
+ #endInlinePanel()
+ #startInlinePanelAdmin("$msg.get('space.prefs.members.readers')" "reader-icon.png")
+ &lt;div id="space-readers"&gt;
+  &lt;div id="space-reader-list"&gt;&lt;/div&gt;
+  #if($space.admin || $doc.hasAccessLevel("admin"))
+    &lt;div id="space-reader-header"&gt;
+      &lt;a href="$doc.getURL('view','s=m&amp;action=select&amp;group=reader')"&gt;
+      $msg.get('space.prefs.members.addmembertogroup')
+      &lt;/a&gt;
+    &lt;/div&gt;
+  #end
+ &lt;/div&gt;
+&lt;div class="clearfloats"&gt;&lt;/div&gt;
+ #endInlinePanel()
+&lt;/div&gt;
+## Inject XWiki.JavaScriptExtension object via jsx plugin
+$xwiki.jsx.use("XWSCode.SpaceMembers")
+$xwiki.ssx.use("XWSCode.SpaceMembers")
+## Initialize tables
+{pre}
+&lt;script type="text/javascript"&gt;
+// &lt;![CDATA[
+getMemberList("$doc.getURL('view')","admin",true);
+getMemberList("$doc.getURL('view')","writer",true);
+getMemberList("$doc.getURL('view')","reader",true);
+// ]]&gt;
+&lt;/script&gt;
+{/pre}
+&lt;/div&gt;
+&lt;div class="clearfloats"&gt;&lt;/div&gt;
+#end</content>
+</xwikidoc>

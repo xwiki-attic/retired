@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>MembersService</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1194254294000</creationDate>
+<date>1208803211000</date>
+<contentUpdateDate>1208803211000</contentUpdateDate>
+<version>4.1</version>
+<title>MembersService</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.MembersService</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Members Service Sheet
+## ============================================
+## - provides async services for members
+## management inside a space (space administration)
+## ============================================
+##
+##@TODO move macro in macros.vm
+#macro( fullname $wikiname)
+ #set($udoc=$xwiki.getDocument($wikiname))
+ #set($uobj=$udoc.getObject("XWiki.XWikiUsers"))
+ #set($fn= "${uobj.get('first_name')} ${uobj.get('last_name')}" )
+ #if($fn &amp;&amp; !$fn.trim().equals(""))
+  $fn
+ #else
+  $wikiname
+ #end
+#end
+#set($xsm=$xwiki.xwsmgr) ## retrieve workspaces manager plugin
+#set($ws=$xsm.space)        ## retrieve current workspace
+#if($request.do=="list")
+ ## @SERVICE: list members of the "$request.what" type (admin, reader or writer), and offers links to remove or up/downgrade the
+ ## user within the current Nearbee space.
+ #if($doc.hasAccessLevel("view"))
+  #if($request.what=="admin")
+   #set($admins = $xsm.getAdmins($ws.spaceName))
+   #if($admins &amp;&amp; $admins.size()&gt;0)
+    #foreach($admin in $admins)
+     &lt;div class="member-entry #if($velocityCount%2==1)even #else odd #end"&gt;
+      #if($admins.size()&gt;1)
+      &lt;div class="fn collapsed" id="fn-admin-${velocityCount}" onclick="toggleClass($('member-admin-actions-${velocityCount}'), 'hidden'); toggleClass($('fn-admin-${velocityCount}'), 'expanded'); toggleClass($('fn-admin-${velocityCount}'), 'collapsed');"&gt;#fullname($admin)&lt;/div&gt;
+      #else
+      &lt;div&gt;#fullName($admin)&lt;/div&gt;
+      #end
+      #if($xwiki.workspaces.space.admin || $doc.hasAccessLevel("admin"))
+       &lt;div id="member-admin-actions-${velocityCount}" class="member-actions hidden"&gt;
+        &lt;a class="member-action-delete" href="javascript:void('0');" onclick="removeMember('${admin}','admin');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('member-actions-icon-del.gif')" /&gt;$msg.get('commons.actions.delete')
+        &lt;/a&gt;
+        &lt;a class="member-action-towriter" href="javascript:void('0');" onclick="updateRights('${admin}','admin','writer');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('edit-writer-small.png')" /&gt;$msg.get('space.prefs.members.makewriter')
+        &lt;/a&gt;
+        &lt;a class="member-action-toreader" href="javascript:void('0');" onclick="updateRights('${admin}','admin','reader');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('reader-icon-small.png')" /&gt;$msg.get('space.prefs.members.makereader')
+        &lt;/a&gt;
+       &lt;/div&gt;
+      #end
+      &lt;/div&gt;
+     #end
+    #else
+     #info("$msg.get('space.prefs.members.emptylist')")
+    #end
+   #elseif($request.what=="writer")
+   #set($writers = $xsm.getWriters($ws.spaceName))
+   #if($writers &amp;&amp; $writers.size()&gt;0)
+    #foreach($writer in $writers)
+     &lt;div class="member-entry #if($velocityCount%2==1)even #else odd #end"&gt;
+      &lt;div class="fn collapsed" id="fn-writer-${velocityCount}" onclick="toggleClass($('member-writer-actions-${velocityCount}'), 'hidden'); toggleClass($('fn-writer-${velocityCount}'), 'expanded'); toggleClass($('fn-writer-${velocityCount}'), 'collapsed');"&gt;#fullname($writer)&lt;/div&gt;
+      #if($xwiki.workspaces.space.admin || $doc.hasAccessLevel("admin"))
+       &lt;div id="member-writer-actions-${velocityCount}" class="member-actions hidden"&gt;
+        &lt;a class="member-action-toadmin" href="javascript:void('0');" onclick="updateRights('${writer}','writer','admin');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('admin-icon-small.png')" /&gt;$msg.get('space.prefs.members.makeadmin')
+        &lt;/a&gt;
+        &lt;a class="member-action-delete" href="#" onclick="removeMember('${writer}','writer');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('member-actions-icon-del.gif')" /&gt;$msg.get('commons.actions.delete')
+        &lt;/a&gt;
+        &lt;a class="member-action-toreader" href="#" onclick="updateRights('${writer}','writer','reader');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('reader-icon-small.png')" /&gt;$msg.get('space.prefs.members.makereader')
+        &lt;/a&gt;
+       &lt;/div&gt;
+      #end
+      &lt;/div&gt;
+    #end
+   #else
+    #info("$msg.get('space.prefs.members.emptylist')")
+   #end
+  #elseif($request.what=="reader")
+   #set($readers = $xsm.getReaders($ws.spaceName))
+   #if($readers &amp;&amp; $readers.size()&gt;0)
+    #foreach($reader in $readers)
+     &lt;div class="member-entry #if($velocityCount%2==1)even #else odd #end"&gt;
+      &lt;div class="fn collapsed" id="fn-reader-${velocityCount}" onclick="toggleClass($('member-reader-actions-${velocityCount}'), 'hidden'); toggleClass($('fn-reader-${velocityCount}'), 'expanded'); toggleClass($('fn-reader-${velocityCount}'), 'collapsed');"&gt;#fullname($reader)&lt;/div&gt;
+      #if($xwiki.workspaces.space.admin || $doc.hasAccessLevel("admin"))
+       &lt;div id="member-reader-actions-${velocityCount}" class="member-actions hidden"&gt;
+        &lt;a class="member-action-toadmin" href="javascript:void('0');" onclick="updateRights('${reader}','reader','admin');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('admin-icon-small.png')" /&gt;$msg.get('space.prefs.members.makeadmin')
+        &lt;/a&gt;
+        &lt;a class="member-action-towriter" href="javascript:void('0');" onclick="updateRights('${reader}','reader','writer');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('edit-writer-small.png')" /&gt;$msg.get('space.prefs.members.makewriter')
+        &lt;/a&gt;
+        &lt;a class="member-action-delete" href="#" onclick="removeMember('${reader}','reader');return false;"&gt;
+         &lt;img src="$xwiki.getSkinFile('member-actions-icon-del.gif')" /&gt;$msg.get('commons.actions.delete')
+        &lt;/a&gt;
+       &lt;/div&gt;
+      #end
+      &lt;/div&gt;
+    #end
+   #else
+    #info("$msg.get('space.prefs.members.emptylist')")
+   #end
+  #else
+   #error("$msg.get('service.common.error.badrequest')")
+  #end
+ #else
+  #error("$msg.get('commons.error.actionnotallowed')")
+ #end
+ ##
+ ## END SERVICE
+ ##
+#elseif($request.do=="move")
+ ## @SERVICE: up/down-grad a user in the current space
+ #if($xwiki.xwsmgr.isAdmin($ws.spaceName, $context.user) || $doc.hasAccessLevel("admin"))
+  #if($request.to &amp;&amp; $request.to=="admin")
+   #set($ok=$xsm.addAdmin($ws.spaceName, $request.who))
+  #elseif($request.to &amp;&amp; $request.to=="writer")
+   #set($ok=$xsm.addWriter($ws.spaceName, $request.who, true))
+  #elseif($request.to &amp;&amp; $request.to=="reader")
+   #set($ok=$xsm.addReader($ws.spaceName, $request.who, true))
+  #else
+   #error("$msg.get('service.common.error.badrequest')")
+  #end
+$ok
+ #else
+  #error("$msg.get('commons.error.actionnotallowed')")
+ #end
+ ##
+ ## END SERVICE
+ ##
+#elseif($request.do=="remove")
+ ## @SERVICE: remove a user from the current space
+ #if($xwiki.xwsmgr.isAdmin($ws.spaceName, $context.user) || $doc.hasAccessLevel("admin"))
+  #if($request.from &amp;&amp; $request.from=="admin")
+   #set($ok=$xsm.removeAdmin($ws.spaceName, $request.who))
+  #elseif($request.from &amp;&amp; $request.from=="writer")
+   #set($ok=$xsm.removeWriter($ws.spaceName, $request.who))
+  #elseif($request.from &amp;&amp; $request.from=="reader")
+   #set($ok=$xsm.removeReader($ws.spaceName, $request.who))
+  #else
+   #error("$msg.get('service.common.error.badrequest')")
+  #end
+$ok
+ #else
+  #error("$msg.get('commons.error.actionnotallowed')")
+ #end
+ ##
+ ## END SERVICE
+ ##
+#else
+  #error("$msg.get('service.common.error.badrequest')")
+#end</content>
+</xwikidoc>

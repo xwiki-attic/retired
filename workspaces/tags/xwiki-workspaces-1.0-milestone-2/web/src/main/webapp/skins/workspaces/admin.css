@@ -1,0 +1,19 @@
+#actionmenu {
+  display: block;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  position:fixed;
+  _position: absolute;
+  left:0px;
+  top: 0;
+  margin:0px;
+  _margin-right: 15px;
+  width:100%;
+}
+
+#xwikimaincontainer {
+  padding-top: 26px;
+}
+#body, .viewbody {
+  _padding: 0;
+}

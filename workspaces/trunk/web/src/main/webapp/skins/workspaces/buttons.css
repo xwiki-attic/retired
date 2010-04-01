@@ -1,0 +1,431 @@
+/* -------------------------------------------- */
+/* -------------------------------------------- */
+/* ------------ ACTION BAR  ------------------- */
+/* -------------------------------------------- */
+/* -------------------------------------------- */
+body.loginbody #actionbar, .loginbody #actionbar {
+	display: none;
+}
+#actionbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: transparent url(images/ab-shadow.png) repeat-x top;
+  color: #fff;
+  z-index: 100000;
+}
+#actionbarleft {
+  left: 0px;
+  float: left;
+  margin: 4px 0 0 35px;
+  position: absolute;
+}
+#actionbarright {
+  float: right;
+  margin: 0;
+  z-index: 71;
+}
+#actionbaradminleft {
+  float: right; /* changed by jerome on 8/11/07, was "left" */
+  border-left: 1px solid #666;
+  margin-left: 10px;
+  height: 25px;
+}
+
+/* link-button in actionbar */
+#actionbar a {
+  border: 1px solid #fff;
+  border-left: 0;
+  border-right: 0;
+  height: 14px;
+  display: block;
+  float: left;
+  text-decoration: none;
+  line-height: 14px;
+  color: #fff;
+}
+#actionbar a:hover {
+  color: #ddd;
+}
+#actionbaradminleft a {
+  border: 0;
+  padding: 5px;
+}
+.submenuitem a {
+  padding: 3px 2px;
+}
+
+/* button in actionbarright */
+#actionbarright a {
+  width: 36px;
+  height: 25px;
+  border: 0;
+}
+a#actionorgadmin {
+  background: url(images/ab-orgadmin.png) no-repeat;
+}
+a#actionalert {
+  background: url(images/ab-feed.png) no-repeat;
+}
+a#actionalert:hover {
+  background: url(images/ab-feed-hover.png) no-repeat;
+}
+a#actioninvite {
+  background: url(images/ab-feed.png) no-repeat;
+}
+a#actioninvite:hover {
+  background: url(images/ab-feed-hover.png) no-repeat;
+}
+a#actionmyhome {
+  background: url(images/ab-myhome.png) no-repeat;
+}
+a#actionmyhome:hover {
+  background: url(images/ab-myhome-hover.png) no-repeat;
+}
+a#actionmyspaces {
+  background: url(images/ab-myspaces.png) no-repeat;
+}
+a#actionmyspaces:hover {
+  background: url(images/ab-myspaces-hover.png) no-repeat;
+}
+a#actionhelp {
+  background: url(images/ab-help.png) no-repeat;
+}
+a#actionorgadmin:hover {
+  background: url(images/ab-orgadmin-hover.png) no-repeat;
+}
+a#actionhelp:hover {
+  background: url(images/ab-help-hover.png) no-repeat;
+}
+a#actionadmin {
+  background: url(images/ab-admin.png) no-repeat;
+}
+a#actionadmin:hover {
+  background: url(images/ab-admin-hover.png) no-repeat;
+}
+a#actionmyexit {
+  background: url(images/ab-myexit.png) no-repeat;
+  width: 38px;
+}
+a#actionmyexit:hover {
+  background: url(images/ab-myexit-hover.png) no-repeat;
+}
+/* left image for link-button in actionbar */
+.actionbar-bt-left {}
+/* right image for link-button in actionbar */
+.actionbar-bt-right {}
+/* submenu in actionbar */
+.submenu-bloc {
+  background: url(images/menu-invite.gif);
+  width: 135px;
+  height: 99px;
+  padding: 10px;
+  float: left;
+  position: absolute;
+  z-index: 70;
+}
+#invite-bloc {
+  margin: 25px 0 0 -74px;
+}
+#alert-bloc {
+  margin: 25px 0 0 13px;
+}
+
+#adminleft{
+	position: relative;
+	left: -500px;
+	
+}
+/* -------------------------------------------- */
+/* ------------ end ACTION BAR  --------------- */
+/* -------------------------------------------- */
+
+
+/* -------------------------------------------- */
+/* ----------------- LEFT MENU ---------------- */
+/* -------------------------------------------- */
+
+.xwiki-panel-button a{
+  left: 0px;
+  position: relative;
+}
+
+.xwiki-panel-button{
+  text-align: center;
+  padding: 10px 0 0 0;
+  display: block;
+  clear: both;
+}
+
+.panel-button-container{
+  font-size: 10px;
+  width: 165px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.xwiki-panel-button-left{
+  background: transparent url(images/panel-btn-left.png) left top no-repeat;
+  vertical-align: top;
+  width: 7px;
+  height: 16px;
+  float: left;
+}
+
+.xwiki-panel-button-center{
+  background: transparent url(images/panel-btn-bg.png) left top repeat-x;
+  vertical-align: top;
+  text-align: center;
+  width: 150px;
+  height: 16px;
+  float: left;
+  overflow: hidden;
+}
+
+.xwiki-panel-button-right{
+  background: transparent url(images/panel-btn-right.png) left top no-repeat;
+  vertical-align: top;
+  width: 7px;
+  height: 16px;
+  float: left;
+}
+
+.xwiki-panel-button-center a:link, .xwiki-panel-button-center a:visited{
+  color: #fff;
+  text-decoration: none;
+}
+
+#body.body-admin-spaces .xwiki-panel-button-center a:link, #body.body-admin-spaces .xwiki-panel-button-center a:visited{
+  color: #fff;
+  text-decoration: none;
+}
+
+/* -------------------------------------------- */
+/* -------------- end LEFT MENU --------------- */
+/* -------------------------------------------- */
+
+/* -------------------------------------------- */
+/* ----------------- COMMENTS ----------------- */
+/* -------------------------------------------- */
+
+.comment-button-container{
+  font-size: 10px;
+  float: left;
+  margin-right: 20px;
+  width: 60px;
+}
+
+.comment-button-center {
+  background:transparent url(images/panel-btn-bg.png) repeat-x scroll left top;
+  float:left;
+  height:16px;
+  overflow:hidden;
+  text-align:center;
+  vertical-align:top;
+  width:45px;
+}
+
+.comment-button-center a:link, .comment-button-center a:visited{
+  color: #fff;
+  text-decoration: none;
+}
+
+.comment-button-center a:hover, .xwiki-panel-button-center a:active{
+  color: #DC9415;
+  text-decoration: none;
+}
+/* -------------------------------------------- */
+/* --------------- end COMMENTS --------------- */
+/* -------------------------------------------- */
+
+/* -------------------------------------------- */
+/* ------------------ GALLERY ----------------- */
+/* -------------------------------------------- */
+
+.gallery_buttonwrapper{
+  width: 170px;
+  background:transparent url(images/buttons.png) repeat-x scroll right 75%;
+  border:1px solid #8F908E;
+  color:#222222;
+  margin:auto;
+  padding: top: 10px;
+}
+
+.gallery_buttonwrapper:hover{
+  background:transparent url(images/buttons.png) repeat-x scroll right 25%;
+}
+
+.gallery_buttonwrapper a{
+  line-height:1.8em !important;
+  text-decoration: none;
+  font-weight: normal;
+  color: #333;
+  display:inline; 
+  margin:0px !important;
+  min-height:24px !important;
+}
+
+/* -------------------------------------------- */
+/* ---------------- end GALLERY --------------- */
+/* -------------------------------------------- */
+
+
+#leftmenu{
+	position:  absolute;
+	top:  230px;
+	left: 50%;
+	width: 50px;
+	margin-left: 449px;
+	overflow: hidden;
+}
+#actionmenu #leftmenu a{
+	float: right;
+	width: 50px;
+	height:  40px;
+	margin: 0;
+	padding: 0;
+	border:  none;
+}
+.blogbuttons,
+.wikibuttons,
+.photobuttons,
+.filesbuttons,
+.webhomebuttons {
+	float: right;
+	width: 50px;
+	padding-top: 10px;
+	background-image: url(menutop.png);
+	background-repeat: no-repeat;
+}
+.buttonsbottom{
+	height:  15px;
+	width: 50px;
+	clear: right;
+	background-image: url(menubottom.png);
+}
+.blogbuttons .addarticle,
+.blogbuttons .editarticle,
+.blogbuttons .delete,
+.blogbuttons .pdf,
+.blogbuttons .attachments,
+.wikibuttons .addpage,
+.wikibuttons .editpage,
+.wikibuttons .history,
+.wikibuttons .rename,
+.wikibuttons .pdf,
+.wikibuttons .attachments,
+.webhomebuttons .editcontent,
+.webhomebuttons .editprofil,
+.webhomebuttons .changeavatar,
+.webhomebuttons .changepasswd,
+.webhomebuttons .delete,
+.wikibuttons .delete,
+.photobuttons .addgallery,
+.photobuttons .editgallery,
+.photobuttons .delete,
+.photobuttons .manage,
+.filesbuttons .delete { width: 50px; height: 50px; overflow: hidden;}
+
+/*files*/
+#actionmenu #leftmenu .filesbuttons a{
+	cursor:pointer;
+	display:block;
+	padding:50px;
+}
+
+#actionmenu #leftmenu .filesbuttons .delete a{background-image: url(over-delete.png);}
+#actionmenu #leftmenu .filesbuttons .delete a {background-image: url(delete.png);}
+#actionmenu #leftmenu .filesbuttons .delete a:hover {background-image: url(over-delete.png);}
+
+/*blog*/
+#actionmenu #leftmenu .blogbuttons a{
+	cursor:pointer;
+	display: block;
+	padding: 50px;
+}
+#actionmenu #leftmenu .blogbuttons .addarticle a{background-image: url(over-addarticle.png);}
+#actionmenu #leftmenu .blogbuttons .editarticle a{background-image: url(over-editarticle.png);}
+#actionmenu #leftmenu .blogbuttons .delete a{background-image: url(over-delete.png);}
+#actionmenu #leftmenu .blogbuttons .addarticle a{background-image: url(addarticle.png);}
+#actionmenu #leftmenu .blogbuttons .editarticle a{background-image: url(editarticle.png);}
+#actionmenu #leftmenu .blogbuttons .delete a {background-image: url(delete.png);}
+#actionmenu #leftmenu .blogbuttons .pdf a {background-image: url(pdf.png);}
+#actionmenu #leftmenu .blogbuttons .attachments a {background-image: url(attach.png);}
+
+#actionmenu #leftmenu .blogbuttons .addarticle a:hover {background-image: url(over-addarticle.png);}
+#actionmenu #leftmenu .blogbuttons .editarticle a:hover {background-image: url(over-editarticle.png);}
+#actionmenu #leftmenu .blogbuttons .delete a:hover {background-image: url(over-delete.png);}
+
+/*wiki*/
+#actionmenu #leftmenu .wikibuttons a{
+	cursor:pointer;
+	display: block;
+	padding: 50px;
+}
+
+#actionmenu #leftmenu .wikibuttons .addpage a{background-image: url(over-addpage.png);}
+#actionmenu #leftmenu .wikibuttons .editpage a{background-image: url(over-editpage.png);}
+#actionmenu #leftmenu .wikibuttons .history a{background-image: url(over-history.png);}
+#actionmenu #leftmenu .wikibuttons .rename a {background-image: url(over-rename.png);}
+#actionmenu #leftmenu .wikibuttons .delete a {background-image: url(over-delete.png);}
+#actionmenu #leftmenu .wikibuttons .addpage a{background-image: url(addpage.png);}
+#actionmenu #leftmenu .wikibuttons .editpage a{background-image: url(editpage.png);}
+#actionmenu #leftmenu .wikibuttons .history a{background-image: url(history.png);}
+#actionmenu #leftmenu .wikibuttons .rename a {background-image: url(rename.png);}
+#actionmenu #leftmenu .wikibuttons .delete a {background-image: url(delete.png);}
+#actionmenu #leftmenu .wikibuttons .pdf a {background-image: url(pdf.png); repeat:no-repeat;}
+#actionmenu #leftmenu .wikibuttons .attachments a {background-image: url(attach.png); repeat:no-repeat;}
+#actionmenu #leftmenu .wikibuttons .addpage a:hover {background-image: url(over-addpage.png);}
+#actionmenu #leftmenu .wikibuttons .editpage a:hover {background-image: url(over-editpage.png);}
+#actionmenu #leftmenu .wikibuttons .history a:hover {background-image: url(over-history.png);}
+#actionmenu #leftmenu .wikibuttons .rename a:hover {background-image: url(over-rename.png);}
+#actionmenu #leftmenu .wikibuttons .delete a:hover {background-image: url(over-delete.png);}
+/*webhome*/
+#actionmenu #leftmenu .webhomebuttons a{
+	cursor:pointer;
+	display: block;
+	padding: 50px;
+}
+
+
+#actionmenu #leftmenu .webhomebuttons .editcontent a{background-image: url(editcontent.png);}
+#actionmenu #leftmenu .webhomebuttons .editprofil a{background-image: url(editprofil.png);}
+#actionmenu #leftmenu .webhomebuttons .changeavatar a{background-image: url(changeavatar.png);}
+#actionmenu #leftmenu .webhomebuttons .changepasswd a{background-image: url(changepasswd.png);}
+#actionmenu #leftmenu .webhomebuttons .editcontent a:hover {background-image: url(over-editcontent.png);}
+#actionmenu #leftmenu .webhomebuttons .editprofil a:hover {background-image: url(over-editprofil.png);}
+#actionmenu #leftmenu .webhomebuttons .changeavatar a:hover {background-image: url(over-changeavatar.png);}
+#actionmenu #leftmenu .webhomebuttons .changepasswd a:hover {background-image: url(over-changepasswd.png);}
+#actionmenu #leftmenu .webhomebuttons .delete a {background-image: url(delete.png);}
+#actionmenu #leftmenu .webhomebuttons .delete a:hover {background-image: url(over-delete.png);}
+
+/*photo*/
+#actionmenu #leftmenu .photobuttons a{
+	cursor:pointer;
+	display: block;
+	padding: 50px;
+}
+#actionmenu #leftmenu .photobuttons .addgallery a{background-image: url(over-addgallery.png);}
+#actionmenu #leftmenu .photobuttons .editgallery a{background-image: url(over-editgallery.png);}
+#actionmenu #leftmenu .photobuttons .delete a{background-image: url(over-delete.png);}
+#actionmenu #leftmenu .photobuttons .manage a{background-image: url(over-managegallery.png);}
+#actionmenu #leftmenu .photobuttons .addgallery a{background-image: url(addgallery.png);}
+#actionmenu #leftmenu .photobuttons .editgallery a{background-image: url(editgallery.png);}
+#actionmenu #leftmenu .photobuttons .delete a{background-image: url(delete.png);}
+#actionmenu #leftmenu .photobuttons .manage a{background-image: url(managegallery.png);}
+
+#actionmenu #leftmenu .photobuttons .addgallery a:hover{background-image: url(over-addgallery.png);}
+#actionmenu #leftmenu .photobuttons .editgallery a:hover{background-image: url(over-editgallery.png);}
+#actionmenu #leftmenu .photobuttons .delete a:hover{background-image: url(over-delete.png);}
+#actionmenu #leftmenu .photobuttons .manage a:hover{background-image: url(over-managegallery.png);}
+
+/*user related*/
+.usertopbuttons{
+	min-width: 1000px;
+	margin: 0 20px 0 0;
+	}
+.usertopbuttons a{cursor:pointer;}
+
+

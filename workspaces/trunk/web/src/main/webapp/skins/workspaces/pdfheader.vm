@@ -1,0 +1,12 @@
+#**
+ * @override templates/pdfheader.vm to display nice workspace name instead of space name when page is exported from a workspace.
+ * @since XWS 1.2 M2
+ *#
+#template("xwsvars.vm")
+#if($workspace) #set($spaceName=$workspace.displayTitle) #else #set($spaceName=$doc.space) #end
+#set($title = $pdfdoc.display("title", "rendered"))
+#if((!$title)||($title==""))
+$!spaceName - $!doc.displayTitle
+#else
+$title
+#end

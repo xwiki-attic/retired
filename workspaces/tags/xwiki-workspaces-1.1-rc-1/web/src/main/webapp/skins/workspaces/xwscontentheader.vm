@@ -1,0 +1,33 @@
+<div class="contentheader">
+ <h1>
+ #if($workspace)
+  #set($appName=$xwsmgr.applicationName)
+  #if($appName && $appName!="")
+   #xwstitle($appName, $doc)
+  #else
+   #if($doc.space==$workspace.spaceName)
+    #if($doc.name=="WebHome") Home #elseif($doc.name=="WebPreferences") Administration #else $doc.name #end 
+   #else
+    #if($doc.title!="") $doc.title #else $doc.name #end
+   #end
+  #end
+ #else
+  #if($doc.title!="") $doc.title #else $doc.name #end
+ #end
+ </h1>
+ #if($workspace && $xwsmgr.applicationName=="Wiki" && $doc.name!="WebHome")
+ <div class="message"> 
+   $msg.get("version") $tdoc.version - $msg.get("lastmodifiedby") $xwiki.getUserName($tdoc.author) - $msg.get("lastmodifiedon") $!xwiki.formatDate($tdoc.date, $msg.get('xws.dateformat.withtime')) 
+  #if($doc.comment!="")
+   <a href="javascript:void(0)" onclick="$('doc-comment-div').style.display=$('doc-comment-div').style.display=='block'?'none':'block';">
+    <img src="$xwiki.getSkinFile('images/versioncomment.gif')"/>
+   </a>
+  #end
+ </div>
+ #end
+</div>
+#if($doc.comment!="")
+ <div id="doc-comment-div" style="display:none">
+  #info("<em>$msg.get('commons.page.versioncomment') :</em> $doc.comment")
+ </div>
+#end

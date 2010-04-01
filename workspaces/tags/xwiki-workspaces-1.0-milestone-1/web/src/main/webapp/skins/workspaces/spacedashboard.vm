@@ -1,0 +1,19 @@
+<div id="space-dashboard">
+ #set($link=$workspace.homeURL)
+ #set($icon = 'images/mini-space.png')
+ #set($cookieName="${context.user}_space_${workspace.spaceName}")
+ #set($expanded = "expanded")
+ #set($expanded = $xwiki.getUserPreferenceFromCookie($cookieName))
+ <div class="inlinepanel ${expanded} ${class}">
+ <div class="inlinepaneltitle">
+  <img src=$xwiki.getSkinFile($icon) alt="" width="21" height="15" />
+  <a href="$link">${workspace.displayTitle}</a>
+   <span class="inlinepanel-showhide" align"right" onclick="if(eltHasClass(this.parentNode.parentNode, 'expanded')) createCookie('${cookieName}','collapsed', ''); else eraseCookie('${cookieName}'); togglePanelVisibility(this.parentNode.parentNode);">
+   <img src="$xwiki.getSkinFile('images/arrow-up.gif')" />
+   </span>
+ </div>
+ <div class="inlinepanelcontents">
+#spacestories($workspace.spaceName "15")
+ </div>
+ </div>
+</div>

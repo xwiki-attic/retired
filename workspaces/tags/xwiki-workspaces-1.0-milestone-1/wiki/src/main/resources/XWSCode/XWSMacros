@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>XWSMacros</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201095383000</creationDate>
+<date>1205532918000</date>
+<contentUpdateDate>1205532918000</contentUpdateDate>
+<version>8.1</version>
+<title>XWSMacros</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.XWSMacros</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#macro(spaceactivity $workspace $class $icon)
+ #set($stories = $xwsmgr.getStories($workspace.spaceName, 5))
+ #set($link=$workspace.homeURL)
+ #set($cookieName="${context.user}_dashboard_${workspace.spaceName}")
+ #set($expanded = "expanded")
+ #if($doc.fullName=="XWS.MyDashboard")
+  #set($expanded = $xwiki.getUserPreferenceFromCookie($cookieName))
+ #end
+ &lt;div class="inlinepanel ${expanded} ${class}"&gt;
+ &lt;div class="inlinepaneltitle"&gt;
+  &lt;img src=$xwiki.getSkinFile($icon) alt="" width="21" height="15" /&gt;
+  &lt;a href="$link"&gt;${workspace.displayTitle}&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;div class="inlinepanelcontents"&gt;
+ #spacestories($workspace.spaceName "5")
+ &lt;/div&gt;
+ &lt;/div&gt;
+#end
+
+#macro(spacedetails $workspace)
+ &lt;div class="spacedetails"&gt;
+  &lt;span class="spacename"&gt;
+   &lt;a href="$workspace.homeURL"&gt;
+   $workspace.displayTitle
+   &lt;/a&gt;
+  &lt;/span&gt;
+  &lt;span class="spacecreator"&gt;Created by $xwiki.getUserName($workspace.creator)&lt;/span&gt;
+  &lt;span class="spacedate"&gt;On $workspace.creationDate&lt;/span&gt;
+  &lt;span class="spacememberscount"&gt;$xwiki.xwsmgr.countMembers($workspace.spaceName) membres&lt;/span&gt;
+  &lt;span class="spacetype"&gt;$workspace.spacetype&lt;/span&gt;
+ &lt;/div&gt;
+#end
+
+#macro( fullName $wikiname)
+ #set($udoc=$xwiki.getDocument($wikiname))
+ #set($uobj=$udoc.getObject("XWiki.XWikiUsers"))
+ #set($fn= "${uobj.get('first_name')} ${uobj.get('last_name')}" )
+ #if($fn &amp;&amp; !$fn.trim().equals(""))
+  $fn
+ #else
+  $wikiname
+ #end
+#end
+</content></xwikidoc>

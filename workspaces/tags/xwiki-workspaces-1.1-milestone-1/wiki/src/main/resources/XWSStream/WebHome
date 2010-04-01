@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSStream</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1209900881000</creationDate>
+<date>1210277604000</date>
+<contentUpdateDate>1210277604000</contentUpdateDate>
+<version>6.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSStream.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>##---------------------------------------------------------##
+## This page requires to be saved with programming rights! ##
+##---------------------------------------------------------##
+##
+## 0. Global vars
+## --------------
+#set($howMany = 10)
+##
+## 1. Process request if any
+## -------------------------
+#set($as = $xwiki.xwsactivitystream)
+#if($request.status)
+ #if(!$request.status.equals("") &amp;&amp; $request.status.length() &lt;= 200)
+  ## Add the update to a stream with the user wiki name as stream name
+  #set($ok=$as.addActivityEvent("${workspace.spaceName}_Stream", "workspace_stream", $xwiki.getXMLEncoded($request.status)))
+  #if($request.story)
+   #set($ok=$as.addActivityEvent("${workspace.spaceName}", "workspace_stream", $xwiki.getXMLEncoded($request.status)))
+  #end
+  #info($msg.get('space.stream.statusupdated'))
+ #elseif($request.status.size() &gt; 200)
+  #warning($msg.get('space.stream.statustoolong'))
+ #else
+  #warning($msg.get('space.stream.statusempty'))
+ #end
+#end
+## 2. The status update form
+## -------------------------
+#if($hasedit)
+1.1.1 $msg.get('space.stream.title')
+&lt;form id="status-update" action="$doc.getURL('view')" method="post"&gt;
+&lt;div&gt;
+&lt;div align="right" class="chars-left-container"&gt;&lt;span id="chars-left" class="chars-left-regular"&gt;&lt;/span&gt;$msg.get('space.stream.charsremaining')&lt;/div&gt;
+&lt;textarea id="status-box" name="status" cols="80" onkeyup="countChars()"; maxlength="200"&gt;&lt;/textarea&gt;
+&lt;div&gt;
+ &lt;input type="checkbox" name="story" value="" /&gt;  &lt;span&gt;$msg.get('space.stream.dashboardsalso')&lt;/span&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+&lt;span class="buttonwrapper"&gt;
+&lt;input type="button" value="$msg.get('commons.actions.update')" onclick="if($('status-box').value.length &gt; 200){ alert('$msg.get('space.stream.statustoolong')'); return false;}$('status-update').submit();"/&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+{pre}
+&lt;script type="text/javascript"&gt;
+// &lt;![CDATA[
+function countChars()
+{
+   var charsLeft = (200 - $('status-box').value.length);
+   $('chars-left').innerHTML = charsLeft;
+   if(charsLeft &gt; 20) $('chars-left').setAttribute("class","chars-left-regular"); 
+   if(charsLeft &lt; 20) $('chars-left').setAttribute("class","chars-left-low");
+   if(charsLeft &lt; 5) $('chars-left').setAttribute("class","chars-left-very-low");
+   if(charsLeft &lt; 0) $('chars-left').setAttribute("class","chars-left-negative");
+}
+countChars();
+// ]]&gt;
+&lt;/script&gt;
+{/pre}
+#end
+## 3. A macro to display updates
+## -----------------------------
+#macro(workspaceupdate $update) 
+ &lt;div class="workspaceupdate"&gt;
+ #set($userURL=$doc.getURL("view","uid=${update.user}"))
+ ## Part 1. The user
+ #set($udoc=$xwiki.getDocument($update.user))
+  &lt;span class="userpicture"&gt;
+ #if(!$udoc.isNew())
+  ## Try to find an profile picture...
+  #set($purl="")
+  #set($attachs = $udoc.getAttachmentList())
+  #foreach($attach in $attachs)
+   #if($attach.image)
+    #set($purl = $udoc.getAttachmentURL($attach.filename,"download","height=60"))
+   #end
+  #end
+  #if(!$purl || $purl=="")
+   #set($purl=$xwiki.getSkinFile("images/nophoto.png"))
+  #end
+   &lt;a href="$userURL"&gt;&lt;img src="${purl}" class="photo" height="60"/&gt;&lt;/a&gt;
+ ## vcard
+ #end
+ &lt;/span&gt;
+ ## Part 2. The update
+ &lt;div class="status-update"&gt;$update.displayBody&lt;/div&gt;
+ &lt;div class="status-date"&gt;$xwiki.formatDate($update.date, "MMM-dd-yyyy - hh:mm a")&lt;/div&gt;
+ &lt;div class="status-author"&gt;
+ &lt;a href="$userURL"&gt;$xwiki.getUserName($update.user, false)&lt;/a&gt; 
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="clearfloats"&gt;&lt;/div&gt;
+#end
+## 4. The existing updates
+## -----------------------
+#set($hql = "act.type='workspace_stream' and act.stream='${workspace.spaceName}_Stream'")
+#if($request.uid &amp;&amp; !$request.uid.equals(""))
+ #set($updatesTitle=$msg.get('space.stream.updatesby',[$xwiki.getUserName($request.uid)]))
+ #set($hql = "${hql} and act.user='${request.uid}'")
+ #set($args="uid=${request.uid}")
+#else
+ #set($updatesTitle=$msg.get('space.stream.recentupdates'))
+#end
+1.1.1 $updatesTitle
+#if($request.o &amp;&amp; !$request.o.equals("")) #set($offset=$util.parseInt($request.o)) #else #set($offset=0) #end
+#set($updates = $as.searchEvents($hql, false, $howMany, $offset))
+#foreach($update in $updates)
+ #workspaceupdate($update)
+#end
+&lt;div class="updates-next-previous"&gt;
+## Previous ?
+#if($offset &gt; 0)
+#set($previous = $offset - $howMany)
+#set($previousURL = $doc.getURL("view","${args}&amp;o=${previous}"))
+&lt;span class="updates-previous"&gt;
+&lt;a href="$previousURL"&gt;$msg.get('space.stream.newer')&lt;/a&gt;
+&lt;/span&gt;
+#end
+## Next ?
+#set($next = $offset + $howMany)
+#if($as.searchEvents($hql, false, 0, $next).size() &gt; 0)
+#set($nextURL = $doc.getURL("view","$!{args}&amp;o=${next}"))
+&lt;span class="updates-next"&gt;
+&lt;a href="$nextURL"&gt;$msg.get('space.stream.older')&lt;/a&gt;
+&lt;/span&gt;
+#end
+&lt;/div&gt;</content>
+</xwikidoc>

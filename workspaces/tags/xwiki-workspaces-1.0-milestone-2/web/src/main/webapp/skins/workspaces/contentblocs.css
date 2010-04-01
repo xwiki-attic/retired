@@ -1,0 +1,145 @@
+/* Content */
+
+
+/* MEDIUM */
+
+.mediumcontent {}
+.mediumcontentheader {}
+.mediumcontentheadericon {
+display: none;
+}
+.mediumcontenttitle {}
+.mediumcontentcontainer {}
+.mediumcontentfooter {
+;
+}
+
+.mediumcontentblocstart {}
+.mediumcontentbloccontent {}
+.mediumcontentblocend {}
+
+/* LARGE */
+
+.largecontent {}
+.largecontentheader {}
+.largecontentheadericon {}
+.largecontenttitle {}
+.largecontentcontainer {}
+.largecontentfooter {}
+
+.largecontentblocstart {}
+.largecontentbloccontent {}
+.largecontentblocend {
+  height: 10px;
+}
+#tabmenucontent3 {
+  list-style-type: none;
+  margin: 15px 0 0 -9px;
+  padding: 0;
+  height: 34px;
+}
+#tabmenucontent3 li{
+  background: url(images/tab2_li.gif) no-repeat scroll 50% -1px;
+  bottom: -1px;
+  height: 23px;
+  margin-left: 9px;
+  padding: 10px 10px 0 10px;
+  text-align: center;
+  width: auto;
+  float: left;
+  cursor: pointer;
+  border : 1px solid #A7b8CA;
+  border-bottom: 1px solid #727375;
+  font-weight : bold;
+}
+#subtabmenucontent3 {
+  margin-left: -2px;
+}
+
+#tabmenucontent3 li.active{
+  background:#fff url() no-repeat scroll center top;
+  border: 1px solid #727375;
+  border-bottom-color: #fff
+}
+
+.contenttabbloc {
+  background-color: #FFF;
+  border: 1px solid #727375 ;
+  margin: 0 0 15px 0;
+  padding: 10px 5px;
+  z-index: 90;
+}
+.contentsubtabbloc {
+  background-color: #FFF;
+  border: 1px solid #727375 ;
+  margin: 0 0 15px 0;
+  padding: 10px 5px;
+  z-index: 90;
+}
+.wiki-table {
+  background-color: #E5F0FE;
+  border: 0 !important;
+  border-collapse: collapse;
+  empty-cells: show;
+  font-size: 100%;
+  margin: 0 auto;
+  text-align: left;
+  width: 95%;
+}
+.wiki-table td {
+  border: 0;
+  padding: 4px;
+  text-align: left;
+  color: #4a4a4a;
+}
+.wiki-table th {
+  background-color: #E5F0FE;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  padding: 4px;
+  text-align: left;
+  color: #4a4a4a;
+}
+.alphabetic-bar {
+  height: 12px;
+  margin: 0 auto 10px 0px;
+}
+.alphabetic-bar-middle {
+  float: left;
+  background: url(images/alphabetic-bar-middle.gif) repeat-x;
+  padding: 7px 5px;
+  text-align: center;
+letter-spacing: -1px;
+}
+.alphabetic-bar-left {
+  float: left;
+  background: url(images/alphabetic-bar-left.gif) no-repeat;
+  width: 8px;
+  height: 26px;
+}
+.alphabetic-bar-right {
+  float: left;
+  background: url(images/alphabetic-bar-right.gif) no-repeat;
+  width: 10px;
+  height: 26px;
+}
+.alphabetic-bar, .alphabetic-bar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.alphabetic-bar a:hover {
+  color: #000;
+}
+.alphabetic-bar-align {
+  text-align: center;
+}
+.tabcontentscroll {
+  border:1px solid #CCCCCC;
+  clear: left;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+

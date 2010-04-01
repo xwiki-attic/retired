@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xpn.xwiki.products</groupId>
+    <artifactId>xwiki-workspaces-plugins</artifactId>
+    <version>1.1-milestone-2</version>
+  </parent>
+  <artifactId>xwiki-workspaces-plugin-workspacesmanager</artifactId>
+  <name>
+    XWiki Products - Workspaces - Plugins - Workspaces Manager
+  </name>
+  <packaging>jar</packaging>
+  <description>
+    XWiki Products - Workspaces - Plugins - Workspaces Manager
+  </description>
+  <dependencies>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform.plugins</groupId>
+      <artifactId>xwiki-plugin-application-manager</artifactId>
+      <version>${plugin.appmanager.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jmock</groupId>
+      <artifactId>jmock-cglib</artifactId>
+      <version>1.1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <!-- Note: The 2.4 version is not technically correct as 2.4 corresponds to a specification
+        # and is not an implementation version. The central repo would need to be fixed... -->
+      <version>2.4</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform.plugins</groupId>
+      <artifactId>xwiki-plugin-spacemanager</artifactId>
+      <version>${plugin.spacemanager.version}</version>
+    </dependency>
+  </dependencies>
+</project>

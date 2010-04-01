@@ -1,0 +1,65 @@
+#body.loginsubmitbody #contentcontainerinner,
+.loginsubmitbody .leftsidecolumns,
+#body.loginbody #contentcontainerinner,
+.loginbody .leftsidecolumns {
+  width: 100%;
+}
+#body.loginsubmitbody .messageboxcontent .mediumcontentheader,
+#body.loginbody .messageboxcontent .mediumcontentheader {
+  height: 27px;
+  padding: 5px 10px;
+}
+#body.loginsubmitbody .messageboxcontent,
+#body.loginbody .messageboxcontent {
+  margin: 0 70px;
+}
+
+#body.loginsubmitbody .loginbox .mediumcontentheader,
+#body.loginbody .loginbox .mediumcontentheader {
+  background: url(images/loginbox_header.gif) no-repeat;
+  /*background-color: blue;*/
+  height: 51px;
+  padding: 10px 50px;
+    text-align: center;
+}
+#body.loginsubmitbody .loginbox .mediumcontentheader .mediumcontentheadericon,
+#body.loginbody .loginbox .mediumcontentheader .mediumcontentheadericon {
+  display:block;
+  height: 71px;
+  width: 240px;
+}
+#body.loginsubmitbody .loginbox .mediumcontentcontainer,
+#body.loginbody .loginbox .mediumcontentcontainer {
+  background: url(images/loginbox_content.gif) repeat-y;
+  /*background-color: #333333;*/
+  width: 314px;
+  padding: 0px;
+  text-align: center;
+}
+#body.loginsubmitbody .loginbox .mediumcontentfooter,
+#body.loginbody .loginbox .mediumcontentfooter {
+  background: url(images/loginbox_footer.gif) no-repeat;
+  /*background-color: blue;*/
+  height: 28px;
+  text-align: center;
+}
+#body.loginsubmitbody .loginbox,
+#body.loginbody .loginbox {
+  margin: 0 auto;
+  width: 314px;
+}
+#body.loginsubmitbody #loginForm,
+#body.loginbody #loginForm {
+  text-align: center;
+  width: 100%;
+}
+#loginpage #contentcolumn {
+  padding: 0; 
+}
+#body.loginsubmitbody #loginpage .main,
+#body.loginbody #loginpage .main {
+  padding: 100px 0 0;  
+}
+#body.loginsubmitbody #xwikimaincontainer, #body.loginsubmitbody #xwikimaincontainerinner, 
+#body.loginbody #xwikimaincontainer, #body.loginbody #xwikimaincontainerinner {background-image: none; background-color: transparent;}
+#body.loginsubmitbody , #body.loginbody  {background-image: none; background-color: #eef3f6;}

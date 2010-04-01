@@ -1,0 +1,33 @@
+##
+## Photo viewer !
+##
+<div class="wiki-doc-entry">
+#template("xwscontentheader.vm")
+#if($doc.parent && $doc.parent!="") 
+ #set($gallery = $xwiki.getDocument(${doc.parent}))
+#end
+#set($photo = $doc.getAttachmentList().get(0))
+<div id="link_create_event">
+  <div class="link_left"></div>
+    <div class="link_center">
+      <a href="${doc.getAttachmentURL($photo.filename,'download')}">$msg.get('space.photos.gallery.photo.seeoriginal')</a>
+    </div>
+  <div class="link_right"></div>
+</div>
+<h2>$photo.filename<em> - <a href="${gallery.getURL('view')}">$gallery.title</a></em></h2>
+#if($photo && $photo.image)
+  #set($filename = $photo.filename)
+  #set($width=$xwiki.image.getWidth($doc.fullName,${filename}))
+  #set($height=$xwiki.image.getHeight($doc.fullName,${filename}))
+  #set($maxsize = 680)
+  #if($width > $height)
+    #set($imageurl=$doc.getAttachmentURL(${filename},'download',"width=$maxsize"))
+  #else
+    #set($imageurl=$doc.getAttachmentURL(${filename},'download',"height=$maxsize"))
+  #end
+ <img src="${imageurl}" id="img_displayed" />
+#end
+#template("xwscontentfooter.vm")
+#template("docextra.vm")
+<div class="clearfloats"></div>
+</div>

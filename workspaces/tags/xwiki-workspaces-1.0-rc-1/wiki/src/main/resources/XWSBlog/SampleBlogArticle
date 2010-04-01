@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>XWSBlog</web>
+<name>SampleBlogArticle</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1201130063000</creationDate>
+<date>1201516356000</date>
+<contentUpdateDate>1201516356000</contentUpdateDate>
+<version>1.4</version>
+<title>SampleBlogArticle</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.ArticleClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<category>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<name>category</name>
+<number>2</number>
+<prettyName>Category</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<size>5</size>
+<sql>select prop.value from BaseObject as obj, StringProperty as prop where obj.className='Blog.Categories' and obj.name = 'Blog.Categories' and prop.id.id = obj.id and prop.id.name='name'</sql>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.DBListClass</classType>
+</category>
+<content>
+<name>content</name>
+<number>3</number>
+<prettyName>Content</prettyName>
+<rows>15</rows>
+<size>80</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</content>
+<extract>
+<name>extract</name>
+<number>4</number>
+<prettyName>Extract</prettyName>
+<rows>5</rows>
+<size>80</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</extract>
+<title>
+<name>title</name>
+<number>1</number>
+<prettyName>Title</prettyName>
+<size>80</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</title>
+</class>
+<name>XWSBlog.SampleBlogArticle</name>
+<number>0</number>
+<className>XWiki.ArticleClass</className>
+<property>
+<category>
+<value>News</value>
+</category>
+</property>
+<property>
+<content>A blog is an effective way to provide news to your space's members. New articles are posted in reverse chronological order, so that the newest ones are always shown at the top. Readers can add comments and start discussions about an article's content right at the bottom of the page.
+
+You may want to use your blog to start discussions about :
+
+* The latest events and news about your team, your products, your activity...
+* A topic you would like to provide your viewpoint about and see what others think
+* Basically any kind of news and ideas :-)
+
+When the discussion grows and you have gathered other people's viewpoint, you may want to summarize and organize them on a wiki page.
+
+~~You can find additional information about what a blog is and how you could use it [here&gt;http://en.wikipedia.org/wiki/Blog].~~</content>
+</property>
+<property>
+<extract>This is the first article of your workspace's blog. It will provide you with tips on how to use it and examples of what you can achieve through your blog.</extract>
+</property>
+<property>
+<title>Welcome on this space's Blog</title>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSBlog.SampleBlogArticle</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#includeInContext('XWSCode.BlogArticle')
+</content></xwikidoc>

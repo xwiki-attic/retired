@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>UserTableView</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1212675053000</creationDate>
+<date>1215588842000</date>
+<contentUpdateDate>1215588842000</contentUpdateDate>
+<version>5.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.UserTableView</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>&lt;div id="ajax-loader"&gt;$msg.get("ui.ajaxTable.loading")&lt;br /&gt;
+  &lt;img src="$xwiki.getSkinFile('icons/ajax-loader.gif')" alt="$msg.get('ui.ajaxTable.loading')" title="" /&gt;
+&lt;/div&gt;
+&lt;table id="alluserstable" style="width: 100%"&gt;
+&lt;tr&gt;
+ &lt;td colspan="2" style="padding-top:10px;"&gt;
+   &lt;span id="showLimits"&gt;&lt;/span&gt;
+ &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="width:100%"&gt;
+      &lt;table class="display"&gt;
+       &lt;thead class="theader"&gt;
+          &lt;tr&gt;
+            &lt;td class="headerlabel"&gt;$msg.get("avatar")&lt;/td&gt;
+            &lt;td class="headerlabel"&gt;$msg.get("firstname")&lt;/td&gt;
+            &lt;td class="headerlabel"&gt;$msg.get("lastname")&lt;/td&gt;
+            &lt;td class="headerlabel"&gt;$msg.get("email")&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr id="table-filters"&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;input name="firstname" type="text"/&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;input name="lastname" type="text"/&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;input name="email" type="text" /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+       &lt;/thead&gt;
+       &lt;tbody id="display1"&gt;&lt;tr&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+      &lt;/table&gt;&lt;/td&gt;
+      &lt;td valign="top"&gt;
+        &lt;div id="scrollbar1" class="scrollbar"&gt;&lt;div class="inscrollbar"&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;td id="buff"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+#set($url = "$xwiki.getURL('XWSCode.UserTableResults')?xpage=plain")
+{pre}
+&lt;script type="text/javascript"&gt;
+//&lt;![CDATA[
+function displayAllUsers(row, i, table)
+{
+    var ava = new Element('img', {'src' : row.avatarurl});
+    if(row.avatarurl.substring(row.avatarurl.lastIndexOf('/') + 1) == "nophoto.png"){
+      ava.style.width="35px";
+      ava.style.height="50px";
+    }
+    var avatar = new Element('td', {'class' : 'avatar'}).update(ava);
+    avatar.style.textAlign="center";
+    var fna = new Element('a', {'href' : row.url}).update(row.firstname);
+    var firstname = new Element('td', {'class' : 'firstname'}).update(fna);
+    var lna = new Element('a', {'href' : row.url}).update(row.lastname);
+    var lastname = new Element('td', {'class' : 'lastname'}).update(lna);
+    var emaila = new Element('a', {'href' : row.url}).update(row.email);
+    var email = new Element('td', {'class' : 'email'}).update(emaila);
+    var tr = new Element('tr', {'class' : (i % 2 == 0) ? 'even' : 'odd'} ).update(firstname);
+    tr.appendChild(avatar);    
+    tr.appendChild(firstname);
+    tr.appendChild(lastname);
+    tr.appendChild(email);
+
+    return tr;
+}
+
+var ta = new ASSTable("$url", 10, "display1", "scrollbar1", "alluserstable", displayAllUsers, true);
+
+//]]&gt;
+&lt;/script&gt;
+{/pre}</content>
+</xwikidoc>

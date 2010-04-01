@@ -1,0 +1,5 @@
+#set($app=$request.app)
+#set($aDoc=$xwiki.getDocument("XWSApps.${app}App"))
+#set($aObj=$aDoc.getObject("XWiki.XWSApplicationClass"))
+#set($buttons=$!aObj.getProperty("createentry_box").getValue())
+$xwiki.parseContent($buttons)

@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>Translations</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1206992640000</creationDate>
+<date>1210321944000</date>
+<contentUpdateDate>1210321944000</contentUpdateDate>
+<version>3.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.Translations</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>{table}
+XWiki.WorkspaceSpaceClass_accesslevel_public=Public
+XWiki.WorkspaceSpaceClass_accesslevel_private=Private
+XWiki.WorkspaceSpaceClass_accesslevel_open=Open
+
+XWiki.WorkspaceSpaceClass_spacetype_workspace=Workspace
+XWiki.WorkspaceSpaceClass_spacetype_orgspace=Organization space
+XWiki.WorkspaceSpaceClass_spacetype_userspace=Personal space
+
+XWiki.WorkspaceSpaceClass_color_555555=Grey
+XWiki.WorkspaceSpaceClass_color_0000FF=Blue
+XWiki.WorkspaceSpaceClass_color_003399=Midnight blue
+XWiki.WorkspaceSpaceClass_color_009900=Green
+XWiki.WorkspaceSpaceClass_color_009933=See green
+XWiki.WorkspaceSpaceClass_color_660033=Purple
+XWiki.WorkspaceSpaceClass_color_663300=Brown
+XWiki.WorkspaceSpaceClass_color_990000=Light coral 
+XWiki.WorkspaceSpaceClass_color_996699=Blue violet
+XWiki.WorkspaceSpaceClass_color_99CCFF=Sky blue
+XWiki.WorkspaceSpaceClass_color_99FF00=Green yellow
+XWiki.WorkspaceSpaceClass_color_CC3300=Indian red
+XWiki.WorkspaceSpaceClass_color_CC9900=Golden rod
+XWiki.WorkspaceSpaceClass_color_CC9999=Thistle
+XWiki.WorkspaceSpaceClass_color_CC99FF=Light purple
+XWiki.WorkspaceSpaceClass_color_CCCC66=Khaki
+XWiki.WorkspaceSpaceClass_color_FF99CC=Pink
+XWiki.WorkspaceSpaceClass_color_FFCC33=Orange
+
+xws.dateformat=MMM d, yyyy
+xws.dateformat.withtime=MMM d, yyyy HH:mm
+
+xws.members.title=Members
+xws.members.allmembers=See all members of the workspace
+xws.members.admins=Admins
+xws.members.writers=Writers
+xws.members.readers=Readers
+
+xws.spacedetails.viewdetails=View details
+xws.spacedetails.viewdetailstitle=View detailed information for this workspace
+xws.spacedetails.memberadmin=You are member of this workspace, as *administrator*
+xws.spacedetails.memberwriter=You are member of this workspace, as *writer*
+xws.spacedetails.memberreader=You are member of this workspace, as *reader*
+xws.spacedetails.member=You are member of this workspace
+xws.spacedetails.notmember=You are not a member of this workspace
+xws.spacedetails.creator=Creator
+xws.spacedetails.creationdate=Creation date
+xws.spacedetails.memberscount=Members count
+xws.spacedetails.publicationmode=Publication mode
+xws.spacedetails.spacetype=Space type
+xws.spacedashboard.recentmodifications=Recent activity on the workspace
+
+xws.wysiwyg.chooseworkspace=Choose workspace
+xws.wysiwyg.docsforapplication=Documents for application
+xws.wysiwyg.nodocforthisapp=No document found
+xws.wysiwyg.resultsforspace=Results for space
+xws.wysiwyg.spacehomelink=Link to this Workspace home page
+
+xws.search.title=Search
+xws.search.date=Date
+xws.search.application=Application
+xws.search.document=Document
+xws.search.lastauthor=Last author
+xws.search.at=at
+
+xws.workspace.homepage=Home page
+
+xws.activities.workspacecreated=&lt;b&gt;created&lt;/b&gt; the workspace
+xws.activities.homepageupdated=&lt;b&gt;modified&lt;/b&gt; the workspace 
+xws.activities.wiki.update=&lt;b&gt;modified&lt;/b&gt; the wiki page 
+xws.activities.blog.update=&lt;b&gt;modified&lt;/b&gt; the blog post
+xws.activities.files.update=&lt;b&gt;updated&lt;/b&gt; the file
+xws.activities.photos.update=&lt;b&gt;updated&lt;/b&gt; the photo gallery
+xws.activities.wiki.create=&lt;b&gt;created&lt;/b&gt; the wiki page
+xws.activities.blog.create=&lt;b&gt;published&lt;/b&gt; the blog post
+xws.activities.files.create=&lt;b&gt;uploaded&lt;/b&gt; a new file
+xws.activities.photos.create=&lt;b&gt;created&lt;/b&gt; the photo gallery
+xws.activities.wiki.delete=&lt;b&gt;deleted&lt;/b&gt; the wiki page
+xws.activities.blog.delete=&lt;b&gt;deleted&lt;/b&gt; the blog post
+xws.activities.files.delete=&lt;b&gt;deleted&lt;/b&gt; the file
+xws.activities.photos.delete=&lt;b&gt;deleted&lt;/b&gt; the photo gallery
+
+xws.admin.adduserstogroup=Add users to the &lt;em&gt;{0}&lt;/em&gt; group
+xws.admin.addusershelp=Select from the left list of available users the ones you want to add to the group. You can filter on names simply by starting typing in the field. When you click on the arrow next to a user name, you make that user selected for the group, it's name will appear on the right. Once you are happy with your selection, you can validate clicking the button under the lists. Remember that users that are already members of the space will not appear in the selection list.
+xws.admin.availableusers=Available users
+xws.admin.selectedusers=Selected users
+xws.admin.adduserstospace=Add selected users to group {0}
+xws.group.admin=Admin
+xws.group.reader=Reader
+xws.group.writer=Writer
+
+xws.menuview.globaladmin=Global admin
+xws.menuview.mydashboard=My Dashboard
+xws.menuview.myspace=My Space
+xws.menuview.myspaces=All My Spaces
+xws.menuview.myprofile=My Profile
+xws.menuview.logout=Logout
+
+xws.createworkspace.title=Create a new workspace
+xws.createworkspace.enterformdata=Enter the workspace data...
+xws.createworkspace.spacetitle=Space name
+xws.createworkspace.spacetype=Access level
+xws.createworkspace.spacedesc=Description
+xws.createworkspace.spacecolor=Color
+xws.createworkspace.submit=Create the space
+xws.createworkspace.spacecreated=The space &lt;a href="{0}"&gt;{1}&lt;/a&gt; has been successfully created.
+xws.createworkspace.spacecreationfailed=An error occured while creating the space.
+xws.createworkspace.validation.short=The title can't be empty
+xws.createworkspace.validation.long=The title can't be longer than 50 characters
+xws.creataworkspace.validation.exists=A workspace with this title already exists
+
+xws.createmyspace.success=Your space has been created with success
+xws.createmyspace.error=An error occured while creating your space
+xws.createmyspace.notregistered=You cannot create a personnal space since your not registered on this wiki!
+xws.createmyspace.spaceof=Personnal space of
+xws.createmyspace.submit=Create my space
+xws.createmyspace.help=Clicking on the button below will create your personal space. Your personal space includes your private blog, wiki, file manager and photo album. You can use them to store personal informations, notes and files.
+
+xws.createorgspace.title=Create your organization's space
+xws.createorgspace.formlegend=Enter your organization's data
+xws.createorgspace.displaytitle=Organization's name
+xws.createorgspace.description=Description
+xws.createorgspace.submit=Create the organization space
+xws.createorgspace.visitorgspace=Visit the organization's space
+xws.createorgspace.createworkspaces=Create new workspaces
+xws.createorgspace.spacecreated=Your organization's own workspace has been successfully created. You can now start the collaboration, using its applications, or continue and create new workspaces.
+xws.createorgspace.mustbeadmin=You must be an admin to create the organization's space
+xws.createorgspace.help=Click on this button if you wish to create your organisation's space. The organisation's space includes every user on this XWiki Workspaces. It features a blog, a wiki, a file manager and a photo album. You may want to create it if you wish to publish information meant to address all your users at once. 
+
+xws.space.details.createdby=created by
+xws.space.details.on=on
+xws.space.details.members=member(s)
+
+xws.apps.wiki=Wiki
+xws.apps.blog=Blog
+xws.apps.files=Files
+xws.apps.photos=Photos
+xws.apps.stream=Workstream
+xws.apps.wiki.desc=The wiki provides you with the ability to create new pages and edit them together.
+xws.apps.blog.desc=The blog is a place where you can post news and start discussions.
+xws.apps.files.desc=The file manager let you upload files (such as Excel sheets &amp; PDFs) to make them available to other space members.
+xws.apps.photos.desc=The picture gallery is specifically meant to publish and share images and photographs.
+xws.apps.stream.desc=The Workstream allow the members to post 2-lines updates related to the workspace, telling what they currently are working on.
+xws.apps.wiki.createwikipage=Add a wiki page
+xws.apps.blog.createblogpost=Write a blog post
+xws.apps.photos.createphotogallery=Create a gallery
+xws.apps.files.createfile=Upload a new file
+xws.apps.generic.createentry=Add an entry
+
+xws.mydashboard.recentactivity=Recent activity on my spaces
+xws.mydashboard.help=Your dashboard shows you the recent activity on the spaces you are involved with a role : either you are an admin, writer, or a reader. If you want to see the full list of the spaces you can access including public and restricted spaces in which you don't have a specific role, please visit your My spaces page. There's a button too, in the top action bar, to access this list anytime.
+
+xws.myspaces.myspace=Personal Space
+xws.myspaces.orgspace=Organization's space
+xws.myspaces.mymemberships=My Memberships
+xws.myspaces.publicspaces=Public spaces
+xws.myspaces.publicspaces.info=Public spaces are the spaces visible by all registered users
+xws.myspaces.openspaces=Open spaces
+xws.myspaces.mymemberships.emptylist=You are not a member of any space yet.
+xws.myspaces.mymemberships.info=Memberships are the spaces you belong to as a member : reader, writer or admin.
+xws.myspaces.getstartedpanel=This page provides a list of all the spaces you have access to, either as an admin, an author or a reader. It allows you to browse through existing public spaces and the private spaces you are a member of (a.k.a. your memberships), as well as your personal space and the organization's one. The page also gives you the ability to create new workspaces when needed.
+
+xws.admin.welcome=Welcome to Workspaces admin center
+xws.admin.managespaces=Manage spaces
+xws.admin.manageusers=Manage users
+xws.admin.activespaces=List of actives spaces
+xws.admin.archivedspaces=List of archived spaces
+xws.admin.archive.alt=Archive
+xws.admin.archive.title=Archive this space
+xws.admin.delete.alt=Delete
+xws.admin.delete.title=Permanently delete this space
+xws.admin.confirmdeletion=Permanently deleting a space delete all the data present in its application : Blog post, Wiki pages, Photo galleries and Files. Confirm you want to permanently delete the space *{0}* and its data.
+xws.admin.spacedeleted=The space *{0}* and its data have been successfully deleted.
+xws.admin.errordeletingspace=An error occurred while deleting the space {0}
+xws.admin.spacearchived=The space *{0}* has been successfully archived. You can now find it in the list of archived spaces, and have at any moment the possibility to restore it active.
+xws.admin.errorarchiving=An error occured while archiving the space.
+xws.admin.restore.alt=Restore
+xws.admin.restore.title=Restore this space
+xws.admin.spacerestored=The space *{0}* has been successfully restored. You can find it again in the list of active spaces.
+xws.admin.lastworkspaces=Lastest created workspaces
+xws.admin.latestusers=Latest users
+xws.admin.registernewuser=Register a new user
+xws.admin.browseallusers=Browse all users
+xws.admin.createnewworkspace=Create a new workspace
+xws.admin.manageallspaces=See and manage all workspaces
+xws.admin.panel.welcome.title=XWS Admin Center
+xws.admin.panel.welcome.content=Welcome to the XWS Admin center. You will find here all the links you need to manage this 
+xws.admin.panel.links.title=Quick links
+xws.admin.panel.links.adminhome=Admin Home
+xws.admin.panel.links.manageworkspaces=Manage Workspaces
+xws.admin.panel.links.manageusers=Manage users
+xws.admin.users.links=Links
+
+xws.stories.homeapplication=Space home
+space.wiki.lastchanges=Last changed documents on workspace {0}
+space.wiki.docindex=Documents index for workspace &lt;em&gt;{0}&lt;/em&gt;
+space.wiki.alldocuments=All wiki documents
+space.wiki.nodocument=There is currently no document on this wiki
+space.wiki.thead.pagename=Page name
+space.wiki.thead.lastmodifiedon=Last modification
+space.wiki.thead.lastauthor=Last author
+space.wiki.renamepage.title=Rename
+space.wiki.renamepage.newname=New name
+space.wiki.renamepage.updatedocs=Update backlinks
+space.wiki.renamepage.emptyname=Please enter a valid page name
+space.wiki.renamepage.alreadyexists==A document with name (&lt;a href="{1}"&gt;{0}&lt;/a&gt;) already exists in the wiki
+space.wiki.createpage=Create a wiki page
+space.wiki.createpage.pagename=Page name
+
+space.blog.blogof=Blog of
+space.blog.blogofspace=Blog of space
+space.blog.error.noarticlefound=This document does not contain a blog article
+space.blog.article.category=Category
+space.blog.article.backtoblog=Back to the blog
+space.blog.article.title=Article's title
+space.blog.article.content=Article's content
+space.blog.createarticle=Add a blog article
+space.blog.createarticle.articlename=Article's name
+space.blog.noarticleforcategory=There is no article in this category
+space.blog.article.by=by
+space.blog.article.on=on
+space.blog.article.modifiedby=modified by
+space.blog.article.permalink=permalink
+space.blog.article.comments=Comments
+
+space.stream.pagetitle=Workstream
+space.stream.title=What are you working on ?
+space.stream.statusupdated=Your status has been successfully updated.
+space.stream.statusempty=You cannot update an empty status !
+space.stream.updatesby=Updates by {0}
+space.stream.recentupdates=Recent updates on the workspace
+space.stream.newer=&lt;&lt; Newer
+space.stream.older=Older &gt;&gt;
+space.stream.saidonworkstream=said on the &lt;strong&gt;workstream&lt;/strong&gt;
+space.stream.statustoolong=Your update message is too long. The limit is 200 chars.
+space.stream.charsremaining=chars remaining
+space.stream.dashboardsalso=Do also post this update on the workspace dashboard and on members personnal dashboards.
+
+space.files.table.caption=All files for workspace &lt;em&gt;{0}&lt;/em&gt;
+space.files.addfile=Add this attachment
+space.files.uploadnewfile=Upload a new file
+space.files.replacefilename=Replace the file name with
+space.files.title=Files
+space.files.file=File
+space.files.fileuploaded=File *{0}* has been successfully uploaded.
+space.files.file.details=versions and comments for this file
+space.files.file.download=download the latest version of this file
+space.files.existingversions=Existing versions
+space.files.uploadnewversion=Upload a new version
+space.files.tablecaption=Files
+space.files.thead.attachtype=Type
+space.files.thead.attachname=Name
+space.files.thead.attachsize=Size
+space.files.thead.attachversion=Version
+space.files.thead.attachdate=Date
+space.files.thead.attachauthor=Author
+space.files.thead.actions=Actions
+space.files.fileentry.downloadthisattachment=Download this file
+space.files.fileentry.viewattachmenthistory=See file history
+space.files.fileentry.confirmdelattachment=Confirm delete file
+space.files.fileentry.deletethisattachment=Delete this file
+space.files.attachnewfile=Attach a new file
+space.files.emptylist=There is no file in this space
+
+space.photos.galleries.creategallery=Create a new gallery
+space.photos.galleries.create.gallerytitle=Gallery's title
+space.photos.galleries.gallerydeleted=Galery {0} has been deleted
+space.photos.galleries.returntogalleries=Back to the galleries list
+space.photos.galleries.photodeleted=deleted
+space.photos.galleries.confirmdeletegalleries=Delete {0} and its pictures
+space.photos.galleries.confirmdelete=Confirm delete
+space.photos.galleries.nogallery=There is no gallery in that space yet
+space.photos.galleries=Photo galleries
+space.photos.error.nogalleryfound=No photo gallery could be found for this document
+space.photos.gallery.editing=Editing
+space.photos.gallery.description=Description
+space.photos.gallery.deleteconfirm=Are you sure you want to delete this image?
+space.photos.gallery.addphotostogallery=Add pictures to the gallery
+space.photos.gallery.uploadsuccess=The picture has been successfully added to the gallery
+space.photos.gallery.existingphotos=Existing images in the gallery
+space.photos.gallery.photo.seeoriginal=See original picture
+space.photos.photo.uploadedon=Uploaded on
+space.photos.photo.delete=Delete this photo
+
+space.prefs.categories=Space categories
+space.prefs.categories.caption=Categories list
+space.prefs.categories.thead.name=Name
+space.prefs.categories.thead.actions=Actions
+space.prefs.categories.addcategory=Add a category
+
+space.prefs.details.title=Space informations
+space.prefs.details.edit=Edit space informations
+
+space.prefs.apps.title=Space applications
+space.prefs.apps.appsmgrnotfound=The application manager could not be found.
+space.prefs.apps.installedapps=Installed applications
+space.prefs.apps.availableapps=Available applications
+space.prefs.apps.noinstalledapp=No application is installed in the workspace.
+space.prefs.apps.installapp.success=The application *{0}* has been successfully installed in the workspace.
+space.prefs.apps.installapp.error=An error occurred while installing the application *{0}* in the workspace.
+space.prefs.apps.uninstallapp.success=The application *{0}* has been successfully uninstalled from the workspace.
+space.prefs.apps.uninstallapp.error=An error occurred while uninstalling the application *{0}* from the workspace.
+space.prefs.apps.noavailableapp=All applications are already installed in the workspace.
+space.prefs.apps.confirmuninstall=Uninstalling the application *{0}* will delete all the data it contains. This operation is not reversible. Please confirm you want to uninstall the application *{0}* and its data from the workspace.
+space.prefs.apps.uninstall.alt=Uninstall
+space.prefs.apps.uninstall.title=Uninstall this application
+space.prefs.apps.install.alt=Install
+space.prefs.apps.install.title=Install this application
+
+space.prefs.members.title=Space members
+space.prefs.members.welcomemsg=Manage members roles
+space.prefs.members.admins=Admins
+space.prefs.members.writers=Authors
+space.prefs.members.readers=Readers
+space.prefs.members.addmembertogroup=Add new members to this group
+space.prefs.members.makeadmin=admin
+space.prefs.members.makewriter=author
+space.prefs.members.makereader=reader
+space.prefs.members.emptylist=There is no user in this group
+space.prefs.members.nomembertoadd=Every member from the organization subscribe to this space
+
+space.prefs.rights.title=Space publication mode
+space.prefs.rights.caption=Choose from the available modes
+space.prefs.rights.thead.mode=Mode
+space.prefs.rights.thead.description=Description
+space.prefs.rights.public=Public
+space.prefs.rights.public.desc=The workspace is viewable by all the registered users. Only the workspace writers are allowed to edit documents.
+space.prefs.rights.private=Private
+space.prefs.rights.private.desc=Only members that have a role in the workspace can access it.
+space.prefs.rights.open=Open
+space.prefs.rights.open.desc=The workspace is open in both view and edition by all registered users.
+space.prefs.rights.updaterights=Update publication mode
+space.prefs.rights.updated=Workspace publication mode has been updated.
+
+space.prefs.common.error.nowebpreffound=This document must be applied to a Workspace
+
+space.user.spacelist.title=Collaborative spaces
+space.user.spacelist.welcomemsg=List of the collaborative spaces you are involve in
+space.user.spacelist.restrictedandpublicspaces=List of public and restricted spaces
+space.user.spacelist.emptylist=You subscribe to no space yet
+space.user.spacelist.createnewspace=Create a new space
+space.user.spacelist.create.spacename=Space name
+space.user.spacelist.createthespace=Create the space
+space.user.spacelist.spacecreated=The space has been successfully created
+space.user.spacelist.spacename=Space name
+space.user.spacelist.role=Role
+space.user.spacelist.actions=Actions
+
+space.user.changepwd.title=Change my password
+space.user.changepwd.pwdnotmatching=Entered passwords does not match. Please try again
+space.user.changepwd.newpwd=New password
+space.user.changepwd.confirmpwd=Confirm this new password
+space.user.changepwd.info=Once you have changed your password, you will be asked to authenticate using this new password.
+space.user.changepwd.notallowed=You are not allowed to perform this action
+space.user.profile.changepicture=Change my picture
+space.user.hcard.photo=Photo
+space.user.hcard.error.nohcardfound=No VCard could be found for this user
+
+space.menu.prefs.home=Space home
+space.menu.prefs.details=Space informations
+space.menu.prefs.members=Space members
+space.menu.prefs.applications=Space applications
+space.menu.prefs.rights=Publication mode
+space.menu.prefs.categories=Categories
+
+space.dashboard.stories.commenton=comment on
+space.dashboard.stories.incategory=in
+space.dashboard.stories.by=by
+
+space.common.categories.notclassified=Not classified
+space.commons.categories.notclassified=Not classified
+space.common.categories.thead.pagename=Page name
+space.common.categories.thead.lastmodif=Modified on
+space.common.categories.thead.lastauthor=Last author
+space.common.categories.changecategory=Change category
+space.common.categories.category=Category
+space.common.categories.docsforcategory=Documents for category &lt;b&gt;{0}&lt;/b&gt; in workspace &lt;em&gt;{1}&lt;/em&gt;
+space.common.categories.pagename=Page name
+space.common.categories.lastmodif=Modified on
+space.common.categories.lastauthor=Last author
+space.common.categories.nodocforcategory=There is no document for this category
+space.common.error.nospacefound=This document should be applied to a Workspaces.
+
+admin.directory.members.title=Members directory
+admin.directory.members.memberdeleted=Member {0} has been successfully deleted
+admin.directory.members.memberregistered=Member {0} has been successfully registered
+admin.directory.members.errorwhieregister=An error occured registering member
+admin.directory.members.formtitle=Add a member
+admin.directory.members.addfield=Display another field
+admin.directory.members.confirmdelete=Deleting a member will delete his personal space, and the data it contains. Are you sure you want to delete this member?
+admin.directory.members.errorwhileregister=An error occured registering the member {0}
+
+admin.menu.spacehome=Space home
+admin.menu.administration=Administration
+
+commons.actions.yes=Yes
+commons.actions.no=No
+commons.actions.delete=Delete
+commons.actions.add=Add
+commons.actions.edit=Edit
+commons.actions.choosefile=Choose a file
+commons.actions.confirm=Confirm
+commons.actions.cancel=Cancel
+commons.actions.update=Update
+commons.actions.previous=Previous
+commons.actions.next=Next
+
+commons.form.cancel=Cancel
+commons.form.validate=Validate
+commons.form.replacefile=Do you want to replace this file
+commons.form.fields.lastname=Last ame
+commons.form.fields.firstname=First name
+commons.form.fields.mail=Mail
+commons.form.fields.nickname=Nickname
+commons.form.fields.jobtitle=Job title
+commons.form.fields.mobile=Mobile
+commons.form.fields.phone=Phone
+commons.form.fields.organization=Organization
+commons.form.fields.office=Office
+commons.form.fields.service=Service
+commons.form.fields.address=Address
+commons.form.fields.zipcode=Zip code
+commons.form.fields.city=City
+commons.form.fields.country=Country
+
+commons.misc.getstarted=Get started
+commons.misc.acknowledgemsg=I got this, do not display this message in the future
+
+commons.error.erroroccured=An error occured
+commons.error.unknowerror=An error occured
+commons.error.actionnotallowed=You are not allowed to perform this action
+
+commons.users.guest=Guest
+commons.users.admin=Administrator
+
+commons.page.attachments=Attachments
+commons.page.attachments.download=Download this attachment
+commons.page.attachments.delete=Delete this attachment
+commons.page.attachments.confirmdelete=Confirm the attachment deletion
+commons.page.attachments.viewrevisions=See versions of this attachment
+commons.page.attachments.publisher=Attached by
+commons.page.attachments.on=on
+commons.page.attachments.emptylist=Their is no attachment for this document
+commons.page.attachments.addattachment=Add an attachment
+commons.page.attachments.choosefile=Choose the file to attach
+commons.page.versioncomment=Last modification
+commons.page.comments=Comments
+commons.page.edit.title=Title
+commons.page.edit.category=Category
+
+commons.wysiwyg.link.wikipageslist=Wiki pages list
+commons.wysiwyg.link.articlelist=Blog articles list
+
+service.common.error.badrequest=Request not valid
+
+actionbar.blog.addarticle=Add an article
+actionbar.blog.editarticle=Edit article
+actionbar.blog.deletearticle=Delete article
+actionbar.files.deletefile=Delete file
+actionbar.wiki.categories=Categories
+actionbar.wiki.createpage=Create a page
+actionbar.wiki.showhistory=History
+actionbar.wiki.renamepage=Rename
+actionbar.wiki.delete=Delete
+actionbar.wiki.editpage=Edit
+actionbar.photos.creategallery=Create new gallery
+actionbar.photos.managegalleries=Manage galleries
+actionbar.photos.editgallery=Edit gallery
+actionbar.spaces.createspace=Create space
+actionbar.addressbook.editinfos=Edit my profile
+actionbar.inline.editing=Editing
+actionbar.buttons.globaladmin=Organization administration
+actionbar.buttons.spaceadmin=Space Administration
+actionbar.buttons.rss=RSS
+actionbar.buttons.home=My Dashboard
+actionbar.buttons.myspace=My Space
+actionbar.buttons.myspaces=See my spaces
+actionbar.buttons.myprofile=My Profile
+actionbar.buttons.exit=Logout
+{table}</content>
+</xwikidoc>

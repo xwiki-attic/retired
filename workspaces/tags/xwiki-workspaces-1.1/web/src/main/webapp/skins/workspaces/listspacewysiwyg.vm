@@ -1,0 +1,18 @@
+#if($xwiki.xwsmgr.space)
+<option value="">-- $msg.get('xws.wysiwyg.chooseworkspace') -- </option>
+## Availables workspaces that will appear in the list are workspaces the current user can access at least with the "view" right.
+## This includes :
+## - His memberships (workspaces he has a role in : reader, writer or admin)
+## - His own space if it exists
+## - Open and Public spaces (available to read by anyone authenticated)
+## - The organization space (necessarly open or public, cannot be private)
+#foreach($spaceName in $xwiki.xwsmgr.allMySpacesNames)
+  #set($space = $xwiki.xwsmgr.getSpace($spaceName))
+  <option value="$space.spaceName">$space.displayTitle</option>
+#end
+#else
+<option value="">-- $msg.get('choosespace') -- </option>
+#foreach($space in $xwiki.spaces)
+    <option value="$space">$space</option>
+#end
+#end

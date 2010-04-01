@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>Administration</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1212664894000</creationDate>
+<date>1220356787000</date>
+<contentUpdateDate>1220356787000</contentUpdateDate>
+<version>17.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<attachment>
+<filename>spaces.png</filename>
+<filesize>10929</filesize>
+<author>XWiki.Admin</author>
+<date>1220353797000</date>
+<version>1.1</version>
+<comment></comment>
+<content>iVBORw0KGgoAAAANSUhEUgAAAHgAAABQCAYAAADSm7GJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAABcMAAAXDABsIpz7QAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTIvMDMvMDhZhtELAAAqBklEQVR4nO2dd3gc1bn/P9N2tkurasmSi+Ru3DCu2NhgDBgMptqhmxJCD830AAkYuLQfvYdyuZDggIkvAdNMLwZs3BvuTb1v353y+2O0q+JdSW4k5Ob7PPNIM3PmzMz5znnP285ZwTRNk//g3xbyP/sB/h3QUR9pfc7v96NpWvJYXV1dskw4HCYcDifPNTU1MXXqVARBSG77gv8Q3ApdIUrTNILBYHI/EAi0Ia2hoSFZPhKJEA6Hk/tutxtFUTBNE1mW8Xq9mKaJIAjk5OTgcDiS91u1ahV+vx+Xy4UoioiiuE8k/9sRvDe9KXFM0zRCoVDyfDQaJRqNYpompmnS1NSU/N9ut6OqavJaj8eDJEkIgoAsy5SUlCTvYbfb25C2N1AUBb/fj6qqSJIEsE8k/8sS3BWiYrEY8Xg8eSwcDqPrOqZpout6m94TjUaJxWJJohK9B0CSJJxOZ7LxsrOzkeWWpsnIyNjjGUKhEJWVldjtdgoKCg7MS7dDLBYjFouhKMo+i+qDSnBXe1PrsScejxOPx5P7kUgEwzCS+8FgMHm9oijYbLYkaU6nM/mVK4qCz+dL3sNmsyV73oHA9u3bmTdvHno0zLQTZzBu3LgDVjeALMvJj1IURSRJQhTFpEgHkuc9Hk/6erp6w3RktR6bNE1LHotEIskyhmG06T2xWAxd15NlE2IsQVriiwXw+XxJESVJEna7vauPfFBRWVmBWfUSow4N8MEbS6muvorjjz++Tc9vDV3XCYZCyf1QKITe3F4ejwev19umvNfrpa6ujoyMDCRJSm5gdYg1a9awcOFCynZXMfiQAZx00on06NFjj/sKrc0kwzCIRqPJk5qmtelNiXGpdZkDicR9Eh9C+2Odlems/IG4R+Lvtq1bmOC7iOJpfdE3wSPPOtitHc5RRx1JZmZmp9fvyzOGw2G2bdvG999/T0NDiFGjxnP00UdSUlLE++9/wHHHHU2vXr3atGmS4Pr6eurr69soBbIst/kibTYbkiRRVlbWRpn4vwhN01j4xjWceNRCsBeAHuLtd7qxdPMATvvN2QwbNixtb06HeDyOpmltOAgGg5SXl7Nq1So+//xLKivrOHTESE47/RRKS4sB2LmzHFGUWblyKZMnT2pzfZJgv99PJBIhNze30wfZsmXL/3mCAerqaln+7jkcdcwuMDJAamTzpgG88Y8MBow8lqlTpyZ7c2eorKxk3ry/sXPnboYOPYQ+fUrZvHkzq1atoaK8Go/Xx4QJh3PEEYdTUJADQCyms2XLDpYsWcbJJx+LIAisX7+OkSNHJutNfmIJtfw/aIt4PI6iKCnPZWVl0++oZ/n+y7MZc1QQQpmUdv+RORcN5PUF7/LqyzuZdeZZdOvWrcN76LrOm2/OY8mPa7jo4gvxeO0s+vgTKipqGTVqDMPOG0JJSTGqXWl+Jo2dO8rYvrOM5ctWM3HiWAxTxGm34W8Ktqk72YMjkQh1dXUUFhZ2+tL/l3rwd999h9PpZPDgwWlF7s4d29j59WzGH1UFWg40rYeMEj79qjeLN5Rw7oWXUlxcnPYeK1eu5A+3z+XmW25l1Kih+P0BRFGgqSmE2+0EzGbzT0CWRUwTli1fxZeff40vK4tJk8aTl5dNYWE+9fUN+HwZSSW1zRMbhpHyAcrKygCSdma6F126dGmnDfavinRWwlOPP4xMgL6HTOToo49OarIAra+IFt7Fm6/fy6xT1kFWf6haw1GTa+nZQ+CRubcy+fgzkp2n9b0Mw+CF519kxPDRHHbYECorq6isrCLL56Oh0c+GDRsRRQFBELHZFNxuN6oq8/WXn1JWXsvRU6cQDoXxeFyASSTSohQLgtBCsN1uJxaLpXzJ8vJyRFGkqqqKQCDAiBEj0jbUhPOu6LQxf0149twqpp9yIg88toBJJ7+A4MuHDpwNL7xn8t6j61Dz+8Hu9ZT2/oQ/3jiN6effwQ9VIoJsa1PejEUoVmy8/debUBSxWQ/K4ouvFxPwh+lR1B2n047TqRIIhAgGQyxduoRVq9ZxySWXMXLkEBoamtB1AU2Dbdt2kJfnS/oDxC6/6LPPMn/+fD766KN9b61fIUYNjJHdfzL/9fQ1PH99EUpTBXTgwPmmsoih52ewbfVu6D4IyiJ4Hf/Lh/OGMSJbA0NvU97wNzBj2vEMHtwHgNLSnmzatpXLbriRJ558BkVRGDt2BKNHj2DcuEMZNmwgGRle+vYdTK/ePSgrq6CpyU9NTS3l5dU4nXLSmwd0jWCbzcb48eO71iKi+G+1zbpHgR3PA0M474bZzLtnAEqw2urFaa7ZoeUz9poMvv68DnqOgDIdh/ku7786hFw5mCxn6nHy3B5OPnUGCckfjoR57oXXuGDWmdz5h5sZOrR/0rnjcDjIz8/hwgvP4bLLL2D79u2sXbuesrIyNE3n66+/pLi4qM1Q24ZgWZZTimlVVTt0h/1LQBBBEDGbPWQIXRZOHWJTuBszL/8J6p8EjuG42afw4g2liIHaDq9rxMv0P9mZ/04ISkZDeQxfxmL+NrcfUtSyVoxAIydMOYbRo4YlryuvqGT12nX0792XIyaOJz+/vdlqYrerFBbmUlraC5/PR319I5s2bSY3NxNd19u4dvcgOOFC3Gc0N/QvvgGGvw4j0IDeUI2pxUGS9/+ZRIl3t/TkrtvnAR8ApzLzkmP5w5m5mMGmDq+NSm4ueNTgfxdEoWQClNUwZnwdF0/1YoSDZKlOzvzNTGw2kYqKGrZtK6O2toHxI0czdNgARLFlKIjF4sTjGvG4TigUpaKilmg0yiGH9KeoewFVVTspKuqOYRjpCU4HSZJwu937R/xBhhkJ4jvnFi7929f0e+ITRNWOGYu2kLw/kG089mkxy96aC1SAdAY33TCJs0bFMSPBDi+NSQ4uftjPtg0mFI2Dqi3cd20e/T1Bxh82icMnHEYsFiccjhAOh6ivaWDUyBFMPGIMPp8VxQoGI5SVVbNq1Xr8/hCBQIjq6hpMM47X46HJH8DtdiV7b2vsQXAqU8npdJKXl7cfLXQQIYoY4QCuw0/kk+tm8viYXFaf3JNjH/4LaDFIY/rtLSKKl1n3yMQ2XANyPkLm2TzzX2MYl1eJGU9tfSTgF9ycfH0Z8bgbPANwCNt4ee5YZp9zAooiIYoCmhale1E+W7fvokfPYkLhSNIcjUTCBAIBIhErTi1JAiUlxQwaNJBVq9ezZs1S8vMtftqbe20IdjgcaU2lLkMUk38FWUGwqQiy0nLuQG+6hiAI2IdYSqA/bhF6Zm8PossLprFX9SWf2aYiSFKbczvpzqyr14H/epAGo/a6gref7ksvcxtmJ/fZEMjkzgc3QVZ3MDMYObieIw/TievW0Ni3bymbNm9l8Q9L6NGjCAGSzgq324Xb7aJHj2IUxUZmppuMDC8bN+7CMCIUFBS0CUykJfhAQZAkBFmxxkHANHQE24GLxbaBJCMoKpF1Szjl03LO+LycOUtquG7h8r0W0YKsWB8EYIQCVt3tbN4Pynrz4O2vgfY8MIasobfzyXN28iNbMXWtg8oFnlsYZ/OS9ZA5COIhlPDn1NVWo5ngD0Z5/Jn/xml34svyYrdb7RWJxGlsDOByuXG5nGRmupEkmZ9/3klFxQ5GjBjeYdy9SwQ7HI42/tiOKhQEAWQbcm4Rudc8RvGtfyb7oj9a5+TUPt39gSAIIMkEPnmD8O7NTMx38ML9f6T6octAsXU5A0IQJcxwkMxZ19HjtpfIv/1V7AMO25NkSeauT/rzj6fnAO8BUyma9CSfPa7RPboVMxpOWb8RDtBUHWfVKhGIg3Mkdm0BYs1jrFlfx6KPF7Bx/Up69uxBps+LIAhEoxrBYIiamno2bPgZm01EliVWr/qZ3bu2MGGClWTQno/WvXkPLTpVrFeSpJRxzPYwTRNBUTECDXhPuBCnL4cMm0Rh7z4WybpmicBW6Sf7tYkSRiSE4a9Db6hGr6/mxCIXZiyavA/QpXowDdxHzcTbfziqKFCc6aLbaZcj+fKTJCc20+bkvOd7s/j1S4DPgJMomfYSX70gMi5rC6a/Pjl0oGsYjTX4olHuu/0+Jp3yANRvxGxchFa5EaX8eTJi8xg/IspVv8li2rFHYLfZiMU0otE4jY1NBAKNlJR0R5YVvv12CcFQA5OPPCJJZJd7cFfNpM5ScaSMbMxYGJsIIc0SeaInCwTRaswDAUHEjIaxDxzNjJcXMemvy5Cy8pn5RQXxss1ImZ2HPZMQRYxICEFW0A0TE5OgZiIKoHQvTWlTR5QMTro/hyVvngu8C5xI4aTXee+V/lx99C5s/nLro6suZ0zvPrzx5xe44ZrT8HWfiGk6CZQtx18LzqwCivuNoqFG4/Ap5zFk6EBisTihUARNi1NQkMeIEUNwuzN5//2P8WW6GDXqsJRJASlfrf2BVIUlSUobiGgPQRAwIiHCK7+h8ruPqd+0ht0b1xFZ9TVmPNrhw3QZgohp6Ei+XObcdTfzJhew6NgiXj9jDKoo4J1+cVs7uCtVygrx3Ztp+OwtatYtp2rzempX/0h8+7q01wTkTKbNzeWLV84H8yFgFM7St3jggQv45DEnp44IccZRk7jrjrsZNW400ZgJmAh5k7E7BDJ69cJW0Iuty55iW2U2eb2PR9MMQqEoggA+nxeHQ2XHzirOufJ63B6V/gP6t+m5nbVnmxYQRTGtmRRtpV2nFdGtGkuQFZTupTS9/wqmFie+fR1SdgFmPHpgvEzxGLbSoeTbJQzTRBQEBmXaGJihEBoyjti2tUTXfm8pPp3dzzAQ7C6iW9fgnnoW4aWLiKxZjKnrmLGwNT6nqSMoZzL9UQdz1jzItVd/iqf4TnD/kVHHjeMvR3xMtN5BZXQ5m9bWIKmFlNfGqNwiMPOQbJQBrwFeenS7n8z8enQtRkwzURQJl8vKypi/4GPmPPgI5aEIN7uce/DTGcltCFZVtU2yXDp09tUIooRz9DHojbVE1/+IYHchZRckx2BTi++ffSqKoNjQ6yqZu7KepbVRerllvq2KsL4xhma2mBhd/ZgEScIxfBKyL4/QDx+hN1QjZeVbiqFhtLEK2kMXVe5fNIgvf1zGEzdMZuDIc8FzIagXoWZ8TI/A63SXVPCM5X9eXszHX5sMn3siQxseAXUiNofE+iVLqViWycknz0CWIRYzuP6u+3jlvYXokqWcmmbHOV2psIcM64oI7bCMKKL2H4k9uxu7nr4RW69B6I21eI4+Eykrn/DyL4is/QEkMWmS7AsSIrXu1Xt4Q5LR6yqx9RyA2m8ERrCJeMV2kG1W9MYwWuzzVHWJEnpTPb6pZ1L/yZuI7kxEpxtb6VAcwyaiVZfR9N5LiE63ZXq1r0vX0esrWdl0CKsazmSg8R1UXQpZM8BeirZ5KcGKOjz5HzH3sgGcd/oR1AbGUL/1T3izqwj5niKzTw6rvnif1atX4HBnctGNt/PTjjJQ2pqXB41gh8PB1KlT+fjjjzvUorXqMnKveYKmnz5H8vjQG6rxnX0Tzt6D8NpE4iX9KXN6CS9d1FHUrWsQReLlW9Hrq5FzC4nv3kxkzWIQRbIuvIvwsi+sfUNL3fta9cyMk35LPB4nvHQRgurA1vsQsk/6LYoooJQOQu07jJonb0CwqW3qMrU4evUuDu8/hLn33M248UPxhy+kcft8XFuew535EopSh2mAqRSiyA4OKfmS+nqBv39xLnndRzB4RD9scjljRo/g2eeeZ8Hi5TRKqdODO8rOTFV2j89aVVVCrfJ3E5Clrmm/+be9zBl9fDS+9QSmFkf0ZCFlF5Btl1BEgQybhOvwEy2t9QBp1HJuIUYoQHzXRoxgE+gawc/fJvO4c3CNP6GlYDtxLcgKRjiAreQQrj7rVILfvAuyLSkNsu0SDlnAaxNx+nKw9RrUpg4zHsWo3s0Joyfy1JOPMX78UBZ/9yML5v+DL9cUMeAyndJZPj75WsF7SAlS/8kg5UIgA13sjs03iqawTH31WmqqywGRESOGEqotx4zsyYGJuYeC1dEYnDLgn8ie7wgdnf/4tCGsbWhWyJpFcHTDUnbv3ElZdR3byyuJ7Vjf4sY7ADC1OKLTjZRdYI2bdhexHeupeOhyHMMnkTnrOiRfvqXgJdCsiRuRENOuuo0RWSrhZZ8lXZvxyp3s3LCG6spKdtQ0EKzcjRFoaLk2FsGsrWT6+Ek8+NBcevbuxnW33MlTT72C064w58Fb8esm1VEPX+0chFF0Hvfeu4TVS5diiCWUhSYysH8xA/rkoGkGNpuKYRhMOuIInrr3Tzj81Sl93F0lN4Eui2ibzUZOTk6HZUzTJKQZfPXQTc3+XAdKYW8iaxYT27IayZeLGYsS27YW0Wa3YrcHKG5rxYGbbXjTQGgeuyrvPpchD73DPU8/y/V/uo/g4oVIGdkIkoRWW41r/An8aUQWR776DVpdFaLdiX3wWPSa3QS+3IXsy0Owqej11Wg1ZQiqA1OLYdZXc/zYCdw3904kVWDqaWdRvmUnTz70EA+99ir1ugCCgCILTDu2hDvuX8rjL0GvvjcR2KLTaMYpLgTVbs3c0DQtaY6OGzeO3511Bg+9/AZKcV+gxZPWntS90qLB6sGJCV2toaoq7i4E/U/5tBy9sRbHoUdianEiq77FjEcR7U6MYBNGNIKcW2hpp/sbe26GkMiuSMRBBRFTi1siypvF2rsv5s25L/Pf997Oxc8Pov6NB62MimiYy35/LV9UhGn42+OopUNQivoS3bCUePlWBFEiauiYsSii043oycKMBDGqyzlq2KHMvfuPNIabOPXcq6natomXHn6SzWW7+H7j1qQNrgs2Zt+yEodm44E7/sjkY4+npraO3Ru+J+Rz0at3b1TV6r2yLNPU1ERdXR3nnnsui3/4kW+3V1neNCwyW5tJ+6RkdZR8RxcqDC9dRObMawh+tYDwss+SniAjEkJ0ZyJlN89DaiZgf2GaJnqg0fqIHG5Ep7uNCSZIEmY0zGeXTGX9fQuYd+XpnF3Ym+jmVYyZNoNZvTyc9NEO3EfNxAg00PjOM8jZ3ZBziyzHTDSMkJENoowZCaJX72LykJE8/OADbKvYzTk33kagqozrL7iM4aNGMPm8C1t87qaJ7q+nPOThkbvv4eQTJ7C7bAeDB/ejqHAqF11xFZecfxbTjjsuOSVozZo1vPHGGwwaNIjfX3Ulq6+6hqCRg9D8waTqwR1hn+Rj2kpNiG1fj3/hq8R2/mwpJTSPkXYnojvTCsHRHHiQ5P3fAO+x59Dtjv9B6V5qabiyreW8ICK6vMj5Pai4Yyaz/ryQ+48Zyue3X8i7Uwq5cWkN/g9fI7pxGYFFf0Up6GlpypEgmIb1wQgiaDGEkJ8zjpjCM08+zvKf1zFrzm2EAn6O6DeYyy6/jOvmziVkCi3kNlTRQ7Xx1xce45QZk9i4aSv5+bmIosj9z7zEhxt2ctFNd7BixQpEUaSiooK7776b119/nfLyckaOHMlVv70QrXp3sokT2RqJ3rzXIjodgR6Pl9rajvOQAPT6SmLb1yN6MtEba61QoSBgNtd7IHptAkY0gmfqmfzPDRcyxKfy6MCHeXrOpWhVu9qEJ02w/OCKiv+j1/nH4eMZlqUS1Q28ioigOogs+7xFL0iE/QzDsnubIagOCkr68OJbf+OJv81H1w2y4lFuufkWvvlpMV+v3QiiBIaO3lBNT4eTh++7n9GjR7BmzTqKirqRn5/D/U+8yFPz30WQFRolL8ecOZvn7r2TGTNm0K9fP6ZPn87YsWOx2+1cf/31vPOP99kQDe+ToyOlmRQIBDps2PSuShOleymC6ki6K0WbHUFRERS1zf/7uyHJyNndmHjyLHLtEpURnUv6ecm54qFkjLh9eUF1oPYZxjdbyrlreR0v/tzEicUu3EfNbBHrHQTuTYeLZz74gMfeXoAhKwgN1fz2nNkU9S7i2oceA1mxAhdNdQzKzuP+P93N8OEDWblyNfn52fTuXcyjL7zK3a++AYrNqleSCXjzOf/GO3nwwQe58sormT59Ojt37uS6OTdSW1/PU48+gtxUnUyH3Rsteg+C08+IM5O+5o4qHXT6xch5RRj+hgMjgtNsieD8T5UBvqiwJpDHDIhtW9tW/Ms2kG2IDjeuiTNQuvVEkBXyHRL3vPURN7w0n0KXDe/xs9Ebay2iO9DsTUm2iDFNehYWcfrpp3PxrbfRpDW3ia6Royj84eabGD58MOvWbaSgIJd+/Up4ff77/OG5V61nagctq4A7/vxXrr35Nurq6pgyZQqxeJy7597L+PHjuXTmDNasXp1SPO93NAmsnp1Qvjqq8OwSD//v6eew9R6EXltu9YiDsWGN7U0LX+Gex59mxoI1ZKmWbYtpeagERUUQBQRRIOPUK7AV98O/6E1uG13MYdl2ap64jtrnb6M8rPPG788i+3dz0WoruhYQEQR2xjSOu+x3LN22O9F46I019CvqQX5+Ntu2baOwMJsBA/rwwWffcMX9j2CkIDcByZfHp1urOfH8S/jLm/P483PPMufaa2hsbOS2W29l1aqVyQVgutqL93gLSZJSBv1VVW0zKz8VTNPk+vNnsbYhxt+eewLP8Re0SWs9GOmy0Q1LCXz1v9S9dBdHfrAbT58huCefjmPYRIxQE8g2HMMnEVmzmJqnbsB74sWc0tPFk+sbkAtLUEuHUH7HLGb//ScWzj6Svg+/m0wA6OyZDVmlXhNa9oNNFKsOrrz0dzgcdpxOB4MHD+Sr737irJv/SFyydfo+guqg3pXL7x9+hkuvuZ7MzEyampoQRZHTTj2Vn3/+eY/eu1cEOxyOtDP4uzKoG5EQT509lafWN/LY1Rcg+fKtMVCU9yu4kBaCiJxTCKLMjoevRDMh64iTKDpmJq6x0xBtdgJf/p3gF29jKx3Ky+cfy0sbm9jx0VvJpADJ66P6/13FsU+8wxtHdCP78gcx/A0ItlYr5HTh2W3xGHfdfBvTpk2huLiYkpI+PPzsa5x8zU1Exb1L3xUz85i/citjp5/Oho2bkpPA7XZ7G2Jb50CnrGev7gpJb1Y6SB4fUkY2H885m+te/jtFv70LOb8Hot1picyE6Oyib7urMEJN2IdMwC2LOCQBVRIQ7C50fz1yXhFSZi6eY87Gq4g8uuBTK8gQsmYYCLKClF1A44LnmHTpTTgzMsm66C7rXPOzCjZH2pwyMx7FjITQ4jHq6yuw20Wys92cdc313PHqX4iI+5aLJkgylZKb0669ndnX3kx+QQF9+/bdPxEN6Xuo1+tl2LBhHYrohM0rqA4aFzxH2WsPkHnalagDR1mNGo9aolMQWxqs2YRJbgnyU42DqY4lvFiRIDVbf6a2rp7yxiCOYRNR+wxDECUEm4rSrSenvbiQ+K6NCE6PZTMnprsIIqLTTXTrGrbddDKIMr6z5iTLGKEmyzmjqG2GHVPXEEwDQbFhZnfjlhdfZcZFVzHu9Nl8u2VX2obfG2jODFbURSgqLk5pB3eElHLD5XLh9/v3nI9kmkl7Nh1akyNl5aPVlFHz5HX4zr4JtXQIoicL2ZdHdNMKGuc/ZWnEooCgOnAMm0i8fCuxrWsRFBUzHk1+FGbU0pRFm72tjWuYoGuI7kxi29ejBxqRvD4EmwO9tpzwqm+w9RqE2ncEgs1B/Wv3kXn61egN1dZjtkqVNQ0T0e5E8vSl7qW78B4/m6zzbkVvqMbRdxhaOETj208QL99qXauo1kzS5ucRAFO188naTQiSfMClFO3afp/s4L29SToIopB0EgiKSv3r/4WcW0RGbj75DomcgcPJveEZPFNmIfnyyfndvWQdfjzdz7gC77TzrMYxDfS6SgSbg6wL7iD3948hZeVbOcvNPUgQheSEMyMcILZ5JaEfPiL45TuYWhz7wNEY/jrcU35D8Lv3UIr6Jj+89tGsRF1mLIycV4T/w9eIV2wns/9wMm0i3X0eesy+mYwZv0PyZlvatii1cY0q0r4tOdglmKmjSQfEkwWWJl1YWNiBiG67L4hCc++QrDhrQzWOTC9xw8paLM1QeXrOmfzmiyOpj8RxqQqZNpH44NHEy7ZakZtomGEnn82iY4sAeHb8k9x0/bXEK7YjOtyWSSQKlvhUHdY1IT9SdgGHXHwzO2vqiZdtBUMj9P0HSL58RLsTrWJbyjFVEJvJaRZ/RrAJWQTNAEmAxiY/j595NC+PGsOn181EysgGEWRRoFtONt18XpZs2Jy2wfcXexPwhzQEq6pKMBjcQ0TbVBVb82KaqW4K7DlGttqPrP2BnZU7kLLy0Rtr2ZBTSI8phRS5ZCrXryDYdyhhTScSCuEYMYlrD+/P6Bw7qxtiycS6S/tncO9pV1H9yBXgcLf0ZAlrLpIoI2XmIjrc7ArE8HgziLuH0bT+JwS7C9GdaekBwSYE1ZH6mZtFtiBKaFU7qPj6A+Tsbgiqg9iW1YTHX8zpPd18JkmYuo4gK2imwa7qOnZV1zU/zMHBASHYZrO1WbWuoxt1CkOD5ohOdOMyohuMZKjOd/ZNXPpdFd/+5UWMpjr0xlqrUesqCH33Pnd/MQq1ZAhZhx5BVVhjcoGTTU0xwsu/QLC70t5SDzTiGDEJuyJjmNDNISMNHIn/g9eQcwqt6JOhIwhp8sIEETMeRcrIJrruR+K7N1s9Wotj6z2IT8pCfPzN9wh2VyspdfDRWhx3tf3TiuhUst1aTk9Ga52T1PpLIsVNm2OzosuL3lBN7u8fI7ziK/wLX6XpHy/y1qsVaJU7rDjsphWW1qpryIUlxLevI7phKbFta3kiI5vHohH02nK06l1J8bzH7WyqNU84FCAStRbyrAhbH6ucU4ic3c3ysHUh0cDUdQS7C7XPMJyjj6Hq/ovB0Jh/x5UY4YBlJ/9C5CafaX8D/gmk8lq5nE5rvOsoJpnGjNFryxE9Wfzl2FLOd7oJfP4WWtUu5LwivMfPJrL2B0JLPkHOKUR0uK05PqKM6PQS27oaMxbFCAcQXd4WB0SqexkGosuLVrkD/6I3Ubr1BEnGDPuJbliKa8KJRH9c1cZE6wiGv46jfjObc0s9nPlSkRXXhhZyD1BGSlex3wF/sBbH3LVr1x4VtP67N0HnhBlTcv2jjM21c1iOnV3RMI4xx7Fg7hwqIzoPrx7HpsLehH78xOrFrRtPlBGcNmR3ZtrcZKAlk8PuIrLuB+TcImtGhRbHaKpDKeqL6PSi15Z3aSKcGY/iOe58bjrER9wwkXOLiO382TLhDmC6UVexLyI65RMKgtBGTCcN61Z28N5ENYxIiJyrH2XljJ6IgsBLh+eR/du7cR1+IhPyHZzW0823JxRzwZmzWmbMt2+85jGwSw0RiyLn98AIBzBCATxTz0bKykfKzLUUrEioY3JEawy29RzAh3POZmSOnbF5Dq678x4kj8+6/p+E9m3e2ZSitG+ZikCnw9Fmke0u2WKmgehw0y/Dxo6ARZBDFjly+GBiW1bzxLoGNjfF2BGI8211JGUobV9gxqLI2d2QsvLJHzsFpbAUObcQ3V/fbL923vvsg8dSEdaIGda7ndrTjVLUtyVm/E/AAfFkJYL+7YkTm1+qQ1HR/sUNy7u18pvPOVufxKhslaa4wYf/+w7RTSu4d57CfaoDMx4l9OMnlug8EI1nGBihAIIgUF+2E+fY4yxNvb7aco0KAmZHsx0UldiW1Vz23WgmdXNQ4pZ5aX2dlYyX0AF+YZITedGwn1p0IjSYbqxN1Wut/RSVNTdC6IePWLX2B5bXlifzkwVZwb/oTUurlSz7VWg3F3mfkWh8wVrDo3TICLasWUls+RctzowOIEgSsW1rqX/jQeaHAxh+6xdSrMjYP6f3QtcUq9ZIq0W3JzHxVxSlDslP56YzI0G0YLPDXlZaku8kCTm/eaXyhIPhQLn6TANkG+GV35A1bCi7eg0i8MX85DDQlftoNWWWLd8qOHLQXJGdwDT3nuAOx+DEau+tN6fDkXKg75J/WlYQne49NdhWWRoHFM2iWJAV4obJpf29ZJ55A2rpkC7PHU6GCpWDtMbIXqKrim0CaQn2er0p00MSN+mSFp3IiUo+nWFlLP4SzoHmHie6vBRMP59Sj0JUN+mf46HHjAuTyYGpnjmRpNfmuX9hh0Y67GHZdKJFd/gZpyO2/f+J/SSaU0/QNcslaHdZ425XJmMfKIhWfpY6YBSFTpmoYfLB7hBl/giKouAcdYw1JdTuTM5XToQhk3FfUeqyafZLIBWh+6RFp6owUZHdbqexIfUUCsBamwrQm+rxTrey/AOfzgNUy5F5gBYm6xStxPP6XRXs8OWgigKqTcGriFDQk/jwScR3bbTmHEkSemMtrvEnWG7TzauIrPjScmr8i5G8N0hLsMvlIhgM4nK52lQqSWJaM8nExNZnOLFNy8mceQ2Ogp64FRF3rzuoePkeq0z84PxiS3sknDXxXRvR6ysRxhyH7PEQ1U1iEkT9jTiGHk7umCnUb91AZM1iHCOOxDN8Ik5ZRC8uoTavyPo4/4la8/4iLcGyLBOJRDoU0a3/JiAoKmrfEYjuTDJtIoooIAoirokz8H/0urXehRY/+I0mydiK+mIr6mMFMeJRKhd9hJSZS6x51kVk1bfUA3JeEUr3UuT8Hnht1nN5ZYlo/0Np+vuzSFn5qWf2/wqw12NwYv5wOg0uvORjRJcX0ZtFRbwvomrHiISIbV9vFZDkPRbF3l9YzpG2WZu2Hv3IO+4cKt97FSPYhN5QTWTdD0mijEADclY3BJtKfPdmgt++h3vSqVQaRlLT12rKmm9w4OYy/9JIS7AkScRisT3G2vZpm63PYVrrYcV2rEewOYj+vAzR6cbwNxBe8RVyXlHLsgmdkZzwNnVSLpG7ZUabktqv5PFhHzKB8reeIrZ1Le5Jp2JGw+iNtRiBBmsFoILeIMnWSgOKipJfTHz3ZrTKHUi+XBBEtIptiBk5/zIa9L4gLcEej4eysrIU3iprP502Z0aCKAW9iW5cBoZBvGwzjuGTyLniAYxIiMZ3nkkqYkCLVt0qeiQIAkYsgqnFmoPqkkV0uwC9oKiY0TBq/5FkT52FYUK4bCta1S7q/nwHcm5R87zeTPSmeuScQoSC3tbtYuGkPmDGowh2F1pNGWbYj76qEbQYSnF/RJe3ZabDr5DoLonoxP+tj6UzkUxDR5BkbL0GYQSbcBw2BTm3iAH9B/DKhDzG5/Wg9uk5lluydXakriezKI1ICMnjQ+7Wi+i676E5JzlBcjL9NtCA7q9n6szzuGWIj6a4wT0rZNbu3ozcrZfl9gw2IWd1I7xjgxVj1lt+67fNGiG6hpzdDTPuQ8wIITrcCJKUjDwJgnBQU3EOFjp157QnOOHJSuejTipRzRGXbidfwvl9PDzw+NO8XXwl847vx7QPDrGW+Qs04p5wElp9FZE1i5E8PrSaMhyHHsl/33I5RU6Ze1bWsXDu9ZZtalOTIhnDwHfWHKYM6cstQ3z0z7AcKiJw3o5DCH77npUC68tHUB3o/vqWZ0zhajRNE6JhS8S7M5qzK6MHbKGYfxbSag4ejwe/35/Sc5IqVNiacEEQkvZuw/qfUEUBe/9Due/N95BEgemX34iUmUvW+beTOXIyhcfMtPKP6ytxjjmO3154AccXuRiapTJvcgG+WdcmE9AFRcU55jgGXPsQS2aP5ZUJ+ZR6FKojGlHdumdk5dcAyeUO0TVr9R0xfUpr8riuWYpYR0sD/4rQ5tdH2+PDDz9k+PDhQNteumLFij2OA6z/eWPzMSBVflYnSJnT1dk1+xh4OiARq38CCvL2XGR10aJFDB06lJycHLKysvB6vdjtdhRF2TszKdWx1uf69SltU659Xfvy/75e19H/+3rNrxEdEpxYPzrVYuCp7OC9bdyDSe6BKPdrQrqfgO+QYI/HQzQaTc7676om3X5/X8j7pUj8tRLaHpIk7T3B6cRxp6bSf8TuL47Ej3m3J7lTMykajSadGpqmEQ5bs/yWL1+eUlyn+xjSnTtQ1+/v330p86+EpFIly4itrIVORXRFRQXBYJBwOJxcjc0wDERRxO12J1+8sLAQTdOIxWJEo9bv++i6nvInAlp/Ya1/V6Gj810p29m5jo53+cc79iJd52Cm9giCgCiKKIqC3W7H5XKhquoeBHdoJoHlktR1nXg8TjweJxqNEo/Hk3lZid7dvlwsFtsjd6s9Qe3FSUdkpiOyqyTuD6l7W/aXQKLtZFlGURRUVcXhcKCqapue3KmITnwpCUUr8dW0z8MyTTPZYzVNSxLe+nwqJaD1sc7I6qxcuuu6evzXhtbcJIiWZTmpcEEXxuBEJQlYE9As912CtNZKV2crwHSVpK70wK7U8++GVO0iimJya69NdyqiE2hPWuvLEiQnyrUv31WyOjv3H+yJdL8FlcD/BwOX5+0DSbcYAAAAAElFTkSuQmCC</content>
+</attachment>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>onDemand=On demand|always=Always</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWSCode.Administration</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>#admin-icons li.Spaces a{ background-image: url("$doc.getAttachmentURL("spaces.png")");}
+#showsectionswrapper, #hidesectionswrapper {margin:-26px 0 0;}</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.Administration</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#** 
+ * Dispatcher sheet for global preferences topics
+ * ----------------------------------------------
+ *#
+ $xwiki.jsx.use("XWiki.AdminSheet") ## Admin app JS
+ $xwiki.ssx.use("XWiki.AdminSheet") ## Style common to XE/XWS
+ $xwiki.ssx.use("XWSCode.Administration") ## Style added by XWS only
+#if($request.section &amp;&amp; "$request.section"!="")
+ #set($section=$request.section)
+#end
+#if("$section" != "")&lt;br/&gt;&lt;span id="showsectionswrapper" class="buttonwrapper"&gt;&lt;a id="showsections" href="$xwiki.getURL($currentDoc, "admin")"&gt;$msg.get("admin.showsections")&lt;/a&gt;&lt;/span&gt;
+          &lt;span id="hidesectionswrapper" class="hidden buttonwrapper"&gt;&lt;a id="hidesections" href="$xwiki.getURL($currentDoc, "admin")"&gt;$msg.get("admin.hidesections")&lt;/a&gt;&lt;/span&gt;#end
+&lt;div id="admin-page-menu" style="#if("$section" != "")display:none;#end"&gt;
+ &lt;ul id="admin-icons"&gt;
+  &lt;li class="General"&gt;&lt;a href="$doc.getURL('view','section=General')"&gt;General&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="Spaces"&gt;&lt;a href="$doc.getURL('view','section=Spaces')"&gt;Workspaces&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="Users"&gt;&lt;a href="$doc.getURL('view','section=Users')"&gt;Users&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="Groups"&gt;&lt;a href="$doc.getURL('view','section=Groups')"&gt;Groups&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id="admin-page-content"&gt;
+#if($section)
+ #if($section.equals("Spaces"))
+  #includeInContext("XWSCode.AdministrationManageSpaces")
+ #elseif($section.equals("Users"))
+  #includeInContext("XWSCode.AdministrationManageUsers")
+ #elseif($section.equals("OrganizationSpace"))
+  #includeInContext("XWSCode.CreateOrgSpace")
+ #elseif($section.equals("General"))
+  #includeInContext("XWSCode.AdministrationGlobalSettings")
+ #elseif($section.equals("Groups"))
+  #includeInContext("XWSCode.AdministrationManageGroups")
+ #end
+#end
+&lt;/div&gt;</content>
+</xwikidoc>

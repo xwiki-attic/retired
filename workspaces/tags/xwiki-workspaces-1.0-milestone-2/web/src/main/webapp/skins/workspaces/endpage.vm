@@ -1,0 +1,18 @@
+    </div>## contentcolumn
+#template("leftpanels.vm")
+  </div>## leftsidecolumns
+#template("rightpanels.vm")
+<div class="clearfloats"></div>
+  </div>## contentcontainerinner
+</div>## contentcontainer
+<!--[if lte IE 6]>
+<script type="text/javascript">
+ function pngtranslucide() {
+  supersleight.limitTo('leftPanels','leftmenu');
+  supersleight.init();
+ }
+  Event.observe(window, 'load', pngtranslucide(), false);
+</script>
+<![endif]-->
+#template("footer.vm")
+#template("htmlfooter.vm")

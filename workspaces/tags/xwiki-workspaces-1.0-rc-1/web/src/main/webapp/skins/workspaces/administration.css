@@ -1,0 +1,237 @@
+/* @override http://www.nearbat.com/xwiki/bin/skin/NBSkins/DefaultSkin/administration.css */
+
+/* ADMIN */
+#body.body-admin-spaces a, #body.body-admin-members a{color: #fff;}
+
+#body.body-admin-spaces #contentcolumncontainer .inlinepanel h5.inlinepaneltitle {
+  background: none transparent;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 7px 0 0;
+  margin-bottom: -8px;
+  cursor: auto;
+  margin: 0;
+}
+#body.body-admin-spaces #contentcolumncontainer #space-members-container .inlinepanel{
+	width: 32%;
+	margin: 0.5%;
+	height:auto;
+	min-height: 20px;
+	max-height: 2000px;
+float: left;
+	}
+#body.body-admin-spaces #contentcolumncontainer .inlinepanel .inlinepanelcontents {
+  background: none transparent;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  max-height:  2000px;
+  min-height: 30px;
+}
+
+#body.body-admin-spaces .inlinepanelcontents .member-entry {
+  border: 1px solid #fff;
+  margin-top: -1px;
+  padding: 3px;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-entry .fn.expanded {
+  background: transparent url(images/member-actions-expanded.gif) no-repeat right;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-entry .fn.collapsed {
+  background: transparent url(images/member-actions-collapsed.gif) no-repeat right;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-entry .fn {
+  cursor: pointer;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-entry .member-actions {
+  text-align: center;
+  margin-top: 3px;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-entry .member-actions a {
+  border: 1px solid #000;
+  background-color: #9437FA;
+  color: #fff;
+  text-decoration: none;
+  padding: 1px 3px 1px 8px;
+  margin: 0 3px;
+  font-size: 0.9em;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-entry .member-actions a img {
+  display:  none;
+}
+#body.body-admin-spaces .inlinepanelcontents .member-actions a.member-action-delete {
+  background: #F42B00 ;
+}
+ 
+#body.body-admin-spaces #contentcolumncontainer .inlinepanel.expanded .inlinepaneltitle {
+  background: url(images/panel-admin-header-right.png) no-repeat right top;
+}
+#body.body-admin-spaces #contentcolumncontainer .inlinepanel {
+	height:  auto;
+  background: #fff url(images/panel-admin-header-left.png) no-repeat left top;
+}
+#space-members-container {
+  text-align: center;
+width: 100%;
+}
+
+#body.body-admin-spaces .inlinepanel h5.inlinepaneltitle {
+  padding-top: 7px;
+  margin-bottom: -8px;
+}
+#body.body-admin-spaces .inlinepanel #space-admin-header, #body.body-admin-spaces .inlinepanel #space-writer-header, #body.body-admin-spaces .inlinepanel #space-reader-header {
+  text-align: center;
+  padding: 5px 0;
+  
+}
+#body.body-admin-spaces .inlinepanel #space-admin-header a, #body.body-admin-spaces .inlinepanel #space-writer-header a, #body.body-admin-spaces .inlinepanel #space-reader-header a {
+  text-decoration: none;
+  display: block;
+  padding: 3px 10px;
+  margin: 3px 20%; 
+  background: transparent url(images/buttons.png) repeat-x 0% 75%;
+  border:  1px solid #999;
+}
+#body.body-admin-spaces .inlinepanel #space-admin-header a:hover, #body.body-admin-spaces .inlinepanel #space-writer-header a:hover, #body.body-admin-spaces .inlinepanel #space-reader-header a:hover {
+  font-weight: bold;
+  background: transparent url(images/buttons.png) repeat-x 0% 50%;
+  border:  1px solid #999;
+}
+#members-available-list {
+  font-size: 12px;
+}
+
+/*Members form*/
+#body.body-admin-members #members-container{
+    padding: 20px;
+    text-align: center;
+    color: #FFF;
+}
+#body.body-admin-members #members-form{
+    padding: 10px 0;
+    background-color: #746D7A;
+}
+#body.body-admin-members #members-list-container{
+    top: 50px;
+    position: relative;
+    background-color: #746D7A;
+}
+#body.body-admin-members #members-list table{
+    border: 1px solid #FFF;
+    width: 100%;
+}
+#body.body-admin-members #members-list td{
+    border-bottom: 1px solid #FFF;
+}
+#body.body-admin-members .member-fields{
+    padding: 10px 0;
+}
+#body.body-admin-members .member-fields input{
+    border: 1px solid #dbdbdb;
+}
+#body.body-admin-members .little{
+    font-size: 10px;
+}
+
+
+#body.body-admin-members a:link, #body.body-admin-members a:visited{
+    color: #FFF;
+    text-decoration: none;
+}
+#body.body-admin-members a:hover, #body.body-admin-members a:active{
+    color: #FFF;
+    text-decoration: none;
+} 
+#body.body-admin-members caption,
+#body.body-admin-spaces caption{
+	height: 29px;
+	width: 100%;
+}
+#body.body-admin-members #leftPanels,
+#body.body-admin-spaces #leftPanels {
+	width:  230px;
+}
+#body.body-admin-members #leftPanels .panel{
+	margin-left: 30px;
+}
+
+#body.body-admin-spaces #leftPanels .panel{
+	margin-left: 40px;
+}
+#body.body-admin-members #leftPanels .panel-title,
+#body.body-admin-spaces #leftPanels .panel-title {
+display:  none;
+}
+#body.body-admin-members #leftPanels .menu-item-hom {
+height:  20px;
+line-height: 20px;
+padding-left: 15px;
+margin-bottom: 10px;
+background: transparent url(images/orgadminbuttons.png) no-repeat left  50%;
+}
+#body.body-admin-members #leftPanels .menu-item-admin {
+height:  20px;
+line-height: 20px;
+padding-left: 15px;
+margin-bottom: 10px;
+background: transparent url(images/orgadminbuttons.png) no-repeat left  100%;
+}
+#body.body-admin-spaces #leftPanels .menu-item-hom {
+height:  20px;
+line-height: 20px;
+padding-left: 15px;
+margin-bottom: 10px;
+background: transparent url(images/adminbuttons.png) no-repeat left  50%;
+}
+#body.body-admin-spaces #leftPanels .menu-item-mem {
+height:  20px;
+line-height: 20px;
+padding-left: 15px;
+margin-bottom: 10px;
+background: transparent url(images/adminbuttons.png) no-repeat left  0%;
+}
+#body.body-admin-spaces #leftPanels .menu-item-pub {
+height:  20px;
+line-height: 20px;
+padding-left: 15px;
+margin-bottom: 10px;
+background: transparent url(images/adminbuttons.png) no-repeat left 25%;
+}
+#body.body-admin-spaces #leftPanels .menu-item-cat {
+height:  20px;
+line-height: 20px;
+padding-left: 15px;
+margin-bottom: 10px;
+background: transparent url(images/adminbuttons.png) no-repeat left 75%;
+}
+#body.body-admin-members #leftPanels a,
+#body.body-admin-spaces #leftPanels .menu-item-hom a,
+#body.body-admin-spaces #leftPanels .menu-item-mem a,
+#body.body-admin-spaces #leftPanels .menu-item-pub a,
+#body.body-admin-spaces #leftPanels .menu-item-cat a{
+font-weight: bold;
+color: #FFF;
+text-decoration: none;
+
+}
+
+#members-list table.members-table tbody tr td {
+	padding: 5px 10px ;
+}
+
+
+#members-form form H1 {margin-top: 0px;}
+table.categorie td.name {
+	width: auto;
+	font-weight: bold;
+	border-top: 1px solid #eee;
+	padding: 10px 5px;
+}
+table.categorie td.action {
+	width: 120px;
+	font-weight: normal;
+	border-top: 1px solid #eee;
+	padding: 10px 5px;
+}
+

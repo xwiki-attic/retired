@@ -1,0 +1,64 @@
+/* @group Vcard */
+
+/*
+#inline .vcardcontent {
+  line-height: 1px;
+}
+*/
+#inline .vcard input {
+  margin-left: 20px;
+}
+#inline .vcardcontent span {
+  line-height: 20px;
+}
+#inline .vcard span {
+  display: block;
+  letter-spacing: 1px;
+}
+#inline .honorific-prefix span {
+  display: inline;
+}
+.vcard .photo {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  border: 2px solid #000;
+}
+.vcard img.nophoto {
+  border: 0;
+}
+.vcard .photo-change {
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.vcard .fn {
+  font-weight: bold;
+}
+.vcard .type, #inline .vcard .type {
+  display: none;
+}
+.vcardcontent, .photo-container {
+  float: left;
+}
+.vcard .adr {
+  padding-top: 10px;
+  display: block;
+}
+.vcard {
+  text-align: left;
+}
+.vcard .hcard-button {
+  margin-top: 20px;
+}
+#lb-content .vcard {
+  margin-bottom: 20px;
+}
+#inline .topbuttons {
+  display: none;
+}
+#inline .vcard .fn {
+  font-weight: normal;
+}
+
+/* @end */

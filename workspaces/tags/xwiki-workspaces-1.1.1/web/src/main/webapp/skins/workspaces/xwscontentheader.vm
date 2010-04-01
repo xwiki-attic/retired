@@ -1,0 +1,38 @@
+<div class="contentheader">
+ <h1 id="pagetitle">
+ ## The page title is written at the top of the "page area", in the transparent grey striped header.
+ ## The name displayed is computed on a per-case basis, as stated below.
+ ## @TODO this should be replaced using IX (interface extensions) when available.
+ #if($workspace)
+  ## 1- If in a workspace, it's either the application that provides the page title, either it's retrieved from translations
+  #set($appName=$xwsmgr.applicationName)
+  #if($appName && $appName!="")
+   #xwstitle($appName, $doc)
+  #else
+    #if($doc.name=="WebHome") $msg.get('xws.pagetitle.SpaceHome') #elseif($doc.name=="WebPreferences") $msg.get('xws.pagetitle.SpaceAdmin') #else $doc.displayTitle #end 
+  #end
+ #else ## 2- Otherwise, we lookup for a specific translation, and if there is not, we display the document's title
+  #if("${doc.space}.${doc.name}"=="XWiki.XWikiPreferences" && $request.section && $request.section!="")
+   $msg.get("xws.pagetitle.XWiki.XWikiPreferences.$request.section")
+  #elseif("${doc.space}.${doc.name}"=="Main.WebHome" && $context.user.equals("XWiki.XWikiGuest")) $msg.get('xws.pagetitle.Main.WebHome.XWikiGuest')
+  #elseif($msg.get("xws.pagetitle.${doc.space}.${doc.name}")!="xws.pagetitle.${doc.space}.${doc.name}") $msg.get("xws.pagetitle.${doc.space}.${doc.name}")
+  #elseif($doc.getObject("XWiki.XWikiUsers")) $xwiki.getUserName($doc.fullName, false)
+  #else $doc.displayTitle #end
+ #end
+ </h1>
+ #if($workspace && $xwsmgr.applicationName=="Wiki" && $doc.name!="WebHome")
+ <div class="message"> 
+   $msg.get("version") $tdoc.version - $msg.get("lastmodifiedby") $xwiki.getUserName($tdoc.author) - $msg.get("lastmodifiedon") $!xwiki.formatDate($tdoc.date, $msg.get('xws.dateformat.withtime')) 
+  #if($doc.comment!="")
+   <a href="javascript:void(0)" onclick="$('doc-comment-div').style.display=$('doc-comment-div').style.display=='block'?'none':'block';">
+    <img src="$xwiki.getSkinFile('images/versioncomment.gif')"/>
+   </a>
+  #end
+ </div>
+ #end
+</div>
+#if($doc.comment!="")
+ <div id="doc-comment-div" style="display:none">
+  #info("<em>$msg.get('commons.page.versioncomment') :</em> $doc.comment")
+ </div>
+#end

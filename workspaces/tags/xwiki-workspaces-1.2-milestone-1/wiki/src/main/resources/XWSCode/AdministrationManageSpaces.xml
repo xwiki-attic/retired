@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>AdministrationManageSpaces</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1202818988000</creationDate>
+<date>1220356522000</date>
+<contentUpdateDate>1220356522000</contentUpdateDate>
+<version>2.1</version>
+<title>ManageSpacesCode</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.AdministrationManageSpaces</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#**
+ * Administration : Manage workspaces
+ *#
+#includeMacros("XWSCode.XWSMacros")
+#* Process actions, if there are any requested...  *#
+#if($request.do &amp;&amp; $request.s &amp;&amp; $request.s !="")
+ #set($space=$xwsmgr.getSpace($request.s))
+ #set($args = $xwiki.arrayList)
+ #set($void = $args.add($space.displayTitle))
+ #if($request.do=="archive")
+  #set($ok = $xwsmgr.deleteSpace($space.spaceName, false))
+  #if($ok)
+   #info("$msg.get('xws.admin.spacearchived',$args)")
+  #else
+   #error("$msg.get('xws.admin.errorarchiving')")
+  #end
+ #elseif($request.do=="undelete")
+ #set($ok = $xwsmgr.undeleteSpace($space.spaceName))
+  #if($ok)
+   #info("$msg.get('xws.admin.spacerestored',$args)")
+  #else
+   #error("$msg.get('xws.admin.errorrestoring')")
+  #end
+ #elseif($request.do=="delete")
+  #set($args = $util.arrayList)
+  #set($ok = $args.add($space.displayTitle))
+  #warning("$msg.get('xws.admin.confirmdeletion',$args)")
+  &lt;span class="buttonwrapper"&gt;
+   #set($url = $doc.getURL("view","section=Spaces&amp;amp;do=confirmdelete&amp;amp;s=${space.spaceName}"))
+   &lt;a href="${url}"&gt; $msg.get('commons.actions.confirm')&lt;/a&gt;
+  &lt;/span&gt;
+ #elseif($request.do=="confirmdelete")
+  #set($args=$util.arrayList)
+  #set($add = $args.add($space.displayTitle))
+  #set($ok = $xwsmgr.deleteSpace($space.spaceName, true))  
+  #if($ok)
+   #info("$msg.get('xws.admin.spacedeleted',$args)")
+  #else
+   #error("$msg.get('xws.admin.errordeletingspace',$args)")
+  #end
+ #end
+#end
+
+#includeInContext("XWSCode.CreateNewWorkspace")
+#*
+ * Display spaces lists and associated actions
+ *#
+1.1 $msg.get('xws.admin.managespaces')
+
+#* Warning and invitation if the organization workspace has not been created yet. *#
+#set($org= $xwiki.xwsmgr.getOrganizationSpace())
+#if(!$org)
+ #warning("Your organization's workspace has not been created yet. You can &lt;a href=$doc.getURL('view','section=OrganizationSpace')&gt;create it here&lt;/a&gt;")
+
+#end
+1.1.1 $msg.get('xws.admin.activespaces')
+
+#set($active = $xwiki.xwsmgr.getSpaceNames(0, 0))
+#if($active.size() &gt; 0)
+ #foreach($spaceName in $active)
+  #set($tspace = $xwiki.xwsmgr.getSpace($spaceName))
+  #workspacedetails($tspace, true)
+ #end
+#else
+ #info("$msg.get('xws.admin.noactivespace')")
+#end
+
+1.1.1 $msg.get('xws.admin.archivedspaces')
+
+#set($archived = $xwsmgr.getDeletedSpaces())
+#if($archived.size() &gt; 0)
+ #foreach($space in $archived)
+  #workspacedetails($space,true)
+ #end
+#else
+ #info("$msg.get('xws.admin.noarchivedspace')")
+#end
+
+1.1 $msg.get('xws.createworkspace.title')
+#includeInContext("XWSCode.CreateNewWorkspaceForm")</content>
+</xwikidoc>

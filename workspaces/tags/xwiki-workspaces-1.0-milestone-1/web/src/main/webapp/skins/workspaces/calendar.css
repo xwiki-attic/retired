@@ -1,0 +1,251 @@
+#calendarTable, #wiki-calendar-table-1 {
+  font-size: 11px;
+  color: #000;
+  width: 100%;
+  background: #fff;
+  clear: both;
+  vertical-align: top;
+}
+
+#wiki-calendar-table-1 td{
+  overflow: hidden;
+  z-index: -1;
+}
+
+table.wiki-calendar-table{
+  align: left;
+  valign: top;
+}
+
+#calendarTable tr th {
+  background: #CCE2EC;
+}
+#calendarViewSelector {
+  margin: 0 0 0 45px;
+  padding: 10px 0 20px 0;
+}
+#calendar_newevent {
+  position: absolute;
+  right: 60px;
+}
+a#moveCalBack_week, a#moveCalBack_month, a#moveCalBack_day  {
+  display: block;
+  float: left;
+  font-size: 0px;
+  background: url(images/prev.gif) no-repeat;
+  height: 20px;
+  width: 10px;
+  margin: 0 0 0 50px;
+}
+a#moveCalForward_week, a#moveCalForward_month, a#moveCalForward_day  {
+  display: block;
+  float: right;
+  font-size: 0px;
+  background: url(images/next.gif) no-repeat;
+  height: 20px;
+  width: 10px;
+  margin: 0 50px 0 0;
+}
+#calendarCurrent {
+  font-size: 14px;
+  font-weight: bold;
+  text-align:center;
+}
+
+/*calendar panels*/
+
+td.wiki-calendar-dayinmonth{
+  background: transparent url('images/daypanel-inmonth.png') no-repeat bottom right;
+  vertical-align: top;
+  width: 14%;
+  height: 80px;
+  padding: 5px 5px;
+  zoom:1;
+}
+
+td.wiki-calendar-today, td.wiki-calendar-today-notinmonth{
+  background: transparent url('images/daypanel-today.png') no-repeat bottom right;
+  vertical-align: top;
+  width: 14%;
+  height: 80px;
+  padding: 5px 5px;
+  zoom:1;
+  color: #A5B853;
+}
+
+td.wiki-calendar-daynotinmonth{
+  background: transparent url('images/daypanel-notinmonth.png') no-repeat bottom right;
+  vertical-align: top;
+  width: 14%;
+  height: 80px;
+  padding: 5px 5px;
+  zoom:1;
+  color: #c6c6c6;
+}
+
+td.wiki-calendar-dayinmonth>div{
+  background: transparent;
+}
+
+td.wiki-calendar-today>div, td.wiki-calendar-today-notinmonth>div{
+  background: transparent;
+}
+
+td.wiki-calendar-daynotinmonth>div{
+  background: transparent;
+}
+
+.wiki-calendar-daytitle, 
+td.wiki-calendar-dayinmonth-hover .wiki-calendar-daytitle{
+  text-align: right;
+  font-size: 14px;
+  padding-right: 3px;
+  float: right;
+  position: relative;
+}
+
+tr.wiki-calendar-daynamerow{
+  height: 17px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #86A812;
+}
+
+tr.wiki-calendar-month{
+  text-align: center;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+#wiki-calendar-table-1 a{
+  color: #000;
+  font-weight: normal;
+  text-decoration: none;  
+}
+
+tr.wiki-calendar-month a:link, tr.wiki-calendar-month a:visited, .prev-month a{
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+tr.wiki-calendar-month a:hover, tr.wiki-calendar-month a:active{
+  color: #A5B853;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+td.wiki-calendar-dayinmonth:hover, td.wiki-calendar-dayinmonth:active{
+  background: url('images/daypanel-inmonth-hover.png') no-repeat bottom right;
+}
+
+td.wiki-calendar-today:hover, td.wiki-calendar-today:active,
+td.wiki-calendar-today-notinmonth:hover, td.wiki-calendar-today-notinmonth:active{
+  background: url('images/daypanel-today-hover.png') no-repeat bottom right;
+}
+
+td.wiki-calendar-daynotinmonth:hover, td.wiki-calendar-daynotinmonth:active{
+  background: url('images/daypanel-notinmonth-hover.png') no-repeat bottom right;
+}
+
+#link_create_event{
+  width: 170px;
+  height: 17px;
+  margin: 0 0 20px 0;
+}
+
+#link_show_all_events{
+  padding-top: 20px;
+}
+
+.link_left{
+  width: 9px; 
+  height: 17px;
+  float: left;
+  background: url('images/link-btn-left.png') no-repeat top left;
+  vertical-align:top;
+}
+
+.link_center{
+  float: left;
+  line-height: 15px;
+  text-align: center;
+  border-top: 1px solid #DC9415;
+  border-bottom: 1px solid #DC9415;
+}
+
+.link_center a{
+  color: #DC9415;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.link_right{
+  width: 9px;
+  height: 17px;
+  float: left;
+  background: url('images/link-btn-right.png') no-repeat top right;
+  vertical-align:top;
+}
+
+.vevent{
+  padding-top: 15px;
+}
+
+.event_footer {
+  padding:3px 5px;
+  text-align: right;
+  font-size: 0.85em;
+  color: #888;
+}
+
+.eventinfo{
+  border-bottom:1px solid #DDD;
+  padding: 3px 0;
+}
+
+.description, .timeplace{
+  padding: 5px 0;
+}
+
+.clear dt{
+  padding-top: 10px;
+}
+
+.clear dd{
+  margin-left: 0px;
+}
+
+.clear dd input{
+  width: 260px;
+}
+
+.clear dd textarea{
+  width: 450px;
+}
+
+.ev_title{
+  color:#888888;
+  left:5px;
+  position:relative;
+}
+
+#events{
+  border-top: 1px solid #333;
+}
+
+.events-title{
+  height: 21px;
+}
+
+.events-inner-title{
+  background: transparent url(images/show-events.png) no-repeat top right;
+  text-align: center;
+  line-height: 1.5em;
+  width: 160px;
+  height: 21px;
+  float: right;
+  color: #fff; 
+  cursor: pointer;
+}

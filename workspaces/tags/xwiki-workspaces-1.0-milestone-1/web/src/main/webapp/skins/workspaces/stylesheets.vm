@@ -1,0 +1,24 @@
+<script type="text/javascript" src="$xwiki.getSkinFile("xws.js")"></script>
+<link href="$xwiki.getSkinFile("css/lightbox/lightbox.css", true)" rel="stylesheet" type="text/css" />
+<link href="$xwiki.getSkinFile("style.css", true)" rel="stylesheet" type="text/css"  />
+<!--[if lte IE 6]>
+    <link href="$xwiki.getSkinFile("ie.css", true)" rel="stylesheet" type="text/css"  />
+    <script type="text/javascript" src="$xwiki.getSkinFile("supersleight.js")"></script>
+<![endif]-->
+
+##if ($xwiki.getUser().hasAdminRights() && ($context.getUser().startsWith("xwiki:") || $context.getDatabase().equals("xwiki")) )
+##<link href="$xwiki.getSkinFile("admin.css", true)" rel="stylesheet" type="text/css"  />
+##end
+
+#if ($workspace && $context.getAction() == "edit" && $doc!="WebPreferences" && $doc.space.endsWith("_Wiki"))
+<link href="$xwiki.getSkinFile("editpagewiki.css", true)" rel="stylesheet" type="text/css"  />
+<style>
+ #xwikieditwysiwyg, #xwikieditwiki, #xwikieditobject, #xwikieditclass, #xwikieditrights, #xwikiedithistory {display: none;}
+</style>
+#end
+#if ($context.getAction() == "inline")
+<link href="$xwiki.getSkinFile("editpagewiki.css", true)" rel="stylesheet" type="text/css"  />
+#end
+#if ($context.getAction() == "admin")
+<link href="$xwiki.getSkinFile("editpagewiki.css", true)" rel="stylesheet" type="text/css"  />
+#end

@@ -1,0 +1,65 @@
+#set($tocreate=$request.getParameter("tocreate"))
+#set($title = $request.getParameter("title"))
+#set($template = "")
+#set($template = $request.getParameter("template"))
+#set($parent = "")
+#set($parent=$request.getParameter("parent"))
+#set($auxparams="")
+#set($auxparams=$request.getParameter("auxparams"))
+##
+## Create panel
+##
+#if($tocreate=="panel")
+#set($docname=$title.replaceAll("/", "%2F"))
+#set($docname=$docname.replaceAll("'",""))
+#if(!$template || $template == "")
+#set($template="Panels.PanelTemplate")
+#end
+#set($newdoc=$xwiki.getDocument($docname))
+#if($newdoc.isNew())
+#set($pcontent = "#")
+#set($pcontent = $pcontent.concat("panelheader('${title}')${xwiki.getNl()}${xwiki.getNl()}#"))
+#set($pcontent = $pcontent.concat("panelfooter()"))
+#set($pcontent = $xwiki.getURLEncoded($pcontent))
+$response.sendRedirect($newdoc.getURL("inline", "template=${template}&Panels.PanelClass_0_name=${title}&Panels.PanelClass_0_content=$pcontent"))
+#else
+$response.sendRedirect($newdoc.getURL("view", "xpage=docalreadyexists"))
+#end
+##
+## Create page
+##
+#elseif($tocreate=="page")
+#set($docname=$title.replaceAll("/", "."))
+#set($docname=$docname.replaceAll("'",""))
+#set($docname=$docname.replaceAll(" ",""))
+##
+## Create space
+##
+#elseif($tocreate=="space")
+#set($title=$title.replaceAll(" \\.\\/", ""))
+#set($docname="${title}.WebHome")
+##
+## Create blog post or gallery
+##
+#elseif($tocreate=="post" || $tocreate=="gallery")
+#set($docname="${doc.space}.${title.replaceAll(' ', '')}")
+#set($docname=$docname.replaceAll("'",""))
+#end
+##
+## Send redirect
+##
+##set($docname=$xwiki.clearName($docname))
+#set($docname=$xwiki.clearAccents($docname))
+#set($newdoc=$xwiki.getDocument($docname))
+##$newdoc.getURL("edit", "template=${template}&parent=${parent}$auxparams"))
+#if($newdoc.isNew())
+#if($tocreate == "post")
+$response.sendRedirect($newdoc.getURL("inline", "parent=${parent}&template=XWiki.ArticleClassTemplate&XWiki.ArticleClass_0_title=$title"))
+#elseif($tocreate == "gallery")
+$response.sendRedirect($newdoc.getURL("save", "template=XWSCode.GalleryTemplate&parent=${parent}${auxparams}&title=$title&xredirect=${newdoc.getURL('inline')}"))
+#else
+$response.sendRedirect($newdoc.getURL("edit", "template=${template}&parent=${parent}${auxparams}&title=$title&editor=wysiwyg"))
+#end
+#else
+$response.sendRedirect($newdoc.getURL("view", "xpage=docalreadyexists"))
+#end

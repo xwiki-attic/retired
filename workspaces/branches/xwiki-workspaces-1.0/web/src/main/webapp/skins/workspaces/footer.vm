@@ -1,0 +1,9 @@
+<!--[if lte IE 6]>
+<script type="text/javascript">
+	function pngtranslucide() {
+		supersleight.limitTo('leftmenu');
+		supersleight.init();
+	}
+  Event.observe(window, 'load', pngtranslucide(), false);
+</script>
+<![endif]-->

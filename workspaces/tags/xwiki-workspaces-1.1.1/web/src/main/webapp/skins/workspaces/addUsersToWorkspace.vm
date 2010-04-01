@@ -1,0 +1,36 @@
+$response.setContentType("application/x-json")
+#set( $offset = $util.parseInt( $request.get( "offset" ) ) )
+## offset starts from 0 in velocity and 1 in javascript
+#set( $off = $offset - 1 )
+#set( $limit = $util.parseInt( $request.get( "limit" ) ) )
+
+#set($matching = $request.get("username"))
+#if(!$matching)
+ #set($matching="") 
+#end
+
+#set($workspace=$xwiki.xwsmgr.space)
+#set($users = $xwiki.xwsmgr.getPotentialMembers($workspace.spaceName, $matching, $limit, $off))
+## TODO A request that counts total potential members
+#set($countDocs = $xwiki.xwsmgr.getPotentialMembers($workspace.spaceName, "", 0 ,0).size())
+
+### json starts
+{ 
+"totalrows": $countDocs,
+"returnedrows": #if($users.size() < $limit) $users.size() #else $limit #end,
+"offset": $offset,
+"reqNo": $request.reqNo,
+"rows": [
+#foreach( $user in $users )
+   #if( $velocityCount > 1 ) , #end
+   #set($udoc = $xwiki.getDocument($user))
+   #set($userobj = $udoc.getObject('XWiki.XWikiUsers'))
+   {"username"      : "$user",
+    "lastname"      : "$userobj.get('last_name').replaceAll("\"","\\\"")",
+    "firstname"     : "$userobj.get('first_name').replaceAll("\"","\\\"")"
+   }
+#end
+]}
+
+### end of json
+

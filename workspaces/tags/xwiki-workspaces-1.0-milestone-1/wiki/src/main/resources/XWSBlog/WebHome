@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSBlog</web>
+<name>WebHome</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1195481342000</creationDate>
+<date>1203529757000</date>
+<contentUpdateDate>1203529757000</contentUpdateDate>
+<version>3.1</version>
+<title>SpaceBlog</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment>Rollback to version 1.1</comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSBlog.WebHome</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Entry point for a Space Blog
+## ============================================
+## Lists Blog articles inside a space
+## Mandatory input: $space
+## ============================================
+#if($request.do &amp;&amp; $request.do=="createentry")
+  1.1.1 $msg.get('space.blog.createarticle')
+  &lt;form method="post" action="$doc.getURL("view", "xpage=create")" onsubmit="cancelCancelEdit()" id="add-blog-article"&gt;
+  &lt;input type="hidden" name="tocreate" value="post"/&gt;
+  &lt;br/&gt;
+  $msg.get('space.blog.createarticle.articlename')
+  &lt;input name='title' class="add-blog-article-title" size="60"/&gt;&lt;br/&gt;&lt;br/&gt;
+  #buttonPopupCancelSubmit($msg.get('commons.form.cancel'), $msg.get('commons.form.validate'))
+#else
+ ## Otherwise, we display the blog
+&lt;div class="blog"&gt;
+## Compute the blog title...
+#set($blogstitle=$xwiki.getWebPreference('space_title'))
+ #if(!$blogstitle || $blogstitle == "")
+  #if($doc.space.startsWith("User_"))
+   #set($blogstitle = "$msg.get('space.blog.blogof') $space.prettyName")
+  #else
+   #set($blogstitle = "$msg.get('space.blog.blogofspace') $space.prettyName")
+  #end
+ #end
+## Initialize blog parameters
+#set($nbstart = $request.nbstart)
+#set($category = "")
+#if($request.category &amp;&amp; $request.category != "")
+ #set($category=$request.category)
+#end
+#set($nbitems = "10")
+## Display blog from macro
+#includeMacros("xwiki:XWSCode.BlogMacros")
+#blog($category $nbitems $nbstart)
+#end
+&lt;/div&gt;</content>
+</xwikidoc>

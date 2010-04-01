@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>CreateWorkspace</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1200997863000</creationDate>
+<date>1201125678000</date>
+<contentUpdateDate>1202988798000</contentUpdateDate>
+<version>1.1</version>
+<title>CreateWorkspace</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.CreateWorkspace</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#set($sm=$xwiki.xwsmgr)
+
+1.1.1 Create a new Workspace...
+
+#if($request.method=="POST")	
+  #set($newspace = $sm.createSpaceFromRequest(""))
+  #if($newspace)
+    Space created !
+  #else
+    Error occured while creating the space
+  #end
+#end
+
+#set($newspace = $sm.getSpace(""))
+$newspace.set("spacetype", "workspace")
+#set($ok = $sm.updateSpaceFromRequest($newspace))
+
+&lt;form action="" method="POST"&gt;
+ 
+* Title : $newspace.display("displayTitle","edit")
+* Description : $newspace.display("description","edit")
+
+&lt;input type="submit" value="Create the space"&gt;
+ &lt;/form&gt;
+
+</content></xwikidoc>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>BlogMacros</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1194726727000</creationDate>
+<date>1210321803000</date>
+<contentUpdateDate>1210321803000</contentUpdateDate>
+<version>3.1</version>
+<title>BlogMacros</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.BlogMacros</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Blog macros
+## ============================================
+## - provides macros to display a space blog
+## and a blog article
+## ============================================
+##
+#macro(blog $category $nbitems $nbstart)
+#if(!$maxchars)
+ #set($maxchars = 400)
+#end
+&lt;div class="hfeed"&gt;
+#if($category=='')
+ #set ($sql = ", BaseObject as obj where obj.name=doc.fullName and obj.className='XWiki.ArticleClass' and obj.name&lt;&gt;'XWiki.ArticleClassTemplate' and doc.web='${doc.space}' order by doc.creationDate desc")
+#else
+ #if($category.endsWith('NotClassified'))
+ #set ($sql = ", BaseObject as obj where doc.web='${doc.space}' and obj.name=doc.fullName and obj.className='XWiki.ArticleClass' and obj.name&lt;&gt;'XWiki.ArticleClassTemplate' and (doc.parent='${category}' or doc.parent like '%WebHome' or doc.parent='') order by doc.creationDate desc")
+ #else
+ #set ($sql = ", BaseObject as obj where doc.web='${doc.space}' and obj.name=doc.fullName and obj.className='XWiki.ArticleClass' and obj.name&lt;&gt;'XWiki.ArticleClassTemplate' and doc.parent='${category}' order by doc.creationDate desc")
+ #end
+## TODO: feed category
+#end
+#set($cdate = "")
+#set($inbitems = $xwiki.parseInt($nbitems))
+#set($inbstart = $xwiki.parseInt($nbstart))
+#set($items = $xwiki.searchDocuments($sql, $inbitems, $inbstart))
+#if($items &amp;&amp; $items.size() &gt; 0)
+ #foreach ($item in $items)
+  #showBlogArticle($item)
+ #end
+ ## prev/next links
+ #if (!$velocityCount)
+  ## if $velocityCount has not been initialized (e.g. $xwiki.searchDocuments has returned an empty list)
+  #set($velocityCount = -1)
+ #end
+ #if(($inbstart != 0) || ($velocityCount==$inbitems))
+ &lt;div class="pagingLinks"&gt;
+ #if ($inbstart!=0)
+  #set($iprev = $inbstart - $inbitems)
+  &lt;span class="prevPage"&gt;[$msg.get('commons.actions.previous')&gt;$doc.name?category=$!category&amp;nbstart=${iprev}]&lt;/span&gt;
+ #end
+ #if($velocityCount==$inbitems)
+  #set($inext = $inbstart + $inbitems)
+  &lt;span class="nextPage"&gt;[$msg.get('commons.actions.next')&gt;$doc.name?category=$!category&amp;nbstart=${inext}]&lt;/span&gt;
+ #end
+ &lt;span class="clear"&gt;&lt;/span&gt;
+ &lt;/div&gt; ## pagingLinks
+ #end
+#else
+ #info("$msg.get('space.blog.noarticleforcategory')")
+#end
+##
+&lt;/div&gt; ##hfeed
+#end
+##
+## Blog Article
+##
+#macro(showBlogArticle $item)
+ #set($bentrydoc = $xwiki.getDocument($item))
+ #if($bentrydoc.fullName == $item)
+  #set($bentryobj = $bentrydoc.getObject("XWiki.ArticleClass"))
+  #set($creationDate = $xwiki.formatDate($bentrydoc.creationDate, "$msg.get('xws.dateformat')"))
+  #if($cdate!=$creationDate)
+   &lt;div class="article_date"&gt;$creationDate&lt;/div&gt;
+   #set ($cdate = $creationDate)
+  #end
+  &lt;div class="hentry"&gt;
+  &lt;h2 class="heading-1-1-1 entry-title"&gt;&lt;a href="$bentrydoc.getURL()"&gt;$bentrydoc.display("title","view", $bentryobj)&lt;/a&gt;&lt;/h2&gt; $msg.get('space.blog.article.by') $xwiki.getUserName(${bentrydoc.creator}, true) $msg.get('space.blog.article.on') &lt;abbr class="published" title="#formatdateISO($bentrydoc.creationDate)"&gt;$xwiki.formatDate($bentrydoc.date, "$msg.get('xws.dateformat')")&lt;/abbr&gt; 
+  &lt;div class="article_content entry-summary"&gt;
+   #set($content = $bentrydoc.display("content", "view", $bentryobj))
+  $bentrydoc.getRenderedContent($content)
+  &lt;/div&gt; ## entry-content
+  &lt;div class="article_footer"&gt;
+  #category($bentrydoc) | #if($bentrydoc.date != $bentrydoc.creationDate) $msg.get('space.blog.article.modifiedby') $xwiki.getUserName(${bentrydoc.author}, true) $msg.get('space.blog.article.on') &lt;abbr class="updated" title="#formatdateISO($bentrydoc.date)"&gt;$xwiki.formatDate($bentrydoc.date, $msg.get('xws.dateformat'))&lt;/abbr&gt;#end | &lt;a href="$bentrydoc.getURL("view")" rel="bookmark"&gt;$msg.get('space.blog.article.permalink')&lt;/a&gt;
+  #if($doc.fullName!=$bentrydoc.fullName) | &lt;a href="${bentrydoc.getURL('view','sc=1#comments')}"&gt;$msg.get('space.blog.article.comments') ($bentrydoc.comments.size())&lt;/a&gt; #end
+  &lt;/div&gt; ## article_footer
+  &lt;/div&gt;
+  #end
+#end</content>
+</xwikidoc>

@@ -1,0 +1,11 @@
+#if($xwiki.xwsmgr.space)
+<option value="">-- $msg.get('xws.wysiwyg.chooseworkspace') -- </option>
+#foreach($workspace in $xwiki.xwsmgr.getMyMemberships())
+    <option value="$workspace.spaceName">$workspace.displayTitle</option>
+#end
+#else
+<option value="">-- $msg.get('choosespace') -- </option>
+#foreach($space in $xwiki.spaces)
+    <option value="$space">$space</option>
+#end
+#end

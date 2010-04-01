@@ -1,0 +1,26 @@
+<div class="contentheader">
+<h1> $msg.get("xws.members.title") </h1>
+</div>
+#if($workspace)
+ #set($admins = $xwiki.xwsmgr.getAdmins($workspace.spaceName))
+ #set($readers = $xwiki.xwsmgr.getReaders($workspace.spaceName))
+ #set($writers = $xwiki.xwsmgr.getWriters($workspace.spaceName))
+ #if($admins.size()>0)
+  <h4 class="heading-1-1-1">$msg.get('xws.members.admins')</h4>
+  #foreach($admin in $admins)
+   #smallhcard($admin)
+  #end
+ #end
+ #if($writers.size()>0)
+  <h4 class="heading-1-1-1">$msg.get('xws.members.writers')</h4>
+  #foreach($writer in $writers)
+   #smallhcard($writer)
+  #end
+ #end
+ #if($reader.size()>0)
+  <h4 class="heading-1-1-1">$msg.get('xws.members.readers')</h4>
+  #foreach($reader in $readers)
+   #smallhcard($reader)
+  #end
+ #end
+#end

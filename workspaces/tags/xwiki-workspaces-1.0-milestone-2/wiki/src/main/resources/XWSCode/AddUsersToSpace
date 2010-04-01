@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>AddUsersToSpace</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1203556124000</creationDate>
+<date>1205531044000</date>
+<contentUpdateDate>1205531044000</contentUpdateDate>
+<version>58.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.AddUsersToSpace</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#set($togroup=$request.group)
+#set($groupName = $msg.get("xws.group.${togroup}"))
+#set($args = $util.arrayList)
+#set($void = $args.add($groupName))
+1.1 $msg.get('xws.admin.adduserstogroup', $args)
+#info($msg.get('xws.admin.addusershelp'))
+&lt;div id="users-ajax-loader"&gt;
+  &lt;div id="ajax-loader"&gt;$msg.get("ui.ajaxTable.loading")&lt;br /&gt;
+    &lt;img src="$xwiki.getSkinFile('icons/ajax-loader.gif')" alt="$msg.get('ui.ajaxTable.loading')" title="" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="users-table"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table id="alldocstable"&gt;
+&lt;tr&gt;
+ &lt;td colspan="2"&gt;
+   &lt;span id="showLimits"&gt;&lt;/span&gt;
+ &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;
+      &lt;table id="displayalldocs"&gt;
+       &lt;thead class="theader"&gt;
+          &lt;tr&gt;
+            &lt;td&gt;$msg.get("xws.admin.availableusers")&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr id="table-filters"&gt;
+              &lt;td&gt;&lt;input name="username" type="text"/&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+       &lt;/thead&gt;
+       &lt;tbody id="display1"&gt;&lt;tr&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+      &lt;/table&gt;&lt;/td&gt;
+      &lt;td valign="top"&gt;
+        &lt;div id="scrollbar1" class="scrollbar"&gt;&lt;div class="inscrollbar"&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;td id="buff"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+  &lt;div&gt;$msg.get('xws.admin.selectedusers')&lt;/div&gt;
+&lt;div id="selectedUsers"&gt;
+  &lt;table id="selectedUsersTable"&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;center&gt;
+&lt;span class="buttonwrapper"&gt;
+&lt;a href=$doc.getURL("view","s=m")&gt;$msg.get('commons.form.cancel')&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class="buttonwrapper"&gt;
+&lt;a id="addUsersToSpace"&gt;$msg.get("xws.admin.adduserstospace", $args)&lt;/a&gt;
+&lt;/span&gt;
+&lt;/center&gt;
+#set($url = "?xpage=addUsersToWorkspace")
+{pre}
+&lt;script type="text/javascript"&gt;
+Event.observe($('addUsersToSpace'), "click", addUsers());
+function displayAllDocs(row, i, table)
+{
+  
+  var tr = document.createElement('tr');
+  if (i % 2 == 0) {
+    tr.className = "even";
+  } else {
+    tr.className = "odd";
+  }
+  var fullname = row.firstname + " " + row.lastname;
+  var username = document.createElement('td');
+  var usernameDiv = document.createElement('div');
+  var arrowDiv = document.createElement('div');
+  usernameDiv.setAttribute("style", "width: 80%; float: left;");
+  usernameDiv.style.width = "80%";
+  usernameDiv.style.styleFloat = "left";
+  usernameDiv.href="javascript:void(0)";
+  username.id = "left_" + row.username;
+  usernameDiv.appendChild(document.createTextNode(fullname) );
+
+  if(!$('right_'+row.username)){
+    var a = document.createElement('a');
+    a.id = "a_" + row.username;
+    a.setAttribute("style","cursor:pointer");
+    a.href = "javascript:void(0);" + "pushUserInList('"+row.username+"','"+fullname+"')";
+    a.appendChild(getAddImageNode());
+    arrowDiv.appendChild(a);
+  }
+  
+  username.appendChild(usernameDiv);
+  username.appendChild(arrowDiv);
+  tr.appendChild(username);
+
+  return tr;
+}
+function pushUserInList(userId, userName) {
+  var rightUsernameDiv = document.createElement('div');
+  var rightArrowDiv = document.createElement('div');
+  var tableLine = document.createElement('tr');
+  var tableCell = document.createElement('td');
+  var userEntry = document.createElement('span');
+  var a = document.createElement('a');
+
+  userEntry.id = "right_" + userId;
+  userEntry.appendChild(document.createTextNode(userName));
+
+  a.id = "right_a_" + userId;
+  a.setAttribute("style","cursor:pointer");
+  a.setAttribute("onclick","return removeUserFromList('"+userId+"','"+userName+"')");
+  a.style.bgColor = "red";
+  a.appendChild(getDelImageNode());
+
+  rightArrowDiv.appendChild(a);
+  rightUsernameDiv.setAttribute("style", "width: 90%; float: left;");
+  rightUsernameDiv.appendChild(userEntry);
+  
+  tableCell.appendChild(rightUsernameDiv);
+  tableCell.appendChild(rightArrowDiv);
+
+  tableLine.appendChild(tableCell);
+
+  $('selectedUsersTable').appendChild(tableLine);
+
+  var link = $('a_'+userId);
+  link.parentNode.removeChild(link);
+}
+function getAddImageNode(){
+  var img = document.createElement('img');
+  img.src = "$xwiki.getSkinFile('images/addtolist.png')";
+  return img;
+}
+function getDelImageNode(){
+  var img = document.createElement('img');
+  img.src = "$xwiki.getSkinFile('images/delete.png')";
+  img.setAttribute("style","padding-right:5px");
+  return img;
+}
+function removeUserFromList(userId, userName){
+  if($('left_'+userId)){
+    var a = document.createElement('a');
+    a.id = "a_" + userId;
+    a.setAttribute("style","cursor:pointer");
+    a.setAttribute("onclick","return pushUserInList('"+userId+"','"+userName+"')");
+    a.appendChild(getAddImageNode());
+    $('left_'+userId).parentNode.lastChild.appendChild(a);
+  }
+  var d = $('right_'+userId);
+  var link = $('right_a_' + userId);
+  d.parentNode.removeChild(d);
+  link.parentNode.removeChild(link);
+}
+function addUsers()
+{
+  return function() {
+    var args = "";
+    args = "s=m&amp;action=add&amp;group=${request.group}";
+    var selected = $('selectedUsersTable').getElementsByTagName("span");
+    for (var i=0;i&lt;selected.length;i++){
+       args += "&amp;" + selected[i].id + "=1";
+    }
+    var url = "$doc.getURL('view')" + "?" + args;
+    window.location = url;
+  }
+}
+var ta = new ASSTable("$url", 15, "display1", "scrollbar1", "alldocstable", displayAllDocs, true);
+&lt;/script&gt;
+{/pre}
+</content></xwikidoc>

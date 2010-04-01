@@ -1,0 +1,5 @@
+<style type="text/css">
+#search_tab {display:none;}
+#recent_viewed_tab {display:none;}
+#recent_modified_tab {display:none;}
+</style>

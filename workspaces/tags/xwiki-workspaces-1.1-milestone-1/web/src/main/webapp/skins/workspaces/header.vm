@@ -1,0 +1,26 @@
+###
+### Global header
+###
+### The uppermost area of each page
+### Contains the company logo, links to global actions and the search facility
+###
+  <div id="headerglobal" class="layoutsection">
+    <div class="minwidthb"></div>
+    <div id="company">
+    </div>
+      <div id="pagename">
+        #if($workspace) #set($link=$workspace.homeURL) #else #set($link=$xwiki.getURL("Main.WebHome")) #end
+        <a href="$link" title="Home" rel="home">
+	#if($workspace)
+	$workspace.displayTitle
+	#else
+	$doc.web
+	#end
+        &nbsp;</a>
+      </div>
+      <div id="globaldoctitle">
+        <h1>$!headertitle</h1>
+      </div>
+    #set($showattachments = "no")
+    #set($showcomments = "no")
+  </div>

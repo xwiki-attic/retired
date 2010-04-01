@@ -1,0 +1,131 @@
+/* -------------------------------------------------------- */
+.rounded{
+	display:  none;
+}
+#lb-bg {
+  background-image: url("/xwiki/skins/albatross/icons/rights%2Dmanager/back.png");
+  background-repeat: repeat;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100000;
+  /* opacity: 0.7; css3 property */
+  overflow: auto;
+}
+
+#lb input[type=text], #lb textarea {
+    cursor: text;
+}
+
+#lb button{
+    cursor: pointer;
+}
+
+#lb-align {
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 100002;
+}
+
+#lb {
+	position: absolute;
+	left: 50%;
+	top:  50px;
+	margin-left: -450px;
+	z-index: 100005;
+	width: 900px;
+}
+
+.lb-content {
+  background: #eef3f6;
+  border: 10px solid #999;
+  border-width: 0 1px;
+  padding: 0px;
+  text-align: center;
+}
+
+
+#lb-top {}
+#lb-bottom {}
+.lb-squarred {
+  background: #eef3f6;
+  border: 1px solid #A9B6C3;
+}
+
+#lb-bottom .lb-squarred {
+  border-top-width: 0;
+}
+
+#lb-top .lb-squarred {
+  border-bottom-width: 0;
+}
+
+#lb-content h1, #lb-content h2, #lb-content h3 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+
+*+html #lb-top .roundedlight, * html #lb-top .roundedlight {
+  margin-top: -1em;
+}
+
+* html #lb-bottom .roundedlight {
+  margin-top: -1em;
+}
+
+*+html #lb-top .rounded, * html #lb-top .rounded {
+  margin-top: -1em;
+}
+
+
+/* *+html #lb-bottom .rounded, */
+* html #lb-bottom .rounded {
+  margin-top: 0em; /* avant -1em*/
+}
+
+
+*+html #lb-top .rounded .b1, * html #lb-top .rounded .b1, *+html
+#lb-top .roundedlight .b1, * html #lb-top .roundedlight .b1 {
+  margin-bottom: -0.15em;
+}
+
+*+html #lb-bottom .rounded .b12b, * html #lb-bottom .rounded .b12b,
+*+html #lb-bottom .roundedlight .b4b, * html #lb-bottom .roundedlight
+.b4b {
+  margin-bottom: -0.1em;
+}
+
+
+#lb .lb-content {
+	padding: 18px;
+}
+
+.lb-content{
+  overflow: hidden;
+  text-align: left;
+}
+
+
+#close-wrap {
+	position: relative;
+	top: 30px;
+	text-align: right;
+	cursor: default;
+}
+
+#lb-close {
+	margin-left: auto;
+	margin-right: 10px;
+	width: 30px;
+	height: 20px;
+	cursor: pointer;
+	background-image: url("/xwiki/skins/albatross/icons/rights%2Dmanager/btnClose.png");
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,22 @@
+###
+### Main "view" template
+###
+### General wrapper for view actions
+###
+#template("startpage.vm")
+<div class="minwidthb"></div>
+<div class="main layoutsubsection">
+#if($request.viewer && $request.viewer=="categories")
+#template("categories.vm")
+#elseif($request.text && $request.text!="")
+#template("xwssearch.vm")
+#elseif($request.viewer && $request.viewer=="members")
+#template("spacemembers.vm")
+#else
+#template("contentview.vm")
+#template("spacedashboard.vm")
+#template("docextra.vm")
+#end
+</div>
+<div class="clearfloats"></div>
+#template("endpage.vm")

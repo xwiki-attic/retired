@@ -1,0 +1,54 @@
+<div class="xwikidatacontent">
+  #set($rsvc= $xwiki.xWiki.getRightService())
+  #if ($request.getParameter("text"))
+     #set ($spaceName = $request.getParameter("text"))
+     #if($spaceName && $spaceName!="")
+       #set ($wspace = $xwiki.xwsmgr.getSpace($spaceName))
+     #end
+  #end
+
+  #if($wspace)
+    <p style="font-weight:bold"> $msg.get("xws.wysiwyg.resultsforspace") : $wspace.displayTitle</p>
+    ## Link to Workspace Home
+    #set($bentrydoc = $xwiki.getDocument("${wspace.spaceName}.WebHome"))
+    <a href="#" onclick="document.forms[0].wiki_page.value='$bentrydoc.name';if ('$doc.web' != '$bentrydoc.web') document.forms[0].wiki_space.value='$bentrydoc.web'; else document.forms[0].wiki_space.value=''; return false;">
+    $msg.get('xws.wysiwyg.spacehomelink')</a>
+    ## Iterate over space applications
+    #set($apps = $xwiki.xwsmgr.getApplicationsNames($wspace.spaceName))
+    #foreach($app in $apps)
+        #set($docentries = $xwiki.xwsmgr.searchDocuments($wspace.spaceName, $app))
+        <div>
+        $msg.get("xws.wysiwyg.docsforapplication") <em>$app</em>
+        #if ($docentries.size() > 0)
+            <table width="95%" cellspacing="3px">
+                #foreach ($item in $docentries)
+                    #if ($xwiki.hasAccessLevel("view", "${context.database}:${item}"))
+                        <tr>
+                            #set($bentrydoc = $xwiki.getDocument($item))
+			    #set($entryPage = "")
+                            #set($entryName = "")
+                            #if($xwiki.xwsmgr.getApplicationName($bentrydoc.fullName).equals("Photos") && !$bentrydoc.getObject('XWSCode.PhotoGalleryClass'))
+                              #if($bentrydoc.getAttachmentList().size() > 0)
+				#set($parent=$xwiki.getDocument($bentrydoc.parent))
+				#set($galleryName=$parent.title)
+                                #set($entryName="${galleryName} : ${bentrydoc.getAttachmentList().get(0).filename}")
+				#set($entryPage="${bentrydoc.name}?viewer=photo")
+                              #end
+                            #end
+                            #if(!$entryName || $entryName.trim().equals("")) #set($entryName = $bentrydoc.title) #end
+                            #if(!$entryName || $entryName.trim().equals("")) #set($entryName = $bentrydoc.name) #end
+                            #if(!$entryPage || $entryPage.trim().equals("")) #set($entryPage = $bentrydoc.name) #end
+                            <td>* <a href="#" onclick="document.forms[0].wiki_page.value='$entryPage';if ('$doc.web' != '$bentrydoc.web') document.forms[0].wiki_space.value='$bentrydoc.web'; else document.forms[0].wiki_space.value=''; return false;">
+                                $entryName</a>  $msg.get("lastmodifiedby")  $xwiki.getLocalUserName($bentrydoc.author) $msg.get("lastmodifiedon") $xwiki.formatDate($bentrydoc.date,"$msg.get('xws.dateformat.withtime')")
+                             </td>
+                         </tr>
+                    #end
+                #end
+            </table>
+        #else
+            $msg.get("xws.wysiwyg.nodocforthisapp")
+        #end
+        </div>
+     #end
+  #end
+</div>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>BlogArticle</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.jerome</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1196094987000</creationDate>
+<date>1206907413000</date>
+<contentUpdateDate>1206907413000</contentUpdateDate>
+<version>3.1</version>
+<title>BlogArticle</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.BlogArticle</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ============================================
+## Blog Article Sheet
+## ============================================
+## Displays a blog article (XWiki.ArticleClass XObject)
+## Mandatory: ArticleClass XObject
+## ============================================
+#set($obj = "")
+ #set($obj = $doc.getObject("XWiki.ArticleClass"))
+#if($obj == "")
+ #warning("$msg.get('space.blog.error.noarticlefound')")
+#elseif($context.action!="inline")
+ #includeMacros("XWSCode.BlogMacros")
+ #showBlogArticle($doc.fullName)
+#else
+&lt;style type="text/css"&gt;
+.topbuttons{display:none}
+&lt;/style&gt;
+1.1 $msg.get("space.blog.article.category")
+#set($thisDoc = $xwiki.getDocument($doc.fullName))
+## The line above may seem unnecessary :) but due to a nasty bug,
+## we have to ask xwiki for the current document,
+## otherwise with $doc it won't give us tags value
+#set($tObj = $thisDoc.getObject("XWiki.TagClass",0))
+#set($tags = $tObj.getProperty('tags').value)
+#if($tags &amp;&amp; $tags.size()&gt;0)
+ #set($tag=$tags.get(0))
+#else
+ #set($tag="")
+#end
+#set($pDoc= $xwiki.getDocument("${workspace.spaceName}.WebPreferences"))
+#set($cObjs = $pDoc.getObjects('XWSCode.SpaceCategoryClass'))
+ &lt;select name="XWiki.TagClass_0_tags"&gt;
+  &lt;option value=""&gt;$msg.get('space.common.categories.notclassified')&lt;/option&gt;
+  #foreach($cObj in $cObjs)
+   #set($val = ".XWiki_WSCAT_${cObj.getProperty('id').value}")
+   &lt;option value="${val}" #if($tag.equals($val))selected#end&gt;${cObj.display("name","view")}&lt;/option&gt;
+  #end
+ &lt;/select&gt;
+1.1 $msg.get('space.blog.article.title')
+$doc.display("title", "edit", $obj)
+1.1 $msg.get('space.blog.article.content')
+$doc.display("content", "edit", $obj)
+#set($newtitle = $request.title)
+#if($newtitle)
+#set($newtitle = $newtitle.replaceAll('"',"'"))
+#set($redirect= ${xwiki.getURL("${doc.space}.WebHome","view")})
+&lt;script type="text/javascript"&gt;
+var title = "${newtitle}";
+var redirect = "${redirect}";
+{pre}
+document.forms.inline["XWiki.ArticleClass_0_title"].value = title;
+document.forms.inline["xredirect"].value = redirect;
+{/pre}
+&lt;/script&gt;
+#end
+#end</content>
+</xwikidoc>

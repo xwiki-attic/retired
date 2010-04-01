@@ -1,0 +1,314 @@
+/*Tables*/
+
+/*Wellcome user*/
+
+
+
+.wiki-identity{
+ 
+}
+
+
+/*Content*/
+
+
+
+/*Background*/
+
+
+/*
+#lb-content, .lb-content {
+   background-color: #000;
+   background: #000;
+}
+*/
+
+.main.layoutsubsection{
+  text-align: justify;
+}
+
+body#body.inlinebody .main.layoutsubsection { border: 0;}
+.lb-content {
+  text-align: left;
+}
+
+/* DASHBOARD */
+#dashboard {text-align:center;}
+
+#contentcolumncontainer .inlinepanel {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: top;
+  word-wrap: break-word;
+  text-align: left;
+}
+#contentcolumncontainer .inlinepanel .inlinepaneltitle img {
+  border: 0;
+}
+
+* html #contentcolumncontainer .inlinepanel { display:inline; }
+* + html #contentcolumncontainer .inlinepanel { display:inline; }
+
+#contentcolumncontainer .inlinepanel ul {
+  margin: 0 5px 0 0;
+  padding: 0;
+  list-style-position: inside;
+}
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle {
+position: relative;
+  color: #fff;
+  padding: 4px 0 3px 6px;
+  font-size: 1.2em;
+  line-height: 1.1em;
+  margin: 0;
+  height: 23px;
+  font-weight: bold;
+}
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle .inlinepanel-showhide {
+	position: absolute;
+	top:  2px;
+	right:  0px;
+	width: 30px;
+	height: 24px;
+	margin: 0px 5px ;
+  cursor: pointer;
+  background-image: url(more-less.png);
+  background-repeat: no-repeat;
+}
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle .inlinepanel-showhide img{
+	display:  none;
+}
+#body #contentcolumncontainer .inlinepanel.collapsed .inlinepaneltitle .inlinepanel-showhide {
+	background-position: 00% 50%;
+}
+#body #contentcolumncontainer .inlinepanel.expanded .inlinepaneltitle .inlinepanel-showhide {
+	background-position: 100% 50%;
+}
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle a {
+  color: #fff;
+  text-decoration: none;
+}
+#body #contentcolumncontainer .inlinepanel.collapsed .inlinepaneltitle {
+  background-position: right;
+  background-repeat: no-repeat;
+}
+#body #contentcolumncontainer .inlinepanel.expanded .inlinepaneltitle {
+  background-position: right;
+  background-repeat: no-repeat;
+}
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle img {
+  margin: 0 3px -3px 0;
+}
+#contentcolumncontainer .inlinepanel.collapsed .inlinepanelcontents {
+  display: none;
+}
+.inlinepanelcontents {
+  padding: 10px;
+  display: block;
+  text-align:left;
+  min-height: 150px;
+}
+.inlinepanelcontents .pagetitle {
+  float: left;
+  font-weight: bold;
+  color: #444;
+}
+.inlinepanelcontents a.pagemore {
+  color: #2376B6;
+  float: left;
+  padding-left: 10px;
+}
+.inlinepanelcontents .pageinfos {
+  clear: both;
+  font-size: 0.8em;
+}
+
+/* colors default for inline panels */
+/* a delete */
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle {
+  background-color: #70889C;
+}
+.inlinepanelcontents {
+  background-color: #f2f6f9;
+}
+
+
+/* colors for inline panels */
+#body #contentcolumncontainer .inlinepanel.here .inlinepaneltitle {
+  background-color: #F98511;
+}
+.here .inlinepanelcontents {
+  background-color: #FDE2AF;
+}
+
+#body #contentcolumncontainer .inlinepanel.org .inlinepaneltitle {
+  background-color: #900;
+}
+.inlinepanel.org .inlinepanelcontents{
+  background-color: #EACDCC;
+}
+
+
+
+/* ORGANISATION DASHBOARD */
+
+/*   fixed width  */
+#contentcolumncontainer .inlinepanel{
+  margin: 0px 20px 20px 0px;
+  width: 300px;
+}
+* html #contentcolumncontainer .inlinepanel { width:300px; }
+body.body-xws #contentcolumncontainer .inlinepanel,
+body.body-xwiki #contentcolumncontainer .inlinepanel{
+  margin: 0px ;
+  width:100%;
+}
+
+
+/*  resize width  */
+#contentcolumncontainer .inlinepanel{
+	margin: 0;
+	width: 32%;
+		}
+#body #contentcolumncontainer .inlinepanel .inlinepaneltitle {
+	margin:10px 10px 0 10px;
+	}
+#body #contentcolumncontainer .inlinepanel .inlinepanelcontents{
+	margin:0px 10px 10px 10px;
+	overflow-x:hidden;
+	}
+#body.body-xws #contentcolumncontainer .inlinepanel .inlinepanelcontents,	
+#body.body-xwiki #contentcolumncontainer .inlinepanel .inlinepanelcontents{
+margin:0px 10px;
+height: auto;
+min-height: 50px;
+overflow-x:hidden;
+	}
+	
+
+#body #contentcolumncontainer .inlinepanel .inlinepanelcontents table tr td {
+ vertical-align: top;
+}
+#body #contentcolumncontainer .inlinepanel .inlinepanelcontents table tr td img{
+ width: 16px; height:16px;/* for FF */
+}
+#contentcolumncontainer #dashboard .here, 
+#contentcolumncontainer #dashboard .org {
+	margin: 0;
+	width: 49.5%;
+}
+* html #contentcolumncontainer .inlinepanel { width:33%; }
+
+
+/*  blog webhome */
+
+.hentry {
+/*  background-color: #F9F9F9;*/
+  font-size : 0.85em;
+  color: #888;
+  text-align: right;
+}
+.hentry
+.blog-return{
+  margin-top: -45px;
+  float: right;	
+  width: 100px;
+  height: 20px;
+  text-align: center;
+  background: transparent url(images/return.png) left top no-repeat;
+  vertical-align: top;
+}
+
+.wiki-doc-entry .blog-return a{
+  color: #dc9415;
+  font-size : 0.85em;
+  text-decoration : none;
+}
+
+.article_content.entry-summary{
+  font-size: 1.2em;
+  color: #333;
+  margin: 10px 0;
+  text-align: left;
+}
+
+h2.entry-title{
+font-size:  2em;
+  line-height: 2em;
+  text-align: left;
+  border-bottom:1px solid #DDD;
+  color:#666666;
+font-size-adjust:none;
+font-style:normal;
+font-weight:normal;
+letter-spacing:-1px;
+margin-bottom: 0px;
+}
+
+.hfeed .hentry h2.entry-title {
+border-top:1px solid #eee;
+margin:1em 0pt 0pt;
+padding:3px 0pt 3px 0px;
+}
+.hfeed .hentry h2.entry-title a {color:#777; text-decoration: none;}
+
+
+
+/*XWiki Document*/
+
+.wiki-doc-entry{
+  padding-bottom: 10px;
+}
+
+.wiki-doc-entry a{
+ /* 
+ 	color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  */
+}
+
+.edit_section{
+  display: none;
+}
+#space-dashboard {
+	margin:  0;
+	padding: 0 20px 20px 20px;
+  	background-color: transparent;
+}
+
+
+#body #contentcolumncontainer #space-dashboard .inlinepanel {
+	display: block;
+	width: 100%;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepaneltitle{
+	margin: 1em 0 0 0;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents{
+	margin:  0;
+	padding: 0;
+	height: auto;
+max-height: 2000px;
+width:auto;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents table td{
+	padding:3px;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents table td img{
+	float: right;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents table td img.photo{
+	display:none;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents td .pagetitle,
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents td .pageinfos{
+float:none;
+display: inline;
+}
+#body #contentcolumncontainer #space-dashboard .inlinepanel .inlinepanelcontents td .pageinfos{
+margin-left: 30px;
+}
+
+

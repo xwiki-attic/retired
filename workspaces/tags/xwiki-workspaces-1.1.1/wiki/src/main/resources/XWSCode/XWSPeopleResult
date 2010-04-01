@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>XWSPeopleResult</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1200937894000</creationDate>
+<date>1200954116000</date>
+<contentUpdateDate>1202988797000</contentUpdateDate>
+<version>1.1</version>
+<title>XWSPeopleResult</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.XWSPeopleResult</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## ==============================================================
+## Displays results of a people request
+## ==============================================================
+## Inputs :
+## - $hql, the $hql request (Mandatory!)
+## - $howMany, the nb of people to display (default 50)
+## - $offset, where to start from getting results (default 0)
+## - $outputStyle, displays small hcard ("short", default) or long ("long")
+## - $withLinks, display links (true/false) default false
+## ==============================================================
+
+#if(!$howMany || $howMany=="")
+ #set($howMany=50)
+#end
+#if(!$offset || $offset=="")
+ #set($offset=0)
+#end
+#if(!$outputStyle || $outputStyle=="")
+ #set($outputStyle="small")
+#end
+
+#set($total = $xwiki.searchDocuments($hql).size())
+#foreach($user in $xwiki.searchDocuments($hql, $howMany, $offset))
+ #if($outputStyle=="small")
+  #smallhcard($user) 
+ #else
+  #hcard($user)
+ #end
+#end
+
+&lt;div class="clearfloats"&gt;&lt;/div&gt;
+
+#if($withLinks==true)
+ #set($pages = $total/$howMany)
+ #if($pages&gt;0)
+  #if($offset&gt;0)
+   #set($off=${offset}-${howMany})
+   &lt;a href=$doc.getURL("view","offset=${off}")&gt;Previous&lt;/a&gt; -
+   #end
+  &lt;a href=$doc.getURL("view","offset=0")&gt;0&lt;/a&gt;
+  #foreach($page in [1..$pages])
+   #set($off=$howMany*$page)
+   &lt;a href=$doc.getURL("view","offset=${off}")&gt;$page&lt;/a&gt;
+  #end
+  #if($offset+$howMany&lt;$total)
+   #set($off=$offset+$howMany)
+   &amp;#45; &lt;a href=$doc.getURL("view","offset=${off}")&gt;Next&lt;/a&gt;
+  #end
+ #end
+#end</content>
+</xwikidoc>

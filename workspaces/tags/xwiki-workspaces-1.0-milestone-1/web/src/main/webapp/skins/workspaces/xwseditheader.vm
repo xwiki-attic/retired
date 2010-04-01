@@ -1,0 +1,22 @@
+<label>
+#if($doc.name!="WebPreferences" && $doc.name!="WebHome")
+<span id="xwsdocedittitle">$msg.get('commons.page.edit.title') : </span> <input type="text" name="title" size="40" value="$doc.title" />
+ #set($tObj = $doc.getObject('XWiki.TagClass',0))
+ #if($workspace.getWebPreference("tags")=="1")
+ <span id="xwsdocedittags">$msg.get('commons.page.edit.tags') : </span><input type="text" name="XWiki.XWikiTags_0_value" size="40" value=${tObj.get("tags")}/>
+ ## if is categories...
+ #else
+ #set($tag = $tObj.get('tags'))
+ <span id="xwsdoceditcategory">$msg.get('commons.page.edit.category') : </span>
+ #set($pDoc= $xwiki.getDocument("${workspace.spaceName}.WebPreferences"))
+ #set($cObjs = $pDoc.getObjects('XWSCode.SpaceCategoryClass'))
+ <select name="XWiki.TagClass_0_tags">
+  <option value="">$msg.get('space.common.categories.notclassified')</option>
+  #foreach($cObj in $cObjs)
+   #set($val = ".XWiki_WSCAT_${cObj.get('id')}")
+   <option value="${val}" #if($tag.equals($val))selected#end>${cObj.display("name","view")}</option>
+  #end
+ </select>
+ #end
+#end
+</label>

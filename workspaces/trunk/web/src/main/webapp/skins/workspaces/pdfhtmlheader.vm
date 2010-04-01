@@ -1,0 +1,48 @@
+#**
+ * @override templates/pdfhtmlheader to display workspace nice title instead of space name when the page comes fron a workspace.
+ * @since XWS 1.2M2
+ *#
+#template("xwsvars.vm")
+<?xml version="1.0" encoding="$xwiki.encoding" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>
+#if($workspace) #set($spaceName=$workspace.displayTitle) #else #set($spaceName=$doc.space) #end
+$pdfdoc.use("XWiki.PDFClass")
+#set($pdfheader = $pdfdoc.display("title","rendered"))
+#if($pdfheader=="")
+#set($title = $pdfdoc.display("title", "rendered"))
+#if((!$title)||($title==""))
+$!spaceName - $!doc.displayTitle
+#else
+$title
+#end
+#else
+$pdfheader
+#end
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=$xwiki.encoding" />
+</head>
+<body id="body" class="${context.action}body">
+<div class="pdfheader">
+$pdfdoc.use("XWiki.PDFClass")
+#set($pdfheader = $pdfdoc.display("header","rendered"))
+#if($pdfheader=="")
+#template("pdfheader.vm")
+#else
+$pdfheader
+#end
+</div>
+<div class="pdffooter">
+$pdfdoc.use("XWiki.PDFClass")
+#set($pdffooter = $pdfdoc.display("footer", "rendered"))
+#if($pdffooter=="")
+#template("pdffooter.vm")
+#else
+$pdffooter
+#end
+</div>
+<div id="xwikimaincontainer">
+<div id="xwikimaincontainerinner">

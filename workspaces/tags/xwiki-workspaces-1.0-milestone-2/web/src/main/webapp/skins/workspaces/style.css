@@ -1,0 +1,3194 @@
+@import "buttons.css"; 
+@import "webhome.css";
+@import "hcard.css"; 
+@import "microformats.css";
+@import "fullscreenEdit.css";
+@import "css/table/table.css";
+@import "usersandgroups.css";
+@import "suggest/ajaxSuggest.css";
+
+.specialmenu {display:none;}
+.xwikiuserblog {display:none;}
+
+/* Simplify WYSIWYG */
+#mce_editor_0_macrostoolbar, #mce_editor_0_removeformat, #mce_editor_0_hr, #mce_editor_0_tabletoolbar, #mce_editor_0_tablerowtoolbar, #mce_editor_0_tablerowtoolbar, #mce_editor_0_tablecoltoolbar, #mce_editor_0_togglebutton, #mce_editor_0_styletoolbar, #mce_editor_0_indenttoolbar, #mce_editor_0_justifytoolbar, #show-dialog-btn { display:none; }
+#xwikitext #xwikieditcontent textarea#content{height: 430px;}
+
+/* @group RESET */
+/* -------------------------------------------------------------- 
+  
+   Reset.css
+   * Resets default browser CSS styles.
+   
+   Created by Erik Meyer:
+   * meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+   
+-------------------------------------------------------------- */
+html, body{height:100%;}
+html, body,div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+}
+a, a:link, a:active, a:visited {color: #39397f; text-decoration: none;}
+a:hover {color: #00007e;text-decoration:underline;}
+/* Remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white url(workspaces-BG.png) repeat-y 50% 0%;
+}
+body.inlinebody,
+body.editbody, 
+body.adminbody 
+{
+	line-height: 1;
+	color: black;
+	background: white url(workspaces-AD-BG.png) repeat-y 50% 0%;
+}
+
+
+
+
+ol, ul {
+	list-style: none;
+        padding: 0px;
+	margin-left: 2em;
+}
+/* Tables still need 'cellspacing="0"' in the markup. */
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+.clearfloats{
+	clear: both;
+	height: 1px;
+	background-color: transparent;
+	margin-right: 0px;
+}
+body.editbody .clearfloats {
+	margin-right: 300px;
+}
+.hidden { display:  none;}
+a img {border:  none;}
+pre {
+	background-color:#F1F7FF;
+	border:1px dotted #555555;
+	float:left;
+	white-space:pre;
+	padding: 10px;
+	margin: 0em;
+	/*word-wrap:break-word;*/
+}
+.main pre p {margin:0;}
+tt {font-family: monospace;}
+em {font-style: italic;}
+strong, .strong {font-weight: bold;}
+/* @end */
+/* @group XWIKI */
+#doctitle {
+	font-size: 2.8em;
+	line-height: 1.1em;
+	margin: 0 0 30px 0;
+}
+.heading-1 span, .heading-1-1 span,
+.heading-1-1-1 span, .heading-1-1-1-1 span {
+  display: block;
+  color: #000;
+  background-color: inherit;
+  padding: 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+.heading-1 span span, .heading-1-1 span span,
+.heading-1-1-1 span span, .heading-1-1-1-1 span span { 
+	display: inline;
+	color: #000;
+  background-color: inherit;
+  padding: 0;
+  margin:  0;
+  border-bottom: 0px;}
+body#mceSpanFonts .heading-1, body#mceSpanFonts .heading-1-1,
+body#mceSpanFonts .heading-1-1-1, body#mceSpanFonts .heading-1-1-1-1 {
+  display: block;
+  color: #000;
+  background-color: inherit;
+  padding: 0;
+  margin: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+
+h1 {
+  margin-top: 5px;
+  font-size: 2.4em;
+  font-weight: nomal;
+  letter-spacing: -1px;
+  line-height: 1.1em;
+}
+.heading-1, h2 {
+  margin-top: 5px;
+  font-size: 2.3em;
+  font-weight: nomal;
+  letter-spacing: -1px;
+  line-height: 1.1em;
+}
+.heading-1-1, h3 {
+	font-weight:bold;
+	font-style: normal;
+	font-size: 2em;
+	line-height: 1.1em;
+}
+
+#body.editbody div.messageboxcontent {
+	margin: 0px 250px 0 70px;
+	padding-top: 10px;
+}
+.heading-1-1-1, h4 {
+  font-weight: normal;
+    font-size: 1.6em;
+	line-height: 1.1em;
+	margin: 20px 0 ;
+}
+.heading-1-1-1-1, h5 {
+  font-weight:normal;
+  color: #404040;
+  left: 0px;
+  font-size: 1.4em;
+  line-height: 1.1em;
+}
+.heading-1-1-1-1-1, h6 {
+  font-weight:normal;
+  color: #404040;
+  font-style: normal;
+  font-size: 1.3em;
+  line-height: 1.1em;
+}
+
+.edit_section{
+  position: relative;
+  float: right;
+  visibility: hidden;
+  overflow: hidden;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  margin-top:-20px;
+}
+.edit_section a{display: none;}
+.quote {
+  font-style: italic;
+  color: inherit;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+#xwikimaincontainerinner .code {
+  font-family: courier, courier new, monospace;
+  white-space: pre;
+	margin:1em 0;
+	padding: 0 1px;
+  	overflow: auto;
+}
+.java-keyword {
+  font-weight: bold;
+  color: #0000aa;
+  background-color: inherit;
+}
+.java-object {
+  color: #000088;
+  background-color: inherit;
+}
+.java-quote {
+  color: #00aa00;
+  background-color: inherit;
+}
+.xml-keyword {
+  font-weight: bold;
+}
+.xml-tag {
+  color: #0000aa;
+  background-color: inherit;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	clear: both;
+	text-align: left;
+	}
+/* special formatting of a wiki table */
+
+table.WHtable.categorie, table.WHtable.publication {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+table.WHtable.categorie td, table.WHtable.publication td{
+	border: 1px solid #ccc;
+}
+#users-table table{	border: 1px solid #ccc; border-collapse: collapse;width: 100%;}
+#users-table table tr td span#showLimits { 
+display: block;
+padding: 0;
+color: #fff;
+font-weight: normal; 
+text-align: center;  
+margin-right: 28px;
+border-right: 1px solid #ccc;
+background-color: #d2d7eb;
+}
+#users-table table tr td div{
+	text-align: center;
+	padding: 20px;
+		background-color: #d2d7eb;
+}
+
+#users-table table  #selectedUsersTable tr td div {padding: 2px 0; background-color: transparent;}
+#users-table table table#alldocstable div{
+	background-color: transparent;
+	padding: 2px 0;
+}
+#users-table table tr td div#selectedUsers{padding: 0;background-color: #fff;}
+
+div#caption-center {text-align: center;font-size: 0.8em;}
+caption{margin: 0;}
+table#selectedUsersTable { margin: 0;  border-top: 1px solid #ccc;}
+
+#users-table table table{	border: none}
+#users-table table table#alldocstable{margin: 0; border: none;}
+#users-table table table#alldocstable table{margin: 0; border: none; width: 310px;
+background-color: #fff;
+}
+#users-table table table#alldocstable #displayalldocs thead.theader tr td {
+	color: #333;
+	text-align: center;
+	background-color: #d2d7eb;
+	font-weight: bold;
+}
+
+#users-table table table#alldocstable #displayalldocs thead.theader tr#table-filters td { background-color: #d2d7eb; }
+
+
+
+#displayalldocs thead.theader {width: 310px;}
+#users-table table td{	border: 1px solid #ccc; vertical-align: top; width: 50%;}
+#users-table table table td{	border: none; }
+
+
+
+
+.mceContentBody table,
+.main table {
+ font-size: 1em;
+ border-color:#e5eff8;
+ margin:1em 0;
+ border: none;
+ }
+.mceContentBody caption,
+.main caption {
+ color: #4e6172;
+ font-size:.94em;
+ 	letter-spacing:.1em;
+ 	margin:1em 0 0 0;
+ 	padding:0;
+ 	caption-side:top;
+ }
+.mceContentBody table tr td,
+.main table tr td {
+	vertical-align: middle;
+}
+.mceContentBody table tr td em,
+.main table tr td em{font-size: 0.9em; font-style: italic; }
+.mceContentBody tr.odd td,
+.main tr.odd td	{ background:#f7fbff }	
+.mceContentBody td,
+.main td {
+ color: #4e6172;
+border: none;
+ }				
+.mceContentBody tr.table-head td,
+.main th {
+ font-weight:normal;
+ color: #678197;
+ text-align:left;
+ border-color: #e5eff8;
+ padding:.3em 0.5em;
+ }		
+.mceContentBody tr.table-head td,					
+.main  th {
+ background:#f4f9fe;
+ text-align:center;
+ font:bold 0.9em/1.5em Arial,Helvetica,sans-serif;
+ color:#66a3d3
+ }
+
+
+	
+.main tfoot th {
+ text-align:center;
+ background:#f4f9fe;
+ }	
+.main tfoot th strong {
+ font:bold 1.2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+ margin:.5em .5em .5em 0;
+ color:#66a3d3;
+ 	}		
+.main tfoot th em {
+ color:#f03b58;
+ font-weight: bold;
+ font-size: 1.1em;
+ font-style: normal;
+ }
+.main table.sortable span.sortarrow {padding-left: 5px; }
+.main img { margin: 0 }
+.main h1 img, .main h2 img,.main h3 img,.main h4 img,.main h5 img,.main h6 img { margin: 0; vertical-align: middle; }
+#xwikicontent .sortarrow img {margin: 0;}
+.main p {
+	line-height : 1.4em;
+	margin: 1em 0
+	}
+.main ol, .main ul {
+		line-height : 1.4em;
+		margin-top: 1em;
+		margin-bottom:1em; 
+		}
+.main ol ol, .main ul ul {
+		margin-top: 0em;
+		margin-bottom:0em; 
+}
+.main dt{
+	font-weight : bold;
+}
+.main dd{
+	font-style: italic;
+	padding-left: 1em;
+	background: transparent url(bullet-3.png) no-repeat 0em 0.3em;
+}
+.main dd p {margin-top: 0px;}
+.list {}
+.list-title {
+  font-weight: bold;
+}
+.list ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-left: 0px;
+  list-style-type: none;
+}
+/* wiki lists */
+ul.minus { list-style-type: square; }
+ul.star { list-style-type: circle; }
+ol.roman { list-style-type: lower-roman; }
+ol.ROMAN { list-style-type: upper-roman; }
+ol.alpha { list-style-type: lower-alpha; }
+ol.ALPHA { list-style-type: upper-alpha; }
+ol.greek { list-style-type: lower-greek; }
+ol.GREEK { list-style-type: lower-greek; }
+ol.hiragana { list-style-type: hiragana; }
+ol.HIRAGANA { list-style-type: hiragana-iroha; }
+ol.katakana { list-style-type: katakana; }
+ol.KATAKANA { list-style-type: katakana-iroha; }
+ol.HEBREW { list-style-type: hebrew; }
+#body form ul {
+	list-style-type: none;
+}
+.wikicreatelink {
+  text-decoration: none;
+}
+.wikicreatelinktext {
+  text-decoration: underline;
+  color: black;
+}
+.wikicreatelinkqm {
+  text-decoration: none;
+  font-size: 90%;
+  color: white;
+  border: 0px solid black;
+  background: #008;
+  padding: 3px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0px;
+  margin-left: 3px;
+}
+.wiki-calendar-table *{
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+.wiki-calendar-table div{
+  font-size: 90%;
+  margin: 2px 0px;
+}
+* html .wiki-calendar-table div{
+  font-size: 80%;
+}
+.wiki-calendar-table {
+  border: 4px solid #C0D4E7;
+  font-size: 100%;
+  margin: auto;
+}
+.wiki-calendar-table td {
+  vertical-align: top;
+}
+.wiki-calendar-table th {
+  background-color: #FFF;
+}
+.wiki-calendar-table td, .wiki-calendar-table th {
+  text-align: center;
+  border: 1px #C0D4E7 solid;
+  height: 60px;
+  width: 90px;
+  padding-top: 0px !important;
+}
+.wiki-calendar-daynotinmonth{
+ color: #BBBBBB;
+ background-color: #E5E5E5;
+}
+.wiki-calendar-today{
+  background-color: #C0D4E7;
+}
+.wiki-calendar-today-notinmonth{
+ background-color: #D9E0E7;
+ color: #BBBBBB;
+}
+.wiki-calendar-daynamerow {
+  background-color: #C0D4E7 !important;
+}
+.wiki-calendar-daynamerow th{
+  background-color: #C0D4E7 !important;
+  color: #fff;
+  font-weight: 900;
+  height: 1.8em;
+}
+.wiki-calendar-daytitle {
+  background-color: #E8EEF7;
+  font-size: 75% !important;
+  padding: 0px 5px;
+  margin: 0px !important;
+}
+.wiki-calendar-daynotinmonth .wiki-calendar-daytitle {
+  background-color: transparent !important;
+}
+.wiki-calendar-today-notinmonth .wiki-calendar-daytitle {
+  background-color: transparent !important;
+}
+.wiki-calendar-today .wiki-calendar-daytitle {
+  background-color: transparent !important;
+}
+.wiki-calendar-today-notinmonth a, .wiki-calendar-daynotinmonth a{
+  color: #BBB !important;
+}
+.wiki-calendar-monthyearrow {
+  font-size: 140%;
+  font-weight: 100;
+  font-variant: small-caps;
+  color: #C0D4E7;
+  border: none !important;
+  width: auto !important;
+}
+.wiki-calendar-month-nav{
+  border: none !important;
+}
+.wiki-calendar-month-nav a{
+  font-size: 140%;
+  font-weight: bold;
+  color: #C0D4E7 !important;
+  text-decoration: none;
+}
+.wiki-calendar-month-nav a:hover{
+  text-decoration: none !important;
+  color: #38c !important;
+}
+#body .prev-month{
+  text-align: left;
+  padding-left: 8px;
+}
+#body .next-month{
+  text-align: right;
+  padding-right: 8px;
+}
+.underline{
+  text-decoration: underline;
+}
+.workshop {
+  background-color: #FED;
+}
+.event .username {
+  font-size: 80%;
+}
+.hentry a h4 {
+	color: #000;
+	margin: 0px 0 0.5em 0;
+	font-size:1.4em;
+	}
+.article_title {
+ font-size: 120%;
+ border-bottom: 1px;
+}
+.article_content {
+ padding: 10px 0;
+ text-align: left;
+}
+.article_date {
+ font-size: 120%;
+ color: #666;
+ font-weight: bold;
+ border-bottom: 1px solid #666;
+}
+.article_footer {
+ border-top: 1px dotted #eee;
+ font-size: 75%;
+ font-weight: normal;
+ color: gray;
+ margin: 0 0 3em 0;
+}
+#webhomeNewsdisplay ul {
+	margin-left: 0px;
+}
+#webhomeNewsdisplay ul li{
+	margin-bottom: 0.5em;
+}
+sup.footnoteRef a{
+  font-weight: bold;
+  text-decoration: none;
+}
+sup.footnoteRef:target a{
+  background-color: #E5F0FE;
+  color: #C82;
+}
+div.footnotes{
+  font-size: 70%;
+  margin: 10px 0px;
+  border: 1px solid #ddd;
+}
+.footnotes ol{
+  padding-left: 1em;
+}
+.footnotes li{
+  padding: 0px 4px;
+  margin: 0px;
+}
+.footnotes li:target{
+  background-color: #E5F0FE;
+}
+a.footnoteBackRef{
+  text-decoration: none;
+  font-weight: bold;
+}
+.pagedNavigation {
+  text-align: center;
+  padding: 8px 0px;
+  margin: auto;
+}
+.pagedNavigation span{
+  padding: 0px 8px;
+}
+.pagedNavigation .pagedLink{
+  background-color: #E5F0FE;
+}
+.pagedNavigation .inactive{
+  color: #CCC;
+}
+.pagedNavigation .pagedLink a{
+  text-decoration: none;
+  color: #2E5A87 !important;
+}
+.pagedNavigation .pagedLink a:hover{
+  color: #D70 !important;
+}
+/* @end */
+
+
+/* @group Layout */
+body{
+  font-size: 62.5%; /* 10px */
+   font-family: sans-serif;
+   color: #222;
+  width: 100%; 
+  padding: 0;
+  margin: 0 ;
+  min-width: 1000px;
+  background-color: #efeffe;
+}
+body.mceContentBody {
+	background-image: none;
+	font-size:90%;
+	line-height:1.4em;
+	width: auto;
+	min-width: 300px;
+		}
+
+
+#xwikimaincontainer,
+body.hideright #xwikimaincontainer {
+  font-size: 1.4em; /* 12px [1] */
+  line-height: 1.2em;
+  min-height: 100%;
+  margin:0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  min-height: 400px;
+  background-color: transparent;
+  background-image :url(workspaces-TOP.png) ;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  }
+
+body.inlinebody.body-xwiki,
+body.editbody.body-xwiki, 
+body.adminbody.body-xwiki {	background-image: url(workspaces-AD-BG-green.png);background-position: 50% 0;}
+body.inlinebody.body-xwiki #xwikimaincontainer,
+body.editbody.body-xwiki #xwikimaincontainer, 
+body.adminbody.body-xwiki #xwikimaincontainer {min-height: 100%;	background-image: url(workspaces-AD-BG-green.png);background-position: 50% 0;}  
+  
+body.inlinebody #xwikimaincontainer,
+body.editbody #xwikimaincontainer,
+body.adminbody #xwikimaincontainer{background-image :url(workspaces-AD-TOP.png);}
+body.body-xwiki {background-image:url(workspaces-BG-green.png)}
+
+body.body-xwiki #xwikimaincontainer,
+body.hideright.body-xwiki #xwikimaincontainer { background-image :url(workspaces-TOP-green.png);  }
+body.inlinebody.body-xwiki #xwikimaincontainer,
+body.editbody.body-xwiki #xwikimaincontainer,
+body.adminbody.body-xwiki #xwikimaincontainer{	 background-image :url(workspaces-AD-TOP-green.png);}
+body.body-xws {	background-image: url(workspaces-BG-black.png)}
+
+body.body-xws.inlinebody,
+body.body-xws.editbody, 
+body.body-xws.adminbody {	background-image: url(workspaces-AD-BG-black.png);background-position: 50% 0;}
+body.body-xws.inlinebody #xwikimaincontainer,
+body.body-xws.editbody #xwikimaincontainer, 
+body.body-xws.adminbody #xwikimaincontainer {min-height: 100%;	background-image: url(workspaces-AD-BG-black.png);background-position: 50% 0;}
+
+body.body-xws #xwikimaincontainer2,
+body.hideright.body-xws #xwikimaincontainer { background-image :url(workspaces-TOP-black.png);  }
+body.inlinebody.body-xws #xwikimaincontainer,
+body.editbody.body-xws #xwikimaincontainer,
+body.adminbody.body-xws #xwikimaincontainer{	 background-image :url(workspaces-AD-TOP-black.png);}
+
+#xwikimaincontainerinner {
+  text-align: left;
+  height: 100%;
+  margin:  0 auto;
+  width:  1000px;
+  padding-top: 20px;
+  border: none;
+  border: none;
+  text-align: left;
+  clear: both;
+  background-color:transparent;
+}
+body.hideleft #xwikimaincontainerinner,
+body.editbody #xwikimaincontainerinner {
+  margin:  0 auto;
+}
+
+body.adminbody #xwikimaincontainerinner,
+{
+  margin:  0 0 0 30px;
+  background-image: url();
+}
+
+
+#globallinks {}
+
+body.adminbody #companylogo{}
+body.adminbody #globallinks{}
+body.adminbody #globallinks a{}
+#companylogo{}
+body.editbody #companylogo{}
+#headerspace {}
+body.editbody #headerspace {}
+body.hideleft #headerspace {}
+body.adminbody #headerspace {}
+
+
+
+.leftsidecolumns{
+	float: left;
+	width: 100%;
+	}
+#contentcolumn{
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.main {
+	margin:  0 220px;
+	padding: 80px 20px 20px 20px;
+  	background-color: transparent;
+}
+.contenthideleft #contentcolumn .main{
+	margin: 0 230px 0 50px;
+	}
+#body.inlinebody .contenthideright #contentcolumn .main{
+	margin:0 230px 0 50px;
+	padding-top: 0px;
+	}
+.contenthideright #contentcolumn .main{
+	margin:0 50px 0 230px;
+	}
+body#body.loginbody .contenthideright #contentcolumn .main{
+	margin:0 ;
+	padding-top: 20px;
+	}
+.contenthidelefthideright #contentcolumn .main{
+	margin:0px 50px;
+	}
+.content #contentcolumn .main{
+	margin: 0 230px;
+	}
+.contentheader{
+	margin-top: -80px;
+	height:  80px;
+	margin-bottom: 20px;
+}
+body.inlinebody .contentheader{
+	margin: 0px 230px 20px 70px;
+}
+.contentheader h1 {
+	font-size: 1.8em;
+	padding: 8px 0;
+	line-height: 40px;
+}
+#xwikicontent {
+	 overflow: auto;
+	 padding: 0;
+	 } 
+
+
+html > body .minwidth, html > body .minwidthb, html > body .minwidthc{
+  display: none;
+}
+.minwidth, .minwidthb, .minwidthc{
+  display: none;
+  height: 0px;
+  font:normal 1px/1px sans-serif;
+}
+.minwidthb{}
+.minwidthc{}
+.layoutsection{clear: both;}
+#contentcontainer{height:1%;clear: both;}
+
+#rightPanels{ 
+  position: relative;
+float: right; 
+width: 220px;
+margin-top: -26px;
+margin-left: -220px;
+height: auto !important;
+height: 400px;
+min-height: 400px; 
+background-image: url(bgx-GRAY.png);
+background-position:left -100px;
+background-repeat: no-repeat;
+padding-bottom: 100px;
+ }
+
+#leftPanels { 
+position: relative;
+float: left;
+width:  200px;
+margin-left: -100%;
+  }
+body.adminbody #editPanels.panels {	display: none;}
+#editPanels.panels{ 
+ position: relative;
+float: left; 
+width: 220px;
+margin-left: -220px;
+margin-top: 80px;
+padding-top: 0px;
+height: auto !important;
+height: 400px;
+min-height: 400px; 
+background-image: url(bgx-GRAY.png);
+background-position:left -100px;
+background-repeat: no-repeat;
+}
+.platform #editPanels.panels{  background-image: url(bgx-PURPLE.png);}
+.enterprise #editPanels.panels {  background-image: url(bgx-YELLOW.png);}
+.manager #editPanels.panels {  background-image: url(bgx-BLUE.png);}
+.watch #editPanels.panels {  background-image: url(bgx-RED.png);}
+.dev #editPanels.panels {  background-image :url(bgx-DARKGRAY.png) ;  }
+.code #editPanels.panels {  background-image :url(bgx-KAKI.png) ;  }
+.workspaces #editPanels.panels {  background-image :url(bgx-GREEN.png) ;  }
+
+#editPanels.panels a {
+	color:  #000;
+}
+#editPanels.panels .panel {
+	margin: 0;
+	width:  220px;
+	padding: 0;
+	}
+.editbody .leftsidecolumns {
+	  position: relative;
+ float:  left;
+ width:  100%;
+ padding-bottom: 20px;
+}
+#xwikieditcontent textarea#content {
+  width: 100%;
+  border: none; /* place border on external div*/
+}
+#xwikieditor{
+  z-index: 1;
+}
+/* @end */
+/* @group Header */
+/*
+---------------------------------------
+Global header
+---------------------------------------
+*/
+#organame {
+	/*position: relative;
+	float: left;
+	width: 230px;
+	height: 100px;*/
+	display : none;
+}
+#headerglobal{
+  position: relative;
+  float: left;
+  width: 700px;
+  height: 100px;
+  z-index: 1;
+  clear: none;
+  margin-left: 230px;
+  display:  inline;
+}
+
+body.editbody #headerglobal,
+body.adminbody #headerglobal, body.inlinebody #headerglobal{	margin-left: 50px;}
+
+
+#globallinks {}
+#globalmenu {
+  padding: 0.5em;
+  text-align: right;
+  font-size: 1em;
+  line-height: 1.1em;
+}
+#globalmenu .glink { 
+display: block;
+background-color: transparent;
+font-size: 1em;
+line-height: 1.4em;
+font-weight: bold;
+padding: 0px 5px;
+color: #fff;
+text-decoration: none;
+}
+#globalmenu #headerlanguages a{ text-transform: capitalize;}
+#globalmenu span { display: none;}
+#company{
+  height: 10px;
+  position: relative;
+  float: left;
+  margin-left: -230px;
+  width: 230px;
+}
+#companylogo{
+padding: 0;
+background-color: #FFF;
+margin-right:-220px;
+height: 150px;
+}
+#companylogo a {
+	display: block;
+	height:  100px;
+	width: 300px;
+	text-decoration: none;
+	background-image:url();
+	border: 1px solid red;
+}
+#companylogo a img {display:none;}
+#globaldoctitle {display: none;}
+#globaldoctitle h1{}
+#pagename {
+	display: block;
+	color: #000;
+	font-weight: bold;
+	padding: 70px 0 0 20px;
+}
+#body.loginbody #pagename{
+	display: none;
+}
+#pagename a{
+	font-size: 2.2em;
+	color: #000;
+	font-weight: bold;
+}
+/* @end */
+/* @group footer */
+/*
+---------------------------------------
+Space header, footer
+---------------------------------------
+*/
+#headerspace hr, #footerglobal hr{display: none;}
+#footerglobal a, #headerspace a{
+  color: #ccc;
+  text-decoration: none;
+}
+#headerspace {
+height: 25px;
+margin:0;
+font-size: 0.9em;
+width: auto;
+padding-left: 30px;
+color:  #ccc;
+background-color:#fff;
+margin-right: 220px;
+border-top: 1px solid #000;
+}
+#headerspace a{line-height: 25px;}
+body#body.adminbody #footerglobal{
+	margin-right: 220px;
+}
+#footer, #footerglobal {
+  clear:both;
+  text-align: right;
+  background-color: transparent;
+  padding:  25px 0;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  color: #222;
+   margin: 0px;
+}
+#footerglobal a{
+  color: #555;
+  text-decoration: none;
+}
+#xwikilicence,#xwikidocinfo,#xwikiplatformversion {display:none;}
+/* @end */
+/* @group content */
+/*
+---------------------------------------
+Content
+---------------------------------------
+*/
+.layoutsubsection{}
+.layoutsubsection .about{
+  clear:  both;
+  border: none;
+  text-align: right;
+  font-size: 0.9em;
+  margin-top: 1em 0;
+  padding: 5px 10px;
+  background-color: #F9F9F9;
+  color: #888;
+}
+.wiki-doc-entry{
+	margin-top: 00px;
+}
+
+
+/* @end */
+/* @group Message Boxes */
+/*
+---------------------------------------------
+"Message Boxes"
+---------------------------------------------
+*/
+
+div.centered {	text-align: center;}
+body.editbody .leftsidecolumns .centered{ margin-right:220px;}
+
+fieldset.xwikimessage, div.xwikimessage{
+  display: block;
+  float: none;
+  width: 300px;
+  margin: 65px auto  0 ;
+  border: none;
+ border-top: 4em solid #efffd4;
+ border-bottom: 65px solid #FFF;
+  padding: 0px 8px 16px;
+  background-color: #efffd4;
+  text-align: center;
+}
+#body.loginbody fieldset.xwikimessage, div.xwikimessage{
+	border-bottom: 0px none;
+}
+
+fieldset.xwikimessage legend,
+div.xwikimessage h3 {
+	display: block;
+	width:  100%;
+	text-align: center;
+  	font:bold 1.4em sans-serif;
+  	letter-spacing: 0.4em;
+  	color: #508000;
+  	padding: 0;
+  	margin:  0;
+}
+div.errormessage {
+	color: red;
+}
+fieldset.xwikimessage .xwikimessage{
+  text-align: center;
+  font-weight: bold;
+  font-size: 110%;
+}
+fieldset.xwikimessage table.xwikilogintable th {
+	background-color: transparent;
+}
+fieldset.xwikimessage .buttons {
+  text-align: center;
+}
+fieldset.xwikimessage .buttons a {
+  text-decoration: none;
+  margin: 8px;
+}
+.button{
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+/* @end */
+/* @group Comments, attachments, History...  */
+/*
+---------------------------------------
+Zone for Comments, attachments, History... 
+---------------------------------------
+*/
+#xwikidata{
+  padding: 0px;
+  border: none;
+}
+#xwikidatacontents{
+	background-color: #eee;
+	margin-top : 2em;
+	}
+.xwikiintratitle{}
+.xwikiintracontent{ margin: 0px;}
+/* @end */
+/* @group Comments */
+/*
+----------------------------------------------
+Comments
+----------------------------------------------
+*/
+.xwikicomment {
+}
+
+div.addcomment_title {
+	margin-top: 1em;
+}
+
+#comments div.comments-title {
+	border-top: 3px dotted #eee;
+	margin-bottom: 12px;
+	margin-top: 1em;
+	
+	font-size: 2em;
+	line-height: 1.4em;
+}
+
+#comments textarea {background-color: #edeff2;}
+
+#xwikidata #commentscontent{
+	border-bottom : 1px solid #bbb;
+}
+#comments, #attachments {
+  padding: 0 0 20px 0;
+}
+#xwikidata .xwikititlewrapper{
+  cursor: pointer;
+}
+#xwikidata #commentscontent .xwikititlewrapper{}
+#xwikidata #attw{ }
+h3.xwikiintratitle{
+  font:normal 1.2em/1.4em sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
+  margin: 0px;
+  padding: 5px 10px ;
+}
+.xwikiintratitle span.hidden{ display: inline;}
+#xwikidata #attachmentscontent {
+	border-top : 1px solid #EEE;
+}
+#attachmentscontent table{border: none;}
+.mime{
+  text-align: center;
+}
+.xwikicomment{
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.commentspacer{
+  display: none;
+}
+#comments .odd{
+  background-color: #FFF;
+}
+#comments .even{
+  background-color: #f5f8fa;
+}
+.commentavatar{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 54px;
+}
+.commentavatar img{
+  width: 3.5em;
+  display: block;
+  margin: auto;
+}
+.commentheader{
+  padding: 6px 0px;
+}
+.commentauthor{
+  font-size: 130%;
+  font-weight: 900;
+}
+.commentauthor a{
+  text-decoration: none;
+  color: #000 !important;
+}
+.commentcontent{
+}
+table.xwikidatatable{
+  margin: 8px auto;
+  /* width: 100%; */
+}
+table.xwikidatatable, table.xwikidatatable th{
+  border: 1px solid #DDD;
+}
+table.xwikidatatable td{
+  padding: 2px 8px;
+}
+.xwikiintracontent legend{}
+.xwikiintracontent fieldset{
+  border: none;
+  background-color: #F6F6FC;
+  border-top: 3em solid  #F6F6FC;
+  padding: 8px 8px;
+  margin-top:5px;
+}
+.xwikiintracontent legend{
+  font:bold 1.2em/1.4em sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+color : #39397f;
+}
+html > body .xwikiintracontent legend{
+  margin-bottom: 0px;
+}
+#xwikiuploadfile {margin:10px;}
+.xwikiintracontent fieldset.collapsed{
+  border: none;
+  margin:  0; padding: 0;
+  background-color: transparent;
+}
+.xwikiintracontent fieldset.collapsed legend{
+  margin-left: 2px;
+}
+.xwikiintracontent fieldset.collapsed div{
+  display: none;
+}
+.xwikiintracontent fieldset.expanded .expands{
+  display: none;
+}
+.commentsno, .attachmentsno{}
+.attachmentsno{}
+/* @end */
+/* @group ActionMenu */
+/*
+---------------------------------------
+Menu
+---------------------------------------
+*/
+#actionmenu {
+  	position: absolute;   	
+ 	 width: expression(body.scrollLeft + document.body.clientWidth  + "px");  
+  	height: 25px !important;
+  	top: 0px;
+  	left: 0px;
+  	right: 0px;
+  	z-index: 1000;
+  	overflow: visible;
+  	border-top: 0px solid #ccc;
+	background-color: #ccc;
+	border-bottom: 1px solid #444;
+	text-align: center;
+	color: #fff;
+	background-image: url(ab-bg.png);
+}
+html > body #actionmenu{
+  	position: fixed;
+    top: 0;
+  	left: 0;
+  	width: 100%;
+}
+#actionmenu a{
+	text-decoration: none;
+	color: #ccc;
+	text-decoration:none; 
+	display: block;
+	height: 25px;
+ 	float: left; 
+ 	margin-right: -1px;
+  	text-align: center;
+  	line-height:20px;
+  	font-size: 0.9em;
+  	font-weight: bold;
+}
+#actionmenu a#globaladminbutton,
+#actionmenu a#logoutbutton {
+	line-height: 27px;
+	font-size: 12px;
+	margin: 0 20px;
+	padding: 0 0 0 20px;
+	color:  #FFF;
+	background-image: url(topbutton-red.png);
+}
+#actionmenu a#logoutbutton {
+	float: right;
+}
+#actionmenu span#username a{
+	float: right;
+	display: block;
+	line-height: 27px;
+	font-size: 12px;
+	padding: 0 10px;
+	color:  #FFF;
+}
+
+#actionmenu a#mydashboardbutton,
+#actionmenu a#myspacesbutton,
+#actionmenu a#myspacebutton,
+#actionmenu a#myprofilebutton {
+	line-height: 27px;
+	font-size: 12px;
+	margin: 0 15px;
+	padding: 0 0 0 20px;
+	color:  #FFF;
+	background-image: url(topbutton-blue.png);
+}
+
+/* My Comment */
+#actionmenu a#globaladminbutton:hover,
+#actionmenu a#mydashboardbutton:hover,
+#actionmenu a#myspacesbutton:hover,
+#actionmenu a#myspacebutton:hover,
+#actionmenu a#myprofilebutton:hover,
+#actionmenu a#logoutbutton:hover,
+#actionmenu a#globaladminbutton:hover {
+	color:  #000;
+}
+#actionmenu a#globaladminbutton span,
+#actionmenu a#logoutbutton span{
+	display: block;
+	background-image: url(topbutton-red.png);
+	background-position:right top ;
+	margin-right: -20px;
+	padding-right: 20px;
+}
+#actionmenu a#mydashboardbutton span,
+#actionmenu a#myspacebutton span,
+#actionmenu a#myprofilebutton span,
+#actionmenu a#myspacesbutton span{
+	display: block;
+	background-image: url(topbutton-blue.png);
+	background-position:right top ;
+	margin-right: -20px;
+	padding-right: 20px;
+}
+#actionmenu .editinfo a{
+	text-decoration: none;
+	color: #fff;
+	text-decoration:none; 
+	display: inline;
+	height: 20px;
+ 	float: none;
+  	border:1px solid  #444; 
+ 	border-width:0px ;  
+ 	margin-right: ;
+  	text-align: center;
+  	line-height:20px;
+  	font-size: 0.9em;
+  	font-weight: bold;
+}
+#actionmenu a:hover{color:  #fff;}
+#actionmenu .editinfo a:hover{
+	color:  #fff;
+	background-image: url();
+}
+.rightmenu{
+	position: absolute;
+	right: 0px;
+	margin-right: 25px;
+}
+#actionmenu .rightmenu a {
+	width:  35px;
+}
+.leftmenu{
+  position: absolute;
+  left: 25px;
+}
+.topmenuentry{
+  display: block;
+  float: left;
+}
+.submenu{
+  display: block;
+  width: 10em;
+  position: absolute;
+  margin-top: 0px;
+  margin-left: 11px !important;
+  margin-left: 30px;/* position IE 6 */
+  padding: 5px;
+  border: 1px solid #222;
+  background-color: transparent;
+  background-image: url(b75.png);
+}
+.submenu.hidden{ display: none;}
+#actionmenu .submenuitem a, #actionmenu .submenuitem a:link, #actionmenu .submenuitem a:visited, #actionmenu .submenuitem a:active  {
+display:block;
+width:10em;
+font-size:0.8em;
+font-weight: bold;
+text-decoration:none; 
+height:auto; 
+padding:2px;
+line-height:1.2em;
+border: 0;
+text-align: left;
+color:  #fff;
+}
+#actionmenu .submenuitem a:hover {
+	text-decoration: underline;
+	background-image: none;
+}
+/* @end */
+/*
+---------------------------------------
+Editors
+---------------------------------------
+*/
+#xwikiviewerstitles{ display: none;}
+/* @group tabs */
+/*
+---------------------------------------
+Tabs
+---------------------------------------
+*/
+ul.xwikitabbar{
+  padding: 0px 0 0 3px;
+  margin: -30px 0 0 0;
+	float: left;
+	width:100%;
+	height: 30px;
+	border-bottom: none;
+	overflow:hidden;
+}
+#xwikicontent ul.xwikitabbar{
+	overflow: hidden;
+	margin: 0px;
+	border-bottom: 2px solid #555;
+	}
+.xwikitabbar li{
+  display: inline;
+  padding: 5px 0px;
+  list-style-type: none;
+  border: 0px solid;
+  border-bottom: none;
+  margin-right: 2px;
+  margin-top: 2px;
+  text-align: center;
+  display: block;
+  float: left;
+  width: 106px;
+  background: transparent url(tab.png) top left no-repeat;
+  border: none;
+}
+.xwikitabbar li#xwikiorphansview{
+  width: 206px;
+  background-image: url(tab2.png);;
+}
+.xwikitabbar li:hover{
+	background-position: top center;
+}
+html > body .xwikitabbar li{
+  padding: 5px 0px;
+}
+.xwikitabbar li a{
+  padding: 5px 3px;
+  font-weight: normal;
+  font-size:0.85em;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.xwikitabbar li a:hover{
+  text-decoration: none;
+}
+
+.xwikitabbar li.active a:hover{
+  cursor: default;
+}
+.xwikitabbar li a{ color:#999;font-weight:  bold;}
+.xwikitabbar li.active a{ color: #000;}
+.xwikitabbar li{}
+.xwikitabbar li.active{
+  background-position:top right;
+  border: none;
+}
+
+/* @end */
+/*
+--
+*/
+#xwikicontentedit{
+  border: 1px solid;
+}
+
+/* @group Panels */
+/*
+---------------------------------------
+Panels
+---------------------------------------
+*/
+
+
+
+#download .xwikipanelcontents a {
+	display: block;
+	width: 190px;
+	height: 50px;
+	background-image: url(downloadxwiki.png);
+}
+#download .xwikipanelcontents a span {display: none;}
+#globalsearch form div {
+  text-align: center;
+  margin: 0px ;
+  padding:18px 15px 0;
+	line-height: 1em;
+  background-color: transparent;
+  height:50px;
+  background-image: url(search-bg.png);
+  background-repeat: no-repeat;
+}
+#download .xwikipanelcontents,
+#globalsearch .xwikipanelcontents {
+background-image:none;
+padding:0px;
+}
+#globalsearch div.expanded{
+	margin: 0px 0px 0px 10px;
+}
+.xwikipanelcontents form{margin: 0;padding: 0px;}
+#rightPanels #globalsearch input{
+  font-size: 0.9em;
+	width: 100px;
+  border: 1px solid #eee;
+  display: inline !important;
+  background-color: #fff;
+}
+#rightPanels #globalsearch input.button{
+  vertical-align: middle;
+  font-size: 1em;
+  border: 0px;
+  padding: 0px;
+  width: auto;
+}
+#leftPanels ,
+#rightPanels{padding:  0 0 100px 0; margin-top: 80px;}
+.panels{}
+html > body .panels{
+  margin-top: 0px;
+}
+.panels.left {
+	  position: relative;
+  float: left;
+  margin-left: 0px;
+}
+.panels.right {  position: relative; float: right;}
+.panel, .fakepanel{
+  color: #000;
+  width: 220px;
+  display: block;
+  margin: 0px 0px 10px 10px;
+  padding: 0px;
+  background-color: transparent;
+}
+.fakepanel{
+  display: none;
+  height: 320px;
+}
+.xwikipanelcontents{
+background-color: transparent;
+font-size: 0.85em;
+line-height: 1.6em;
+color:  #fff;
+font-weight: normal;
+padding: 0 20px 25px;
+	background-image: url(panel.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+
+.xwikipanelcontents img.photo {
+	display:  none;
+}
+h5.xwikipaneltitle {
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: bold;
+	letter-spacing: -1px;
+	line-height: 30px;
+	padding: 5px 20px;
+	text-align: center;
+	color: #FFF;
+	height: 30px;
+	background-image: url(panel.png);
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+#editPanels h5.xwikipaneltitle {
+	margin: 0;
+	font-size: 1em;
+	font-weight: bold;
+	letter-spacing: -1px;
+	line-height: 30px;
+	padding: 5px 20px;
+	text-align: center;
+	color: #FFF;
+	height: 30px;
+	background-image: url(panel.png);
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+.collapsed h5.xwikipaneltitle {
+	height: 38px;
+	background-image: url(panel-v.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+
+.xwikipanelcontents a{
+	color : #FFF;
+}
+
+#leftPanels div.xwikipanelcontents ul.star li span.addentry{
+	position: absolute;
+	right: 0px !important;
+	right: 15px;
+	width: 10px;
+	height: 10px;
+	margin-left: 0;
+	background-image: url(more.png);
+}
+#leftPanels div.xwikipanelcontents ul.star li span.addentry a{
+	display: block;
+	width: 10px;
+	height: 10px;
+	padding: 0;
+	overflow: hidden;
+	text-indent: 10px;
+}
+#leftPanels div.xwikipanelcontents ul.star li span.addentry a:hover{
+	position: absolute;
+	bottom: 0px;
+	width: 130px;
+	height: auto;
+	padding: 0 0 0 5px;
+	text-align: center;
+	color: #333;
+	background-color: #fdffd3;
+	border: 1px solid #555;
+	overflow: visible;
+}
+.xwikipanelcontents a.wikicreatelink{
+	color : #333;
+}
+div.xwikipanelcontents span.panelitem a.wikicreatelink span.wikicreatelinkqm {
+	background-color: #db6e26;
+	color:  #fff;
+	margin: 0 2px;
+	padding: 0 1px;
+}
+div.xwikipanelcontents ul.star, div.xwikipanelcontents ul {
+	list-style-type: none;
+	list-style-position: inside;
+	padding: 0;
+	margin: 0;
+}
+div.xwikipanelcontents ul.star li, div.xwikipanelcontents ul li{
+display: block;
+position: relative;
+padding-right: 15px;
+}
+
+div.xwikipanelcontents ul.star li ul {
+margin-left: 2em;
+}
+.xwikipanelcontents p{
+margin-toprgin:  0;
+}
+.collapsed .xwikipanelcontents{  display: none;}
+span.panelitem{  display: block;}
+/*  edit panels */
+#editPanels .expanded h5.xwikipaneltitle {
+	background-image: url(panel-e.png);
+	background-position: right -200px;
+	color: #333;
+	height:  auto;
+	font-size: 1em;
+	text-align: center;
+	line-height: 20px;
+	letter-spacing: -1px;
+	padding: 5px 25px 5px 10px;
+	}
+#editPanels .editmodes h5 {
+	background-image: url(panel-m.png);
+	background-position: top right;
+	color: #333;
+	height:  auto;
+	font-size: 1em;
+	text-align: center;
+	line-height: 20px;
+	letter-spacing: -1px;
+	padding: 5px 25px 5px 10px;
+	}
+#editPanels .collapsed h5.xwikipaneltitle{
+	background-image: url(panel-e.png);
+	background-position: right top;
+	color: #333;
+	height:  30px;
+	text-align: center;
+	line-height: 20px;
+	letter-spacing: -1px;
+	padding: 5px 25px 5px 10px;
+	}
+#editPanels .xwikipanelcontents {
+	background-image: url(panel.png);
+	background-position: bottom left;
+	color: #FFF;
+	height:  auto;
+	padding: 0 20px 25px;
+	font-size: 0.8em;
+	font-weight: normal;
+	}
+#editPanels .editmodes .xwikipanelcontents {
+	background-image: url(panel-m.png);
+	background-position: bottom right;
+	}
+#editPanels .xwikipanelcontents p {
+	margin: 0 0 1em 0;
+}
+#editPanels form {
+	font-size: 0.9em;
+}
+#editPanels form input,
+#editPanels form select{
+	width: 160px;
+	margin-bottom: 0.5em;
+	font-size:1em;
+}
+.collapsed h5.xwikipaneltitle {
+	background-position: top right;
+}
+#editPanels .editmodes .xwikipanelcontents ul{
+	margin-left: -15px;
+}
+#editPanels .editmodes .xwikipanelcontents ul li {
+	display: block;
+	height: 20px;
+	font-size: 1.1em;
+	line-height: 20px;
+	letter-spacing: 1px;
+	font-weight: normal;
+	padding: 0 15px;
+	text-align:left;
+}
+#editPanels .editmodes .xwikipanelcontents ul li a {color: #555;}
+#editPanels .editmodes .xwikipanelcontents ul li a:hover {color: #000;}
+#editPanels .editmodes .xwikipanelcontents ul li.active {
+	line-height: 30px;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	height: 30px;
+	background-image: url(panel-m-active.png);
+	background-position: top right;
+	text-align: left;
+}
+#editPanels .editmodes .xwikipanelcontents ul li.active a {
+	color:  #000;
+}
+#xwikihelpsyntax {
+	background-image: url(panel-e.png);
+	background-position: right -100px;
+	color: #333;
+	height:  30px;
+	text-align: center;
+	line-height: 20px;
+	letter-spacing: -1px;
+	padding: 5px 25px 5px 10px;
+}
+
+.placeholder{width: 200px;}
+html > body #dragbox {width: 198px !important;}
+#xwikinavcontainer{ margin : -6px 0;}
+
+span.pitemseparator{
+  display: none;
+}
+.panelcontainer{
+  height: 200px;
+  overflow: hidden;
+  border: 1px inset #fff;
+  padding: 3px;
+}
+.panelitemc{
+  height: 256px;
+  margin: 0px 4px;
+  width: 210px;
+    position: relative;
+  float: left;
+}
+.panelitemc .label, .panelitemc .xwikibuttonlink{
+  text-align: center;
+	background-color: #fff;
+}
+.xwikipanelcontents dl dd {margin-bottom: 2em;}
+.xwikipanelcontents dl dt {font-size: 1.3em;font-weight: bold;}
+.xwikipanelcontents dl dd table#xwikiincludeddocuments td{
+		padding:2px 3px;
+		border-top: 1px dotted #EEE;
+}
+.xwikipanelcontents dl dd table#xwikiincludeddocuments td a {display: block	;width: 155px ;position:relative; overflow: hidden;}
+.xwikipanelcontents dl dd table#xwikiincludeddocuments td a:hover{ overflow: visible;}
+.xwikipanelcontents dl dd table#xwikiincludeddocuments td a span {
+	display: inline;
+}
+.xwikipanelcontents dl dd table#xwikiincludeddocuments td a:hover span{
+	display: block;
+	position:absolute;
+	min-width:155px;
+	right: 0px;
+	padding: 0 5px;
+	top: -1em;
+	background-color:#FEFEE4;
+	border: 1px solid #AAA;
+	}
+.xwikipanelcontents dl dd table#xwikiincludeddocuments td.xwikibuttonlink a { color: blue; width: 20px;}
+/* @end */
+/* @group Rico Acordeon */
+/*
+----------------------------------
+Rico Acordeon
+----------------------------------
+*/
+#xwikisyntaxhelp {
+  margin-top:0px; 
+  border: none;
+  font-size: 0.9em;
+}
+.accordionTabTitleBar h6{
+ margin: 0px;
+ padding:4px;
+font:bold 1em/1.1em sans-serif;
+color: #FFF;
+background-color: #8799b3;
+}
+#xwikieditcontent .accordionTabTitleBar h6{
+margin: 0px;
+padding:4px 21px;
+height: 20px;
+font-weight: normal;
+letter-spacing: -1px;
+border-top:  1px solid #fff;
+border-bottom: 1px solid #ccc;
+color: #333;
+background-color: #f0f0ee;
+background-image: url(accordion.png);
+background-repeat: no-repeat;
+background-position: 0% 50%;
+}
+#editPanels .accordionTabContentBox{
+  border: none;
+  overflow: auto;
+}
+#editPanels .accordionTabContentBox table{
+  border: none;
+  background-color: transparent;
+}
+.accordionTabContentBox table th{
+  text-align: center;
+}
+#xwikihelptitlesContent h1, #xwikihelptitlesContent h2, #xwikihelptitlesContent h3, #xwikihelptitlesContent h4, #xwikihelptitlesContent h5, #xwikihelptitlesContent h6{
+  margin: 0px;
+  text-align: right;
+}
+.accordionTabTitleBar{
+  margin:0;
+  cursor: default;
+}
+.accordionTabContentBox {
+	padding: 5px;
+	overflow: auto;
+}
+#allviewpanels .accordionTabContentBox {
+	padding: 5px;
+	overflow: auto;
+	background-image: url(H4x4.png);
+}
+#xwikinav ul.minus {
+margin: 0;
+padding: 0 5px;
+list-style-type: none;
+}
+#xwikisyntaxhelp table tbody tr {
+	display: block;
+	width:  175px;
+	border-top:  1px dashed red;
+}
+#xwikisyntaxhelp table tbody tr td {
+	display: block;
+	width:  175px;
+	padding: 2xp 1px;
+}
+#xwikisyntaxhelp table tbody tr td tt{
+	background-color: #ccc;
+}
+#xwikisyntaxhelp table tbody tr td {
+	display: block;
+	width:  175px;
+	border:  0px solid red;
+}
+#xwikisyntaxhelp .accordionTabContentBox {
+padding: 0;
+margin: 0;
+}
+#xwikisyntaxhelp table tbody tr th {
+	display: block;
+	width:  100%;
+}
+/*
+-----------------------------
+Misc
+-----------------------------
+*/
+/* @end */
+#xwikihelplistsContent ul, #xwikihelplistsContent ol{
+  margin: 0px;
+}
+#contentcolumn .panel.large{
+  width: 290px;
+}
+.accordionTabTitleBar tt{
+  font-style: normal;
+  font-size: 100%;
+  padding: 0px 4px;
+}
+/*.accordionTabContentBox div{
+  padding: 0px;
+}*/
+td.label{
+  text-align: right;
+  padding-right: 4px;
+}
+#xwikiclassproperties, #xwikiobjects{
+  border: 1px solid #DDD !important;
+}
+.center{
+  text-align: center;
+}
+.padded{
+  padding: 8px;
+}
+#xwikihelpsyntax{}
+.editactions{
+  border: none !important;
+  margin-top: 10px;
+  padding: 0px;
+}
+#historycontent td{
+  padding: 2px;
+}
+#xwikiuserprofile th{
+  background-color: transparent;
+  text-align: right;
+}
+#xwikiuserprofile td, #xwikiuserprofile th{
+  padding: 4px;
+}
+#xwikiobjects td{
+  vertical-align: top;
+}
+
+html > body .xwikidatatable{
+  width: 100%;
+}
+.xwikiuserblog .rssfeed {
+  width: 200px;
+  position: relative;
+  float: right;
+  border: 2px solid;
+}
+
+/* loader */
+#users-ajax-loader {
+  left:-210px;
+  position:relative;
+  top:180px;
+}
+
+#alldocstable td{
+  vertical-align: top;
+ }
+
+#selectedUsers {	
+   height: 280px;
+   overflow-y: auto;
+}
+
+
+/* @group Page Layout */
+/*
+------------------------
+Page Layout Selection
+------------------------
+*/
+td div.pagelayoutoption{
+  margin: 0px auto;
+  width: 106px;
+}
+div.layoutmaquette{
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 2px;
+}
+div.lmleftcolumn, div.lmrightcolumn{
+  width: 20px;
+  height: 60px;
+  border: 1px solid #aaa;
+  background-color: #ddd;
+  position: relative;
+  float: left;
+}
+div.lmrightcolumn{
+  position: relative;
+  float: right;
+}
+div.lmcontentcolumn{
+  border: 1px solid #aaa;
+  background-color: #eee;
+  height: 90px;
+}
+#leftcolumn div.lmcontentcolumn{
+  margin-left: 24px;
+}
+
+#rightcolumn div.lmcontentcolumn{
+  margin-right: 24px;
+}
+
+#bothcolumns div.lmcontentcolumn{
+  margin-left: 24px;
+  margin-right: 24px;
+}
+div.pagelayoutoption:hover .layoutmaquette{
+  background-color: #ffd;
+}
+div.pagelayoutoption:hover .lmcontentcolumn{
+  background-color: #ddd;
+}
+div.pagelayoutoption:hover .lmleftcolumn,
+div.pagelayoutoption:hover .lmrightcolumn{
+  background-color: #acf;
+}
+div.pagelayoutoptions > table{
+  width: 100%;
+  text-align: center;
+}
+div.pagelayoutoptions td{
+  padding: 2px;
+  vertical-align: bottom;
+}
+#selectedoption{
+}
+#selectedoption .lmcontentcolumn{
+  background-color: #acf;
+}
+#selectedoption .lmleftcolumn,
+#selectedoption .lmrightcolumn{
+  background-color: #369;
+}
+.pagelayoutoption label{
+  color: #aaa;
+}
+#selectedoption label, .pagelayoutoption:hover label{
+  color: #000;
+}
+.hastooltip{
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+#dhtmltooltip{
+  border: 1px solid #aaa;
+  padding: 2px 4px;
+  background-color: #ffd;
+  text-align: justify;
+  position: absolute;
+}
+#panelwizardbuttons{
+  padding: 8px 5px;
+  margin: 1em 0px;
+  text-align: center;
+}
+.alleditcontent{
+  margin: 0px 230px 20px 50px;
+  padding-top: 0px;
+}
+
+h4#xwikieditorstitles {
+	margin: 20px 20px 0px ;
+	height:  60px;
+}
+body.adminbody .alleditcontent{
+  margin: 80px 230px 20px 50px;
+}
+.alleditcontent label {
+	display: block;
+	text-align: center;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 1em;
+	color:  #555;
+	margin: 0px 0px 1em;
+}
+
+#xwikicontent .floatcontainer{
+  overflow: hidden;
+  width: 100%;
+}
+
+#xwikieditcontent{
+  background-color: #fff;
+  margin-top: 5px
+  ;
+  /*overflow: auto;*/
+}
+html>body #xwikieditcontent{
+  padding: 20px 5px 5px 5px;
+  padding:0 ;
+}
+#xwikieditcontentinner {}
+.editinfo{
+  height: 22px;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 1em;
+  line-height: 22px;
+}
+#edit{
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  height: 1%;
+}
+#xwikitext{clear: both;}
+#panelsBackground{
+  height: 20px;
+  background-color: #384554;
+}
+
+* html form{
+  margin-top: 0px;
+}
+.xwiki-form-listclass input[type="checkbox"] {
+  float: none;
+  display: inline;
+  margin-right: 2px;
+}
+.xwiki-form-listclass {
+  margin-right: 10px;
+}
+
+/**
+Attachments
+*/
+div.attachment {
+  overflow: hidden;
+  clear: both;
+  padding: 3px 5px;
+  font-size: 85%;
+}
+div#attachments .odd {
+	background-color: #F6F6FC;
+}
+.attachment .mime {
+  display: block;
+  position: relative;
+  float: left;
+  padding-right: 8px;
+  padding-bottom: 4px;
+}
+.attachment .information {
+  position: relative;
+  overflow: hidden;
+}
+.attachment .name {
+  display: block;
+  position: relative;
+  float: left;
+  font-size: 1.35em;
+  padding: 0px 6px 4px 0px;
+}
+.attachment .version {
+  display: block;
+}
+.attachment .meta {
+  clear: left;
+}
+.attachment .xwikibuttonlinks {
+  position: relative;
+  float: right;
+  font-size: 130%;
+  padding: 4px 10px;
+}
+/* @end */
+
+/* @group EDITION */
+#xwikieditorinner {
+	/*float: left;
+	width: 100%;*/
+	
+		}
+.editbody #globallinks{
+  width: 200px;
+}
+#editcolumn div.alleditcontent label {
+	display: block;
+	text-transform: uppercase;
+	padding: 0;
+	text-align: center;
+	margin-bottom: 20px;
+}
+#editcolumn div.alleditcontent #pagetitle label {
+	margin-bottom: 0;
+	padding: 10px ;
+	background-color: #f0f0ee;
+	border-bottom: 1px solid #ccc;
+}
+#editcolumn div.alleditcontent #pagetitle label input{
+	width:  100%;
+}
+div#xwikiclassproperties.accordion dt label,
+div#xwikiobjects.accordion label {
+	display: block;
+	font:normal 0.8em sans-serif;
+	text-transform: uppercase;
+	width:  100%;
+	padding: 10px 0 0 0;
+	text-align: left;
+	margin:0 0 2px 0;
+}
+#field_name_content div dl dd {
+		padding-bottom: 0.5em;
+		border-bottom: 1px dashed #ccc;
+}
+#editcolumn div.alleditcontent div#xwikiclassproperties.accordion dd label{
+	text-align: left;
+	margin: 0;
+	font-size: 0.8em;
+	font-weight: normal;
+}
+div#xwikiclassproperties.accordion textarea,
+div#xwikiobjects.accordion textarea,
+div#xwikiclassproperties.accordion input[type=text],
+div#xwikiobjects.accordion input[type=text] {
+	width:  98%;
+}
+div#xwikiclassproperties.accordion 
+
+#xwikidoctitleinput{
+  width: 40%;
+  font-size: 1em;
+}
+.topbuttons, .bottombuttons{
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #f0f0ee;
+  padding: 10px;
+}
+.topbuttons{margin-bottom:1em;}
+.bottombuttons input[type=text]{
+  width:  100%;
+  margin-bottom: 1em;
+}
+.leftmenu2{
+	text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  background-color: #f0f0ee;
+  padding:8px 10px 2px;
+  border-top: 1px solid #fff;
+}
+#xwikieditcontent div div.leftmenu2 a img {
+	background-color: #fff;
+	margin-left: 3px;
+	border: 1px solid #333;
+}
+.bottombuttons input.button{
+	margin-top: 1.5em;
+}
+#history  {
+	
+}
+#editcolumn {
+
+}
+#history table {
+	margin: 0 0 1em 0;
+	border-top: none;
+	border-collapse: collapse;
+}
+#history table th  {
+padding: 5px ;
+background-color: #f0f0ee;
+text-align: center;
+font-weight: bold;
+}
+#history table tr.row.even {
+	background-color: #f0f4fa;
+}
+#history table td  {
+padding: 5px;
+border: 1px solid #ccc;
+text-align: center;
+}
+/* panels */
+#rightPanels input[type=text],#rightPanels textarea,
+#inline input[type=text],#inline textarea{
+	background-color: #f9fcff;
+	width:100%;
+}
+.viewbody form .centered input[type=text] {width: auto;}
+
+#rightPanels.xwikipanelcontents ol,
+#rightPanels .xwikipanelcontents ul.minus {
+margin-left:1em;
+}
+#rightPanels .xwikipanelcontents ul.star {
+margin-left:0em;
+}
+#rightPanels .xwikipanelcontents ul.star ul{
+margin-left:2em;
+}
+#rightPanels .xwikipanelcontents ul ul{
+list-style-type:none;
+margin-left:2em;
+}
+div#members-available-buttons,
+.buttonwrapper {
+background:transparent;
+display: inline-block;
+display:inline; 
+margin:10px 0px 10px 10px;
+}
+div#members-available-buttons *,
+#body .buttonwrapper * {
+display: inline-block;
+display:inline;
+line-height:1.6em !important;
+margin:0px !important;
+min-height:24px !important;
+background:transparent url(buttons3.png) repeat-x scroll right top;
+border: 1px solid #8f908e;
+color: #FFF;
+white-space: nowrap;
+}
+div#members-available-list{
+	margin-bottom: 1em;
+}
+div#members-available-list ul {
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 0;
+	padding: 0;
+}
+#body .buttonwrapper a{
+	padding: 3px 5px;
+	line-height: 26px;
+	font-weight: bold;
+}
+#body .buttonwrapper a:hover,
+#body .buttonwrapper button:hover,
+#body .buttonwrapper input.button:hover{
+background:transparent url(buttons3.png) repeat-x scroll right 25%;
+border-color: #94ad12;
+color: #333;
+}
+/* @end */
+table#searchTableUnique {width: 99.8%;}
+table#searchTableUnique td span.wikilink {
+	display:block;
+	overflow:hidden;
+}
+table#searchTableUnique td.actions a{ 
+	 position: relative;
+float: left;
+width: 16px;
+height: 16px;
+margin:8px 6px 0 0;
+overflow: hidden;
+background-color: transparent;
+border: 1px solid #FFF;
+}
+table#searchTableUnique tr.sortHeader{
+	background-color: #eaf2fa;
+	border-collapse: none;	}
+table#searchTableUnique tr.sortHeader th{	}
+table#searchTableUnique th a{color: #74abd7;}
+table#searchTableUnique td.actions a:hover { border-color:  #ccc;}
+table#searchTableUnique td.actions a.copyaction {	background-image: url(editcopy.png);}
+table#searchTableUnique td.actions a.deleteaction {	background-image: url(edittrash.png);}
+table#searchTableUnique td.actions a.renameaction {	background-image: url(filesaveas.png);}
+table#searchTableUnique td.actions a.rightaction {	background-image: url(lock.png);}
+table#searchTableUnique td.actions a span{
+	  position: relative;
+	float: left;
+	padding: 16px 0 0 0;
+}
+table#searchTableUnique input,
+table#searchTableUnique select{
+/*	width:  100%;*/
+}
+table#referenceTable,
+table#referenceTable input,
+table#referenceTableselect {width: 98%;}
+table#referenceTable input#flt3_referenceTable {width: 59%;margin-right: 1%;}
+table#referenceTable input#btn3_referenceTable {width: 39%;}
+/*
+---------------------------------------
+Messages
+---------------------------------------
+*/
+.error{
+  color: #F00;
+}
+
+.fatalerror{
+  background-color: #F00;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.warning{
+  color: #c82;
+}
+
+div.errormessage, div.warningmessage, .infomessage, div.plainmessage{
+  margin: 4px 0px 4px;
+  border: 1px solid #DDD;
+  padding: 8px 8px 8px 28px;
+  background: #F5F5F5 url(icons/msg.png) 8px 8px no-repeat;
+  text-align: left;
+}
+
+.infomessage{
+  background-image: url(icons/msginfo.png);
+  color: #369;
+}
+div.plainmessage{
+  background-image: none;
+  color: #369;
+}
+div.warningmessage{
+  background-image: url(icons/msgwarning.png);
+  color: #c82;
+}
+div.errormessage{
+  background-image: url(icons/msgerror.png);
+  color: #F00;
+}
+
+span.messagetype{
+  display: none;
+}
+
+div.floatingboxinner, fieldset.floatingboxinner{
+  background-color: #FAFAFD;
+  padding: 10px;
+}
+div.floatinginfobox, fieldset.floatinginfobox {
+ width:auto;
+  float: right;
+  border-left: 20px solid #FFF;
+  border-bottom: 40px solid #FFF;
+	background-color:#E4E4E5;
+	padding: 1px;
+	  margin: 0  0  0.5em 0 ;
+}
+div.floatinginfobox .strong, fieldset.floatinginfobox .strong {
+	display: block;
+	text-align: center;
+	font-weight: normal;
+	font-size:1.2em;
+	letter-spacing: -1px;
+	margin-bottom: 0.5em;
+}
+li.tocEntry,
+div.floatinginfobox li, fieldset.floatinginfobox li,
+div.floatinginfobox ul, fieldset.floatinginfobox ul {
+	padding: 0;
+	margin: 0 0 0 1em;
+	line-height: 1.4em;
+	list-style-image:url(bullet-1.png);
+	list-style-position:outside;
+	}
+	/*
+	---------------------------------------
+	Images
+	---------------------------------------
+	*/
+	.imgfloatleft{
+	  float: left;
+	  margin-right: 1em;
+	}
+	.imgfloatright{
+	  float:right;
+	  margin-left: 1em;
+	}
+	.imgleft{
+	  text-align: left;
+	}
+	.imgcenter{
+	  text-align: center;
+	}
+	.imgright{
+	  text-align: right;
+	}
+table.mceEditor{ width :100%;}
+table.mceEditor textarea{ width :100%; height: 100%;}
+.mceEditorContainer {
+	display: block;
+	height: 100% !important;	
+	position: relative;
+	width:100%;
+}
+.mceToolbar {
+	z-index: 30002;
+}
+#body .mceEditor {
+	border: none;
+}
+
+#contentcolumncontainer div.alleditcontent div.floatcontainer ul.xwikitabbar {}
+
+
+#treeview table { margin: 0px;}
+#treeview table td{ text-align: left; padding: 0px;}
+
+
+
+
+
+
+
+
+
+#changescontent {}
+
+#changescontent table{
+width:  100%;
+margin: 0;}
+
+#changescontent table tr.changes-table-title th {
+	text-align: center;
+	font-size: 1.1em;
+	padding: 3px 5px;
+	border-bottom: 1px solid #fff;
+	background-color: #6b747f;
+	color:  #fff;
+}
+
+
+#changescontent table tr.changes-table-title + tr.changes-table-title th {
+	font-size: 0.75em;
+	text-align: left;
+	padding: 1px 5px;
+	border-bottom: 4px solid #e4e4e4;
+}
+#changescontent table td {
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #CCC;
+}
+
+div.diff {
+	padding:0 0 5px 0;
+	margin-bottom: -5px;
+	white-space: normal;
+	overflow: auto;
+}
+span.diffremoveword {
+	color: #ca9a9b;
+    text-decoration: line-through;
+}
+
+div.diffmodifiedline {
+	margin: 0.8em 0;
+}
+
+span.diffaddword {
+	color: #287f00;
+}
+div#changes-info{
+	background-color: #919dac;
+	background-image: url(DIFF-header.png);
+	background-position:50% -35px ;
+	background-repeat: no-repeat;
+}
+
+#changes-title {
+	margin-top: 2em;
+	background-color: #6b747f;
+		background-image: url(rounded.png) !important;
+	background-image: url(rounded.gif) ;
+}
+#changes-title h1{
+	padding: 10px 15px ;
+	font-size: 1.4em;
+	letter-spacing: 1px;
+	text-align: center;
+		background-image: url(rounded.png) !important;
+	background-image: url(rounded.gif) ;
+	background-position: top right;
+	color:  #fff;
+	border-bottom: 4px solid #fff;
+	border-color: #808c99;
+}
+
+
+div#changes-info-boxes {
+	margin-top: 0em;
+	line-height: 1.4em;
+	border: 0px solid #f4f9fe;
+	background-color: transparent;
+
+}
+#changescontent .clearfloats{
+	clear: both;
+	height: 1px;
+	background-color: transparent;
+	margin-right: 0;
+}
+
+div#changes-info-box-from {
+	float:  left;
+	padding-top: 1em;
+	width:  49%;
+	text-align: center;
+	color:  #fff;
+}
+#changes-info-box-to {
+	padding-top: 1em;
+	margin-left: 51%;
+	text-align: center;
+    color:  #fff;
+}
+div.changes-info-title {
+	font-weight: bold;
+	font-size: 1.4em;
+	}
+#changes-info-comment {
+	text-align: center;
+	padding: 1em 0;
+	color:  #FFF;
+}
+/*   login   */
+body#body.loginsubmitbody div#xwikimaincontainer2,
+body#body.loginbody div#xwikimaincontainer2,
+body#body.loginsubmitbody, body#body.loginsubmitbody div#xwikimaincontainer,
+body#body.loginbody, body#body.loginbody div#xwikimaincontainer{
+	background-image: none;
+	background-color: #eaeef2;
+}
+
+
+div.loginbox {
+	text-align: center;
+	padding: 10px;
+	margin: 100px 250px;	
+	background-color: #fff;
+	border: 2px solid #ccc;
+}
+
+div#menuview {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+#xwikitoolbar{
+	position: absolute;
+	top: 35px;
+	left: -275px;
+	font-size: 11px;
+	width:  280px;
+	height:  25px;
+	padding-right: 20px;
+	background-image: url(xwikimenu.png);
+	background-position: right top;
+	z-index:1000009;
+}
+#xwikitoolbar:hover{
+	left: 0px;
+}
+#xwikitoolbar a{
+	display:block;
+	padding: 5px;
+	color:  #000;
+	line-height: 15px;
+}
+#xwikitoolbar .topmenuentry a{
+	padding:0;
+	display: inline;
+}
+#xwikitoolbar .topmenuentry{
+	padding: 5px 5px;
+}
+#xwikitoolbar .topmenuentry span.submenu{
+	background-image: url(white-50.png)
+	}
+#xwikitoolbar .topmenuentry span.submenuitem{
+	display:  block;
+	padding: 3px 5px;
+	}
+
+.vcard {
+	overflow:  auto;
+	margin-bottom: 0.5em;
+	height: 1%;
+}
+/* --- adminspaces ---- */
+div.spacedetails {
+	padding:  5px  0;
+	border: 1px dotted #aaa;
+	border-width: 1px 0px;
+	margin-top: -1px;
+}
+span.spacename {
+	display: block;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-right: 1em;
+}
+span.spacecolor {
+	float: left;
+	width: 1em;
+}
+span.spacecreator, span.spacedate, span.spacememberscount {
+	margin-left: 0.25em;
+	margin-right: 0.25em;
+}
+span.spacetype {
+	font-style:italic;
+}
+.spacedetails span.spaceactions {
+	white-space: nowrap;
+	}
+
+
+
+
+
+#gallery a.gallery-item {
+  border: 1px dotted #ddd;
+  float:left;
+  height:230px;
+  margin:10px 10px 0pt 0pt;
+  text-align:center;
+  text-decoration:none;
+  width:210px;
+}
+#gallery a.gallery-item span {
+        display:block;
+	text-align:center;
+	padding: 5px 3px;
+	color: #999;
+	}
+#gallery a.gallery-item span.heading-1-1{
+	font-size: 1.4em;
+}
+#body.body-user #gallery a.gallery-item:hover {
+  border-color:#A5B853;
+}
+
+.photo-download-link{
+  padding: 10px 0;
+}
+
+.photo-download-link a{
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+img#img_displayed {
+	margin-top: 50px;
+}
+
+/* @group Vcard */
+
+/*
+#inline .vcardcontent {
+  line-height: 1px;
+}
+*/
+#inline .vcard input {
+  margin-left: 20px;
+}
+#inline .vcardcontent span {
+  line-height: 20px;
+}
+#inline .vcard span {
+  display: block;
+  letter-spacing: 1px;
+}
+#inline .honorific-prefix span {
+  display: inline;
+}
+.vcard .photo {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  border: 2px solid #000;
+}
+.vcard img.nophoto {
+  border: 0;
+}
+.vcard .photo-change {
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.vcard .fn {
+  font-weight: bold;
+}
+div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.family-name ,
+div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.nickname,
+div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.given-name {
+	font-size: 2em;
+}
+div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.nickname{
+display:  none;}
+div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.nick-name p{
+	margin: 0;
+}
+.vcard .type, #inline .vcard .type {
+  display: none;
+}
+.vcardcontent, .photo-container {
+  float: left;
+}
+.vcard .adr {
+  padding-top: 10px;
+  display: block;
+}
+.vcard {
+  text-align: left;
+}
+div.pageinfos .vcard {
+	display: inline;
+}
+.vcard .hcard-button {
+  margin-top: 20px;
+}
+#lb-content .vcard {
+  margin-bottom: 20px;
+}
+#inline .topbuttons {
+  display: none;
+}
+#inline .vcard .fn {
+  font-weight: normal;
+}
+
+/* Admin a reecrirer/reclasser */
+
+div#spacemembers center {text-align: left;}
+
+#body #spacemembers #space-members-container div.inlinepanelcontents {
+	padding: 2px;
+	background-color: #f5f8fa;
+	border: 1px solid #70889c;
+	}
+#space-members-container div.inlinepanelcontents div{border: none;}
+#space-members-container div.inlinepanelcontents div.clearfloats{border: none;padding:0;}
+div#spacemembers #space-admin-header a,
+div#spacemembers #space-writer-header a,
+div#spacemembers #space-reader-header a{
+	display: block;
+	background-color: #85919c;
+	text-align: center;
+	color: #fff;
+	font-size: 0.8em;
+}
+div#spacemembers .infomessage{
+	padding-left: 35px;
+}
+div#spacemembers .inlinepanel h5.inlinepaneltitle {
+background:transparent none repeat scroll 0%;
+cursor:auto;
+margin:0pt;
+padding:7px 0pt 0pt;
+text-align:center;
+text-transform:uppercase;
+}
+div#spacemembers  #space-members-container .inlinepanel {
+float:left;
+height:auto;
+margin:0.5%;
+max-height:2000px;
+min-height:20px;
+width:32%;
+}
+div#spacemembers .inlinepanel .inlinepanelcontents {
+background:transparent none repeat scroll 0%;
+height:auto;
+margin:0pt;
+max-height:2000px;
+min-height:30px;
+padding:0pt;
+}
+div#spacemembers .inlinepanelcontents .member-entry {
+border-bottom:1px solid #FFFFFF;
+margin-top:-1px;
+padding:3px;
+	border-color: #d2d7eb;
+}
+div#spacemembers .inlinepanelcontents .member-entry .fn.expanded {
+background:transparent url(images/member-actions-expanded.gif) no-repeat scroll right center;
+}
+div#spacemembers .inlinepanelcontents .member-entry .fn.collapsed {
+background:transparent url(images/member-actions-collapsed.gif) no-repeat scroll right center;
+}
+div#spacemembers .inlinepanelcontents .member-entry .fn {
+cursor:pointer;
+}
+div#spacemembers .inlinepanelcontents .member-entry .member-actions {
+margin-top:3px;
+text-align:center;
+}
+div#spacemembers .inlinepanelcontents .member-entry .member-actions a {
+background-color:#9437FA;
+border:1px solid #000000;
+color:#FFFFFF;
+font-size:0.9em;
+margin:0pt 3px;
+padding:1px 3px 1px 8px;
+text-decoration:none;
+}
+div#spacemembers .inlinepanelcontents .member-entry .member-actions a img {
+display:none;
+}
+div#spacemembers .inlinepanelcontents .member-actions a.member-action-delete {
+background:#F42B00 none repeat scroll 0%;
+}
+div#spacemembers #contentcolumncontainer .inlinepanel.expanded .inlinepaneltitle {
+background:transparent url(images/panel-admin-header-right.png) no-repeat scroll right top;
+}
+div#spacemembers #contentcolumncontainer .inlinepanel {
+background:#FFFFFF url(images/panel-admin-header-left.png) no-repeat scroll left top;
+height:auto;
+}
+#space-members-container {
+text-align:center;
+width:100%;
+}
+div#spacemembers .inlinepanel h5.inlinepaneltitle {
+padding-top:7px;
+}
+#members-available-list {
+font-size:12px;
+}
+#body.body-admin-members #members-container {
+color:#FFFFFF;
+padding:20px;
+text-align:center;
+width:100%;
+}
+#body.body-admin-members #members-form {
+background-color:#746D7A;
+padding:10px 0pt;
+}
+#body.body-admin-members #members-list-container {
+background-color:#746D7A;
+position:relative;
+top:50px;
+}
+#body.body-admin-members #members-list table {
+border:1px solid #FFFFFF;
+width:100%;
+}
+#body.body-admin-members #members-list td {
+border-bottom:1px solid #FFFFFF;
+color:#FFFFFF;
+}
+#body.body-admin-members .member-fields {
+padding:10px 0pt;
+}
+#body.body-admin-members .member-fields input {
+border:1px solid #DBDBDB;
+}
+#body.body-admin-members .little {
+font-size:10px;
+}
+#body.body-admin-members a:link, #body.body-admin-members a:visited {
+color:#FFFFFF;
+text-decoration:none;
+}
+#body.body-admin-members a:hover, #body.body-admin-members a:active {
+color:#FFFFFF;
+text-decoration:none;
+}
+#body.body-admin-members caption, div#spacemembers caption {
+height:29px;
+width:100%;
+}
+#body.body-admin-members #leftPanels, div#spacemembers #leftPanels {
+width:230px;
+}
+#body.body-admin-members #leftPanels .panel {
+margin-left:30px;
+}
+div#spacemembers #leftPanels .panel {
+margin-left:40px;
+}
+#body.body-admin-members #leftPanels .panel-title, div#spacemembers #leftPanels .panel-title {
+display:none;
+}
+#body.body-admin-members #leftPanels .menu-item-hom {
+background:transparent url(images/orgadminbuttons.png) no-repeat scroll left 50%;
+height:20px;
+line-height:20px;
+margin-bottom:10px;
+padding-left:15px;
+}
+#body.body-admin-members #leftPanels .menu-item-admin {
+background:transparent url(images/orgadminbuttons.png) no-repeat scroll left 100%;
+height:20px;
+line-height:20px;
+margin-bottom:10px;
+padding-left:15px;
+}
+div#spacemembers #leftPanels .menu-item-hom {
+background:transparent url(images/adminbuttons.png) no-repeat scroll left 50%;
+height:20px;
+line-height:20px;
+margin-bottom:10px;
+padding-left:15px;
+}
+div#spacemembers #leftPanels .menu-item-mem {
+background:transparent url(images/adminbuttons.png) no-repeat scroll left 0%;
+height:20px;
+line-height:20px;
+margin-bottom:10px;
+padding-left:15px;
+}
+div#spacemembers #leftPanels .menu-item-pub {
+background:transparent url(images/adminbuttons.png) no-repeat scroll left 25%;
+height:20px;
+line-height:20px;
+margin-bottom:10px;
+padding-left:15px;
+}
+div#spacemembers #leftPanels .menu-item-cat {
+background:transparent url(images/adminbuttons.png) no-repeat scroll left 75%;
+height:20px;
+line-height:20px;
+margin-bottom:10px;
+padding-left:15px;
+}
+#body.body-admin-members #leftPanels a, div#spacemembers #leftPanels .menu-item-hom a, div#spacemembers #leftPanels .menu-item-mem a, div#spacemembers #leftPanels .menu-item-pub a, div#spacemembers #leftPanels .menu-item-cat a {
+color:#FFFFFF;
+font-weight:bold;
+text-decoration:none;
+}
+#members-list table.members-table tbody tr td {
+padding:5px 10px;
+}
+#members-form form h1 {
+margin-top:0px;
+}
+table.categorie td.name, table.publication td.desc {
+border-top:1px solid #EEEEEE;
+font-weight:bold;
+padding:10px 5px;
+width:auto;
+}
+table.categorie td.action, table.publication td.mode {
+border-top:1px solid #EEEEEE;
+font-weight:normal;
+padding:10px 5px;
+width:120px;
+}
+
+/* @end */
+
+
+#body #contentcontainerinner .inlinepanel .inlinepaneltitle {
+color:#FFFFFF;
+font-size:1.2em;
+height:18px;
+line-height:1.1em;
+margin:0pt;
+padding:4px 0pt 3px 6px;
+position:relative;
+}
+#body #contentcontainerinner .inlinepanel .inlinepaneltitle {
+background-color:#70889C;
+}
+.inlinepanelcontents {
+background-color:#F2F6F9;
+}
+#body #contentcontainerinner .inlinepanel.here .inlinepaneltitle {
+background-color:#F98511;
+}
+.here .inlinepanelcontents {
+background-color:#FDE2AF;
+}
+#body #contentcontainerinner .inlinepanel.org .inlinepaneltitle {
+background-color:#990000;
+}
+.inlinepanel.org .inlinepanelcontents {
+background-color:#EACDCC;
+}
+#body #contentcontainerinner .inlinepanel .inlinepaneltitle a {
+color:#FFFFFF;
+text-decoration:none;
+}
+#body #contentcontainerinner .inlinepanel .inlinepaneltitle {
+margin:10px 10px 0pt;
+}
+
+span.story-appname {
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+div.inlinepanelcontents div {
+	padding: 2px 0;
+	border-bottom: 1px dashed ;
+	border-color: #d2d7eb;
+}
+span.story-comment em{
+	display: block;
+	font-size: 0.9em;
+	font-weight: normal;
+	font-style: normal;
+}
+
+span.event-workspace {
+	padding-right: 15px;
+}
+
+#body #contentcontainerinner .inlinepanel .inlinepanelcontents {
+line-height:1.4em;
+margin:0px 10px 10px;
+overflow-x:hidden;
+padding:10px;
+}
+#body #contentcontainerinner #space-dashboard .inlinepanel .inlinepaneltitle {
+margin:1em 0pt 0pt;
+}
+#body #contentcontainerinner #space-dashboard .inlinepanel .inlinepanelcontents {
+height:auto;
+margin:0pt;
+line-height:1.5em;
+max-heiht:2000px;
+}
+#body #contentcontainerinner .inlinepanel .inlinepaneltitle img {
+margin:0pt 3px -3px 0pt;
+}
+
+div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.family-name, div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.nickname, div.wiki-doc-entry div.useridentitysheet div.vcard div.vcardcontent span.fn.n span.given-name {
+  line-height: 1em;
+}
+
+/* IE 7 */
+*+html #actionmenu a#globaladminbutton span,
+*+html #actionmenu a#logoutbutton span{
+  background-image: url(topbutton-red.gif);
+  margin-right: 0;
+}
+*+html #actionmenu a#mydashboardbutton span,
+*+html #actionmenu a#myspacebutton span,
+*+html #actionmenu a#myprofilebutton span,
+*+html #actionmenu a#myspacesbutton span{
+  background-image: url(topbutton-blue.gif);
+  margin-right: 0;
+}
+*+html #actionmenu a#globaladminbutton,
+*+html #actionmenu a#logoutbutton {
+  margin: 0 10px;
+}
+*+html #actionmenu a#mydashboardbutton,
+*+html #actionmenu a#myspacesbutton,
+*+html #actionmenu a#myspacebutton,
+*+html #actionmenu a#myprofilebutton {
+  margin: 0 5px;
+}
+*+html #actionmenu span#username a{
+  position: absolute;
+  top: 0;
+  right: 130px;
+}
+*+html #pagename {
+  line-height: 25px;
+}
+*+html .useridentitysheet .vcard {
+  overflow: visible;
+}
+*+html #edit {
+  width: 100%;
+}
+*+html .main.layoutsubsection {
+  width: 680px;
+}
+.xwikipanelcontents input#xwikidocparentinput2, .xwikipanelcontents input#tags{ width :150px;}
+

@@ -1,0 +1,107 @@
+/* Comments styles */
+/*
+#comments {
+  margin: 50px 0px 0px 50px;
+}
+*/
+
+/*
+#body.body-user #comments, #body.body-space #comments, #body.body-org #comments {
+  margin: 50px 0 0 0;
+}
+*/
+
+#comments{
+  border-top: 1px solid #333;
+  display: block;
+  clear: both;
+  top:20px;
+  position:relative;
+}
+
+#body.body-user #comments #commentcontent, #body.body-space #comments #commentcontent, #body.body-org #comments #commentcontent,
+#body.body-user #comments #textarea, #body.body-space #comments #textarea, #body.body-org #comments #textarea {
+  padding-top: 10px;
+  font-size: 0.90em;
+}
+
+#commentscontainer {
+  margin: 35px;
+}
+
+#body.body-user #commentscontainer, #body.body-space #commentscontainer, #body.body-org #commentscontainer {
+  margin: 20px 0;
+}
+
+#body.body-user #commentscontainer hr, #body.body-space #commentscontainer hr, #body.body-org #commentscontainer hr {
+  display: none;
+}
+
+#commentaddform {
+  margin-top: 35px;
+}
+
+.comments-title{
+  height: 21px;
+}
+
+.comments-inner-tittle{
+  background: transparent url(images/comments.png) no-repeat top right;
+  text-align: center;
+  line-height: 1.5em;
+  width: 160px;
+  height: 21px;
+  float: right; 
+}
+
+div.comments-title a:link, 
+div.comments-title a:visited, 
+div.comments-title a:hover, 
+div.comments-title a:active {
+/*
+  font-size: 20px;
+  font-weight: bold;
+*/
+  margin-bottom: 35px;
+  color: #FFF;
+  text-decoration: none;
+}
+
+#body.body-user .commentheader, #body.body-space .commentheader, #body.body-org .commentheader {
+  font-size : 0.85em;
+  color: #888;
+  padding: 3px 0;
+  text-align: left;
+}
+
+#body.body-user .commentheader a, #body.body-space .commentheader a, #body.body-org .commentheader a {
+  color: #888;
+  font-weight: bold;
+  text-decoration : none;
+}
+
+.xwikicomment.odd{
+  background-color: #F9F9F9;
+  margin-top: 20px;
+  padding: 10px 15px;
+}
+
+.xwikicomment.even{
+  margin-top: 20px;
+  border-top: 1px solid #F9F9F9;
+  border-bottom: 1px solid #F9F9F9;
+  padding: 10px 15px;
+}
+
+.addcomment_title{
+  font-weight: bold;
+  color: #888;  
+  margin: 0 0 10px 0;
+}
+
+.commentedit{
+  border-top: 2px solid #FFFFFF;
+  height: 20px;
+  margin-top: 10px;
+  padding-top: 6px;
+}

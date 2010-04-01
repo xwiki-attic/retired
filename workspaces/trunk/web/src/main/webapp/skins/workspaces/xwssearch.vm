@@ -1,0 +1,115 @@
+#template("xwscontentheader.vm")
+#set($text=$request.text)
+#set($text = $text.replaceAll("'", "''").replaceAll("%", "\\%"))
+<h2 class="heading-1">$msg.get('xws.search.title')</h2>
+  <form action="${workspace.homeURL}">
+    <div>
+      <input type="text" name="text" value="$!text.replace(">", "&gt;").replace("<", "&lt;").replace('"', "&quot;")" size="20"/>      
+      <input class="button" value="$msg.get('panels.search.submit')" type="image" src="$xwiki.getSkinFile("go.png")"/>
+    </div>
+  </form>
+#set($nbitems = 50)
+## -----------------------------------------------------------
+## Retrieve the workspaces applications webs
+## -----------------------------------------------------------
+#set($spaceWebs = "select distinct doc.space from XWikiDocument as doc, XWikiDocument as sp, BaseObject as prefs, StringProperty as parent where sp.space='${workspace.spaceName}' and sp.name='WebPreferences' and prefs.className='XWiki.XWikiPreferences' and prefs.name=doc.fullName and parent.id.id=prefs.id and parent.id.name='parent' and parent.value='${workspace.spaceName}'")
+## -----------------------------------------------------------
+## Exclude applications WebHome and WebPreferences as
+## they are technical documents not intended to hold content
+## valuable to the workspace users
+## -----------------------------------------------------------
+#set($excludedNames = "doc.name<>'WebPreferences' and doc.name<>'WebHome'")
+#set($whereClause = "doc.space in ($spaceWebs) and $excludedNames and")
+#set($datedlist=$util.arrayList)
+#macro(addelement $item $list)
+  #if($xwiki.hasAccessLevel("view", $context.user, "${context.database}:${item}"))
+    #set($itemdoc = $xwiki.getDocument($item))
+    #set($sdate = $xwiki.formatDate($itemdoc.date, "yyyyMMddHHmmss"))
+    #set($sitem = "${sdate}${item}")
+    #if(!$list.contains($sitem))
+      #set($discard = $list.add($sitem))
+    #end
+  #end
+#end
+## -----------------------------------------------------------
+## Search in the page names (not webs, thought)
+## -----------------------------------------------------------
+#set ($sql = "where $whereClause upper(doc.name) like upper('%$!text%') order by doc.date desc")
+#foreach ($item in $xwiki.searchDocuments($sql , $nbitems, 0))
+ #addelement($item $datedlist)
+#end
+## -----------------------------------------------------------
+## Search in page content
+## -----------------------------------------------------------
+#set ($sql = "where $whereClause upper(doc.content) like upper('%$!text%') order by doc.date desc")
+#foreach ($item in $xwiki.searchDocuments($sql , $nbitems, 0))
+ #addelement($item $datedlist)
+#end
+## -----------------------------------------------------------
+## Search in text fields (simple String properties)
+## -----------------------------------------------------------
+#set($sql= ", BaseObject as obj, StringProperty as prop where $whereClause obj.name=doc.fullName and prop.id.id = obj.id and upper(prop.value) like upper('%$!text%')")
+#foreach ($item in $xwiki.searchDocuments($sql , $nbitems, 0))
+ #addelement($item $datedlist)
+#end
+## -----------------------------------------------------------
+## Search in big text fields (textarea properties)
+## -----------------------------------------------------------
+#set($sql= ", BaseObject as obj, LargeStringProperty as prop where $whereClause obj.name=doc.fullName and prop.id.id = obj.id and upper(prop.value) like upper('%$!text%')")
+#foreach ($item in $xwiki.searchDocuments($sql , $nbitems, 0))
+ #addelement($item $datedlist)
+#end
+#set($list = $util.arrayList)
+#foreach($item in $xwiki.sort($datedlist))
+ #set($ok = $list.add(0, $item.substring(14)))
+#end
+## -----------------------------------------------------------
+## Display search results
+## -----------------------------------------------------------
+<table id="searchTableUnique" class="grid sortable filterable doOddEven">
+  <tr class="sortHeader">
+    <th style="width:75px" class="selectFilter">$msg.get('xws.search.application')</th>
+    <th>$msg.get('xws.search.document')</th>
+    <th style="width:150px">$msg.get('xws.search.date')</th>
+    <th style="width:150px">$msg.get('xws.search.lastauthor')</th>
+  </tr>
+  #foreach ($item in $list)
+    #set($itemfullname = "${context.database}:${item}")
+    #if ($xwiki.hasAccessLevel("view", $context.user, $itemfullname))
+      #set($bentrydoc = $xwiki.getDocument($item))
+      <tr>
+      #set($appName=$xwiki.xwsmgr.getApplicationName($item))
+      <td style="text-align:left">
+        <a href="$xwiki.xwsmgr.getApplicationURL($workspace.spaceName, $appName)">$appName</a>
+      </td>
+      <td style="text-align:left"> 
+        #set($qs="")
+        #set($ptitle="")
+        #if($appName.equals("Photos") && !$bentrydoc.getObject("XWSCode.PhotoGalleryClass")) 
+         #set($qs="viewer=photo")
+         #if($bentrydoc.getAttachmentList().size() > 0)
+           #set($ptitle=$bentrydoc.getAttachmentList().get(0).filename)
+         #end
+        #elseif($appName.equals("Files"))
+         #if($bentrydoc.getAttachmentList().size() > 0)
+           #set($ptitle=$bentrydoc.getAttachmentList().get(0).filename)
+         #end
+        #end
+        #if(!$ptitle ||$ptitle.equals(""))
+         #set($ptitle=$bentrydoc.title)
+        #end
+        #if(!$ptitle ||$ptitle.equals(""))
+         #set($ptitle=$bentrydoc.name)
+        #end
+        <a href="$bentrydoc.getURL('view',${qs})">$ptitle</a>
+      </td>
+      <td style="text-align:left">
+      $xwiki.formatDate($bentrydoc.date, $msg.get('xws.dateformat.withtime'))
+      </td>
+      <td style="text-align:center">
+      $xwiki.getUserName($bentrydoc.author)
+      </td>
+      </tr>
+    #end
+  #end
+</table>

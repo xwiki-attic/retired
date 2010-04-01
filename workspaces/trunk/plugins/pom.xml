@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xpn.xwiki.products</groupId>
+    <artifactId>xwiki-workspaces-parent</artifactId>
+    <version>1.2-SNAPSHOT</version>
+  </parent>
+  <groupId>com.xpn.xwiki.products</groupId>
+  <artifactId>xwiki-workspaces-plugins</artifactId>
+  <packaging>pom</packaging>
+  <name>XWiki Products - Workspaces - Plugins</name>
+  <description>XWiki Products - Workspaces - Plugins</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform</groupId>
+      <artifactId>xwiki-core</artifactId>
+      <version>${platform.core.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform.plugins</groupId>
+      <artifactId>xwiki-plugin-mailsender</artifactId>
+      <version>${plugin.mailsender.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform.plugins</groupId>
+      <artifactId>xwiki-plugin-activitystream</artifactId>
+      <version>${plugin.activitystream.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform.plugins</groupId>
+      <artifactId>xwiki-plugin-invitationmanager</artifactId>
+      <version>${plugin.invitationmanager.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.xpn.xwiki.platform.tools</groupId>
+      <artifactId>xwiki-shared-tests</artifactId>
+      <version>${platform.tool.test.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <modules>
+    <module>workspacesmanager</module>
+  </modules>
+</project>

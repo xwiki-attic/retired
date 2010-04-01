@@ -1,0 +1,230 @@
+/* colibri.css */
+
+body {
+  overflow-y: hidden;
+}
+a{z-index:1; position:relative;}
+#xwikimaincontainer {
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+#xwikimaincontainerinner {
+  height: 100%;
+  position: relative;
+padding-bottom:150px;
+}
+#footer {
+position: absolute;
+bottom: 0px;
+left: 30px;
+width: 100%;
+margin-right : 0;
+}
+
+
+#pagename {
+  margin: 0 0 0 227px; /* find another hack */
+}
+
+#leftPanelsFooter{
+  display:inline;
+}
+
+.xwikiextendedcontentbg{
+  padding: 7px 0 0 0;
+}
+
+#body.body-user table.WHtable, 
+#body.body-space table.WHtable,
+#body.body-org table.WHtable{
+  width: 100%;
+}
+
+/* contenblocs.css */
+
+/* buttons.css */
+
+/*  login_message_box.css  */
+
+#loginpage .main {
+  padding: 100px 0;
+}
+
+/*  rounded.css  */
+
+.rounded .top *, .rounded .bottom *, .roundedlight .top *, .roundedlight .bottom * {
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  line-height: 1px;
+}
+
+.rounded, .rounded .top, .rounded .bottom {
+  height: 16px;
+}
+
+.roundedlight, .roundedlight .top, .roundedlight .bottom {
+  height: 5px;
+}
+
+/*  lightbox.css  */
+
+#lb-bg {
+  position: absolute;
+}
+
+#lb-align {
+  position: absolute;
+}
+
+#lb, .medium#lb {
+  margin: 10% 10%;
+  width: 80%;
+}
+
+.small#lb {
+  margin: 10% 25%;
+  width: 50%;
+}
+
+#lb-close-bt {
+  margin-bottom: -1px;
+}
+
+#lb-top .roundedlight {
+  margin-bottom: -0.15em;
+  margin-top: -0.9em;
+}
+
+#lb-bottom .roundedlight {
+  margin-top: -0.75em;
+}
+
+#lb-top .rounded {
+  margin-bottom: -0.1em;
+  margin-top: -0.3em;
+}
+
+#lb-bottom .rounded {
+  margin-top: -0.2em;
+}
+
+body {
+  overflow: hidden;
+}
+
+#xwikimaincontainer {
+  height: 100%;
+  overflow: auto;
+  border: 0;
+  /*background-color:transparent;*/
+}
+
+#xwikimaincontainerinner {
+  /* margin: 0 40px 0;*/
+  /*ie 6.0 layout barakes if:
+  background-color:#FFF;
+  */
+  /* border:0px solid #474F57;*/
+}
+
+/*  colors.css  */
+/*  webhome.css  */
+
+.table-shadow{}
+
+.inlinepanelcontents {
+  height:150px;
+}
+
+#body.body-user .main.layoutsubsection, #body.body-space .main.layoutsubsection  {
+  border: none;
+}
+
+/* footer */
+#footer{
+  clear: both;
+  display: block;
+}
+
+
+/*  comments.css */
+
+/* calendar.css */
+
+.add_event_form{
+  height: 100%;
+}
+
+div.file-service-addfile-bt {
+         display:inline-block;
+         _display: inline;
+	 
+	 	 }
+div#footer p a{
+float:right;
+heigth : 30px;
+width: 170px;
+}
+div#footer p a img {
+display: none;
+}
+#space-list, .main {width: 100%;}
+#space-list table#collaborative-spaces{width: 100%;}
+
+#space-dashboard .inlinepanel { width: 100%;}
+.file-service-addfile-bt {zoom: 1;}
+
+/* IE6 */
+#leftmenu {
+  left: 49.3%;
+}
+#body.viewbody #xwikimaincontainer {
+  background-image: url(workspaces-TOP-black.png)
+}
+#pagename {
+  margin-left: 0;
+}
+.xwikipanelcontents, h5.xwikipaneltitle, #editPanels .xwikipanelcontents, #editPanels H5.xwikipaneltitle {
+  background-image: url(panel.gif);
+}
+#actionmenu a#globaladminbutton span,
+#actionmenu a#logoutbutton span{
+  background-image: url(topbutton-red.gif);
+  margin-right: 0;
+}
+#actionmenu a#mydashboardbutton span,
+#actionmenu a#myspacebutton span,
+#actionmenu a#myprofilebutton span,
+#actionmenu a#myspacesbutton span{
+  background-image: url(topbutton-blue.gif);
+  margin-right: 0;
+}
+#actionmenu a#globaladminbutton,
+#actionmenu a#logoutbutton {
+  margin: 0 10px;
+}
+#actionmenu a#mydashboardbutton,
+#actionmenu a#myspacesbutton,
+#actionmenu a#myspacebutton,
+#actionmenu a#myprofilebutton {
+  margin: 0 5px;
+}
+BODY.hideright #xwikimaincontainerinner {
+  padding-bottom: 0;
+}
+.body-xwiki#body #headerglobal {
+  background-color: transparent;
+}
+
+
+/* EDIT */
+#body.inlinebody #xwikimaincontainer, #body.editbody #xwikimaincontainer {
+  background-image: url(workspaces-AD-TOP-black.png);
+}
+body.inlinebody.body-xws .alleditcontent, body.editbody.body-xws .alleditcontent {
+  width: 710px;
+  padding: 0;
+  padding-top: 85px;
+}

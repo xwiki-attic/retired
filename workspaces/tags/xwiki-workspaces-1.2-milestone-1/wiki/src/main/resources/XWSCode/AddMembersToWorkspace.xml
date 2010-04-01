@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xwikidoc>
+<web>XWSCode</web>
+<name>AddMembersToWorkspace</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1203556124000</creationDate>
+<date>1220544426000</date>
+<contentUpdateDate>1220544426000</contentUpdateDate>
+<version>14.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<attachment>
+<filename>user.png</filename>
+<filesize>955</filesize>
+<author>XWiki.Admin</author>
+<date>1220543132000</date>
+<version>1.3</version>
+<comment></comment>
+<content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAADMUlEQVR42mSSTWgcdRjGf/O1Mzu7Ozu7m81X07RlaaqbxoIVK4FKDoIf0ENoKhQEBYWCqBfR9mB7UMGih3qyxQoeIi3SIlSlpq0lpiRpCK3aVg1pErvtbuLkq+vWZjO7M5m/hyXR0gfey4+Hh+eFRxJC8PbzMf4vRYbsJu9V0whebkxbt/suJ41AiD2m7iOQHvBKQgj63jPWgGnAqX51R0OyOtKQEDQ3JWje+AhnzjqFquetlxX94YBvD5j/AQlUxRMDV30KedjaDtltj9OxbQu9X/Z/3mg7+wTKml8FyDvLa8D3eU0TcPjEIKd7T3Ps0KfMOz+zEkrzxHa7LTfuoGrSgwG5hZY14LornU2xvyCxkZ63jrBpfTMfH3yX4R8vkqh/tOvuYoukKLJY9csAy4sFhDAQwsDzpNGWjhd83DuQ+47t3Xv5+jfBrp6XmPzjxqCipgRSjNWTAZ78UBC+P4nu51AUcezK6MRVKg4sjMGv5yAYZGHOJVGf2alWbqJ7OTT3Dno1X3vBuDfI4WufsfuVZ+jx27k+NbeB+UWImzB7G0hSmvuTVDDFeEcOtzhFvKHEvaJXawBgazO0GlfYc/wIx2fPNn1y8MB5HAfqIxzd9wG3Sqr0RbGfpD9MyMujudOEqjO1BqsSQoLqrUFvZn44+U7f0smho/xdvEb3RxfY+ez5k2XnUnF5ecPrD+1g4PIvdHV+5Xa/uE68+Uan4ZYDVD1BqiVDtQppu8pycY7M5hTvH/qJgaGJhaeeDqcXZr1agBHaXzrz/W7Nkyvhm+OzxKNxohGdsKYSi0dRFIlkKoaMTDbbCkDzuv2jz+1q3KECZNoSlaWyZ41NFmisT2NFItiJKFZMR9dNNFWgaDJWJMzE1Aynvhki05aMZjbXGSqAaarp2buLbM02Ebds7HiMdJ2FHY9iGiGEJBEEgnxhjhu/T9G2xeJSv569eG6xS63ViTA5VuLCDw6xSJiQoRDWDUKahiyv4K/ILJXLuEsebsWj/TGbVF2EhkY9LAkh6D0xoIyMTLdqmgiSiXgQjZhYMRNNkal4gVAUKfA9j3/KLuX7ZQrTJcNOSfOWFSr/OwBP1UoZyCMP3wAAAABJRU5ErkJggg==</content>
+</attachment>
+<attachment>
+<filename>group.png</filename>
+<filesize>991</filesize>
+<author>XWiki.Admin</author>
+<date>1220543132000</date>
+<version>1.3</version>
+<comment></comment>
+<content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAADVUlEQVR42mySW0xbdQDGf+d/Tu+jhULLrXJZYAITmMsM61aJMkkUjZnuQY1mmc44n/SFR40mxqgx08QlZjMmusXhpriLCWrwurAhM0SZVQRGCZStQMelQEsv5/T8fTCLJvN7+/Ilv+RLfsrJF20A2G2Sn8NW97Z6/U9vkUMkM6VjQ2Fjj8sBigJrGzb27R5lNQWKYgMkAEIIBSEUFFScttTFX37LBhYWUxUVNb6O5iavTKYMcrpkPW3n/6I+usNAmgaZtLH/ji1Fhyz+Ds73jiOUawTb29CTC/FCb8Hwg60jJNI2pMyjKNq/gC3+YuIJJ1Oz+Xdq65tqn3jtJ/xek54PLpA2FsBSGri+7D5a5YliSO0WgMiaBWTNAjJ514mUWQ1MsOfAQb6ameG2miYuD68vdjYMkMtbUYS45YJYujrNwuw089GV4wIHrP0Blz4Du0TPlqd21kXuSxv2oVTWlMuxtBQKx4RQUFVQVdAe+lhSPdCFpbCKCxe/G2a6dQe3e2D8C/q/Ph+7P0hLPK63Gbk8d+6+l8jIj885N2X61jZsXwohUU6e/oGZRZWrs2nKrILA4svSX2ASWS1l3RdSxJU3k9aNhKsl1MjDr4wSPtfN4KnDY8UBe6OUJprFouIWK7u8WvL1qevynn3d3+LxaOwtdxDs+lV2aa/y0ofvQcYN5NgcfIah3sMNOd0EBbS5uVRobDI2kJiHx5/aynh4hE1OJ/FyP5++a+X9ZzNg3wzpKVgeJB0ZYi0LVp0qKYmKpaXULofVyWP7m8mnbVSWFdPcup3Fv77nhWAzsRtw+ewpcBTB2CU+/+gYK2vQ4Nfn63wmmstlqZ2YzFJfVYrF5qTMV4jLbVL75AF87ixvHXqeM2c/oe2BDuKmi9/Hpqnx0bjzjWCO3ARaRaU7lljJ0nN6lJISNzZNZWvTXRQUZs3ewVURLd+OxAM+BX9JJVfydxv9EfV4RWBlNJeQTyvn+gbpOREmr6t4Cm3U1bUyNxfhyJFH+oFOb6CJ1fUUxng30aEo1XvfBs2Fz6OS3NCPaqYpsVgFFk3D6bTQ3t5MKNQC0AmwfG0UACMco29w8h/9jBQ3lgA4qP1Xy5qabYRCys36DWAFVgFFz+fJ6fmbmwRcQOTvAQAuMGHVCj9mDQAAAABJRU5ErkJggg==</content>
+</attachment>
+<object>
+<class>
+<name>XWiki.JavaScriptExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>onDemand=On demand|always=Always</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWSCode.AddMembersToWorkspace</name>
+<number>0</number>
+<className>XWiki.JavaScriptExtension</className>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>function displayUser(row, i, table)
+{
+  var tr = document.createElement('tr');
+  if (i % 2 == 0) {
+    tr.className = "even";
+  } else {
+    tr.className = "odd";
+  }
+  if(row.groupname) {  // group request
+  	text = row.groupname; 
+	id = row.groupid;
+        divClass = "group";
+  }
+  else {  // user request
+  	text = row.firstname + " " + row.lastname;
+	id = row.username;
+        divClass = "user";
+  }
+  var td = document.createElement('td');
+  var textDiv = document.createElement('div');
+  var arrowDiv = document.createElement('div');
+  textDiv.setAttribute("style", "width: 80%; float: left;");
+  textDiv.style.width = "80%";
+  textDiv.style.styleFloat = "left";
+  textDiv.href="javascript:void(0)";
+  td.id = "left_" + id;
+  textDiv.appendChild(document.createTextNode(text) );
+
+  if(!$('right_'+id)){
+    var a = document.createElement('a');
+    a.id = "a_" + id;
+    a.setAttribute("style","cursor:pointer");
+    a.href = "javascript:void(0);" + "pushInList('"+id+"','"+text+"','"+divClass+"')";
+    a.appendChild(getAddImageNode());
+    arrowDiv.appendChild(a);
+  }
+  
+  td.appendChild(textDiv);
+  td.appendChild(arrowDiv);
+  tr.appendChild(td);
+
+  return tr;
+}
+function makeRemoveFromListHandler(userId,userName,type){
+   return function(ev){
+     return removeUserFromList(userId,userName,type);
+   }
+}
+/**
+ * Pushes this user or group in the list of selected users and groups
+ * @param {String} id the document name of the group or user pushed
+ * @param {String} name the pretty name of the pushed group or user
+ * @param {String} type the type of the pushed element : "user" or "group"
+ */
+function pushInList(userId, userName, type) {
+  var rightUsernameDiv = document.createElement('div');
+  var rightArrowDiv = document.createElement('div');
+  var tableLine = document.createElement('tr');
+  var tableCell = document.createElement('td');
+  var userEntry = document.createElement('span');
+  var a = document.createElement('a');
+
+  rightUsernameDiv.className = type;
+  userEntry.id = "right_" + userId;
+  userEntry.appendChild(document.createTextNode(userName));
+
+  a.id = "right_a_" + userId;
+  a.setAttribute("style","cursor:pointer");
+
+  Event.observe(a,'click',makeRemoveFromListHandler(userId,userName,type));
+  a.style.bgColor = "red";
+  a.appendChild(getDelImageNode());
+
+  rightArrowDiv.appendChild(a);
+  rightArrowDiv.setAttribute("style", "float: left;");
+
+  rightUsernameDiv.setAttribute("style", "width: 80%; float: left;");
+  rightUsernameDiv.style.width = "80%";
+  rightUsernameDiv.style.styleFloat = "left";
+  rightUsernameDiv.appendChild(userEntry);
+  //rightUsernameDiv.appendChild(rightArrowDiv);
+
+  tableCell.appendChild(rightUsernameDiv);
+  tableCell.appendChild(rightArrowDiv);
+
+  tableLine.appendChild(tableCell);
+
+  $('selectedUsersTableBody').appendChild(tableLine);
+
+  var tdnode = $('a_'+userId);
+  tdnode.parentNode.removeChild(tdnode);
+}
+function getAddImageNode(){
+  var img = document.createElement('img');
+  img.src = "$xwiki.getSkinFile('images/addtolist.png')";
+  return img;
+}
+function getDelImageNode(){
+  var img = document.createElement('img');
+  img.src = "$xwiki.getSkinFile('images/delete.png')";
+  img.setAttribute("style","padding-right:5px");
+  return img;
+}
+
+function makePutUserInListHandler(userId,userName,type){
+   return function(ev){
+     return pushInList(userId,userName,type);
+   }
+}
+/**
+ * removes the passed user or group from the selected list
+ * @param {String} id the document name of the user or group to remove from selected
+ * @param {String} name the pretty name of user of group to remove
+ */
+function removeUserFromList(id, name, type){
+  if($('left_'+id)){
+    var a = document.createElement('a');
+    a.id = "a_" + id;
+    a.setAttribute("style","cursor:pointer");
+    Event.observe(a,'click',makePutUserInListHandler(id,name,type));
+    a.appendChild(getAddImageNode());
+    var aDiv = document.createElement('div');
+    aDiv.appendChild(a)
+    $('left_'+id).parentNode.lastChild.appendChild(aDiv);
+  }
+  var d = $('right_'+id);
+  var tr = d.parentNode.parentNode.parentNode;
+  tr.parentNode.removeChild(tr);
+}</code>
+</property>
+<property>
+<name>Add users to space</name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>onDemand=On demand|always=Always</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>XWSCode.AddMembersToWorkspace</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>#users-table table table#userstable table,
+#users-table table table#groupstable table {
+background-color:#FFFFFF;
+border:medium none;
+margin:0;
+width:310px;
+}
+#users-table table table#userstable #displayallusers thead.theader tr#table-filters td,
+#users-table table table#groupstable #displayallgroups thead.theader tr#table-filters td  {
+background-color:#d2d7eb;
+}
+#users-table table tr td div {background-color:#D2D7EB;padding:11px;text-align:center;}
+#displayallusers thead.theader,
+#displayallgroups thead.theader 
+{width: 310px;}
+#userstable tr.gridcontainer {height:246px;}
+#users-table table table#userstable div, 
+#users-table table table#groupstable div{
+background-color:transparent;
+padding:2px 0;
+}
+#displayallusers thead.theader td,
+#displayallgroups thead.theader td 
+{color:#ffffff;}
+#showLimits {display:none;} 
+#selectedUsers, .selectedUsers {height:444px;overflow-y:auto;}
+#selectedUsers div.user {background:url("$doc.getAttachmentURL('user.png')") no-repeat 30px 0px;}
+#selectedUsers div.group {background:url("$doc.getAttachmentURL('group.png')") no-repeat 30px 0px;}
+#displayallusers #table-filters td {background:url("$doc.getAttachmentURL('user.png')") no-repeat right;}
+#displayallgroups #table-filters td {background:url("$doc.getAttachmentURL('group.png')") no-repeat right;}</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>input</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>XWSCode.AddMembersToWorkspace</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#**
+ * Dynamic tables to load users to add to workspace group
+ *#
+## Load extensions
+$xwiki.jsx.use("XWSCode.AddMembersToWorkspace")
+$xwiki.ssx.use("XWSCode.AddMembersToWorkspace")
+#set($togroup=$request.group)
+#set($groupName = $msg.get("xws.group.${togroup}"))
+#set($args = $util.arrayList)
+#set($void = $args.add($groupName))
+1.1 $msg.get('xws.admin.adduserstogroup', $args)
+#info($msg.get('xws.admin.addusershelp'))
+&lt;div id="users-ajax-loader"&gt;
+  &lt;div id="ajax-loader"&gt;$msg.get("ui.ajaxTable.loading")&lt;br /&gt;
+    &lt;img src="$xwiki.getSkinFile('icons/ajax-loader.gif')" alt="$msg.get('ui.ajaxTable.loading')" title="" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="users-table"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table id="userstable"&gt;
+&lt;tr&gt;
+ &lt;td colspan="2"&gt;
+   &lt;span id="showLimits"&gt;&lt;/span&gt;
+ &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="gridcontainer"&gt;&lt;td&gt;
+      &lt;table id="displayallusers"&gt;
+       &lt;thead class="theader"&gt;
+          &lt;tr&gt;
+            &lt;td&gt;$msg.get("xws.admin.availableusers")&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr id="table-filters"&gt;
+              &lt;td&gt;&lt;input name="username" type="text"/&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+       &lt;/thead&gt;
+       &lt;tbody id="display1"&gt;&lt;tr&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+      &lt;/table&gt;&lt;/td&gt;
+      &lt;td valign="top"&gt;
+        &lt;div id="scrollbar1" class="scrollbar"&gt;&lt;div class="inscrollbar"&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;td id="buff"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table id="groupstable"&gt;
+&lt;tr&gt;
+ &lt;td colspan="2"&gt;
+   &lt;span id="showLimits2"&gt;&lt;/span&gt;
+ &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;
+      &lt;table id="displayallgroups"&gt;
+       &lt;thead class="theader"&gt;
+          &lt;tr&gt;
+            &lt;td&gt;$msg.get("xws.admin.availablegroups")&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr id="table-filters"&gt;
+              &lt;td&gt;&lt;input name="groupname" type="text"/&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+       &lt;/thead&gt;
+       &lt;tbody id="display2"&gt;&lt;tr&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+      &lt;/table&gt;&lt;/td&gt;
+      &lt;td valign="top"&gt;
+        &lt;div id="scrollbar2" class="scrollbar"&gt;&lt;div class="inscrollbar"&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;td id="buff"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+  &lt;div&gt;$msg.get('xws.admin.selectedusers')&lt;/div&gt;
+&lt;div id="selectedUsers"&gt;
+  &lt;table id="selectedUsersTable"&gt;
+  &lt;tbody id="selectedUsersTableBody"&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;center&gt;
+&lt;span class="buttonwrapper"&gt;
+&lt;a href=$doc.getURL("view","s=m")&gt;$msg.get('commons.form.cancel')&lt;/a&gt;
+&lt;/span&gt;
+&lt;span class="buttonwrapper"&gt;
+&lt;a id="addUsersToSpace"&gt;$msg.get("xws.admin.adduserstospace", $args)&lt;/a&gt;
+&lt;/span&gt;
+&lt;/center&gt;
+{pre}
+## Initialize the ASS Table...
+&lt;script type="text/javascript"&gt;
+// &lt;![CDATA[
+Event.observe($('addUsersToSpace'), "click", addUsers());
+/**
+ * Add the users in the selected users table to the requested group in the workspace.
+ * This method cannot be pushed in the XWiki.JavascriptExtension "as is" as $doc.getURL
+ * would be evaluated in the context of this document, instead of the including document
+ * , thus breaking the correct behavior. (Also $request.group seems not to be evaluated
+ * properly when using jsx.
+ */
+function addUsers()
+{
+  return function() {
+    var args = "";
+    args = "s=m&amp;action=add&amp;group=${request.group}";
+    var selected = $('selectedUsersTable').getElementsByTagName("span");
+    for (var i=0;i&lt;selected.length;i++){
+       args += "&amp;" + selected[i].id + "=1";
+    }
+    var url = "$doc.getURL('view')" + "?" + args;
+    window.location = url;
+  }
+}
+#set($url = $xwiki.getURL("XWSCode.AddMembersToWorkspaceService","view","xpage=plain&amp;type=users&amp;space=${workspace.spaceName}"))
+var ta = new ASSTable("$url", 10, "display1", "scrollbar1", "userstable", displayUser, true);
+#set($url = $xwiki.getURL("XWSCode.AddMembersToWorkspaceService","view","xpage=plain&amp;type=groups&amp;space=${workspace.spaceName}"))
+var ta2 = new ASSTable("$url", 10, "display2", "scrollbar2", "groupstable", displayUser, true);
+// ]]&gt;
+&lt;/script&gt;
+{/pre}</content>
+</xwikidoc>

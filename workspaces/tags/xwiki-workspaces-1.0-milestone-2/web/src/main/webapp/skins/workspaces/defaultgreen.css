@@ -1,0 +1,142 @@
+/* --- Colors of a personal space --- */
+/* LB 65% : #2E3218 - vert fort : #A5B853 - vert moyen :#C9D497 - vert clair : #E4EACC */
+#body.body-user #company { 
+background: transparent url(images/Home.png) no-repeat 50% 50%;
+}
+#body.body-user  {background-color: #e4eacc;}
+
+#body.body-user #xwikimaincontainer {
+  background-color: #fff;
+  background-image :url(images/BG-user-green.png) ;
+  background-repeat: repeat-y;
+  }
+
+#body.body-user #xwikimaincontainerinner {
+  background-image: url(images/BG-user-green.png);
+  background-position: top right;
+  background-repeat: repeat-y;
+}
+#body.body-user #pagename{ 
+background-color: #a5b853;
+}
+#body.body-user #pagename a {
+	color:  #fff;
+}
+#body.body-user #footer {
+background-image: url(images/BGF-user-green.png);/*  TEMP A VIRER  */
+background-position: top right;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+}
+#body.body-user #leftPanelsFooter{
+background-image: url(images/BGF-user-green.png);/*  TEMP A VIRER  */
+background-position: top left;/*  TEMP A VIRER  */
+background-repeat:no-repeat;
+}
+
+
+
+/* menu */
+body.body-user .xwikipanelmenucontainer, body.body-user .expanded .xwikipanelmenucontainer, body.body-user .editbody .leftsidecolumns {
+  background-color: #A5B853;
+  }
+  
+.file-service-content-user .file-service-addfile-bt span, #body.body-user .accordionTabTitleBar h6{
+  color: #FFF;
+  background-color: #C9D497;
+}
+#body.body-user .accordionTabTitleBar h6 a{
+  color: #FFF;
+}
+#body.body-user .b1, #body.body-user .b2, #body.body-user .b3, #body.body-user .b4, #body.body-user .b1b, #body.body-user .b2b, #body.body-user .b3b, #body.body-user .b4b {
+  background-color: #A5B853;
+  border-color: #A5B853;
+  }
+#body.body-user .xwikipanelmenucontainer .xwikipaneltitle, #body.body-user .xwikipanelmenucontainer .expanded .xwikipaneltitle, #body.body-user .xwikipaneltitle:hover, #body.body-user .expanded .xwikipaneltitle:hover, #body.body-user .xwikipaneltitle:active, #body.body-user .expanded .xwikipaneltitle:active {
+  /*color: #C9D497;*/
+  color: #FFF;
+}
+/* fonts */
+#body.body-user .heading-1, #body.body-user .heading-1-1, #body.body-user .entry-title a, #body.body-user .heading-1-1-1, #body.body-user .heading-1-1-1-1, #body.body-user h1, #body.body-user h2, #body.body-user h3, #body.body-user h4, #body.body-user h5 {
+  color: #333;
+}
+
+
+#body.body-user div.blog div.mediumcontentheader {}
+
+.WHtable tr.user td.tdspace a, #body.body-user .WHtable tr.here td.tdspace a{
+  color: #A5B853;
+}
+#body.body-user table.WHtable caption{
+	background-color: #9FC74A;
+	color: #FFF;
+}
+#body.body-user table.WHtable caption a, #body.body-user table.WHtable caption a:link{
+	color: #FFF;
+}
+.file-service-content-user table.WHtable thead tr.tablegend td, .gallery-service-content-user table.WHtable thead tr.tablegend td, #body.body-user table.WHtable thead tr.tablegend td, #body.body-user table.WHtable thead tr.tablegend th{
+	background-color: #E4EACC;
+}
+
+.file-service-title-user, .gallery-service-title-user {
+  background-color: #C9D497;
+}
+.file-service-content-user, .gallery-service-content-user {
+  border-color: #C9D497;
+}
+#body.body-user .alphabetic-bar-middle, #body.body-user #tabmenucontent3 li,#body.body-user #subtabmenucontent3 li {/*
+background-color:#C9D497 ;*/
+}
+
+#body.body-user .panel-child {
+  background-color: #E4EACC;
+}
+#body.body-user #gallery a.gallery-item {
+  border-color: #E4EACC;
+}
+#body.body-user #gallery a.gallery-item:hover {
+  border-color: #A5B853;
+}
+#body.body-user #collaborative-spaces thead {
+  background-color: #A5B853;
+  color: #fff;
+}
+#body.body-user #collaborative-spaces even,
+#body.body-user #collaborative-spaces tr.even td{
+  background-color: #E4EACC;
+}
+#body.body-user #collaborative-spaces tr.odd td{
+  background-color: #FFF;
+}
+/* User tables */
+
+#body.body-user table.WHtable caption{
+	background-color: #9FC74A;
+	color: #FFF;
+        overflow: hidden;
+}
+#body.body-user table.WHtable caption a, #body.body-user table.WHtable caption a:link{
+	color: #FFF;
+}
+
+#contacts-table, #network-table{
+  border: 1px solid #aaa;
+}
+
+#contacts-table tr.even, #network-table tr.even{
+  background-color:#ECECEC;
+}
+
+#contacts-table tr.tabtitle, #network-table tr.tabtitle{
+  background-color: #E4EACC;
+  font-size:10px;
+  line-height:1.3em;
+}
+
+#body.body-user .article_footer{
+  margin-left: 15px;
+/*
+  font-size: 0.85em;
+  color: #888;
+
+*/
+}
