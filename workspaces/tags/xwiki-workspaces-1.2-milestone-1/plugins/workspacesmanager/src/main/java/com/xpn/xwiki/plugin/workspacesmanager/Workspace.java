@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * Workspaces implementation.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class Workspace extends SpaceImpl {
 	public static final String WORKSPACE_SPACETYPE = "spacetype";

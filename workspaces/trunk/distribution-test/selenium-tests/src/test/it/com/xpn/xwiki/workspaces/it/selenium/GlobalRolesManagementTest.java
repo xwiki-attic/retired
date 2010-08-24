@@ -27,7 +27,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the management of global roles (simple members, power users, administrators).
  * 
- * @version $Id: $
+ * @version $Id$
  */
 
 public class GlobalRolesManagementTest extends AbstractWorkspacesTest

@@ -29,7 +29,7 @@ import com.xpn.xwiki.plugin.activitystream.api.ActivityEvent;
 /**
  * Activity builder default implementation
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class ApplicationDefaultActivityBuilder extends AbstractActivityBuilder implements
     ActivityBuilder

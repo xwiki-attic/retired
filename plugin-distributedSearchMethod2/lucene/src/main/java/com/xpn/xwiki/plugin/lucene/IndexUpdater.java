@@ -57,7 +57,7 @@ import com.xpn.xwiki.notify.XWikiDocChangeNotificationInterface;
 import com.xpn.xwiki.notify.XWikiNotificationRule;
 
 /**
- * @version $Id: $
+ * @version $Id$
  */
 public class IndexUpdater extends AbstractXWikiRunnable 
     implements XWikiDocChangeNotificationInterface, XWikiActionNotificationInterface

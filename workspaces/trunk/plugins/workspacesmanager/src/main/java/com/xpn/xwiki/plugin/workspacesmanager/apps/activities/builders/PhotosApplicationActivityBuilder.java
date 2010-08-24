@@ -27,7 +27,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.WorkspaceActivityS
 /**
  * Activity builder for the photos application.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class PhotosApplicationActivityBuilder extends DefaultActivityBuilder
 {

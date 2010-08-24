@@ -45,7 +45,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.stories.StoryBuilder;
 /**
  * Workspaces manager plugin implementation.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesManager extends SpaceManagerImpl
 {

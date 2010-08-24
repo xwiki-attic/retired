@@ -26,7 +26,7 @@ import com.xpn.xwiki.plugin.activitystream.api.ActivityEvent;
 /**
  * Activity builder for notifications that occurs on a workspace home page.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspaceHomeActivityBuilder extends AbstractActivityBuilder implements ActivityBuilder
 {

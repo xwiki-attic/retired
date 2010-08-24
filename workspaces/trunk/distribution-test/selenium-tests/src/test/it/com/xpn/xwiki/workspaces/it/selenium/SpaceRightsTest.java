@@ -26,7 +26,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the different possible rights setups of a XWS space.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class SpaceRightsTest extends AbstractWorkspacesTest
 {

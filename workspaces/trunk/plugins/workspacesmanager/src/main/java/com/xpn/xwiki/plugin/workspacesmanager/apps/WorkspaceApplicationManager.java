@@ -28,7 +28,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerException;
 /**
  * XWiki Workspaces application manager interface.
  * 
- * @version $Id: $
+ * @version $Id$
  */ 
 public interface WorkspaceApplicationManager
 {

@@ -26,7 +26,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the management of members in a workspace
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesMembersManagementTest extends AbstractWorkspacesTest
 {

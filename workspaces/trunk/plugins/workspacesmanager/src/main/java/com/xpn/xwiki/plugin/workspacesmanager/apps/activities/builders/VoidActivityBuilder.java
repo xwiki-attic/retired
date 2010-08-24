@@ -27,7 +27,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.WorkspaceActivityS
 /**
  * A void activity builder that always throw an exception upon create activity.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class VoidActivityBuilder extends DefaultActivityBuilder
 {

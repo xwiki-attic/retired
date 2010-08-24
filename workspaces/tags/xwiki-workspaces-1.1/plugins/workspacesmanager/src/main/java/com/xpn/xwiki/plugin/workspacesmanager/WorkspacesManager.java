@@ -42,7 +42,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.WorkspaceApplicationManagerIm
 /**
  * Workspaces manager plugin implementation.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesManager extends SpaceManagerImpl
 {

@@ -31,7 +31,7 @@ import com.xpn.xwiki.doc.XWikiDocument;
 /**
  * Workspaces implementation.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class Workspace extends SpaceImpl
 {

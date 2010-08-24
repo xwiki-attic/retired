@@ -34,7 +34,7 @@ import com.xpn.xwiki.plugin.spacemanager.plugin.SpaceManagerPluginApi;
  * API for the workspaces manager plugin. Expose the actual methods offered for velocity scripting
  * from the Wiki.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesManagerApi extends SpaceManagerPluginApi
 {

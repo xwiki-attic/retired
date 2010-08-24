@@ -26,7 +26,7 @@ import com.xpn.xwiki.doc.XWikiDocument;
 /**
  * Activity builder for the files application.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class FilesApplicationActivityBuilder extends DefaultActivityBuilder
 {

@@ -26,7 +26,7 @@ import com.xpn.xwiki.it.selenium.framework.AbstractXWikiTestCase;
 /**
  * An abstract test case for XWiki Workspaces.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class AbstractWorkspacesTest extends AbstractXWikiTestCase
 {

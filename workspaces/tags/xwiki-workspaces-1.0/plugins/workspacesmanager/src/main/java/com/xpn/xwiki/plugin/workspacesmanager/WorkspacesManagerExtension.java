@@ -53,7 +53,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.activities.WorkspacesActivityStrea
 /**
  * SpaceManager extension for Workspaces manager plugin
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesManagerExtension extends SpaceManagerExtensionImpl
 {

@@ -26,7 +26,7 @@ import com.xpn.xwiki.objects.BaseObject;
 /**
  * Activity builder for the blog application
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class BlogApplicationActivityBuilder extends ApplicationDefaultActivityBuilder
 {

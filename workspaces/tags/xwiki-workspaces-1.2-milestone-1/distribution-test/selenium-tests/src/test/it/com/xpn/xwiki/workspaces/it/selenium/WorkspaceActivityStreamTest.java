@@ -26,7 +26,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the activity stream of a workspace
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspaceActivityStreamTest extends AbstractWorkspacesTest
 {

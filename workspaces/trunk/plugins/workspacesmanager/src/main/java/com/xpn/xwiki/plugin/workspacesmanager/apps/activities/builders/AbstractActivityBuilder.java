@@ -30,7 +30,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.WorkspaceActivityS
 /**
  * Abstract activity builder that knows how to prepare an event based on passed documents.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public abstract class AbstractActivityBuilder implements ActivityBuilder
 {

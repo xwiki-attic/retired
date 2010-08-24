@@ -31,7 +31,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.WorkspacesActivity
 /**
  * Stream application manager extension.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class StreamApplicationManagerExtension implements ApplicationManagerExtension
 {

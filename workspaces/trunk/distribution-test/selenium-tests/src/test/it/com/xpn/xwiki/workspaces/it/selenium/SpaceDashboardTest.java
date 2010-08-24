@@ -26,7 +26,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the activity dashboard of XWS Spaces.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class SpaceDashboardTest extends AbstractWorkspacesTest
 {

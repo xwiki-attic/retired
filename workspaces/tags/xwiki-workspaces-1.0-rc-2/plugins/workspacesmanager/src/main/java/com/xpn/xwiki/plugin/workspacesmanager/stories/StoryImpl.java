@@ -25,7 +25,7 @@ import java.util.Date;
 /**
  * Default implementation of the Story interface
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class StoryImpl implements Story
 {

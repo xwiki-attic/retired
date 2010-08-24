@@ -30,7 +30,7 @@ import com.xpn.xwiki.api.Api;
 import com.xpn.xwiki.plugin.XWikiPluginInterface;
 
 /**
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesActivityStreamPlugin extends ActivityStreamPlugin
 {

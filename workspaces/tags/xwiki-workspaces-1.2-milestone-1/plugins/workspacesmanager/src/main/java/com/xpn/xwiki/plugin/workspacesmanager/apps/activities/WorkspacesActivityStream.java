@@ -42,7 +42,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.builders.Applicati
 import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.builders.WorkspaceHomeActivityBuilder;
 
 /**
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesActivityStream extends ActivityStreamImpl
 {

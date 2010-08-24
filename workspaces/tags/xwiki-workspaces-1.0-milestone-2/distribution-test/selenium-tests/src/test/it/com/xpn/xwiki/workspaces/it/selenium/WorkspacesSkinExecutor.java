@@ -28,7 +28,7 @@ import com.xpn.xwiki.it.selenium.framework.SkinExecutor;
 /**
  * Implementation of skin-related actions for the Workspaces skin.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesSkinExecutor extends AlbatrossSkinExecutor implements SkinExecutor
 {

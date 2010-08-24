@@ -35,7 +35,7 @@ import com.xpn.xwiki.XWikiContext;
 import com.xpn.xwiki.doc.XWikiDocument;
 
 /**
- * @version $Id: $
+ * @version $Id$
  */
 public abstract class IndexData
 {

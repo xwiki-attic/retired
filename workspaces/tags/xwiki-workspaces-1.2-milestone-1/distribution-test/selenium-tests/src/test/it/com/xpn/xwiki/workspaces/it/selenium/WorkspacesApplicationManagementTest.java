@@ -29,7 +29,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the management of applications in a workspace
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesApplicationManagementTest extends AbstractWorkspacesTest
 {

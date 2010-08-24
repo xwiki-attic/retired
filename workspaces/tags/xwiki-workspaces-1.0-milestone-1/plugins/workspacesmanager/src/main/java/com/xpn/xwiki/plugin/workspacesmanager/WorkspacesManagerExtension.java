@@ -46,7 +46,7 @@ import com.xpn.xwiki.plugin.spacemanager.impl.SpaceManagerExtensionImpl;
 /**
  * SpaceManager extension for Workspaces manager plugin
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesManagerExtension extends SpaceManagerExtensionImpl
 {

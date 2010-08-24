@@ -22,7 +22,7 @@ package com.xpn.xwiki.plugin.workspacesmanager.apps.activities;
 import com.xpn.xwiki.plugin.activitystream.api.ActivityStreamException;
 
 /**
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspaceActivityStreamException extends ActivityStreamException
 {

@@ -37,7 +37,7 @@ import java.util.Properties;
  * returning search results the user executing the search is allowed to view.
  * </p>
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class SearchResults extends Api
 {

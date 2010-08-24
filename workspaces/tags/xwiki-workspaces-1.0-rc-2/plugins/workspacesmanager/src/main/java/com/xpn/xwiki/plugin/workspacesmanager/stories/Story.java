@@ -26,7 +26,7 @@ import java.util.Date;
  * A story interface that represent an event that occured on a space. Is intended to be used for
  * notifications and spaces activity streams.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public interface Story
 {

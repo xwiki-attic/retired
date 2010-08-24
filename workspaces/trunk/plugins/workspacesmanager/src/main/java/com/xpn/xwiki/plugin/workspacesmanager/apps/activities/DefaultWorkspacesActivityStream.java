@@ -45,7 +45,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.builders.Workspace
 /**
  * Default implementation of the XWiki Workspaces activity stream.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public final class DefaultWorkspacesActivityStream extends ActivityStreamImpl implements WorkspaceActivityStream
 {

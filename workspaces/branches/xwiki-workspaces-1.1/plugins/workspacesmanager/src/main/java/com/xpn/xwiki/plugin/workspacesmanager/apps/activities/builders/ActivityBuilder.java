@@ -29,7 +29,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.WorkspaceActivityS
  * Builder interface to create {@link com.xpn.xwiki.plugin.activitystream.api.ActivityEvent} upon
  * notification, for workspaces
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public interface ActivityBuilder
 {

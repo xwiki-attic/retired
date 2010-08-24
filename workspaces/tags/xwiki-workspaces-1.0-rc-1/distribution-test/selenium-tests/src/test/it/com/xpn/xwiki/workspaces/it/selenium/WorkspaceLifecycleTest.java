@@ -26,7 +26,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Verify the creation, archive and deletion of workspaces
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspaceLifecycleTest extends AbstractWorkspacesTest
 {

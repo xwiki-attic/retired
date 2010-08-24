@@ -32,7 +32,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerException;
 /**
  * StoryBuilder default implementation
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class DefaultStoryBuilderImpl implements StoryBuilder
 {

@@ -45,7 +45,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerExtension;
 /**
  * The default manager for Workspaces Applications.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class DefaultWorkspaceApplicationManager implements WorkspaceApplicationManager
 {

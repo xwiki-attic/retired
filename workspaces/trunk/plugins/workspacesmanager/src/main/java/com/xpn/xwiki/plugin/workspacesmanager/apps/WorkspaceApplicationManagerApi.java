@@ -29,7 +29,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerException;
 /**
  * API for the XWiki Workspaces application manager.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspaceApplicationManagerApi extends Api
 {

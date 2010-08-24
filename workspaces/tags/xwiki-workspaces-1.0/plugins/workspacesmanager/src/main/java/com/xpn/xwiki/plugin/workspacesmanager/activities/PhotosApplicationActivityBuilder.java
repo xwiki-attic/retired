@@ -26,7 +26,7 @@ import com.xpn.xwiki.plugin.activitystream.api.ActivityEvent;
 /**
  * Activity builder for the photos application
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class PhotosApplicationActivityBuilder extends ApplicationDefaultActivityBuilder
 {

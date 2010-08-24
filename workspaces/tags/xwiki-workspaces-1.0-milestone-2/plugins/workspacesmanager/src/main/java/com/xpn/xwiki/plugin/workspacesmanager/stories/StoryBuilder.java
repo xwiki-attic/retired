@@ -27,7 +27,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerException;
  * A simple Builder interface that defines a method to create stories based on a document inside a
  * workspace.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public interface StoryBuilder
 {

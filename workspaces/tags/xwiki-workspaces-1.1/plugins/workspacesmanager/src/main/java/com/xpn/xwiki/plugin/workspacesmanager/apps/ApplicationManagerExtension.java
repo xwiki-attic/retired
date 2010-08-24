@@ -28,7 +28,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerException;
  * their workspaces application descriptor the fully qualified class name of the extension
  * implementing this interface, in the field "application_manager_extension".
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public interface ApplicationManagerExtension
 {

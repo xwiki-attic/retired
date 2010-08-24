@@ -30,7 +30,7 @@ import com.xpn.xwiki.plugin.activitystream.api.ActivityStreamException;
  * XWiki Workspaces activity stream inteface. Extends the standard activity interface adding method
  * to add/retrieve events that are specific to XWS.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public interface WorkspaceActivityStream extends ActivityStream
 {

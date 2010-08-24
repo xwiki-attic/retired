@@ -30,7 +30,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.WorkspaceActivityS
 /**
  * Activity builder default implementation.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class DefaultActivityBuilder extends AbstractActivityBuilder implements ActivityBuilder
 {

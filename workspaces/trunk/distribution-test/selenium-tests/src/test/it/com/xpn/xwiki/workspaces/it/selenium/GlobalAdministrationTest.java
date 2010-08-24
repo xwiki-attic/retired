@@ -27,7 +27,7 @@ import com.xpn.xwiki.it.selenium.framework.XWikiTestSuite;
 /**
  * Test XWiki Workspaces global administration feature.
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class GlobalAdministrationTest extends AbstractWorkspacesTest
 {

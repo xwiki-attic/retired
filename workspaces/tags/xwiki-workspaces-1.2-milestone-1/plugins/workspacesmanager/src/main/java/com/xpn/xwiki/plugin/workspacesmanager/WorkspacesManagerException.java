@@ -26,7 +26,7 @@ import com.xpn.xwiki.plugin.spacemanager.api.SpaceManagerException;
 /**
  * Workspaces manager plugin exceptions
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspacesManagerException extends SpaceManagerException
 {

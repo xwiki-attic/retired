@@ -31,7 +31,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.WorkspacesManagerException;
 /**
  * A story builder for documents that belong to a Photo application
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class PhotosStoryBuilderImpl implements StoryBuilder
 {

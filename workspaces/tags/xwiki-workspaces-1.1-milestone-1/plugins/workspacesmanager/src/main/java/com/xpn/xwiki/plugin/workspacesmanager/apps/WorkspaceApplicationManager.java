@@ -47,7 +47,7 @@ import com.xpn.xwiki.plugin.workspacesmanager.apps.activities.builders.ActivityB
 /**
  * A Manager for Workspaces Applications
  * 
- * @version $Id: $
+ * @version $Id$
  */
 public class WorkspaceApplicationManager
 {
