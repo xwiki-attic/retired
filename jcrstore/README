@@ -1,0 +1,6 @@
+JcrStore:
+This is a modification to xwiki-core.
+It is retired because it was unused, untested, and suspected to be incomplete or non-working.
+To insert this code back into xwiki-core, merge the src directory with platform/core/trunk/xwiki-core/src
+copy xwiki-jcr-query.patch from this directory to platform/core/trunk and patch with:
+patch -p4 < ./xwiki-jcr-query.patch

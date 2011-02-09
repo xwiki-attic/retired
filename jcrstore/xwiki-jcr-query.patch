@@ -1,0 +1,61 @@
+diff --git a/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPlugin.java b/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPlugin.java
+index 54b22d8..4d20ea1 100644
+--- a/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPlugin.java
++++ b/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPlugin.java
+@@ -42,6 +42,7 @@ import com.xpn.xwiki.objects.classes.BaseClass;
+ import com.xpn.xwiki.plugin.XWikiDefaultPlugin;
+ import com.xpn.xwiki.plugin.XWikiPluginInterface;
+ import com.xpn.xwiki.store.XWikiStoreInterface;
++import com.xpn.xwiki.store.jcr.XWikiJcrStore;
+ 
+ /** Plugin for Query API */
+ public class QueryPlugin extends XWikiDefaultPlugin implements IQueryFactory {
+@@ -113,7 +114,7 @@ public class QueryPlugin extends XWikiDefaultPlugin implements IQueryFactory {
+     }
+ 
+     boolean isJcr(IQueryFactory qf) {
+-        return false;
++        return qf.getContext().getWiki().getNotCacheStore() instanceof XWikiJcrStore;
+     }
+ 
+     /** Translate query string to query tree */
+@@ -142,6 +143,8 @@ public class QueryPlugin extends XWikiDefaultPlugin implements IQueryFactory {
+             } catch (InvalidQueryException e) {
+                 throw new XWikiException(XWikiException.MODULE_XWIKI_PLUGINS, XWikiException.ERROR_XWIKI_UNKNOWN, "Invalid xpath query: " + q, e);
+             }
++        if (isJcr(qf))
++            return new JcrQuery( q, Query.XPATH, qf );
+         return null;
+     }
+ 
+@@ -165,6 +168,8 @@ public class QueryPlugin extends XWikiDefaultPlugin implements IQueryFactory {
+             } catch (InvalidQueryException e) {
+                 throw new XWikiException(XWikiException.MODULE_XWIKI_PLUGINS, XWikiException.ERROR_XWIKI_UNKNOWN, "Invalid jcrsql query: " + q);
+             }
++        if (isJcr(qf))
++            return new JcrQuery( q, Query.SQL, qf );
+         return null;
+     }
+ 
+diff --git a/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPluginApi.java b/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPluginApi.java
+index 8067493..fb234d1 100644
+--- a/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPluginApi.java
++++ b/platform/core/trunk/xwiki-core/src/main/java/com/xpn/xwiki/plugin/query/QueryPluginApi.java
+@@ -85,6 +85,8 @@ public class QueryPluginApi extends Api implements IQueryFactory {
+             } catch (InvalidQueryException e) {
+                 throw new XWikiException(XWikiException.MODULE_XWIKI_PLUGINS, XWikiException.ERROR_XWIKI_UNKNOWN, "Invalid xpath query: " + q);
+             }
++        if (qp.isJcr(this))
++            return new SecJcrQuery( q, Query.XPATH, this );
+         return null;
+     }
+ 
+@@ -104,6 +106,8 @@ public class QueryPluginApi extends Api implements IQueryFactory {
+             } catch (InvalidQueryException e) {
+                 throw new XWikiException(XWikiException.MODULE_XWIKI_PLUGINS, XWikiException.ERROR_XWIKI_UNKNOWN, "Invalid jcrsql query: " + q);
+             }
++        if (qp.isJcr(this))
++            return new SecJcrQuery( q, Query.SQL, this );
+         return null;
+     }
+ 
