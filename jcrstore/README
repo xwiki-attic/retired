@@ -4,3 +4,5 @@ It is retired because it was unused, untested, and suspected to be incomplete or
 To insert this code back into xwiki-core, merge the src directory with platform/core/trunk/xwiki-core/src
 copy xwiki-jcr-query.patch from this directory to platform/core/trunk and patch with:
 patch -p4 < ./xwiki-jcr-query.patch
+Then to checkstyle (code style enforcement) exemptions to allow the code to build use:
+patch -p4 < ./xwiki-jcr-checkstyleExemptions.patch

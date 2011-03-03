@@ -1,0 +1,33 @@
+diff --git a/platform/core/trunk/xwiki-core/pom.xml b/platform/core/trunk/xwiki-core/pom.xml
+index 021d3ac..d334a19 100644
+--- a/platform/core/trunk/xwiki-core/pom.xml
++++ b/platform/core/trunk/xwiki-core/pom.xml
+@@ -1051,10 +1051,12 @@
+               **/plugin/query/HibernateQuery.java,
+               **/plugin/query/IQueryFactory.java,
+               **/plugin/query/IQuery.java,
++              **/plugin/query/JcrQuery.java,
+               **/plugin/query/OrderClause.java,
+               **/plugin/query/QueryPluginApi.java,
+               **/plugin/query/QueryPlugin.java,
+               **/plugin/query/SecHibernateQuery.java,
++              **/plugin/query/SecJcrQuery.java,
+               **/plugin/query/SepStringBuffer.java,
+               **/plugin/query/XWikiCriteria.java,
+               **/plugin/query/XWikiNamespaceResolver.java,
+@@ -1132,6 +1134,15 @@
+               **/store/DBCPConnectionProvider.java,
+               **/store/hibernate/DefaultHibernateSessionFactory.java,
+               **/store/hibernate/HibernateSessionFactory.java,
++              **/store/jcr/IJcrProvider.java,
++              **/store/jcr/JackRabbitJCRProvider.java,
++              **/store/jcr/JcrUtil.java,
++              **/store/jcr/query/JcrQueryExecutor.java,
++              **/store/jcr/XWikiJcrAttachmentStore.java,
++              **/store/jcr/XWikiJcrBaseStore.java,
++              **/store/jcr/XWikiJcrPropertyVersioningStore.java,
++              **/store/jcr/XWikiJcrSession.java,
++              **/store/jcr/XWikiJcrStore.java,
+               **/store/migration/AbstractXWikiMigrationManager.java,
+               **/store/migration/hibernate/AbstractXWikiHibernateMigrator.java,
+               **/store/migration/hibernate/R4340XWIKI883Migrator.java,
