@@ -1,0 +1,5 @@
+This module requires some config files to be present to work.
+
+The files were removed from xwiki-platform in commit https://github.com/xwiki/xwiki-platform/commit/fb903747747494cf39a27a7a1e752749353f87df
+
+If you wish to use this module in XWiki you'll need to also copy these files.
